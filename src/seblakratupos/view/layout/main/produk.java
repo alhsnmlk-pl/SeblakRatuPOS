@@ -26,19 +26,2672 @@ public class produk extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
+        panelCustomV23 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel2 = new javax.swing.JLabel();
+        buttonCustomV21 = new seblakratupos.view.component.ButtonCustomV2();
+        panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelCustomV25 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        panelCustomV26 = new seblakratupos.view.component.PanelCustomV2();
+        panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        panelCustomV30 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        panelCustomV31 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        panelCustomV32 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        panelCustomV33 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        panelCustomV34 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        panelCustomV35 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        panelCustomV36 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        panelCustomV37 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        panelCustomV38 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        panelCustomV39 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        panelCustomV40 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        panelCustomV41 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel98 = new javax.swing.JLabel();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        panelCustomV42 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        panelCustomV43 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel110 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
+        jLabel115 = new javax.swing.JLabel();
+        panelCustomV44 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel116 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        jLabel120 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        panelCustomV45 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel122 = new javax.swing.JLabel();
+        jLabel123 = new javax.swing.JLabel();
+        jLabel124 = new javax.swing.JLabel();
+        jLabel125 = new javax.swing.JLabel();
+        jLabel126 = new javax.swing.JLabel();
+        jLabel127 = new javax.swing.JLabel();
+        panelCustomV46 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel128 = new javax.swing.JLabel();
+        jLabel129 = new javax.swing.JLabel();
+        jLabel130 = new javax.swing.JLabel();
+        jLabel131 = new javax.swing.JLabel();
+        jLabel132 = new javax.swing.JLabel();
+        jLabel133 = new javax.swing.JLabel();
+        panelCustomV47 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel134 = new javax.swing.JLabel();
+        jLabel135 = new javax.swing.JLabel();
+        jLabel136 = new javax.swing.JLabel();
+        jLabel137 = new javax.swing.JLabel();
+        jLabel138 = new javax.swing.JLabel();
+        jLabel139 = new javax.swing.JLabel();
+        panelCustomV48 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel140 = new javax.swing.JLabel();
+        jLabel141 = new javax.swing.JLabel();
+        jLabel142 = new javax.swing.JLabel();
+        jLabel143 = new javax.swing.JLabel();
+        jLabel144 = new javax.swing.JLabel();
+        jLabel145 = new javax.swing.JLabel();
+        panelCustomV49 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel146 = new javax.swing.JLabel();
+        jLabel147 = new javax.swing.JLabel();
+        jLabel148 = new javax.swing.JLabel();
+        jLabel149 = new javax.swing.JLabel();
+        jLabel150 = new javax.swing.JLabel();
+        jLabel151 = new javax.swing.JLabel();
+        panelCustomV50 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel152 = new javax.swing.JLabel();
+        jLabel153 = new javax.swing.JLabel();
+        jLabel154 = new javax.swing.JLabel();
+        jLabel155 = new javax.swing.JLabel();
+        jLabel156 = new javax.swing.JLabel();
+        jLabel157 = new javax.swing.JLabel();
+        panelCustomV51 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel158 = new javax.swing.JLabel();
+        jLabel159 = new javax.swing.JLabel();
+        jLabel160 = new javax.swing.JLabel();
+        jLabel161 = new javax.swing.JLabel();
+        jLabel162 = new javax.swing.JLabel();
+        jLabel163 = new javax.swing.JLabel();
+        panelCustomV52 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel164 = new javax.swing.JLabel();
+        jLabel165 = new javax.swing.JLabel();
+        jLabel166 = new javax.swing.JLabel();
+        jLabel167 = new javax.swing.JLabel();
+        jLabel168 = new javax.swing.JLabel();
+        jLabel169 = new javax.swing.JLabel();
+        panelCustomV53 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel170 = new javax.swing.JLabel();
+        jLabel171 = new javax.swing.JLabel();
+        jLabel172 = new javax.swing.JLabel();
+        jLabel173 = new javax.swing.JLabel();
+        jLabel174 = new javax.swing.JLabel();
+        jLabel175 = new javax.swing.JLabel();
+        panelCustomV54 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel176 = new javax.swing.JLabel();
+        jLabel177 = new javax.swing.JLabel();
+        jLabel178 = new javax.swing.JLabel();
+        jLabel179 = new javax.swing.JLabel();
+        jLabel180 = new javax.swing.JLabel();
+        jLabel181 = new javax.swing.JLabel();
+        panelCustomV55 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel182 = new javax.swing.JLabel();
+        jLabel183 = new javax.swing.JLabel();
+        jLabel184 = new javax.swing.JLabel();
+        jLabel185 = new javax.swing.JLabel();
+        jLabel186 = new javax.swing.JLabel();
+        jLabel187 = new javax.swing.JLabel();
+        panelCustomV56 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel188 = new javax.swing.JLabel();
+        jLabel189 = new javax.swing.JLabel();
+        jLabel190 = new javax.swing.JLabel();
+        jLabel191 = new javax.swing.JLabel();
+        jLabel192 = new javax.swing.JLabel();
+        jLabel193 = new javax.swing.JLabel();
+        panelCustomV57 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel194 = new javax.swing.JLabel();
+        jLabel195 = new javax.swing.JLabel();
+        jLabel196 = new javax.swing.JLabel();
+        jLabel197 = new javax.swing.JLabel();
+        jLabel198 = new javax.swing.JLabel();
+        jLabel199 = new javax.swing.JLabel();
+        panelCustomV58 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel200 = new javax.swing.JLabel();
+        jLabel201 = new javax.swing.JLabel();
+        jLabel202 = new javax.swing.JLabel();
+        jLabel203 = new javax.swing.JLabel();
+        jLabel204 = new javax.swing.JLabel();
+        jLabel205 = new javax.swing.JLabel();
+        panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
+        panelCustomV27 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel12 = new javax.swing.JLabel();
+        panelCustomV28 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        buttonCustomV22 = new seblakratupos.view.component.ButtonCustomV2();
+        buttonCustomV23 = new seblakratupos.view.component.ButtonCustomV2();
+        buttonCustomV24 = new seblakratupos.view.component.ButtonCustomV2();
+
+        panelCustomV21.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV21.setBorderThickness(1);
+
+        panelCustomV23.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV23.setBorderLeftThickness(1);
+        panelCustomV23.setBorderRightThickness(1);
+        panelCustomV23.setBorderTopThickness(1);
+
+        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 1, 24)); // NOI18N
+        jLabel2.setText("Daftar  Produk");
+
+        buttonCustomV21.setBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/Icon tambah.png"))); // NOI18N
+        buttonCustomV21.setText("Tambah  Produk");
+        buttonCustomV21.setActiveBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setActiveBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setActiveForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setActiveHoverBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setActiveHoverBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setDisabledBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setDisabledBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        buttonCustomV21.setHoverBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setHoverBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setHoverForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setInactiveBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setInactiveBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setPressedBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setPressedBorderColor(new java.awt.Color(214, 4, 4));
+        buttonCustomV21.setPressedForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV21.setRoundBottomLeft(0);
+        buttonCustomV21.setRoundBottomRight(0);
+        buttonCustomV21.setRoundTopLeft(0);
+        buttonCustomV21.setRoundTopRight(0);
+        buttonCustomV21.addActionListener(this::buttonCustomV21ActionPerformed);
+
+        javax.swing.GroupLayout panelCustomV23Layout = new javax.swing.GroupLayout(panelCustomV23);
+        panelCustomV23.setLayout(panelCustomV23Layout);
+        panelCustomV23Layout.setHorizontalGroup(
+            panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV23Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        panelCustomV23Layout.setVerticalGroup(
+            panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV23Layout.createSequentialGroup()
+                .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        panelCustomV24.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV24.setBorderLeftThickness(1);
+        panelCustomV24.setBorderRightThickness(1);
+
+        jLabel3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel3.setText("Semua Menu");
+
+        jLabel4.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel4.setText("Seblak");
+
+        jLabel5.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel5.setText("Topping");
+
+        jLabel6.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel6.setText("Minuman");
+
+        panelCustomV25.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV25.setBorderThickness(1);
+
+        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel1.setText("ID ");
+
+        jLabel7.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel7.setText("Nama Produk");
+
+        jLabel8.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel8.setText("Kategori");
+
+        jLabel9.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel9.setText("Harga Jual");
+
+        jLabel10.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel10.setText("Status");
+
+        jLabel11.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel11.setText("Aksi");
+
+        javax.swing.GroupLayout panelCustomV25Layout = new javax.swing.GroupLayout(panelCustomV25);
+        panelCustomV25.setLayout(panelCustomV25Layout);
+        panelCustomV25Layout.setHorizontalGroup(
+            panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV25Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel7)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel8)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel11)
+                .addGap(33, 33, 33))
+        );
+        panelCustomV25Layout.setVerticalGroup(
+            panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelCustomV24Layout = new javax.swing.GroupLayout(panelCustomV24);
+        panelCustomV24.setLayout(panelCustomV24Layout);
+        panelCustomV24Layout.setHorizontalGroup(
+            panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV24Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelCustomV25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelCustomV24Layout.setVerticalGroup(
+            panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV24Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelCustomV25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelCustomV26.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV26.setBorderThickness(1);
+
+        panelCustomV29.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV29.setBorderThickness(1);
+
+        jLabel26.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel26.setText("M001");
+
+        jLabel27.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel27.setText("Es Jeruk");
+
+        jLabel28.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel28.setText("Minuman");
+
+        jLabel29.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel29.setText("Rp 4.000");
+
+        jLabel30.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel30.setText("Tersedia");
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV29Layout = new javax.swing.GroupLayout(panelCustomV29);
+        panelCustomV29.setLayout(panelCustomV29Layout);
+        panelCustomV29Layout.setHorizontalGroup(
+            panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV29Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel27)
+                .addGap(107, 107, 107)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel30)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel31)
+                .addGap(39, 39, 39))
+        );
+        panelCustomV29Layout.setVerticalGroup(
+            panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV29Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jLabel27)
+                        .addComponent(jLabel28)
+                        .addComponent(jLabel29)
+                        .addComponent(jLabel30)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV30.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV30.setBorderThickness(1);
+
+        jLabel32.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel32.setText("M002");
+
+        jLabel33.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel33.setText("Es Teh");
+
+        jLabel34.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel34.setText("Minuman");
+
+        jLabel35.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel35.setText("Rp 3.000");
+
+        jLabel36.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel36.setText("Tersedia");
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV30Layout = new javax.swing.GroupLayout(panelCustomV30);
+        panelCustomV30.setLayout(panelCustomV30Layout);
+        panelCustomV30Layout.setHorizontalGroup(
+            panelCustomV30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV30Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel32)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(jLabel34)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel36)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel37)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV30Layout.setVerticalGroup(
+            panelCustomV30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV30Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addGroup(panelCustomV30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel32)
+                        .addComponent(jLabel33)
+                        .addComponent(jLabel34)
+                        .addComponent(jLabel35)
+                        .addComponent(jLabel36)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV31.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV31.setBorderThickness(1);
+
+        jLabel38.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel38.setText("M003");
+
+        jLabel39.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel39.setText("Soda Gembira");
+
+        jLabel40.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel40.setText("Minuman");
+
+        jLabel41.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel41.setText("Rp 10.000");
+
+        jLabel42.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel42.setText("Tersedia");
+
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV31Layout = new javax.swing.GroupLayout(panelCustomV31);
+        panelCustomV31.setLayout(panelCustomV31Layout);
+        panelCustomV31Layout.setHorizontalGroup(
+            panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV31Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel38)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel39)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel40)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jLabel42)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel43)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV31Layout.setVerticalGroup(
+            panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV31Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel43)
+                    .addGroup(panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel38)
+                        .addComponent(jLabel39)
+                        .addComponent(jLabel40)
+                        .addComponent(jLabel41)
+                        .addComponent(jLabel42)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV32.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV32.setBorderThickness(1);
+
+        jLabel44.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel44.setText("M004");
+
+        jLabel45.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel45.setText("Jus Jambu");
+
+        jLabel46.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel46.setText("Minuman");
+
+        jLabel47.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel47.setText("Rp 5.000");
+
+        jLabel48.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel48.setText("Tersedia");
+
+        jLabel49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV32Layout = new javax.swing.GroupLayout(panelCustomV32);
+        panelCustomV32.setLayout(panelCustomV32Layout);
+        panelCustomV32Layout.setHorizontalGroup(
+            panelCustomV32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV32Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel44)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel45)
+                .addGap(88, 88, 88)
+                .addComponent(jLabel46)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel48)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel49)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV32Layout.setVerticalGroup(
+            panelCustomV32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV32Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel49)
+                    .addGroup(panelCustomV32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel44)
+                        .addComponent(jLabel45)
+                        .addComponent(jLabel46)
+                        .addComponent(jLabel47)
+                        .addComponent(jLabel48)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV33.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV33.setBorderThickness(1);
+
+        jLabel50.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel50.setText("M005");
+
+        jLabel51.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel51.setText("Jus Jeruk");
+
+        jLabel52.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel52.setText("Minuman");
+
+        jLabel53.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel53.setText("Rp 5.000");
+
+        jLabel54.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel54.setText("Tersedia");
+
+        jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV33Layout = new javax.swing.GroupLayout(panelCustomV33);
+        panelCustomV33.setLayout(panelCustomV33Layout);
+        panelCustomV33Layout.setHorizontalGroup(
+            panelCustomV33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV33Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel50)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel51)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel52)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel54)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel55)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV33Layout.setVerticalGroup(
+            panelCustomV33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV33Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel55)
+                    .addGroup(panelCustomV33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel50)
+                        .addComponent(jLabel51)
+                        .addComponent(jLabel52)
+                        .addComponent(jLabel53)
+                        .addComponent(jLabel54)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV34.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV34.setBorderThickness(1);
+
+        jLabel56.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel56.setText("M006");
+
+        jLabel57.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel57.setText("Jus Melon");
+
+        jLabel58.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel58.setText("Minuman");
+
+        jLabel59.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel59.setText("Rp 5.000");
+
+        jLabel60.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel60.setText("Tersedia");
+
+        jLabel61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV34Layout = new javax.swing.GroupLayout(panelCustomV34);
+        panelCustomV34.setLayout(panelCustomV34Layout);
+        panelCustomV34Layout.setHorizontalGroup(
+            panelCustomV34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV34Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel56)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel57)
+                .addGap(91, 91, 91)
+                .addComponent(jLabel58)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel60)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel61)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV34Layout.setVerticalGroup(
+            panelCustomV34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV34Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel61)
+                    .addGroup(panelCustomV34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel56)
+                        .addComponent(jLabel57)
+                        .addComponent(jLabel58)
+                        .addComponent(jLabel59)
+                        .addComponent(jLabel60)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV35.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV35.setBorderThickness(1);
+
+        jLabel62.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel62.setText("S001");
+
+        jLabel63.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel63.setText("Seblak Original");
+
+        jLabel64.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel64.setText("Seblak");
+
+        jLabel65.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel65.setText("Rp 9.000");
+
+        jLabel66.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel66.setText("Tersedia");
+
+        jLabel67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV35Layout = new javax.swing.GroupLayout(panelCustomV35);
+        panelCustomV35.setLayout(panelCustomV35Layout);
+        panelCustomV35Layout.setHorizontalGroup(
+            panelCustomV35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV35Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel62)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel63)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel64)
+                .addGap(74, 74, 74)
+                .addComponent(jLabel65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel66)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel67)
+                .addGap(40, 40, 40))
+        );
+        panelCustomV35Layout.setVerticalGroup(
+            panelCustomV35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV35Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel67)
+                    .addGroup(panelCustomV35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel62)
+                        .addComponent(jLabel63)
+                        .addComponent(jLabel64)
+                        .addComponent(jLabel65)
+                        .addComponent(jLabel66)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV36.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV36.setBorderThickness(1);
+
+        jLabel68.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel68.setText("S002");
+
+        jLabel69.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel69.setText("Seblak Bakso");
+
+        jLabel70.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel70.setText("Seblak ");
+
+        jLabel71.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel71.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel71.setText("Rp 10.000");
+
+        jLabel72.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel72.setText("Tersedia");
+
+        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV36Layout = new javax.swing.GroupLayout(panelCustomV36);
+        panelCustomV36.setLayout(panelCustomV36Layout);
+        panelCustomV36Layout.setHorizontalGroup(
+            panelCustomV36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV36Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel68)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel70)
+                .addGap(71, 71, 71)
+                .addComponent(jLabel71)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel72)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel73)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV36Layout.setVerticalGroup(
+            panelCustomV36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV36Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel68)
+                    .addComponent(jLabel69)
+                    .addComponent(jLabel70)
+                    .addComponent(jLabel71)
+                    .addComponent(jLabel72)
+                    .addComponent(jLabel73))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV37.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV37.setBorderThickness(1);
+
+        jLabel74.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel74.setText("S003");
+
+        jLabel75.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel75.setText("Seblak Ceker   ");
+
+        jLabel76.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel76.setText("Seblak");
+
+        jLabel77.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel77.setText("Rp 11.000");
+
+        jLabel78.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel78.setText("Tersedia");
+
+        jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV37Layout = new javax.swing.GroupLayout(panelCustomV37);
+        panelCustomV37.setLayout(panelCustomV37Layout);
+        panelCustomV37Layout.setHorizontalGroup(
+            panelCustomV37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV37Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel74)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel76)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel78)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel79)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV37Layout.setVerticalGroup(
+            panelCustomV37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV37Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel79)
+                    .addGroup(panelCustomV37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel74)
+                        .addComponent(jLabel75)
+                        .addComponent(jLabel76)
+                        .addComponent(jLabel77)
+                        .addComponent(jLabel78)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV38.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV38.setBorderThickness(1);
+
+        jLabel80.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel80.setText("S004");
+
+        jLabel81.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel81.setText("Seblak Chikuwa   ");
+
+        jLabel82.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel82.setText("Seblak");
+
+        jLabel83.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel83.setText("Rp 12.000");
+
+        jLabel84.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel84.setText("Tersedia");
+
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV38Layout = new javax.swing.GroupLayout(panelCustomV38);
+        panelCustomV38.setLayout(panelCustomV38Layout);
+        panelCustomV38Layout.setHorizontalGroup(
+            panelCustomV38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV38Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel80)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel82)
+                .addGap(73, 73, 73)
+                .addComponent(jLabel83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel84)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel85)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV38Layout.setVerticalGroup(
+            panelCustomV38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV38Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel85)
+                    .addGroup(panelCustomV38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel80)
+                        .addComponent(jLabel81)
+                        .addComponent(jLabel82)
+                        .addComponent(jLabel83)
+                        .addComponent(jLabel84)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV39.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV39.setBorderThickness(1);
+
+        jLabel86.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel86.setText(" S005");
+
+        jLabel87.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel87.setText("Seblak Dumpling   ");
+
+        jLabel88.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel88.setText("Seblak");
+
+        jLabel89.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel89.setText("Rp 12.000");
+
+        jLabel90.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel90.setText("Tersedia");
+
+        jLabel91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV39Layout = new javax.swing.GroupLayout(panelCustomV39);
+        panelCustomV39.setLayout(panelCustomV39Layout);
+        panelCustomV39Layout.setHorizontalGroup(
+            panelCustomV39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV39Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel86)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel87)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel88)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel89)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel90)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel91)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV39Layout.setVerticalGroup(
+            panelCustomV39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV39Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel91)
+                    .addGroup(panelCustomV39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel86)
+                        .addComponent(jLabel87)
+                        .addComponent(jLabel88)
+                        .addComponent(jLabel89)
+                        .addComponent(jLabel90)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV40.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV40.setBorderThickness(1);
+
+        jLabel92.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel92.setText(" S005");
+
+        jLabel93.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel93.setText("Seblak Seafood  ");
+
+        jLabel94.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel94.setText("Seblak");
+
+        jLabel95.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel95.setText("Rp 13.000");
+
+        jLabel96.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel96.setText("Tersedia");
+
+        jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV40Layout = new javax.swing.GroupLayout(panelCustomV40);
+        panelCustomV40.setLayout(panelCustomV40Layout);
+        panelCustomV40Layout.setHorizontalGroup(
+            panelCustomV40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV40Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel92)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel94)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel95)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel96)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel97)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV40Layout.setVerticalGroup(
+            panelCustomV40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV40Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel97)
+                    .addGroup(panelCustomV40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel92)
+                        .addComponent(jLabel93)
+                        .addComponent(jLabel94)
+                        .addComponent(jLabel95)
+                        .addComponent(jLabel96)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV41.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV41.setBorderThickness(1);
+
+        jLabel98.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel98.setText(" S006");
+
+        jLabel99.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel99.setText("Seblak Sepesial Ratu  ");
+
+        jLabel100.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel100.setText("Seblak");
+
+        jLabel101.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel101.setText("Rp 15.000");
+
+        jLabel102.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel102.setText("Tersedia");
+
+        jLabel103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV41Layout = new javax.swing.GroupLayout(panelCustomV41);
+        panelCustomV41.setLayout(panelCustomV41Layout);
+        panelCustomV41Layout.setHorizontalGroup(
+            panelCustomV41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV41Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel98)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel99)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel100)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel101)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel102)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel103)
+                .addGap(45, 45, 45))
+        );
+        panelCustomV41Layout.setVerticalGroup(
+            panelCustomV41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV41Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelCustomV41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel98)
+                        .addComponent(jLabel99)
+                        .addComponent(jLabel100)
+                        .addComponent(jLabel101)
+                        .addComponent(jLabel102)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV42.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV42.setBorderThickness(1);
+
+        jLabel104.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel104.setText(" S007");
+
+        jLabel105.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel105.setText("Seblak Korean Food  ");
+
+        jLabel106.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel106.setText("Seblak");
+
+        jLabel107.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel107.setText("Rp 17.000");
+
+        jLabel108.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel108.setText("Tersedia");
+
+        jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV42Layout = new javax.swing.GroupLayout(panelCustomV42);
+        panelCustomV42.setLayout(panelCustomV42Layout);
+        panelCustomV42Layout.setHorizontalGroup(
+            panelCustomV42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV42Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel104)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel105)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel106)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel107)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel108)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel109)
+                .addGap(46, 46, 46))
+        );
+        panelCustomV42Layout.setVerticalGroup(
+            panelCustomV42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV42Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel109)
+                    .addGroup(panelCustomV42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel104)
+                        .addComponent(jLabel105)
+                        .addComponent(jLabel106)
+                        .addComponent(jLabel107)
+                        .addComponent(jLabel108)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV43.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV43.setBorderThickness(1);
+
+        jLabel110.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel110.setText("T001");
+
+        jLabel111.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel111.setText("Mie   ");
+
+        jLabel112.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel112.setText("Topping");
+
+        jLabel113.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel113.setText("Rp 1.000");
+
+        jLabel114.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel114.setText("Tersedia");
+
+        jLabel115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV43Layout = new javax.swing.GroupLayout(panelCustomV43);
+        panelCustomV43.setLayout(panelCustomV43Layout);
+        panelCustomV43Layout.setHorizontalGroup(
+            panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV43Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel110)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel111)
+                .addGap(124, 124, 124)
+                .addComponent(jLabel112)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel113)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel114)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel115)
+                .addGap(45, 45, 45))
+        );
+        panelCustomV43Layout.setVerticalGroup(
+            panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV43Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel110)
+                        .addComponent(jLabel111))
+                    .addGroup(panelCustomV43Layout.createSequentialGroup()
+                        .addGroup(panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel115)
+                            .addGroup(panelCustomV43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel114)
+                                .addComponent(jLabel113)
+                                .addComponent(jLabel112)))
+                        .addGap(4, 4, 4)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV44.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV44.setBorderThickness(1);
+
+        jLabel116.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel116.setText("T002");
+
+        jLabel117.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel117.setText("Chikuwa");
+
+        jLabel118.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel118.setText("Topping");
+
+        jLabel119.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel119.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel119.setText("Rp 1.000");
+
+        jLabel120.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel120.setText("Tersedia");
+
+        jLabel121.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV44Layout = new javax.swing.GroupLayout(panelCustomV44);
+        panelCustomV44.setLayout(panelCustomV44Layout);
+        panelCustomV44Layout.setHorizontalGroup(
+            panelCustomV44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV44Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel116)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel117)
+                .addGap(98, 98, 98)
+                .addComponent(jLabel118)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel119)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel120)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel121)
+                .addGap(46, 46, 46))
+        );
+        panelCustomV44Layout.setVerticalGroup(
+            panelCustomV44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV44Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel116)
+                    .addComponent(jLabel117)
+                    .addComponent(jLabel118)
+                    .addComponent(jLabel119)
+                    .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel120))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV45.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV45.setBorderThickness(1);
+
+        jLabel122.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel122.setText("T003");
+
+        jLabel123.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel123.setText("Sayur ");
+
+        jLabel124.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel124.setText("Topping");
+
+        jLabel125.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel125.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel125.setText("Rp 1.000");
+
+        jLabel126.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel126.setText("Tersedia");
+
+        jLabel127.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV45Layout = new javax.swing.GroupLayout(panelCustomV45);
+        panelCustomV45.setLayout(panelCustomV45Layout);
+        panelCustomV45Layout.setHorizontalGroup(
+            panelCustomV45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV45Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel122)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel123)
+                .addGap(112, 112, 112)
+                .addComponent(jLabel124)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel125)
+                .addGap(74, 74, 74)
+                .addComponent(jLabel126)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel127)
+                .addGap(49, 49, 49))
+        );
+        panelCustomV45Layout.setVerticalGroup(
+            panelCustomV45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV45Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel127)
+                    .addGroup(panelCustomV45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel122)
+                        .addComponent(jLabel123)
+                        .addComponent(jLabel124)
+                        .addComponent(jLabel125)
+                        .addComponent(jLabel126)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV46.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV46.setBorderThickness(1);
+
+        jLabel128.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel128.setText("T004");
+
+        jLabel129.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel129.setText("Sosis ");
+
+        jLabel130.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel130.setText("Topping");
+
+        jLabel131.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel131.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel131.setText("Rp 1.000");
+
+        jLabel132.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel132.setText("Tersedia");
+
+        jLabel133.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV46Layout = new javax.swing.GroupLayout(panelCustomV46);
+        panelCustomV46.setLayout(panelCustomV46Layout);
+        panelCustomV46Layout.setHorizontalGroup(
+            panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV46Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel128)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel129)
+                .addGap(118, 118, 118)
+                .addComponent(jLabel130)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel131)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel132)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel133)
+                .addGap(47, 47, 47))
+        );
+        panelCustomV46Layout.setVerticalGroup(
+            panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV46Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel133)
+                        .addGroup(panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel128)
+                            .addComponent(jLabel129)))
+                    .addGroup(panelCustomV46Layout.createSequentialGroup()
+                        .addGroup(panelCustomV46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel131)
+                            .addComponent(jLabel130)
+                            .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV47.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV47.setBorderThickness(1);
+
+        jLabel134.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel134.setText("T005");
+
+        jLabel135.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel135.setText("Bakso");
+
+        jLabel136.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel136.setText("Topping");
+
+        jLabel137.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel137.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel137.setText("Rp 1.000");
+
+        jLabel138.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel138.setText("Tersedia");
+
+        jLabel139.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV47Layout = new javax.swing.GroupLayout(panelCustomV47);
+        panelCustomV47.setLayout(panelCustomV47Layout);
+        panelCustomV47Layout.setHorizontalGroup(
+            panelCustomV47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV47Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel134)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel135)
+                .addGap(110, 110, 110)
+                .addComponent(jLabel136)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel137)
+                .addGap(68, 68, 68)
+                .addComponent(jLabel138)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel139)
+                .addGap(49, 49, 49))
+        );
+        panelCustomV47Layout.setVerticalGroup(
+            panelCustomV47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV47Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel139)
+                    .addGroup(panelCustomV47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel134)
+                        .addComponent(jLabel135)
+                        .addComponent(jLabel136)
+                        .addComponent(jLabel137)
+                        .addComponent(jLabel138)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV48.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV48.setBorderThickness(1);
+
+        jLabel140.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel140.setText("T005");
+
+        jLabel141.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel141.setText("Tahu Bakso");
+
+        jLabel142.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel142.setText("Topping");
+
+        jLabel143.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel143.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel143.setText("Rp 1.500");
+
+        jLabel144.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel144.setText("Tersedia");
+
+        jLabel145.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV48Layout = new javax.swing.GroupLayout(panelCustomV48);
+        panelCustomV48.setLayout(panelCustomV48Layout);
+        panelCustomV48Layout.setHorizontalGroup(
+            panelCustomV48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV48Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel140)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel141)
+                .addGap(74, 74, 74)
+                .addComponent(jLabel142)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel143)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel144)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel145)
+                .addGap(47, 47, 47))
+        );
+        panelCustomV48Layout.setVerticalGroup(
+            panelCustomV48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV48Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel145)
+                    .addGroup(panelCustomV48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel140)
+                        .addComponent(jLabel141)
+                        .addComponent(jLabel142)
+                        .addComponent(jLabel143)
+                        .addComponent(jLabel144)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV49.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV49.setBorderThickness(1);
+
+        jLabel146.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel146.setText("T005");
+
+        jLabel147.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel147.setText("Ceker");
+
+        jLabel148.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel148.setText("Topping");
+
+        jLabel149.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel149.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel149.setText("Rp 1.500");
+
+        jLabel150.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel150.setText("Tersedia");
+
+        jLabel151.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV49Layout = new javax.swing.GroupLayout(panelCustomV49);
+        panelCustomV49.setLayout(panelCustomV49Layout);
+        panelCustomV49Layout.setHorizontalGroup(
+            panelCustomV49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV49Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel146)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel147)
+                .addGap(109, 109, 109)
+                .addComponent(jLabel148)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel149)
+                .addGap(71, 71, 71)
+                .addComponent(jLabel150)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel151)
+                .addGap(46, 46, 46))
+        );
+        panelCustomV49Layout.setVerticalGroup(
+            panelCustomV49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV49Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(panelCustomV49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCustomV49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel146)
+                        .addComponent(jLabel147)
+                        .addComponent(jLabel148))
+                    .addGroup(panelCustomV49Layout.createSequentialGroup()
+                        .addGroup(panelCustomV49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel150)
+                            .addComponent(jLabel149))
+                        .addGap(4, 4, 4))
+                    .addComponent(jLabel151))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV50.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV50.setBorderThickness(1);
+
+        jLabel152.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel152.setText("T005");
+
+        jLabel153.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel153.setText("Dumpling Ayam");
+
+        jLabel154.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel154.setText("Topping");
+
+        jLabel155.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel155.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel155.setText("Rp 2.000");
+
+        jLabel156.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel156.setText("Tersedia");
+
+        jLabel157.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV50Layout = new javax.swing.GroupLayout(panelCustomV50);
+        panelCustomV50.setLayout(panelCustomV50Layout);
+        panelCustomV50Layout.setHorizontalGroup(
+            panelCustomV50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV50Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel152)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel153)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel154)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel155)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel156)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel157)
+                .addGap(46, 46, 46))
+        );
+        panelCustomV50Layout.setVerticalGroup(
+            panelCustomV50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV50Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel152)
+                    .addComponent(jLabel153)
+                    .addComponent(jLabel154)
+                    .addComponent(jLabel155)
+                    .addComponent(jLabel156)
+                    .addComponent(jLabel157))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV51.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV51.setBorderThickness(1);
+
+        jLabel158.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel158.setText("T005");
+
+        jLabel159.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel159.setText("Dumpling Keju");
+
+        jLabel160.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel160.setText("Topping");
+
+        jLabel161.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel161.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel161.setText("Rp 2.000");
+
+        jLabel162.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel162.setText("Tersedia");
+
+        jLabel163.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV51Layout = new javax.swing.GroupLayout(panelCustomV51);
+        panelCustomV51.setLayout(panelCustomV51Layout);
+        panelCustomV51Layout.setHorizontalGroup(
+            panelCustomV51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV51Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel158)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel159)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel160)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel161)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel162)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel163)
+                .addGap(47, 47, 47))
+        );
+        panelCustomV51Layout.setVerticalGroup(
+            panelCustomV51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV51Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel163)
+                    .addGroup(panelCustomV51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel158)
+                        .addComponent(jLabel159)
+                        .addComponent(jLabel160)
+                        .addComponent(jLabel161)
+                        .addComponent(jLabel162)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV52.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV52.setBorderThickness(1);
+
+        jLabel164.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel164.setText("T005");
+
+        jLabel165.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel165.setText("Jamur Enoki");
+
+        jLabel166.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel166.setText("Topping");
+
+        jLabel167.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel167.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel167.setText("Rp 2.000");
+
+        jLabel168.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel168.setText("Tersedia");
+
+        jLabel169.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV52Layout = new javax.swing.GroupLayout(panelCustomV52);
+        panelCustomV52.setLayout(panelCustomV52Layout);
+        panelCustomV52Layout.setHorizontalGroup(
+            panelCustomV52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV52Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel164)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel165)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel166)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel167)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel168)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel169)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV52Layout.setVerticalGroup(
+            panelCustomV52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV52Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel164)
+                    .addComponent(jLabel165)
+                    .addComponent(jLabel166)
+                    .addComponent(jLabel167)
+                    .addComponent(jLabel168)
+                    .addComponent(jLabel169))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV53.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV53.setBorderThickness(1);
+
+        jLabel170.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel170.setText("T0011");
+
+        jLabel171.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel171.setText("Kembang  Cumi");
+
+        jLabel172.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel172.setText("Topping");
+
+        jLabel173.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel173.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel173.setText("Rp 2.000");
+
+        jLabel174.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel174.setText("Tersedia");
+
+        jLabel175.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV53Layout = new javax.swing.GroupLayout(panelCustomV53);
+        panelCustomV53.setLayout(panelCustomV53Layout);
+        panelCustomV53Layout.setHorizontalGroup(
+            panelCustomV53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV53Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel170)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel171)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel172)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel173)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel174)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel175)
+                .addGap(43, 43, 43))
+        );
+        panelCustomV53Layout.setVerticalGroup(
+            panelCustomV53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV53Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCustomV53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel170)
+                        .addComponent(jLabel171)
+                        .addComponent(jLabel172)
+                        .addComponent(jLabel173)
+                        .addComponent(jLabel174))
+                    .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV54.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV54.setBorderThickness(1);
+
+        jLabel176.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel176.setText("T0012");
+
+        jLabel177.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel177.setText("Crab Stik");
+
+        jLabel178.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel178.setText("Topping");
+
+        jLabel179.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel179.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel179.setText("Rp 2.000");
+
+        jLabel180.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel180.setText("Tersedia");
+
+        jLabel181.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV54Layout = new javax.swing.GroupLayout(panelCustomV54);
+        panelCustomV54.setLayout(panelCustomV54Layout);
+        panelCustomV54Layout.setHorizontalGroup(
+            panelCustomV54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV54Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel176)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel177)
+                .addGap(88, 88, 88)
+                .addComponent(jLabel178)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel179)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel180)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel181)
+                .addGap(45, 45, 45))
+        );
+        panelCustomV54Layout.setVerticalGroup(
+            panelCustomV54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV54Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel181)
+                    .addGroup(panelCustomV54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel176)
+                        .addComponent(jLabel177)
+                        .addComponent(jLabel178)
+                        .addComponent(jLabel179)
+                        .addComponent(jLabel180)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV55.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV55.setBorderThickness(1);
+
+        jLabel182.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel182.setText("T0013");
+
+        jLabel183.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel183.setText("Bakso Udang");
+
+        jLabel184.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel184.setText("Topping");
+
+        jLabel185.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel185.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel185.setText("Rp 2.000");
+
+        jLabel186.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel186.setText("Tersedia");
+
+        jLabel187.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV55Layout = new javax.swing.GroupLayout(panelCustomV55);
+        panelCustomV55.setLayout(panelCustomV55Layout);
+        panelCustomV55Layout.setHorizontalGroup(
+            panelCustomV55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV55Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel182)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel183)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel184)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel185)
+                .addGap(67, 67, 67)
+                .addComponent(jLabel186)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel187)
+                .addGap(42, 42, 42))
+        );
+        panelCustomV55Layout.setVerticalGroup(
+            panelCustomV55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV55Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel182)
+                    .addComponent(jLabel183)
+                    .addComponent(jLabel184)
+                    .addComponent(jLabel185)
+                    .addComponent(jLabel186)
+                    .addComponent(jLabel187))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV56.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV56.setBorderThickness(1);
+
+        jLabel188.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel188.setText("T0014");
+
+        jLabel189.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel189.setText("Twister");
+
+        jLabel190.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel190.setText("Topping");
+
+        jLabel191.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel191.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel191.setText("Rp 2.000");
+
+        jLabel192.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel192.setText("Tersedia");
+
+        jLabel193.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV56Layout = new javax.swing.GroupLayout(panelCustomV56);
+        panelCustomV56.setLayout(panelCustomV56Layout);
+        panelCustomV56Layout.setHorizontalGroup(
+            panelCustomV56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV56Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel188)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel189)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel190)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel191)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel192)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel193)
+                .addGap(41, 41, 41))
+        );
+        panelCustomV56Layout.setVerticalGroup(
+            panelCustomV56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV56Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel188)
+                    .addComponent(jLabel189)
+                    .addComponent(jLabel190)
+                    .addComponent(jLabel191)
+                    .addComponent(jLabel193)
+                    .addComponent(jLabel192))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV57.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV57.setBorderThickness(1);
+
+        jLabel194.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel194.setText("T0015");
+
+        jLabel195.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel195.setText("Sosis Sapi");
+
+        jLabel196.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel196.setText("Topping");
+
+        jLabel197.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel197.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel197.setText("Rp 2.000");
+
+        jLabel198.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel198.setText("Tersedia");
+
+        jLabel199.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV57Layout = new javax.swing.GroupLayout(panelCustomV57);
+        panelCustomV57.setLayout(panelCustomV57Layout);
+        panelCustomV57Layout.setHorizontalGroup(
+            panelCustomV57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV57Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel194)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel195)
+                .addGap(85, 85, 85)
+                .addComponent(jLabel196)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel197)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel198)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel199)
+                .addGap(42, 42, 42))
+        );
+        panelCustomV57Layout.setVerticalGroup(
+            panelCustomV57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV57Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel199)
+                    .addGroup(panelCustomV57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel194)
+                        .addComponent(jLabel195)
+                        .addComponent(jLabel196)
+                        .addComponent(jLabel197)
+                        .addComponent(jLabel198)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelCustomV58.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV58.setBorderThickness(1);
+
+        jLabel200.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel200.setText("T0016");
+
+        jLabel201.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        jLabel201.setText("Odeng");
+
+        jLabel202.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel202.setText("Topping");
+
+        jLabel203.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel203.setForeground(new java.awt.Color(214, 4, 4));
+        jLabel203.setText("Rp 2.000");
+
+        jLabel204.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel204.setText("Tersedia");
+
+        jLabel205.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon pensil.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCustomV58Layout = new javax.swing.GroupLayout(panelCustomV58);
+        panelCustomV58.setLayout(panelCustomV58Layout);
+        panelCustomV58Layout.setHorizontalGroup(
+            panelCustomV58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV58Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel200)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel201)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel202)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel203)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel204)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel205)
+                .addGap(41, 41, 41))
+        );
+        panelCustomV58Layout.setVerticalGroup(
+            panelCustomV58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV58Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelCustomV58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel200)
+                    .addComponent(jLabel201)
+                    .addComponent(jLabel202)
+                    .addComponent(jLabel203)
+                    .addComponent(jLabel204)
+                    .addComponent(jLabel205))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelCustomV26Layout = new javax.swing.GroupLayout(panelCustomV26);
+        panelCustomV26.setLayout(panelCustomV26Layout);
+        panelCustomV26Layout.setHorizontalGroup(
+            panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV26Layout.createSequentialGroup()
+                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelCustomV57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+        panelCustomV26Layout.setVerticalGroup(
+            panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV26Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(430, Short.MAX_VALUE))
+        );
+
+        jScrollPane2.setViewportView(panelCustomV26);
+
+        javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
+        panelCustomV21.setLayout(panelCustomV21Layout);
+        panelCustomV21Layout.setHorizontalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelCustomV23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCustomV24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+        );
+        panelCustomV21Layout.setVerticalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addComponent(panelCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
+        );
+
+        panelCustomV22.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV22.setBorderThickness(1);
+
+        panelCustomV27.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV27.setBorderThickness(1);
+
+        jLabel12.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 1, 18)); // NOI18N
+        jLabel12.setText("Tambah  Produk");
+
+        javax.swing.GroupLayout panelCustomV27Layout = new javax.swing.GroupLayout(panelCustomV27);
+        panelCustomV27.setLayout(panelCustomV27Layout);
+        panelCustomV27Layout.setHorizontalGroup(
+            panelCustomV27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV27Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelCustomV27Layout.setVerticalGroup(
+            panelCustomV27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV27Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        panelCustomV28.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV28.setBorderThickness(1);
+
+        jLabel13.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel13.setText("Nama Produk");
+
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+
+        jLabel14.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel14.setText("Deskripsi");
+
+        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+
+        jLabel15.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel15.setText("Kategori");
+
+        jLabel16.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel16.setText("Harga Jual");
+
+        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+
+        jLabel17.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel17.setText("Status Ketersedian");
+
+        jLabel18.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel18.setText("Matikan jika stok bahan habis");
+
+        jLabel19.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Rp");
+        jLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+
+        jComboBox1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minuman", "Topping", "Seblak", " " }));
+
+        javax.swing.GroupLayout panelCustomV28Layout = new javax.swing.GroupLayout(panelCustomV28);
+        panelCustomV28.setLayout(panelCustomV28Layout);
+        panelCustomV28Layout.setHorizontalGroup(
+            panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV28Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCustomV28Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelCustomV28Layout.setVerticalGroup(
+            panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        buttonCustomV22.setBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/Icon simpan.png"))); // NOI18N
+        buttonCustomV22.setText("Simpan  Perubahan");
+        buttonCustomV22.setActiveForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        buttonCustomV22.setHoverForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setInactiveBackground(new java.awt.Color(214, 4, 4));
+        buttonCustomV22.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setPressedForeground(new java.awt.Color(255, 255, 255));
+        buttonCustomV22.setRoundBottomLeft(0);
+        buttonCustomV22.setRoundBottomRight(0);
+        buttonCustomV22.setRoundTopLeft(0);
+        buttonCustomV22.setRoundTopRight(0);
+        buttonCustomV22.addActionListener(this::buttonCustomV22ActionPerformed);
+
+        buttonCustomV23.setBackground(new java.awt.Color(252, 249, 255));
+        buttonCustomV23.setText("Batal");
+        buttonCustomV23.setActiveForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setBorderThickness(2);
+        buttonCustomV23.setDisabledForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        buttonCustomV23.setHoverForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setInactiveBackground(new java.awt.Color(252, 249, 255));
+        buttonCustomV23.setInactiveBorderColor(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setInactiveForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setPressedForeground(new java.awt.Color(0, 0, 0));
+        buttonCustomV23.setRoundBottomLeft(0);
+        buttonCustomV23.setRoundBottomRight(0);
+        buttonCustomV23.setRoundTopLeft(0);
+        buttonCustomV23.setRoundTopRight(0);
+
+        buttonCustomV24.setBackground(new java.awt.Color(252, 249, 255));
+        buttonCustomV24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon hapus.png"))); // NOI18N
+        buttonCustomV24.setText("Hapus");
+        buttonCustomV24.setActiveForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setActiveHoverForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setBorderThickness(2);
+        buttonCustomV24.setDisabledForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        buttonCustomV24.setHoverForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setInactiveBackground(new java.awt.Color(252, 249, 255));
+        buttonCustomV24.setInactiveBorderColor(new java.awt.Color(187, 26, 26));
+        buttonCustomV24.setInactiveForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setPressedForeground(new java.awt.Color(214, 4, 4));
+        buttonCustomV24.setRoundBottomLeft(0);
+        buttonCustomV24.setRoundBottomRight(0);
+        buttonCustomV24.setRoundTopLeft(0);
+        buttonCustomV24.setRoundTopRight(0);
+
+        javax.swing.GroupLayout panelCustomV22Layout = new javax.swing.GroupLayout(panelCustomV22);
+        panelCustomV22.setLayout(panelCustomV22Layout);
+        panelCustomV22Layout.setHorizontalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelCustomV27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCustomV28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelCustomV22Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelCustomV22Layout.createSequentialGroup()
+                        .addComponent(buttonCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCustomV24, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        panelCustomV22Layout.setVerticalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV22Layout.createSequentialGroup()
+                .addComponent(panelCustomV27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCustomV24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, 604, Short.MAX_VALUE)
+                    .addComponent(panelCustomV22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonCustomV21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCustomV21ActionPerformed
+
+    private void buttonCustomV22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCustomV22ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV21;
+    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV22;
+    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV23;
+    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV24;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
+    private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel127;
+    private javax.swing.JLabel jLabel128;
+    private javax.swing.JLabel jLabel129;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel130;
+    private javax.swing.JLabel jLabel131;
+    private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel134;
+    private javax.swing.JLabel jLabel135;
+    private javax.swing.JLabel jLabel136;
+    private javax.swing.JLabel jLabel137;
+    private javax.swing.JLabel jLabel138;
+    private javax.swing.JLabel jLabel139;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel140;
+    private javax.swing.JLabel jLabel141;
+    private javax.swing.JLabel jLabel142;
+    private javax.swing.JLabel jLabel143;
+    private javax.swing.JLabel jLabel144;
+    private javax.swing.JLabel jLabel145;
+    private javax.swing.JLabel jLabel146;
+    private javax.swing.JLabel jLabel147;
+    private javax.swing.JLabel jLabel148;
+    private javax.swing.JLabel jLabel149;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel150;
+    private javax.swing.JLabel jLabel151;
+    private javax.swing.JLabel jLabel152;
+    private javax.swing.JLabel jLabel153;
+    private javax.swing.JLabel jLabel154;
+    private javax.swing.JLabel jLabel155;
+    private javax.swing.JLabel jLabel156;
+    private javax.swing.JLabel jLabel157;
+    private javax.swing.JLabel jLabel158;
+    private javax.swing.JLabel jLabel159;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel160;
+    private javax.swing.JLabel jLabel161;
+    private javax.swing.JLabel jLabel162;
+    private javax.swing.JLabel jLabel163;
+    private javax.swing.JLabel jLabel164;
+    private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
+    private javax.swing.JLabel jLabel167;
+    private javax.swing.JLabel jLabel168;
+    private javax.swing.JLabel jLabel169;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel170;
+    private javax.swing.JLabel jLabel171;
+    private javax.swing.JLabel jLabel172;
+    private javax.swing.JLabel jLabel173;
+    private javax.swing.JLabel jLabel174;
+    private javax.swing.JLabel jLabel175;
+    private javax.swing.JLabel jLabel176;
+    private javax.swing.JLabel jLabel177;
+    private javax.swing.JLabel jLabel178;
+    private javax.swing.JLabel jLabel179;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel180;
+    private javax.swing.JLabel jLabel181;
+    private javax.swing.JLabel jLabel182;
+    private javax.swing.JLabel jLabel183;
+    private javax.swing.JLabel jLabel184;
+    private javax.swing.JLabel jLabel185;
+    private javax.swing.JLabel jLabel186;
+    private javax.swing.JLabel jLabel187;
+    private javax.swing.JLabel jLabel188;
+    private javax.swing.JLabel jLabel189;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel190;
+    private javax.swing.JLabel jLabel191;
+    private javax.swing.JLabel jLabel192;
+    private javax.swing.JLabel jLabel193;
+    private javax.swing.JLabel jLabel194;
+    private javax.swing.JLabel jLabel195;
+    private javax.swing.JLabel jLabel196;
+    private javax.swing.JLabel jLabel197;
+    private javax.swing.JLabel jLabel198;
+    private javax.swing.JLabel jLabel199;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel200;
+    private javax.swing.JLabel jLabel201;
+    private javax.swing.JLabel jLabel202;
+    private javax.swing.JLabel jLabel203;
+    private javax.swing.JLabel jLabel204;
+    private javax.swing.JLabel jLabel205;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField4;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV23;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV25;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV26;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV27;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV28;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV30;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV31;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV32;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV33;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV34;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV35;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV36;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV37;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV38;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV39;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV40;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV41;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV42;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV43;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV44;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV45;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV46;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV47;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV48;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV49;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV50;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV51;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV52;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV53;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV54;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV55;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV56;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV57;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV58;
     // End of variables declaration//GEN-END:variables
 }
