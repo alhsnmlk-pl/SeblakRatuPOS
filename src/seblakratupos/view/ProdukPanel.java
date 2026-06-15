@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package seblakratupos.view.layout.main;
+package seblakratupos.view;
 
 /**
  *
  * @author Al
  */
-public class produk extends javax.swing.JPanel {
+public class ProdukPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form produk
      */
-    public produk() {
+    public ProdukPanel() {
         initComponents();
     }
 
@@ -2437,7 +2437,7 @@ public class produk extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, 604, Short.MAX_VALUE)
+                    .addComponent(panelCustomV21, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
                     .addComponent(panelCustomV22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );

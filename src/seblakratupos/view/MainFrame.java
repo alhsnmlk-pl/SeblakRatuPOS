@@ -34,8 +34,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        headerPanel2 = new seblakratupos.view.layout.HeaderPanel();
-        sidebarPanel1 = new seblakratupos.view.layout.SidebarPanel();
+        headerPanel2 = new seblakratupos.view.HeaderPanel();
+        sidebarPanel1 = new seblakratupos.view.SidebarPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seblak Ratu POS System");
@@ -111,8 +111,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private seblakratupos.view.layout.HeaderPanel headerPanel2;
+    private seblakratupos.view.HeaderPanel headerPanel2;
     private javax.swing.JPanel jPanel1;
-    private seblakratupos.view.layout.SidebarPanel sidebarPanel1;
+    private seblakratupos.view.SidebarPanel sidebarPanel1;
     // End of variables declaration//GEN-END:variables
 }

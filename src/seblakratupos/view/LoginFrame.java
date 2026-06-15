@@ -128,7 +128,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         loginContainer.setBackground(new java.awt.Color(255, 255, 255));
         loginContainer.setBorderColor(new java.awt.Color(231, 189, 187));
-        loginContainer.setBorderThickness(2);
+        loginContainer.setBorderThickness(1);
         loginContainer.setPreferredSize(new java.awt.Dimension(448, 398));
         loginContainer.setRoundBottomLeft(8);
         loginContainer.setRoundBottomRight(8);
@@ -144,7 +144,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         panelCustom1.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom1.setBorderColor(new java.awt.Color(231, 189, 187));
-        panelCustom1.setBorderThickness(2);
+        panelCustom1.setBorderThickness(1);
         panelCustom1.setRoundBottomLeft(3);
         panelCustom1.setRoundBottomRight(3);
         panelCustom1.setRoundTopLeft(3);
@@ -190,7 +190,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         panelCustom2.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom2.setBorderColor(new java.awt.Color(231, 189, 187));
-        panelCustom2.setBorderThickness(2);
+        panelCustom2.setBorderThickness(1);
         panelCustom2.setRoundBottomLeft(3);
         panelCustom2.setRoundBottomRight(3);
         panelCustom2.setRoundTopLeft(3);
@@ -263,7 +263,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         panelCustom3.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom3.setBorderColor(new java.awt.Color(231, 189, 187));
-        panelCustom3.setBorderThickness(2);
+        panelCustom3.setBorderThickness(1);
         panelCustom3.setRoundBottomLeft(3);
         panelCustom3.setRoundBottomRight(3);
         panelCustom3.setRoundTopLeft(3);

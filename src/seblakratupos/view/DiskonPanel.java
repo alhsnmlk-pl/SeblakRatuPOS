@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package seblakratupos.view.layout.main;
+package seblakratupos.view;
 
 /**
  *
  * @author Al
  */
-public class pengaturan extends javax.swing.JPanel {
+public class DiskonPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form pengaturan
+     * Creates new form diskon
      */
-    public pengaturan() {
+    public DiskonPanel() {
         initComponents();
     }
 

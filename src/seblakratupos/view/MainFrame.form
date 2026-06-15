@@ -84,9 +84,9 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="seblakratupos.view.layout.HeaderPanel" name="headerPanel2">
+        <Component class="seblakratupos.view.HeaderPanel" name="headerPanel2">
         </Component>
-        <Component class="seblakratupos.view.layout.SidebarPanel" name="sidebarPanel1">
+        <Component class="seblakratupos.view.SidebarPanel" name="sidebarPanel1">
         </Component>
       </SubComponents>
     </Container>

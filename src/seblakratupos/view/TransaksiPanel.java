@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package seblakratupos.view.layout.main;
+package seblakratupos.view;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -14,7 +14,7 @@ import seblakratupos.view.component.AppColor;
  *
  * @author Al
  */
-public class transaksi extends javax.swing.JPanel {
+public class TransaksiPanel extends javax.swing.JPanel {
     
     private boolean cardMenuActive = false;
 
@@ -27,7 +27,7 @@ public class transaksi extends javax.swing.JPanel {
     /**
      * Creates new form 
      */
-    public transaksi() {
+    public TransaksiPanel() {
         initComponents();
         
         setupCardMenu();
@@ -1683,9 +1683,7 @@ public class transaksi extends javax.swing.JPanel {
             .addGroup(panelCustomV215Layout.createSequentialGroup()
                 .addGroup(panelCustomV215Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV215Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(buttonCustom2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2000,17 +1998,11 @@ public class transaksi extends javax.swing.JPanel {
         pKeranjangLayout.setHorizontalGroup(
             pKeranjangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pKeranjangLayout.createSequentialGroup()
-                .addGroup(pKeranjangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pKeranjangLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(panelCustomV26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pKeranjangLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(panelCustomV212, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(1, 1, 1))
-            .addGroup(pKeranjangLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane2)
+                .addGroup(pKeranjangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCustomV26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV212, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addGap(1, 1, 1))
         );
         pKeranjangLayout.setVerticalGroup(

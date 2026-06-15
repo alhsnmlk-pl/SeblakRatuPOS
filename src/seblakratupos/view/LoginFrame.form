@@ -65,7 +65,7 @@
                 <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="bb" green="bd" red="e7" type="rgb"/>
                 </Property>
-                <Property name="borderThickness" type="int" value="2"/>
+                <Property name="borderThickness" type="int" value="1"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[448, 398]"/>
                 </Property>
@@ -139,7 +139,7 @@
                         <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="bb" green="bd" red="e7" type="rgb"/>
                         </Property>
-                        <Property name="borderThickness" type="int" value="2"/>
+                        <Property name="borderThickness" type="int" value="1"/>
                         <Property name="roundBottomLeft" type="int" value="3"/>
                         <Property name="roundBottomRight" type="int" value="3"/>
                         <Property name="roundTopLeft" type="int" value="3"/>
@@ -243,7 +243,7 @@
                         <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="bb" green="bd" red="e7" type="rgb"/>
                         </Property>
-                        <Property name="borderThickness" type="int" value="2"/>
+                        <Property name="borderThickness" type="int" value="1"/>
                         <Property name="roundBottomLeft" type="int" value="3"/>
                         <Property name="roundBottomRight" type="int" value="3"/>
                         <Property name="roundTopLeft" type="int" value="3"/>
@@ -370,7 +370,7 @@
                         <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="bb" green="bd" red="e7" type="rgb"/>
                         </Property>
-                        <Property name="borderThickness" type="int" value="2"/>
+                        <Property name="borderThickness" type="int" value="1"/>
                         <Property name="roundBottomLeft" type="int" value="3"/>
                         <Property name="roundBottomRight" type="int" value="3"/>
                         <Property name="roundTopLeft" type="int" value="3"/>
