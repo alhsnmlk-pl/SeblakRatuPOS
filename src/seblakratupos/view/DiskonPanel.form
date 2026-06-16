@@ -324,7 +324,7 @@
                                       <Component id="jLabel17" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
                                       <Component id="jDateChooser2" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="38" max="32767" attributes="0"/>
+                                  <EmptySpace min="38" pref="47" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jDateChooser1" min="-2" pref="142" max="-2" attributes="0"/>
                                       <Component id="jLabel19" min="-2" pref="65" max="-2" attributes="0"/>
@@ -553,9 +553,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="buttonCustomV25" pref="319" max="32767" attributes="0"/>
+                                  <Component id="buttonCustomV25" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="buttonCustomV24" min="-2" pref="145" max="-2" attributes="0"/>
+                                      <Component id="buttonCustomV24" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="buttonCustomV22" min="-2" pref="159" max="-2" attributes="0"/>
                                   </Group>
