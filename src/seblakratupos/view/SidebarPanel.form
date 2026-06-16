@@ -228,6 +228,9 @@
                 <Property name="roundTopLeft" type="int" value="0"/>
                 <Property name="roundTopRight" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrxActionPerformed"/>
+              </Events>
             </Component>
             <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnProduk">
               <Properties>

@@ -122,6 +122,7 @@ public class SidebarPanel extends javax.swing.JPanel {
         btnTrx.setRoundBottomRight(0);
         btnTrx.setRoundTopLeft(0);
         btnTrx.setRoundTopRight(0);
+        btnTrx.addActionListener(this::btnTrxActionPerformed);
         containerBtnSideBar.add(btnTrx);
 
         btnProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconProduk.png"))); // NOI18N
@@ -426,6 +427,10 @@ public class SidebarPanel extends javax.swing.JPanel {
             .addComponent(containerSidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTrxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
