@@ -19,19 +19,16 @@ public class HeaderPanel extends javax.swing.JPanel {
     }
 
     private void tampilTanggalJam() {
-        javax.swing.Timer timer = new javax.swing.Timer(1000, new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                java.util.Locale localeIndonesia = new java.util.Locale("id", "ID");
-
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
-                        "EEEE, dd MMMM yyyy | HH.mm",
-                        localeIndonesia
-                );
-
-                String waktu = sdf.format(new java.util.Date());
-                lblTanggalJam.setText(waktu);
-            }
+        javax.swing.Timer timer = new javax.swing.Timer(1000, (java.awt.event.ActionEvent e) -> {
+            java.util.Locale localeIndonesia = new java.util.Locale("id", "ID");
+            
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
+                    "EEEE, dd MMMM yyyy | HH.mm",
+                    localeIndonesia
+            );
+            
+            String waktu = sdf.format(new java.util.Date());
+            lblTanggalJam.setText(waktu);
         });
 
         timer.start();

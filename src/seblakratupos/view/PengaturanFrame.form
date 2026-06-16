@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -23,17 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -49,8 +49,8 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelCustomV21" max="32767" attributes="0"/>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <Component id="headerPengaturan" max="32767" attributes="0"/>
+                      <Component id="mainPengaturan" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
@@ -60,16 +60,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="panelCustomV21" min="-2" max="-2" attributes="0"/>
+                  <Component id="headerPengaturan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="mainPengaturan" max="32767" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV21">
+        <Container class="seblakratupos.view.component.PanelCustomV2" name="headerPengaturan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f1" red="f5" type="rgb"/>
@@ -84,8 +84,10 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="158" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="lblBack" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblPengaturan" min="-2" pref="158" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -93,29 +95,39 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPengaturan" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="lblBack" min="-2" pref="32" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblPengaturan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans Medium" size="20" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/seblakratupos/asset/icon/IconKeluar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pengaturan"/>
                 <Property name="iconTextGap" type="int" value="15"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblBack">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/seblakratupos/asset/icon/IconKeluar.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBackMouseClicked"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="mainPengaturan">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -151,7 +163,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV22">
+                <Container class="seblakratupos.view.component.PanelCustomV2" name="mainPengaturan2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="f8" red="fb" type="rgb"/>
@@ -167,9 +179,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace pref="280" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="panelCustomV23" max="32767" attributes="0"/>
-                                  <Component id="panelCustomV25" max="32767" attributes="0"/>
-                                  <Component id="buttonCustomV26" max="32767" attributes="0"/>
+                                  <Component id="logoToko" max="32767" attributes="0"/>
+                                  <Component id="infoToko" max="32767" attributes="0"/>
+                                  <Component id="btnSimpan" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="280" max="32767" attributes="0"/>
                           </Group>
@@ -179,18 +191,18 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="panelCustomV23" min="-2" max="-2" attributes="0"/>
+                              <Component id="logoToko" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="panelCustomV25" min="-2" max="-2" attributes="0"/>
+                              <Component id="infoToko" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="buttonCustomV26" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="btnSimpan" min="-2" pref="41" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV23">
+                    <Container class="seblakratupos.view.component.PanelCustomV2" name="logoToko">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -478,7 +490,7 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV25">
+                    <Container class="seblakratupos.view.component.PanelCustomV2" name="infoToko">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -621,9 +633,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Plus Jakarta Sans" size="16" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3c" green="3e" red="5c" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="RATU SEBLAK"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -759,9 +768,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Plus Jakarta Sans" size="16" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3c" green="3e" red="5c" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="0819-9899-1827"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -850,7 +856,7 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV26">
+                    <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnSimpan">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -919,7 +925,7 @@
                         <Property name="roundTopRight" type="int" value="4"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV26ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

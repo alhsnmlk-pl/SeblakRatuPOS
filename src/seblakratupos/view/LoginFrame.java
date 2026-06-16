@@ -92,7 +92,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         rightContainer = new javax.swing.JPanel();
         loginContainer = new seblakratupos.view.component.PanelCustom();
         usrContainer = new javax.swing.JPanel();
@@ -114,14 +114,14 @@ public class LoginFrame extends javax.swing.JFrame {
         txtCopyright = new javax.swing.JLabel();
         leftContainer = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        tNamaToko = new javax.swing.JLabel();
+        tDetail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(252, 249, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        mainPanel.setBackground(new java.awt.Color(252, 249, 255));
+        mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
+        mainPanel.setLayout(new java.awt.GridBagLayout());
 
         rightContainer.setBackground(new java.awt.Color(252, 249, 255));
         rightContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 22));
@@ -253,6 +253,7 @@ public class LoginFrame extends javax.swing.JFrame {
         buttonCustom1.setRoundBottomRight(3);
         buttonCustom1.setRoundTopLeft(3);
         buttonCustom1.setRoundTopRight(3);
+        buttonCustom1.addActionListener(this::buttonCustom1ActionPerformed);
 
         passContainer1.setBackground(new java.awt.Color(255, 255, 255));
         passContainer1.setAlignmentX(1.0F);
@@ -366,7 +367,7 @@ public class LoginFrame extends javax.swing.JFrame {
         gridBagConstraints.ipady = 61;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(110, 70, 140, 200);
-        jPanel1.add(rightContainer, gridBagConstraints);
+        mainPanel.add(rightContainer, gridBagConstraints);
 
         leftContainer.setBackground(new java.awt.Color(252, 249, 255));
 
@@ -375,17 +376,17 @@ public class LoginFrame extends javax.swing.JFrame {
         logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         leftContainer.add(logo);
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 40)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(214, 4, 39));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("RATU SEBLAK");
-        leftContainer.add(jLabel1);
+        tNamaToko.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 40)); // NOI18N
+        tNamaToko.setForeground(new java.awt.Color(214, 4, 39));
+        tNamaToko.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tNamaToko.setText("RATU SEBLAK");
+        leftContainer.add(tNamaToko);
 
-        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(92, 62, 60));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sistem Point of Sale");
-        leftContainer.add(jLabel2);
+        tDetail.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        tDetail.setForeground(new java.awt.Color(92, 62, 60));
+        tDetail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tDetail.setText("Sistem Point of Sale");
+        leftContainer.add(tDetail);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -394,13 +395,19 @@ public class LoginFrame extends javax.swing.JFrame {
         gridBagConstraints.ipady = 81;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(220, 190, 0, 0);
-        jPanel1.add(leftContainer, gridBagConstraints);
+        mainPanel.add(leftContainer, gridBagConstraints);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
+        // TODO add your handling code here:
+        new MainFrame().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_buttonCustom1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,24 +437,24 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private seblakratupos.view.component.ButtonCustom buttonCustom1;
     private seblakratupos.view.component.ComboBoxCustom comboBoxCustom1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftContainer;
     private seblakratupos.view.component.PanelCustom loginContainer;
     private javax.swing.JLabel logo;
+    private javax.swing.JPanel mainPanel;
     private seblakratupos.view.component.PanelCustom panelCustom1;
     private seblakratupos.view.component.PanelCustom panelCustom2;
     private seblakratupos.view.component.PanelCustom panelCustom3;
     private javax.swing.JPanel passContainer;
     private javax.swing.JPanel passContainer1;
     private javax.swing.JPanel rightContainer;
+    private javax.swing.JLabel tDetail;
+    private javax.swing.JLabel tNamaToko;
     private javax.swing.JLabel txtCopyright;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
