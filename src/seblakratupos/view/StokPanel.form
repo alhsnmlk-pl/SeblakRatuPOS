@@ -134,7 +134,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="29" max="32767" attributes="0"/>
-                          <Component id="buttonCustomV21" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="btnTambah" min="-2" pref="147" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -143,14 +143,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="23" max="32767" attributes="0"/>
-                          <Component id="buttonCustomV21" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTambah" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV21">
+                <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnTambah">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -219,7 +219,7 @@
                     <Property name="roundTopRight" type="int" value="0"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV21ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -398,12 +398,12 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField1" min="-2" pref="161" max="-2" attributes="0"/>
+                                                  <Component id="txtSatuan" min="-2" pref="161" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jTextField4" min="-2" pref="55" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="jTextField2" min="-2" pref="248" max="-2" attributes="0"/>
+                                                  <Component id="txtHarga" min="-2" pref="248" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -429,14 +429,14 @@
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="txtSatuan" max="32767" attributes="0"/>
                           <Component id="jPanel1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField2" max="32767" attributes="0"/>
+                          <Component id="txtHarga" max="32767" attributes="0"/>
                           <Component id="jTextField4" pref="52" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -472,21 +472,21 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextField3" min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="txtNamaBahan" min="-2" pref="295" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextField3" pref="52" max="32767" attributes="0"/>
+                          <Component id="txtNamaBahan" pref="52" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="txtNamaBahan">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="16" style="0"/>
@@ -503,7 +503,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamaBahanActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -536,17 +536,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField5" alignment="0" pref="134" max="32767" attributes="0"/>
+                      <Component id="txtJumlah" alignment="0" pref="134" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField5" alignment="0" pref="50" max="32767" attributes="0"/>
+                      <Component id="txtJumlah" alignment="0" pref="50" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField5">
+                <Component class="javax.swing.JTextField" name="txtJumlah">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="16" style="0"/>
@@ -564,7 +564,7 @@
                 <Property name="text" type="java.lang.String" value="Harga Satuan"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="txtSatuan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="16" style="0"/>
@@ -572,9 +572,9 @@
                 <Property name="text" type="java.lang.String" value="Kilogram (Kg)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="txtHarga">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHargaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
@@ -607,11 +607,11 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="buttonCustomV24" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="btnBatal" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="buttonCustomV22" pref="146" max="32767" attributes="0"/>
+                              <Component id="btnHapus" pref="146" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="buttonCustomV25" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnSimpan" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
@@ -621,11 +621,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="buttonCustomV25" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnSimpan" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonCustomV22" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="buttonCustomV24" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="btnHapus" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="btnBatal" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="21" max="32767" attributes="0"/>
                   </Group>
@@ -633,7 +633,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV25">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnSimpan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -702,10 +702,10 @@
                 <Property name="roundTopRight" type="int" value="4"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV25ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV22">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnHapus">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="f8" red="fb" type="rgb"/>
@@ -778,10 +778,10 @@
                 <Property name="roundTopRight" type="int" value="4"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV22ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHapusActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV24">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnBatal">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="f8" red="fb" type="rgb"/>
@@ -851,7 +851,7 @@
                 <Property name="roundTopRight" type="int" value="4"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV24ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
