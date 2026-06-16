@@ -28,12 +28,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        headerPengaturan = new seblakratupos.view.component.PanelCustomV2();
+        lblPengaturan = new javax.swing.JLabel();
+        lblBack = new javax.swing.JLabel();
+        mainPengaturan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
-        panelCustomV23 = new seblakratupos.view.component.PanelCustomV2();
+        mainPengaturan2 = new seblakratupos.view.component.PanelCustomV2();
+        logoToko = new seblakratupos.view.component.PanelCustomV2();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
@@ -45,7 +47,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
         jLabel9 = new javax.swing.JLabel();
-        panelCustomV25 = new seblakratupos.view.component.PanelCustomV2();
+        infoToko = new seblakratupos.view.component.PanelCustomV2();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -62,50 +64,63 @@ public class PengaturanFrame extends javax.swing.JFrame {
         panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        buttonCustomV26 = new seblakratupos.view.component.ButtonCustomV2();
+        btnSimpan = new seblakratupos.view.component.ButtonCustomV2();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelCustomV21.setBackground(new java.awt.Color(245, 241, 240));
-        panelCustomV21.setBorderBottomThickness(1);
-        panelCustomV21.setBorderColor(new java.awt.Color(231, 189, 187));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconKeluar.png"))); // NOI18N
-        jLabel1.setText("Pengaturan");
-        jLabel1.setIconTextGap(15);
+        headerPengaturan.setBackground(new java.awt.Color(245, 241, 240));
+        headerPengaturan.setBorderBottomThickness(1);
+        headerPengaturan.setBorderColor(new java.awt.Color(231, 189, 187));
 
-        javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
-        panelCustomV21.setLayout(panelCustomV21Layout);
-        panelCustomV21Layout.setHorizontalGroup(
-            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV21Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+        lblPengaturan.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
+        lblPengaturan.setText("Pengaturan");
+        lblPengaturan.setIconTextGap(15);
+
+        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconKeluar.png"))); // NOI18N
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerPengaturanLayout = new javax.swing.GroupLayout(headerPengaturan);
+        headerPengaturan.setLayout(headerPengaturanLayout);
+        headerPengaturanLayout.setHorizontalGroup(
+            headerPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPengaturanLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelCustomV21Layout.setVerticalGroup(
-            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV21Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+        headerPengaturanLayout.setVerticalGroup(
+            headerPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPengaturanLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(headerPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPengaturan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        panelCustomV22.setBackground(new java.awt.Color(251, 248, 255));
-        panelCustomV22.setPreferredSize(new java.awt.Dimension(1280, 1280));
+        mainPengaturan2.setBackground(new java.awt.Color(251, 248, 255));
+        mainPengaturan2.setPreferredSize(new java.awt.Dimension(1280, 1030));
 
-        panelCustomV23.setBackground(new java.awt.Color(255, 255, 255));
-        panelCustomV23.setBorderColor(new java.awt.Color(231, 189, 187));
-        panelCustomV23.setBorderThickness(1);
-        panelCustomV23.setRoundBottomLeft(12);
-        panelCustomV23.setRoundBottomRight(12);
-        panelCustomV23.setRoundTopLeft(12);
-        panelCustomV23.setRoundTopRight(12);
+        logoToko.setBackground(new java.awt.Color(255, 255, 255));
+        logoToko.setBorderColor(new java.awt.Color(231, 189, 187));
+        logoToko.setBorderThickness(1);
+        logoToko.setRoundBottomLeft(12);
+        logoToko.setRoundBottomRight(12);
+        logoToko.setRoundTopLeft(12);
+        logoToko.setRoundTopRight(12);
 
         jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconGaleri.png"))); // NOI18N
@@ -192,50 +207,50 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panelCustomV23Layout = new javax.swing.GroupLayout(panelCustomV23);
-        panelCustomV23.setLayout(panelCustomV23Layout);
-        panelCustomV23Layout.setHorizontalGroup(
-            panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV23Layout.createSequentialGroup()
+        javax.swing.GroupLayout logoTokoLayout = new javax.swing.GroupLayout(logoToko);
+        logoToko.setLayout(logoTokoLayout);
+        logoTokoLayout.setHorizontalGroup(
+            logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logoTokoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(logoTokoLayout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV23Layout.createSequentialGroup()
-                        .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoTokoLayout.createSequentialGroup()
+                        .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(panelCustomV24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV23Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, logoTokoLayout.createSequentialGroup()
                                 .addComponent(logo)
                                 .addGap(29, 29, 29)
-                                .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(buttonCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                                    .addGroup(logoTokoLayout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV23Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, logoTokoLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(24, 24, 24))))
         );
-        panelCustomV23Layout.setVerticalGroup(
-            panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV23Layout.createSequentialGroup()
-                .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+        logoTokoLayout.setVerticalGroup(
+            logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logoTokoLayout.createSequentialGroup()
+                .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(logoTokoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                    .addGroup(logoTokoLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCustomV23Layout.createSequentialGroup()
+                .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(logoTokoLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel5)
@@ -254,13 +269,13 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        panelCustomV25.setBackground(new java.awt.Color(255, 255, 255));
-        panelCustomV25.setBorderColor(new java.awt.Color(231, 189, 187));
-        panelCustomV25.setBorderThickness(1);
-        panelCustomV25.setRoundBottomLeft(12);
-        panelCustomV25.setRoundBottomRight(12);
-        panelCustomV25.setRoundTopLeft(12);
-        panelCustomV25.setRoundTopRight(12);
+        infoToko.setBackground(new java.awt.Color(255, 255, 255));
+        infoToko.setBorderColor(new java.awt.Color(231, 189, 187));
+        infoToko.setBorderThickness(1);
+        infoToko.setRoundBottomLeft(12);
+        infoToko.setRoundBottomRight(12);
+        infoToko.setRoundTopLeft(12);
+        infoToko.setRoundTopRight(12);
 
         jLabel10.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconGaleri.png"))); // NOI18N
@@ -282,7 +297,6 @@ public class PengaturanFrame extends javax.swing.JFrame {
         panelCustomV26.setRoundTopRight(7);
 
         jTextField3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(92, 62, 60));
         jTextField3.setText("RATU SEBLAK");
         jTextField3.setBorder(null);
         jTextField3.setMargin(new java.awt.Insets(10, 10, 10, 6));
@@ -355,7 +369,6 @@ public class PengaturanFrame extends javax.swing.JFrame {
         panelCustomV28.setRoundTopRight(7);
 
         jTextField4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(92, 62, 60));
         jTextField4.setText("0819-9899-1827");
         jTextField4.setBorder(null);
         jTextField4.setMargin(new java.awt.Insets(10, 10, 10, 6));
@@ -416,14 +429,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout panelCustomV25Layout = new javax.swing.GroupLayout(panelCustomV25);
-        panelCustomV25.setLayout(panelCustomV25Layout);
-        panelCustomV25Layout.setHorizontalGroup(
-            panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV25Layout.createSequentialGroup()
+        javax.swing.GroupLayout infoTokoLayout = new javax.swing.GroupLayout(infoToko);
+        infoToko.setLayout(infoTokoLayout);
+        infoTokoLayout.setHorizontalGroup(
+            infoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoTokoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelCustomV25Layout.createSequentialGroup()
+                .addGroup(infoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(infoTokoLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(15, 15, 15)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -437,14 +450,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
                     .addComponent(panelCustomV29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelCustomV25Layout.setVerticalGroup(
-            panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV25Layout.createSequentialGroup()
-                .addGroup(panelCustomV25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCustomV25Layout.createSequentialGroup()
+        infoTokoLayout.setVerticalGroup(
+            infoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoTokoLayout.createSequentialGroup()
+                .addGroup(infoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoTokoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCustomV25Layout.createSequentialGroup()
+                    .addGroup(infoTokoLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel10)))
                 .addGap(20, 20, 20)
@@ -466,73 +479,94 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        buttonCustomV26.setBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSimpan.png"))); // NOI18N
-        buttonCustomV26.setText("Simpan Perubahan");
-        buttonCustomV26.setActiveBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setActiveForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setDisabledBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setDisabledForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        buttonCustomV26.setHoverBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setHoverForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setInactiveBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV26.setInactiveForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setPressedBackground(new java.awt.Color(175, 3, 31));
-        buttonCustomV26.setPressedBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setPressedForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV26.setRoundBottomLeft(4);
-        buttonCustomV26.setRoundBottomRight(4);
-        buttonCustomV26.setRoundTopLeft(4);
-        buttonCustomV26.setRoundTopRight(4);
-        buttonCustomV26.addActionListener(this::buttonCustomV26ActionPerformed);
+        btnSimpan.setBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSimpan.png"))); // NOI18N
+        btnSimpan.setText("Simpan Perubahan");
+        btnSimpan.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpan.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpan.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setDisabledBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpan.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnSimpan.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnSimpan.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnSimpan.setPressedBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpan.setPressedForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setRoundBottomLeft(4);
+        btnSimpan.setRoundBottomRight(4);
+        btnSimpan.setRoundTopLeft(4);
+        btnSimpan.setRoundTopRight(4);
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
 
-        javax.swing.GroupLayout panelCustomV22Layout = new javax.swing.GroupLayout(panelCustomV22);
-        panelCustomV22.setLayout(panelCustomV22Layout);
-        panelCustomV22Layout.setHorizontalGroup(
-            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV22Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPengaturan2Layout = new javax.swing.GroupLayout(mainPengaturan2);
+        mainPengaturan2.setLayout(mainPengaturan2Layout);
+        mainPengaturan2Layout.setHorizontalGroup(
+            mainPengaturan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPengaturan2Layout.createSequentialGroup()
                 .addContainerGap(280, Short.MAX_VALUE)
-                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelCustomV23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCustomV26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainPengaturan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(logoToko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(infoToko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(280, Short.MAX_VALUE))
         );
-        panelCustomV22Layout.setVerticalGroup(
-            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV22Layout.createSequentialGroup()
+        mainPengaturan2Layout.setVerticalGroup(
+            mainPengaturan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPengaturan2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(panelCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoToko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(panelCustomV25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(infoToko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonCustomV26, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
-        jScrollPane1.setViewportView(panelCustomV22);
+        jScrollPane1.setViewportView(mainPengaturan2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPengaturanLayout = new javax.swing.GroupLayout(mainPengaturan);
+        mainPengaturan.setLayout(mainPengaturanLayout);
+        mainPengaturanLayout.setHorizontalGroup(
+            mainPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPengaturanLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        mainPengaturanLayout.setVerticalGroup(
+            mainPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPengaturanLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headerPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mainPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(headerPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mainPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -540,19 +574,15 @@ public class PengaturanFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCustomV21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCustomV25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV25ActionPerformed
@@ -567,9 +597,15 @@ public class PengaturanFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void buttonCustomV26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV26ActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustomV26ActionPerformed
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new MainFrame().setVisible(true);
+    }//GEN-LAST:event_lblBackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -597,9 +633,10 @@ public class PengaturanFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
     private seblakratupos.view.component.ButtonCustomV2 buttonCustomV25;
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV26;
-    private javax.swing.JLabel jLabel1;
+    private seblakratupos.view.component.PanelCustomV2 headerPengaturan;
+    private seblakratupos.view.component.PanelCustomV2 infoToko;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
@@ -614,7 +651,6 @@ public class PengaturanFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -622,12 +658,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblBack;
+    private javax.swing.JLabel lblPengaturan;
     private javax.swing.JLabel logo;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV23;
+    private seblakratupos.view.component.PanelCustomV2 logoToko;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel mainPengaturan;
+    private seblakratupos.view.component.PanelCustomV2 mainPengaturan2;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV25;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV26;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV27;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV28;

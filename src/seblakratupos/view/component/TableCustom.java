@@ -155,11 +155,12 @@ public class TableCustom extends JTable {
         header.setForeground(headerForegroundCustom);
         header.setFont(new Font("SansSerif", Font.BOLD, 14));
         header.setPreferredSize(new Dimension(0, headerHeight));
-        header.setDefaultRenderer(new HeaderRenderer(header.getDefaultRenderer()));
+        header.setDefaultRenderer(new HeaderRenderer());
         header.setReorderingAllowed(false);
         header.setResizingAllowed(false);
         header.setFocusable(false);
         header.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        header.setBorder(null);
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -189,8 +190,7 @@ public class TableCustom extends JTable {
     public void changeSelection(int rowIndex, int columnIndex, boolean toggle, boolean extend) {
         /*
          * Sengaja kosong.
-         * Selection bawaan JTable dimatikan.
-         * Background row aktif diatur sendiri oleh clickedModelRow.
+         * Biar selection default JTable tidak muncul.
          */
     }
 
@@ -423,8 +423,8 @@ public class TableCustom extends JTable {
                 }
             } catch (Exception e) {
                 /*
-                 * Kalau property salah isi, abaikan.
-                 * Jangan sampai koma tolol bikin program mati.
+                 * Kalau property salah, abaikan.
+                 * Jangan sampai koma goblok bikin program mati.
                  */
             }
         }
@@ -443,8 +443,7 @@ public class TableCustom extends JTable {
 
         /*
          * Preview hanya dipasang kalau model masih kosong.
-         * Jadi kalau kamu isi dari Table Model NetBeans,
-         * data kamu tidak akan ditimpa.
+         * Jadi kalau kamu isi dari Table Model NetBeans, tidak ditimpa.
          */
         if (getColumnCount() > 0 || getRowCount() > 0) {
             return;
@@ -475,6 +474,8 @@ public class TableCustom extends JTable {
         JTableHeader header = getTableHeader();
 
         if (header != null) {
+            header.setOpaque(true);
+            header.setBorder(null);
             header.setBackground(headerBackgroundCustom);
             header.setForeground(headerForegroundCustom);
             header.setPreferredSize(new Dimension(0, headerHeight));
@@ -482,8 +483,8 @@ public class TableCustom extends JTable {
             header.setResizingAllowed(false);
             header.setFocusable(false);
             header.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            header.revalidate();
             header.repaint();
+            header.revalidate();
         }
 
         applyHorizontalScroll();
@@ -511,6 +512,8 @@ public class TableCustom extends JTable {
     private void applyHorizontalScroll() {
         if (horizontalScrollEnabled) {
             setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        } else {
+            setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
         }
     }
 
@@ -544,7 +547,7 @@ public class TableCustom extends JTable {
                 }
             } catch (Exception e) {
                 /*
-                 * Salah isi width, abaikan.
+                 * Kalau salah isi width, abaikan.
                  */
             }
         }
@@ -584,12 +587,12 @@ public class TableCustom extends JTable {
         }
     }
 
-    private class HeaderRenderer implements TableCellRenderer {
+    private class HeaderRenderer extends JLabel implements TableCellRenderer {
 
-        private final TableCellRenderer defaultRenderer;
-
-        public HeaderRenderer(TableCellRenderer defaultRenderer) {
-            this.defaultRenderer = defaultRenderer;
+        public HeaderRenderer() {
+            setOpaque(true);
+            setBorder(null);
+            setVerticalAlignment(SwingConstants.CENTER);
         }
 
         @Override
@@ -601,65 +604,48 @@ public class TableCustom extends JTable {
                 int row,
                 int column
         ) {
-            Component component = defaultRenderer.getTableCellRendererComponent(
-                    table,
-                    value,
-                    false,
-                    false,
-                    row,
-                    column
-            );
+            int modelColumn = table.convertColumnIndexToModel(column);
 
-            int modelColumn = convertColumnIndexToModel(column);
+            setText(value == null ? "" : value.toString());
+            setIcon(null);
 
-            component.setBackground(headerBackgroundCustom);
-            component.setForeground(headerForegroundCustom);
+            setOpaque(true);
+            setBackground(headerBackgroundCustom);
+            setForeground(headerForegroundCustom);
 
-            Font font = getTableHeader().getFont();
+            Font font = table.getTableHeader().getFont();
 
             if (headerBold) {
-                font = font.deriveFont(Font.BOLD);
+                setFont(font.deriveFont(Font.BOLD));
             } else {
-                font = font.deriveFont(Font.PLAIN);
+                setFont(font.deriveFont(Font.PLAIN));
             }
 
-            component.setFont(font);
+            setHorizontalAlignment(getHeaderAlignment(modelColumn));
+            setVerticalAlignment(SwingConstants.CENTER);
 
-            if (component instanceof JLabel) {
-                JLabel label = (JLabel) component;
-                label.setText(value == null ? "" : value.toString());
-                label.setHorizontalAlignment(getHeaderAlignment(modelColumn));
-                label.setVerticalAlignment(SwingConstants.CENTER);
-                label.setIcon(null);
-            }
+            Border padding = BorderFactory.createEmptyBorder(
+                    0,
+                    headerPaddingLeft,
+                    0,
+                    headerPaddingRight
+            );
 
-            if (component instanceof JComponent) {
-                JComponent jc = (JComponent) component;
-                jc.setOpaque(true);
-
-                Border padding = BorderFactory.createEmptyBorder(
+            if (headerBorderThickness > 0) {
+                Border bottomLine = BorderFactory.createMatteBorder(
                         0,
-                        headerPaddingLeft,
                         0,
-                        headerPaddingRight
+                        headerBorderThickness,
+                        0,
+                        headerBorderColor
                 );
 
-                if (headerBorderThickness > 0) {
-                    Border line = BorderFactory.createMatteBorder(
-                            0,
-                            0,
-                            headerBorderThickness,
-                            0,
-                            headerBorderColor
-                    );
-
-                    jc.setBorder(BorderFactory.createCompoundBorder(line, padding));
-                } else {
-                    jc.setBorder(padding);
-                }
+                setBorder(BorderFactory.createCompoundBorder(bottomLine, padding));
+            } else {
+                setBorder(padding);
             }
 
-            return component;
+            return this;
         }
     }
 
@@ -671,19 +657,21 @@ public class TableCustom extends JTable {
             setResizingAllowed(false);
             setFocusable(false);
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            setOpaque(true);
+            setBorder(null);
         }
 
         @Override
         protected void processMouseEvent(MouseEvent e) {
             /*
-             * Header tidak bisa klik, hover, press, resize, reorder.
+             * Header tidak klik, hover, press, resize, reorder.
              */
         }
 
         @Override
         protected void processMouseMotionEvent(MouseEvent e) {
             /*
-             * Header tidak punya hover.
+             * Header tidak hover.
              */
         }
     }
@@ -726,6 +714,8 @@ public class TableCustom extends JTable {
     public void setDesignPreviewData(boolean designPreviewData) {
         boolean old = this.designPreviewData;
         this.designPreviewData = designPreviewData;
+
+        installDesignPreviewData();
 
         firePropertyChange("designPreviewData", old, this.designPreviewData);
         refreshDesign();
