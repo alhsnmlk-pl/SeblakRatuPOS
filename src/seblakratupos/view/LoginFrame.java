@@ -96,21 +96,21 @@ public class LoginFrame extends javax.swing.JFrame {
         rightContainer = new javax.swing.JPanel();
         loginContainer = new seblakratupos.view.component.PanelCustom();
         usrContainer = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblUsernameLogin = new javax.swing.JLabel();
         panelCustom1 = new seblakratupos.view.component.PanelCustom();
         txtUsername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         passContainer = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
         panelCustom2 = new seblakratupos.view.component.PanelCustom();
         jLabel6 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        buttonCustom1 = new seblakratupos.view.component.ButtonCustom();
+        btnLogin = new seblakratupos.view.component.ButtonCustom();
         passContainer1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        lblMasukSebagai = new javax.swing.JLabel();
         panelCustom3 = new seblakratupos.view.component.PanelCustom();
         jLabel8 = new javax.swing.JLabel();
-        comboBoxCustom1 = new seblakratupos.view.component.ComboBoxCustom();
+        cMasukSebagai = new seblakratupos.view.component.ComboBoxCustom();
         txtCopyright = new javax.swing.JLabel();
         leftContainer = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
@@ -139,9 +139,9 @@ public class LoginFrame extends javax.swing.JFrame {
         usrContainer.setBackground(new java.awt.Color(255, 255, 255));
         usrContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel3.setText("Username");
-        usrContainer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
+        lblUsernameLogin.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblUsernameLogin.setText("Username");
+        usrContainer.add(lblUsernameLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
 
         panelCustom1.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom1.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -186,8 +186,8 @@ public class LoginFrame extends javax.swing.JFrame {
         passContainer.setAlignmentX(1.0F);
         passContainer.setAlignmentY(1.0F);
 
-        jLabel5.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel5.setText("Password");
+        lblPassword.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblPassword.setText("Password");
 
         panelCustom2.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom2.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -231,37 +231,37 @@ public class LoginFrame extends javax.swing.JFrame {
         passContainerLayout.setHorizontalGroup(
             passContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelCustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         passContainerLayout.setVerticalGroup(
             passContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passContainerLayout.createSequentialGroup()
-                .addComponent(jLabel5)
+                .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        buttonCustom1.setBackground(new java.awt.Color(214, 4, 39));
-        buttonCustom1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonCustom1.setIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogin.svg")
+        btnLogin.setBackground(new java.awt.Color(214, 4, 39));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogin.svg")
         );
-        buttonCustom1.setText("Login");
-        buttonCustom1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        buttonCustom1.setHoverBackground(new java.awt.Color(214, 4, 39));
-        buttonCustom1.setIconTextGap(8);
-        buttonCustom1.setPressedBackground(new java.awt.Color(175, 3, 31));
-        buttonCustom1.setRoundBottomLeft(3);
-        buttonCustom1.setRoundBottomRight(3);
-        buttonCustom1.setRoundTopLeft(3);
-        buttonCustom1.setRoundTopRight(3);
-        buttonCustom1.addActionListener(this::buttonCustom1ActionPerformed);
+        btnLogin.setText("Login");
+        btnLogin.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnLogin.setHoverBackground(new java.awt.Color(214, 4, 39));
+        btnLogin.setIconTextGap(8);
+        btnLogin.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnLogin.setRoundBottomLeft(3);
+        btnLogin.setRoundBottomRight(3);
+        btnLogin.setRoundTopLeft(3);
+        btnLogin.setRoundTopRight(3);
+        btnLogin.addActionListener(this::btnLoginActionPerformed);
 
         passContainer1.setBackground(new java.awt.Color(255, 255, 255));
         passContainer1.setAlignmentX(1.0F);
         passContainer1.setAlignmentY(1.0F);
 
-        jLabel7.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel7.setText("Masuk Sebagai");
+        lblMasukSebagai.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblMasukSebagai.setText("Masuk Sebagai");
 
         panelCustom3.setBackground(new java.awt.Color(255, 255, 255));
         panelCustom3.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -275,18 +275,19 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel8.setIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconRole.svg")
         );
 
-        comboBoxCustom1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Owner", "Kasir" }));
-        comboBoxCustom1.setBorderThickness(0);
-        comboBoxCustom1.setDropdownTextLeftPadding(5);
-        comboBoxCustom1.setDropdownTextRightPadding(5);
-        comboBoxCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        comboBoxCustom1.setPopupBorderColor(new java.awt.Color(231, 189, 187));
-        comboBoxCustom1.setPopupBorderThickness(2);
-        comboBoxCustom1.setPopupRound(3);
-        comboBoxCustom1.setSelectedTextLeftPadding(0);
-        comboBoxCustom1.setSelectedTextOffsetX(-3);
-        comboBoxCustom1.setSelectedTextRightPadding(0);
-        comboBoxCustom1.setSelectionBackground(new java.awt.Color(252, 233, 232));
+        cMasukSebagai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Owner", "Kasir" }));
+        cMasukSebagai.setBorderThickness(0);
+        cMasukSebagai.setDropdownTextLeftPadding(5);
+        cMasukSebagai.setDropdownTextRightPadding(5);
+        cMasukSebagai.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        cMasukSebagai.setPopupBorderColor(new java.awt.Color(231, 189, 187));
+        cMasukSebagai.setPopupBorderThickness(2);
+        cMasukSebagai.setPopupRound(3);
+        cMasukSebagai.setSelectedTextLeftPadding(0);
+        cMasukSebagai.setSelectedTextOffsetX(-3);
+        cMasukSebagai.setSelectedTextRightPadding(0);
+        cMasukSebagai.setSelectionBackground(new java.awt.Color(252, 233, 232));
+        cMasukSebagai.addActionListener(this::cMasukSebagaiActionPerformed);
 
         javax.swing.GroupLayout panelCustom3Layout = new javax.swing.GroupLayout(panelCustom3);
         panelCustom3.setLayout(panelCustom3Layout);
@@ -296,7 +297,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(comboBoxCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cMasukSebagai, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelCustom3Layout.setVerticalGroup(
@@ -305,7 +306,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCustom3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboBoxCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cMasukSebagai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -314,12 +315,12 @@ public class LoginFrame extends javax.swing.JFrame {
         passContainer1Layout.setHorizontalGroup(
             passContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelCustom3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblMasukSebagai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         passContainer1Layout.setVerticalGroup(
             passContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passContainer1Layout.createSequentialGroup()
-                .addComponent(jLabel7)
+                .addComponent(lblMasukSebagai)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -332,7 +333,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(loginContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(usrContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -347,7 +348,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(passContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -404,11 +405,15 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         new MainFrame().setVisible(true);
         dispose();
-    }//GEN-LAST:event_buttonCustom1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void cMasukSebagaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cMasukSebagaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cMasukSebagaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,14 +441,14 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private seblakratupos.view.component.ButtonCustom buttonCustom1;
-    private seblakratupos.view.component.ComboBoxCustom comboBoxCustom1;
-    private javax.swing.JLabel jLabel3;
+    private seblakratupos.view.component.ButtonCustom btnLogin;
+    private seblakratupos.view.component.ComboBoxCustom cMasukSebagai;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblMasukSebagai;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUsernameLogin;
     private javax.swing.JPanel leftContainer;
     private seblakratupos.view.component.PanelCustom loginContainer;
     private javax.swing.JLabel logo;
