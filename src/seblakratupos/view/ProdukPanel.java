@@ -58,9 +58,9 @@ public class ProdukPanel extends javax.swing.JPanel {
         lblRupiahProduk = new javax.swing.JLabel();
         btnTombol_on_off = new seblakratupos.view.component.ToggleCustom();
         panelCustomV210 = new seblakratupos.view.component.PanelCustomV2();
-        btnSimpanPengguna = new seblakratupos.view.component.ButtonCustomV2();
-        btnHapusPengguna = new seblakratupos.view.component.ButtonCustomV2();
-        btnBatalPengguna = new seblakratupos.view.component.ButtonCustomV2();
+        btnSimpanProduk = new seblakratupos.view.component.ButtonCustomV2();
+        btnHapusProduk = new seblakratupos.view.component.ButtonCustomV2();
+        btnBatalProduk = new seblakratupos.view.component.ButtonCustomV2();
 
         jToggleButton2.setText("jToggleButton2");
 
@@ -503,89 +503,89 @@ public class ProdukPanel extends javax.swing.JPanel {
         panelCustomV210.setBorderThickness(1);
         panelCustomV210.setBorderTopThickness(0);
 
-        btnSimpanPengguna.setBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSimpan.png"))); // NOI18N
-        btnSimpanPengguna.setText("Simpan Perubahan");
-        btnSimpanPengguna.setActiveBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setActiveForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setDisabledBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setDisabledForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnSimpanPengguna.setHoverBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setHoverForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setInactiveBackground(new java.awt.Color(215, 4, 39));
-        btnSimpanPengguna.setInactiveForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setPressedBackground(new java.awt.Color(175, 3, 31));
-        btnSimpanPengguna.setPressedBorderColor(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setPressedForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanPengguna.setRoundBottomLeft(4);
-        btnSimpanPengguna.setRoundBottomRight(4);
-        btnSimpanPengguna.setRoundTopLeft(4);
-        btnSimpanPengguna.setRoundTopRight(4);
-        btnSimpanPengguna.addActionListener(this::btnSimpanPenggunaActionPerformed);
+        btnSimpanProduk.setBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSimpan.png"))); // NOI18N
+        btnSimpanProduk.setText("Simpan Perubahan");
+        btnSimpanProduk.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setDisabledBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnSimpanProduk.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnSimpanProduk.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnSimpanProduk.setPressedBorderColor(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setPressedForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanProduk.setRoundBottomLeft(4);
+        btnSimpanProduk.setRoundBottomRight(4);
+        btnSimpanProduk.setRoundTopLeft(4);
+        btnSimpanProduk.setRoundTopRight(4);
+        btnSimpanProduk.addActionListener(this::btnSimpanProdukActionPerformed);
 
-        btnHapusPengguna.setBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon hapus.png"))); // NOI18N
-        btnHapusPengguna.setText("Hapus");
-        btnHapusPengguna.setActiveBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setActiveBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setActiveForeground(new java.awt.Color(255, 255, 255));
-        btnHapusPengguna.setActiveHoverBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setActiveHoverBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
-        btnHapusPengguna.setBorderThickness(1);
-        btnHapusPengguna.setDisabledBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setDisabledBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setDisabledForeground(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnHapusPengguna.setHoverBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setHoverBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setHoverForeground(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setInactiveBackground(new java.awt.Color(251, 248, 255));
-        btnHapusPengguna.setInactiveBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setInactiveForeground(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setPressedBackground(new java.awt.Color(237, 237, 237));
-        btnHapusPengguna.setPressedBorderColor(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setPressedForeground(new java.awt.Color(215, 4, 39));
-        btnHapusPengguna.setRoundBottomLeft(4);
-        btnHapusPengguna.setRoundBottomRight(4);
-        btnHapusPengguna.setRoundTopLeft(4);
-        btnHapusPengguna.setRoundTopRight(4);
-        btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
+        btnHapusProduk.setBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/icon hapus.png"))); // NOI18N
+        btnHapusProduk.setText("Hapus");
+        btnHapusProduk.setActiveBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setActiveBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnHapusProduk.setActiveHoverBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setActiveHoverBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
+        btnHapusProduk.setBorderThickness(1);
+        btnHapusProduk.setDisabledBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setDisabledBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setDisabledForeground(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnHapusProduk.setHoverBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setHoverBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setHoverForeground(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setInactiveBackground(new java.awt.Color(251, 248, 255));
+        btnHapusProduk.setInactiveBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setInactiveForeground(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setPressedBackground(new java.awt.Color(237, 237, 237));
+        btnHapusProduk.setPressedBorderColor(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setPressedForeground(new java.awt.Color(215, 4, 39));
+        btnHapusProduk.setRoundBottomLeft(4);
+        btnHapusProduk.setRoundBottomRight(4);
+        btnHapusProduk.setRoundTopLeft(4);
+        btnHapusProduk.setRoundTopRight(4);
+        btnHapusProduk.addActionListener(this::btnHapusProdukActionPerformed);
 
-        btnBatalPengguna.setBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setText("Batal");
-        btnBatalPengguna.setActiveBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setActiveBorderColor(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setActiveForeground(new java.awt.Color(255, 255, 255));
-        btnBatalPengguna.setActiveHoverBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setActiveHoverBorderColor(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setBorderThickness(1);
-        btnBatalPengguna.setDisabledBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setDisabledBorderColor(new java.awt.Color(51, 51, 51));
-        btnBatalPengguna.setDisabledForeground(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnBatalPengguna.setHoverBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setHoverBorderColor(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setHoverForeground(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setInactiveBackground(new java.awt.Color(251, 248, 255));
-        btnBatalPengguna.setInactiveBorderColor(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setInactiveForeground(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setPressedBackground(new java.awt.Color(237, 237, 237));
-        btnBatalPengguna.setPressedBorderColor(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setPressedForeground(new java.awt.Color(0, 0, 0));
-        btnBatalPengguna.setRoundBottomLeft(4);
-        btnBatalPengguna.setRoundBottomRight(4);
-        btnBatalPengguna.setRoundTopLeft(4);
-        btnBatalPengguna.setRoundTopRight(4);
-        btnBatalPengguna.addActionListener(this::btnBatalPenggunaActionPerformed);
+        btnBatalProduk.setBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setText("Batal");
+        btnBatalProduk.setActiveBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setActiveBorderColor(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnBatalProduk.setActiveHoverBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setActiveHoverBorderColor(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setBorderThickness(1);
+        btnBatalProduk.setDisabledBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setDisabledBorderColor(new java.awt.Color(51, 51, 51));
+        btnBatalProduk.setDisabledForeground(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnBatalProduk.setHoverBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setHoverBorderColor(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setHoverForeground(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setInactiveBackground(new java.awt.Color(251, 248, 255));
+        btnBatalProduk.setInactiveBorderColor(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setInactiveForeground(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setPressedBackground(new java.awt.Color(237, 237, 237));
+        btnBatalProduk.setPressedBorderColor(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setPressedForeground(new java.awt.Color(0, 0, 0));
+        btnBatalProduk.setRoundBottomLeft(4);
+        btnBatalProduk.setRoundBottomRight(4);
+        btnBatalProduk.setRoundTopLeft(4);
+        btnBatalProduk.setRoundTopRight(4);
+        btnBatalProduk.addActionListener(this::btnBatalProdukActionPerformed);
 
         javax.swing.GroupLayout panelCustomV210Layout = new javax.swing.GroupLayout(panelCustomV210);
         panelCustomV210.setLayout(panelCustomV210Layout);
@@ -595,21 +595,21 @@ public class ProdukPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(panelCustomV210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCustomV210Layout.createSequentialGroup()
-                        .addComponent(btnBatalPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBatalProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnHapusPengguna, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                    .addComponent(btnSimpanPengguna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnHapusProduk, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                    .addComponent(btnSimpanProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         panelCustomV210Layout.setVerticalGroup(
             panelCustomV210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV210Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(btnSimpanPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSimpanProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelCustomV210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHapusPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBatalPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHapusProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBatalProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -662,17 +662,17 @@ public class ProdukPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTambahPenggunaActionPerformed
 
-    private void btnSimpanPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPenggunaActionPerformed
+    private void btnSimpanProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
+    }//GEN-LAST:event_btnSimpanProdukActionPerformed
 
-    private void btnHapusPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPenggunaActionPerformed
+    private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHapusPenggunaActionPerformed
+    }//GEN-LAST:event_btnHapusProdukActionPerformed
 
-    private void btnBatalPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalPenggunaActionPerformed
+    private void btnBatalProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBatalPenggunaActionPerformed
+    }//GEN-LAST:event_btnBatalProdukActionPerformed
 
     private void txtNamaProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaProdukActionPerformed
         // TODO add your handling code here:
@@ -692,12 +692,12 @@ public class ProdukPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private seblakratupos.view.component.ButtonCustomV2 btnBatalPengguna;
-    private seblakratupos.view.component.ButtonCustomV2 btnHapusPengguna;
+    private seblakratupos.view.component.ButtonCustomV2 btnBatalProduk;
+    private seblakratupos.view.component.ButtonCustomV2 btnHapusProduk;
     private seblakratupos.view.component.ButtonCustomV2 btnMinumanProduk;
     private seblakratupos.view.component.ButtonCustomV2 btnSeblakProduk;
     private seblakratupos.view.component.ButtonCustomV2 btnSemuaProduk;
-    private seblakratupos.view.component.ButtonCustomV2 btnSimpanPengguna;
+    private seblakratupos.view.component.ButtonCustomV2 btnSimpanProduk;
     private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
     private seblakratupos.view.component.ToggleCustom btnTombol_on_off;
     private seblakratupos.view.component.ButtonCustomV2 btnToppingProduk;
