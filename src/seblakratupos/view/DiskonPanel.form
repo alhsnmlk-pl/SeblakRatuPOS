@@ -102,7 +102,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="225" max="-2" attributes="0"/>
+                      <Component id="lblDaftarDiskon" min="-2" pref="225" max="-2" attributes="0"/>
                       <EmptySpace pref="256" max="32767" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -110,7 +110,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblDaftarDiskon" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -119,7 +119,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblDaftarDiskon">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -238,7 +238,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="seblakratupos.view.component.TableCustom" name="tableCustom2">
+            <Component class="seblakratupos.view.component.TableCustom" name="tblPanelDiskon">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="1">
@@ -272,7 +272,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tableCustom2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblPanelDiskonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -331,7 +331,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="lblTambahDiskon" min="-2" pref="194" max="-2" attributes="0"/>
                       <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -340,14 +340,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <Component id="lblTambahDiskon" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel13">
+            <Component class="javax.swing.JLabel" name="lblTambahDiskon">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="18" style="0"/>
@@ -376,7 +376,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel14" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                                  <Component id="lblNamaDiskon" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
                                   <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -388,15 +388,15 @@
                                   <Component id="cPeranPengguna" alignment="0" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel16" max="32767" attributes="0"/>
+                                          <Component id="lblPersentase" max="32767" attributes="0"/>
                                           <Component id="jPanel5" pref="302" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel15" min="-2" pref="136" max="-2" attributes="0"/>
+                                          <Component id="lblMulai" min="-2" pref="136" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jPanel4" max="32767" attributes="0"/>
-                                              <Component id="jLabel17" max="32767" attributes="0"/>
+                                              <Component id="lblSelesai" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -411,7 +411,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNamaDiskon" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -419,13 +419,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cPeranPengguna" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPersentase" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMulai" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSelesai" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -438,7 +438,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel14">
+            <Component class="javax.swing.JLabel" name="lblNamaDiskon">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -501,7 +501,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel15">
+            <Component class="javax.swing.JLabel" name="lblMulai">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -611,7 +611,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel16">
+            <Component class="javax.swing.JLabel" name="lblPersentase">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -705,7 +705,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
+            <Component class="javax.swing.JLabel" name="lblSelesai">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
