@@ -4,11 +4,6 @@
  */
 package seblakratupos.view;
 
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import seblakratupos.view.component.AppColor;
 
 /**
  *
@@ -16,48 +11,17 @@ import seblakratupos.view.component.AppColor;
  */
 public class TransaksiPanel extends javax.swing.JPanel {
     
-    private boolean cardMenuActive = false;
 
-    private final Color CARD_DEFAULT_BG = Color.WHITE;
-    private final Color CARD_DEFAULT_BORDER = new Color(231, 188, 186);
 
-    private final Color CARD_ACTIVE_BG = new Color(255, 246, 242);
-    private final Color CARD_ACTIVE_BORDER = new Color(255, 98, 45);
 
     /**
      * Creates new form 
      */
     public TransaksiPanel() {
         initComponents();
-        
-        setupCardMenu();
     }
     
-    private void setupCardMenu() {
-        cardMenu.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        setCardMenuActive(false);
-
-        cardMenu.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                cardMenuActive = !cardMenuActive;
-                setCardMenuActive(cardMenuActive);
-            }
-        });
-    }
-
-    private void setCardMenuActive(boolean active) {
-        if (active) {
-            cardMenu.setBackground(CARD_ACTIVE_BG);
-            cardMenu.setBorderColor(CARD_ACTIVE_BORDER);
-        } else {
-            cardMenu.setBackground(CARD_DEFAULT_BG);
-            cardMenu.setBorderColor(CARD_DEFAULT_BORDER);
-        }
-
-        cardMenu.repaint();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
