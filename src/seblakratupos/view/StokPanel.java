@@ -30,7 +30,7 @@ public class StokPanel extends javax.swing.JPanel {
         panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
         lblDaftarStok = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnTambahPengguna = new seblakratupos.view.component.ButtonCustomV2();
+        btnTambahStokBaru = new seblakratupos.view.component.ButtonCustomV2();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPanelStok = new seblakratupos.view.component.TableCustom();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
@@ -70,32 +70,32 @@ public class StokPanel extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTambahPengguna.setBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconPlus.png"))); // NOI18N
-        btnTambahPengguna.setText("Tambah Baru");
-        btnTambahPengguna.setActiveBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setActiveForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setDisabledBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setDisabledForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnTambahPengguna.setHoverBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setHoverForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setInactiveBackground(new java.awt.Color(215, 4, 39));
-        btnTambahPengguna.setInactiveForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setPressedBackground(new java.awt.Color(175, 3, 31));
-        btnTambahPengguna.setPressedBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setPressedForeground(new java.awt.Color(255, 255, 255));
-        btnTambahPengguna.setRoundBottomLeft(0);
-        btnTambahPengguna.setRoundBottomRight(0);
-        btnTambahPengguna.setRoundTopLeft(0);
-        btnTambahPengguna.setRoundTopRight(0);
-        btnTambahPengguna.addActionListener(this::btnTambahPenggunaActionPerformed);
+        btnTambahStokBaru.setBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconPlus.png"))); // NOI18N
+        btnTambahStokBaru.setText("Tambah Baru");
+        btnTambahStokBaru.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setDisabledBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnTambahStokBaru.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnTambahStokBaru.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnTambahStokBaru.setPressedBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setPressedForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStokBaru.setRoundBottomLeft(0);
+        btnTambahStokBaru.setRoundBottomRight(0);
+        btnTambahStokBaru.setRoundTopLeft(0);
+        btnTambahStokBaru.setRoundTopRight(0);
+        btnTambahStokBaru.addActionListener(this::btnTambahStokBaruActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -103,14 +103,14 @@ public class StokPanel extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(btnTambahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTambahStokBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(btnTambahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTambahStokBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
@@ -540,16 +540,16 @@ public class StokPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaActionPerformed
 
-    private void btnTambahPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPenggunaActionPerformed
+    private void btnTambahStokBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahStokBaruActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTambahPenggunaActionPerformed
+    }//GEN-LAST:event_btnTambahStokBaruActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private seblakratupos.view.component.ButtonCustomV2 btnBatal;
     private seblakratupos.view.component.ButtonCustomV2 btnHapus;
     private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
-    private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
+    private seblakratupos.view.component.ButtonCustomV2 btnTambahStokBaru;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
