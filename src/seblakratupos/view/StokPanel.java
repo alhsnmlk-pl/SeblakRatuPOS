@@ -28,24 +28,24 @@ public class StokPanel extends javax.swing.JPanel {
 
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
         panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel1 = new javax.swing.JLabel();
+        lblDaftarStok = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnTambahPengguna = new seblakratupos.view.component.ButtonCustomV2();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCustom1 = new seblakratupos.view.component.TableCustom();
+        tblPanelStok = new seblakratupos.view.component.TableCustom();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
         panelCustomV31 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel13 = new javax.swing.JLabel();
+        lblTambahStok = new javax.swing.JLabel();
         panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel14 = new javax.swing.JLabel();
+        lblNamaBahan = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtNamaBahan = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        lblJumlahStokMasuk = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtJumlah = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         txtSatuan = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        lblHargaSatuan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         txtHarga = new javax.swing.JTextField();
         panelCustomV210 = new seblakratupos.view.component.PanelCustomV2();
@@ -65,8 +65,8 @@ public class StokPanel extends javax.swing.JPanel {
         panelCustomV24.setBorderBottomThickness(1);
         panelCustomV24.setBorderColor(new java.awt.Color(231, 189, 187));
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
-        jLabel1.setText("Daftar Stok");
+        lblDaftarStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
+        lblDaftarStok.setText("Daftar Stok");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -120,19 +120,19 @@ public class StokPanel extends javax.swing.JPanel {
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV24Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDaftarStok, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCustomV24Layout.setVerticalGroup(
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDaftarStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelCustomV24Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1))
         );
 
-        tableCustom1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPanelStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Cabai Rawit Merah", "3", "Kilogram(Kg)"},
                 {"Bawang Merah", "2", "Kilogram(Kg)"},
@@ -146,17 +146,17 @@ public class StokPanel extends javax.swing.JPanel {
                 "Nama Bahan", "Stok", "Satuan"
             }
         ));
-        tableCustom1.setCellPaddingLeft(25);
-        tableCustom1.setCenterColumns("2,3");
-        tableCustom1.setColumnWidths("240,50,80,");
-        tableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tableCustom1.setGridColor(new java.awt.Color(231, 189, 187));
-        tableCustom1.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tableCustom1.setHeaderPaddingLeft(25);
-        tableCustom1.setOuterBorderThickness(0);
-        tableCustom1.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        tableCustom1.addActionListener(this::tableCustom1ActionPerformed);
-        jScrollPane1.setViewportView(tableCustom1);
+        tblPanelStok.setCellPaddingLeft(25);
+        tblPanelStok.setCenterColumns("2,3");
+        tblPanelStok.setColumnWidths("240,50,80,");
+        tblPanelStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        tblPanelStok.setGridColor(new java.awt.Color(231, 189, 187));
+        tblPanelStok.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
+        tblPanelStok.setHeaderPaddingLeft(25);
+        tblPanelStok.setOuterBorderThickness(0);
+        tblPanelStok.setRowBorderColor(new java.awt.Color(231, 189, 187));
+        tblPanelStok.addActionListener(this::tblPanelStokActionPerformed);
+        jScrollPane1.setViewportView(tblPanelStok);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
         panelCustomV21.setLayout(panelCustomV21Layout);
@@ -186,8 +186,8 @@ public class StokPanel extends javax.swing.JPanel {
         panelCustomV31.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV31.setPreferredSize(new java.awt.Dimension(345, 62));
 
-        jLabel13.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        jLabel13.setText("Tambah Stok Bahan");
+        lblTambahStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblTambahStok.setText("Tambah Stok Bahan");
 
         javax.swing.GroupLayout panelCustomV31Layout = new javax.swing.GroupLayout(panelCustomV31);
         panelCustomV31.setLayout(panelCustomV31Layout);
@@ -195,23 +195,23 @@ public class StokPanel extends javax.swing.JPanel {
             panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV31Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTambahStok, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         panelCustomV31Layout.setVerticalGroup(
             panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV31Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel13)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(lblTambahStok)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         panelCustomV29.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV29.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV29.setBorderThickness(1);
 
-        jLabel14.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel14.setText("Nama Bahan");
+        lblNamaBahan.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNamaBahan.setText("Nama Bahan");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -238,8 +238,8 @@ public class StokPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
-        jLabel15.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel15.setText("Jumlah Stok Masuk");
+        lblJumlahStokMasuk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblJumlahStokMasuk.setText("Jumlah Stok Masuk");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -285,8 +285,8 @@ public class StokPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
-        jLabel16.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel16.setText("Harga Satuan");
+        lblHargaSatuan.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblHargaSatuan.setText("Harga Satuan");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -317,13 +317,13 @@ public class StokPanel extends javax.swing.JPanel {
             .addGroup(panelCustomV29Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHargaSatuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelCustomV29Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNamaBahan, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV29Layout.createSequentialGroup()
                         .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblJumlahStokMasuk, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
                                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
@@ -341,17 +341,17 @@ public class StokPanel extends javax.swing.JPanel {
             panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV29Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel14)
+                .addComponent(lblNamaBahan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel15)
+                .addComponent(lblJumlahStokMasuk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel16)
+                .addComponent(lblHargaSatuan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -532,9 +532,9 @@ public class StokPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBatalActionPerformed
 
-    private void tableCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableCustom1ActionPerformed
+    private void tblPanelStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblPanelStokActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableCustom1ActionPerformed
+    }//GEN-LAST:event_tblPanelStokActionPerformed
 
     private void txtHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaActionPerformed
         // TODO add your handling code here:
@@ -550,24 +550,24 @@ public class StokPanel extends javax.swing.JPanel {
     private seblakratupos.view.component.ButtonCustomV2 btnHapus;
     private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
     private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDaftarStok;
+    private javax.swing.JLabel lblHargaSatuan;
+    private javax.swing.JLabel lblJumlahStokMasuk;
+    private javax.swing.JLabel lblNamaBahan;
+    private javax.swing.JLabel lblTambahStok;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV210;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV31;
-    private seblakratupos.view.component.TableCustom tableCustom1;
+    private seblakratupos.view.component.TableCustom tblPanelStok;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtJumlah;
     private javax.swing.JTextField txtNamaBahan;
