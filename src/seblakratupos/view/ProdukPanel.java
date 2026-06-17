@@ -4,6 +4,8 @@
  */
 package seblakratupos.view;
 
+import seblakratupos.view.component.ButtonCustomV2;
+
 /**
  *
  * @author Al
@@ -16,7 +18,10 @@ public class ProdukPanel extends javax.swing.JPanel {
     public ProdukPanel() {
         initComponents();
     }
-
+    
+    public ButtonCustomV2 getBtnHapusProduk() {
+        return btnHapusProduk;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

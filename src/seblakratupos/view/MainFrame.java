@@ -23,7 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         setupContentPanel();
-        setupSidebarAction();
+        SidebarAction();
 
         showPage("transaksi");
 
@@ -44,7 +44,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 // method buat memberikan aksi ke tombol sidebar, jadi setiap tombol bisa pindah halaman
-    private void setupSidebarAction() {
+    private void SidebarAction() {
         sidebarPanel1.getBtnTransaksi().addActionListener(e -> showPage("transaksi"));
         sidebarPanel1.getBtnProduk().addActionListener(e -> showPage("produk"));
         sidebarPanel1.getBtnStok().addActionListener(e -> showPage("stok"));
@@ -78,6 +78,13 @@ public class MainFrame extends javax.swing.JFrame {
         dispose();
     }
 
+// method untuk membaca button di panel produk
+    private void btnProduk(){
+        
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
