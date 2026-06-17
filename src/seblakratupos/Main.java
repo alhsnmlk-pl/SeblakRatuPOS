@@ -13,12 +13,10 @@ import seblakratupos.view.LoginFrame;
  * @author Al
  */
 public class Main {
-    public static void main(String[] args) {
 
-        try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (UnsupportedLookAndFeelException e) {
-        }
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+
+        UIManager.setLookAndFeel(new FlatLightLaf());
 
         SwingUtilities.invokeLater(() -> {
             new LoginFrame().setVisible(true);
