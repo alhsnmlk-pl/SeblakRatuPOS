@@ -70,10 +70,10 @@ public class Konfirmasi extends javax.swing.JDialog {
     private void initComponents() {
 
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        buttonCustom1 = new seblakratupos.view.component.ButtonCustom();
+        LblHapus = new javax.swing.JLabel();
+        lblKonfirmasi = new javax.swing.JLabel();
+        lblBatal = new javax.swing.JLabel();
+        btnHapus = new seblakratupos.view.component.ButtonCustom();
 
         addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
             public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
@@ -95,27 +95,27 @@ public class Konfirmasi extends javax.swing.JDialog {
         panelCustomV21.setRoundTopLeft(10);
         panelCustomV21.setRoundTopRight(10);
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 23)); // NOI18N
-        jLabel1.setText("Hapus Produk");
+        LblHapus.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 23)); // NOI18N
+        LblHapus.setText("Hapus Produk");
 
-        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Apakah Anda yakin ingin menghapus “Es Jeruk”?");
+        lblKonfirmasi.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
+        lblKonfirmasi.setText("Apakah Anda yakin ingin menghapus “Es Jeruk”?");
 
-        jLabel3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
-        jLabel3.setText("Batal");
+        lblBatal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
+        lblBatal.setText("Batal");
 
-        buttonCustom1.setBackground(new java.awt.Color(214, 4, 39));
-        buttonCustom1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonCustom1.setText("Hapus");
-        buttonCustom1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        buttonCustom1.setHoverBackground(new java.awt.Color(214, 4, 39));
-        buttonCustom1.setIconTextGap(8);
-        buttonCustom1.setPressedBackground(new java.awt.Color(175, 3, 31));
-        buttonCustom1.setRoundBottomLeft(10);
-        buttonCustom1.setRoundBottomRight(10);
-        buttonCustom1.setRoundTopLeft(10);
-        buttonCustom1.setRoundTopRight(10);
-        buttonCustom1.addActionListener(this::buttonCustom1ActionPerformed);
+        btnHapus.setBackground(new java.awt.Color(214, 4, 39));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setText("Hapus");
+        btnHapus.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnHapus.setHoverBackground(new java.awt.Color(214, 4, 39));
+        btnHapus.setIconTextGap(8);
+        btnHapus.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnHapus.setRoundBottomLeft(10);
+        btnHapus.setRoundBottomRight(10);
+        btnHapus.setRoundTopLeft(10);
+        btnHapus.setRoundTopRight(10);
+        btnHapus.addActionListener(this::btnHapusActionPerformed);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
         panelCustomV21.setLayout(panelCustomV21Layout);
@@ -125,27 +125,27 @@ public class Konfirmasi extends javax.swing.JDialog {
                 .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV21Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
+                        .addComponent(lblBatal)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelCustomV21Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))))
+                            .addComponent(LblHapus)
+                            .addComponent(lblKonfirmasi))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         panelCustomV21Layout.setVerticalGroup(
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV21Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel1)
+                .addComponent(LblHapus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblKonfirmasi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBatal)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -178,9 +178,9 @@ public class Konfirmasi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_formAncestorMoved
 
-    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustom1ActionPerformed
+    }//GEN-LAST:event_btnHapusActionPerformed
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -226,10 +226,10 @@ public class Konfirmasi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private seblakratupos.view.component.ButtonCustom buttonCustom1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel LblHapus;
+    private seblakratupos.view.component.ButtonCustom btnHapus;
+    private javax.swing.JLabel lblBatal;
+    private javax.swing.JLabel lblKonfirmasi;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     // End of variables declaration//GEN-END:variables
 

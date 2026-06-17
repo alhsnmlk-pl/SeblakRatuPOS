@@ -60,30 +60,30 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLaporan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="panelCustomV23" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                  <Component id="buttonCustom1" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="btnUnduhLaporan" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="lblLaporan" min="-2" pref="58" max="-2" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                   <Component id="panelCustomV23" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-                  <Component id="buttonCustom1" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="btnUnduhLaporan" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblLaporan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Plus Jakarta Sans" size="36" style="1"/>
@@ -91,7 +91,7 @@
             <Property name="text" type="java.lang.String" value="Laporan Pemasukan"/>
           </Properties>
         </Component>
-        <Component class="seblakratupos.view.component.ButtonCustom" name="buttonCustom1">
+        <Component class="seblakratupos.view.component.ButtonCustom" name="btnUnduhLaporan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b" green="58" red="ea" type="rgb"/>
@@ -122,7 +122,7 @@
             <Property name="roundTopRight" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUnduhLaporanActionPerformed"/>
           </Events>
         </Component>
         <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV23">
@@ -229,13 +229,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" max="32767" attributes="0"/>
+                          <Component id="lblRpPemasukkan" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="lblpemasukkan" min="-2" pref="139" max="-2" attributes="0"/>
                               <EmptySpace pref="114" max="32767" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel5" max="32767" attributes="0"/>
+                          <Component id="lblPersenMasuk" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
@@ -246,20 +246,20 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblpemasukkan" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRpPemasukkan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPersenMasuk" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblpemasukkan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans Medium" size="16" style="0"/>
@@ -274,7 +274,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="lblRpPemasukkan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -282,7 +282,7 @@
                 <Property name="text" type="java.lang.String" value="Rp 0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="lblPersenMasuk">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -319,13 +319,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblRpPengeluaran" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel6" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="lblPengeluaran" min="-2" pref="139" max="-2" attributes="0"/>
                               <EmptySpace pref="114" max="32767" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel9" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblPersenKeluar" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
@@ -336,20 +336,20 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPengeluaran" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRpPengeluaran" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPersenKeluar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="lblPengeluaran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans Medium" size="16" style="0"/>
@@ -364,7 +364,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="lblRpPengeluaran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -372,7 +372,7 @@
                 <Property name="text" type="java.lang.String" value="Rp 0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
+            <Component class="javax.swing.JLabel" name="lblPersenKeluar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -409,14 +409,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel12" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblRpLaba" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel10" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="lblLaba" min="-2" pref="139" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel13" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Component id="lblMargin" min="-2" pref="138" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jLabel14" min="-2" pref="54" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
@@ -431,14 +431,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLaba" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRpLaba" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMargin" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -447,7 +447,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel10">
+            <Component class="javax.swing.JLabel" name="lblLaba">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans Medium" size="16" style="0"/>
@@ -465,7 +465,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel12">
+            <Component class="javax.swing.JLabel" name="lblRpLaba">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -476,7 +476,7 @@
                 <Property name="text" type="java.lang.String" value="Rp 0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel13">
+            <Component class="javax.swing.JLabel" name="lblMargin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="0"/>
@@ -561,13 +561,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jLabel15" min="-2" pref="225" max="-2" attributes="0"/>
+                      <Component id="lblRincian" min="-2" pref="225" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnTambahPengguna" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSemua" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTambahPengguna1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPemasukkan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTambahPengguna2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPengeluaran" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -578,11 +578,11 @@
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnTambahPengguna" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnTambahPengguna1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnTambahPengguna2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSemua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPemasukkan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPengeluaran" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRincian" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
@@ -590,7 +590,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel15">
+            <Component class="javax.swing.JLabel" name="lblRincian">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -598,7 +598,7 @@
                 <Property name="text" type="java.lang.String" value="Rincian Transaksi"/>
               </Properties>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnTambahPengguna">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnSemua">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -664,10 +664,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahPenggunaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSemuaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnTambahPengguna1">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnPemasukkan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -733,10 +733,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahPengguna1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPemasukkanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnTambahPengguna2">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnPengeluaran">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -802,7 +802,7 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahPengguna2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPengeluaranActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -839,7 +839,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="seblakratupos.view.component.TableCustom" name="tableCustom1">
+                <Component class="seblakratupos.view.component.TableCustom" name="tblLaporan">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="1">
