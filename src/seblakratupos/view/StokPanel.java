@@ -561,15 +561,11 @@ public class StokPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTambahPengguna;
-    private javax.swing.JLabel lblTambahPengguna1;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV210;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV28;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV30;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV31;
     private seblakratupos.view.component.TableCustom tableCustom1;
     private javax.swing.JTextField txtHarga;
