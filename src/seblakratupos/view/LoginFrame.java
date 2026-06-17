@@ -74,7 +74,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 txtPassword.setText("Masukkan password");
                 txtPassword.setForeground(Color.GRAY);
 
-                // Matikan sensor lagi biar placeholder kebaca normal
+                // Matikan sensor lagi biar placeholder terbaca normal
                 txtPassword.setEchoChar((char) 0);
             }
         }
