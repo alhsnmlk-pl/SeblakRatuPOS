@@ -4,6 +4,10 @@
  */
 package seblakratupos.view;
 
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author mac
@@ -15,6 +19,23 @@ public class LaporanPanel extends javax.swing.JPanel {
      */
     public LaporanPanel() {
         initComponents();
+
+        pilihBulan.setOpaque(true);
+        pilihBulan.setBackground(Color.WHITE);
+        pilihBulan.setForeground(Color.BLACK);
+
+        for (Component c : pilihBulan.getComponents()) {
+            c.setBackground(Color.WHITE);
+            c.setForeground(Color.BLACK);
+        }
+
+        for (Component c : pilihBulan.getComponents()) {
+            if (c instanceof JComboBox) {
+                JComboBox cb = (JComboBox) c;
+                cb.setBackground(Color.WHITE);
+                cb.setForeground(Color.BLACK);
+            }
+        }
     }
 
     /**
@@ -26,12 +47,11 @@ public class LaporanPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pilihBulan = new com.toedter.calendar.JMonthChooser();
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
         jLabel1 = new javax.swing.JLabel();
         buttonCustom1 = new seblakratupos.view.component.ButtonCustom();
         panelCustomV23 = new seblakratupos.view.component.PanelCustomV2();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
+        pilihBulan = new com.toedter.calendar.JMonthChooser();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
         panelCustomV27 = new seblakratupos.view.component.PanelCustomV2();
         jLabel2 = new javax.swing.JLabel();
@@ -96,20 +116,22 @@ public class LaporanPanel extends javax.swing.JPanel {
             }
         });
 
-        jMonthChooser1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jMonthChooser1.setDoubleBuffered(false);
-        jMonthChooser1.setFocusable(false);
-        jMonthChooser1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        pilihBulan.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        pilihBulan.setDoubleBuffered(false);
+        pilihBulan.setFocusable(false);
+        pilihBulan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout panelCustomV23Layout = new javax.swing.GroupLayout(panelCustomV23);
         panelCustomV23.setLayout(panelCustomV23Layout);
         panelCustomV23Layout.setHorizontalGroup(
             panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMonthChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV23Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pilihBulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCustomV23Layout.setVerticalGroup(
             panelCustomV23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMonthChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(pilihBulan, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
@@ -180,7 +202,7 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGroup(panelCustomV27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
@@ -230,7 +252,7 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGroup(panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
@@ -289,7 +311,7 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -440,7 +462,6 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
 
-        jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         tableCustom1.setModel(new javax.swing.table.DefaultTableModel(
@@ -475,7 +496,7 @@ public class LaporanPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -486,12 +507,9 @@ public class LaporanPanel extends javax.swing.JPanel {
             .addGroup(panelCustomV24Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addGroup(panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCustomV24Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addGroup(panelCustomV24Layout.createSequentialGroup()
-                        .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1))
         );
         panelCustomV24Layout.setVerticalGroup(
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +549,7 @@ public class LaporanPanel extends javax.swing.JPanel {
 
     private void panelCustomV23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCustomV23MouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_panelCustomV23MouseClicked
 
     private void btnTambahPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPenggunaActionPerformed
@@ -567,7 +585,6 @@ public class LaporanPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;

@@ -4,17 +4,52 @@
  */
 package seblakratupos.view;
 
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+
 /**
  *
  * @author Al
  */
-public class PenggunaPanel extends javax.swing.JPanel {
+public final class PenggunaPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form pengguna
      */
+    
+    ImageIcon iconAktif;
+    ImageIcon iconNonktif;
+    boolean statusAktif = true;
+    
     public PenggunaPanel() {
         initComponents();
+        
+        iconAktif = new ImageIcon(getClass().getResource("/seblakratupos/asset/icon/statusAktif.png"));
+        iconNonktif = new ImageIcon(getClass().getResource("/seblakratupos/asset/icon/statusNonaktif.png"));
+        
+        tukarIcon();
+        
+        bgButton(btnAktif);
+        bgButton(btnNonaktif);
+    }
+    
+    public void tukarIcon(){
+        if (statusAktif){
+            btnAktif.setIcon(iconAktif);
+            btnNonaktif.setIcon(iconNonktif);
+        } else {
+            btnAktif.setIcon(iconNonktif);
+            btnNonaktif.setIcon(iconAktif);
+        }
+    }
+    
+    private void bgButton(JButton btn) {
+        btn.setContentAreaFilled(false);
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setOpaque(false);
     }
 
     /**
@@ -48,8 +83,8 @@ public class PenggunaPanel extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         cPeranPengguna = new seblakratupos.view.component.ComboBoxCustom();
         jLabel18 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnAktif = new javax.swing.JButton();
+        btnNonaktif = new javax.swing.JButton();
         panelCustomV210 = new seblakratupos.view.component.PanelCustomV2();
         btnSimpanPengguna = new seblakratupos.view.component.ButtonCustomV2();
         btnHapusPengguna = new seblakratupos.view.component.ButtonCustomV2();
@@ -286,14 +321,24 @@ public class PenggunaPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(92, 62, 60));
         jLabel18.setText(" Kosongkan jika tidak ingin menambah password.");
 
-        jRadioButton1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jRadioButton1.setText("Aktif");
-        jRadioButton1.setBorder(null);
+        btnAktif.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        btnAktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/statusAktif.png"))); // NOI18N
+        btnAktif.setText("Aktif");
+        btnAktif.setBorder(null);
+        btnAktif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAktif.setIconTextGap(10);
+        btnAktif.setMargin(new java.awt.Insets(50, 10, 10, 10));
+        btnAktif.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/statusAktif.png"))); // NOI18N
+        btnAktif.addActionListener(this::btnAktifActionPerformed);
 
-        jRadioButton2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jRadioButton2.setText("Nonaktif");
-        jRadioButton2.setBorder(null);
-        jRadioButton2.addActionListener(this::jRadioButton2ActionPerformed);
+        btnNonaktif.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        btnNonaktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/statusNonaktif.png"))); // NOI18N
+        btnNonaktif.setText("Nonaktif");
+        btnNonaktif.setBorder(null);
+        btnNonaktif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNonaktif.setIconTextGap(10);
+        btnNonaktif.setMargin(new java.awt.Insets(50, 10, 10, 10));
+        btnNonaktif.addActionListener(this::btnNonaktifActionPerformed);
 
         javax.swing.GroupLayout panelCustomV29Layout = new javax.swing.GroupLayout(panelCustomV29);
         panelCustomV29.setLayout(panelCustomV29Layout);
@@ -308,16 +353,18 @@ public class PenggunaPanel extends javax.swing.JPanel {
                     .addComponent(lblPasswordPengguna, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
                         .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
                             .addComponent(lblPeranPengguna, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cPeranPengguna, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cPeranPengguna, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
+            .addGroup(panelCustomV29Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnAktif, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNonaktif, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCustomV29Layout.setVerticalGroup(
             panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,10 +386,10 @@ public class PenggunaPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAktif, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNonaktif, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelCustomV210.setBackground(new java.awt.Color(255, 255, 255));
@@ -524,14 +571,24 @@ public class PenggunaPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBatalPenggunaActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void btnAktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        statusAktif = true;
+        tukarIcon();
+    }//GEN-LAST:event_btnAktifActionPerformed
+
+    private void btnNonaktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNonaktifActionPerformed
+        // TODO add your handling code here:
+        statusAktif = false;
+        tukarIcon();
+    }//GEN-LAST:event_btnNonaktifActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAktif;
     private seblakratupos.view.component.ButtonCustomV2 btnBatalPengguna;
     private seblakratupos.view.component.ButtonCustomV2 btnHapusPengguna;
+    private javax.swing.JButton btnNonaktif;
     private seblakratupos.view.component.ButtonCustomV2 btnSimpanPengguna;
     private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
     private seblakratupos.view.component.ComboBoxCustom cPeranPengguna;
@@ -541,8 +598,6 @@ public class PenggunaPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDaftarPengguna;
     private javax.swing.JLabel lblPasswordPengguna;

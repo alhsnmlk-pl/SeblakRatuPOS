@@ -118,6 +118,7 @@ public class LoginFrame extends javax.swing.JFrame {
         tDetail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LOGIN");
 
         mainPanel.setBackground(new java.awt.Color(252, 249, 255));
         mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));

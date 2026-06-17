@@ -67,6 +67,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
         btnSimpan = new seblakratupos.view.component.ButtonCustomV2();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PENGATURAN");
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
         mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));

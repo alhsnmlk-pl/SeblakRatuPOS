@@ -6,6 +6,13 @@ package seblakratupos.view;
 
 import javax.swing.ImageIcon;
 
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+
+import javax.swing.JTextField;
+import com.toedter.calendar.JTextFieldDateEditor;
+
 /**
  *
  * @author Al
@@ -17,8 +24,34 @@ public class DiskonPanel extends javax.swing.JPanel {
      */
     public DiskonPanel() {
         initComponents();
+
+        // 1. Atur untuk JDateChooser "Mulai"
+        JButton btnMulai = jDateChooserMulai.getCalendarButton();
+        btnMulai.setPreferredSize(new Dimension(35, btnMulai.getHeight())); // Melebarkan tombol
+        btnMulai.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));    // Mengatur gap & padding internal
+
+        // 2. Atur untuk JDateChooser "Selesai"
+        JButton btnSelesai = jDateChooserSelesai.getCalendarButton();
+        btnSelesai.setPreferredSize(new Dimension(35, btnSelesai.getHeight()));
+        btnSelesai.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+
+        // Jangan lupa panggil revalidate & repaint jika perubahan dilakukan saat runtime
+        jDateChooserMulai.revalidate();
+        jDateChooserMulai.repaint();
+
+        // 1. Ambil editor text dari JDateChooser
+        JTextFieldDateEditor dateEditorMulai = (JTextFieldDateEditor) jDateChooserMulai.getDateEditor();
+        JTextFieldDateEditor dateEditorSelesai = (JTextFieldDateEditor) jDateChooserSelesai.getDateEditor();
+
+        // 2. Hilangkan border-nya
+        dateEditorMulai.setBorder(null);
+        dateEditorSelesai.setBorder(null);
+
+        // 3. (Opsional) Jika ingin background-nya transparan atau mengikuti warna panel
+        dateEditorMulai.setOpaque(false);
+        dateEditorSelesai.setOpaque(false);
     }
-    
+
     ImageIcon iconDate = new ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconDate.png"));
 
     /**
@@ -46,9 +79,9 @@ public class DiskonPanel extends javax.swing.JPanel {
         txtNamaBahan = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooserMulai = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateChooserSelesai = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         txtHarga = new javax.swing.JTextField();
@@ -162,11 +195,9 @@ public class DiskonPanel extends javax.swing.JPanel {
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV21Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(panelCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1))
-            .addGroup(panelCustomV21Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane2)
+                .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addGap(1, 1, 1))
         );
         panelCustomV21Layout.setVerticalGroup(
@@ -245,46 +276,48 @@ public class DiskonPanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel1.setForeground(new java.awt.Color(92, 62, 60));
 
-        jDateChooser2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jDateChooser2.setIcon(iconDate);
+        jDateChooserMulai.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jDateChooserMulai.setIcon(iconDate);
+        jDateChooserMulai.setOpaque(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(jDateChooserMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jDateChooserMulai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
-        jDateChooser3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jDateChooser3.setIcon(iconDate);
+        jDateChooserSelesai.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jDateChooserSelesai.setIcon(iconDate);
+        jDateChooserSelesai.setOpaque(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jDateChooserSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jDateChooserSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -576,8 +609,8 @@ public class DiskonPanel extends javax.swing.JPanel {
     private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
     private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
     private seblakratupos.view.component.ComboBoxCustom cPeranPengguna;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooserMulai;
+    private com.toedter.calendar.JDateChooser jDateChooserSelesai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
