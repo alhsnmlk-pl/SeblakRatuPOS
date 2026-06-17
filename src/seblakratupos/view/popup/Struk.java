@@ -29,17 +29,119 @@ public class Struk extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
+        btnTutupStruk = new seblakratupos.view.component.ButtonCustomV2();
+        btnCetakStruk = new seblakratupos.view.component.ButtonCustomV2();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        panelCustomV21.setBorderBottomThickness(1);
+        panelCustomV21.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV21.setRoundTopLeft(15);
+        panelCustomV21.setRoundTopRight(15);
+
+        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/pratinjau struk.png"))); // NOI18N
+        jLabel1.setText("   Pratinjau Struk");
+
+        javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
+        panelCustomV21.setLayout(panelCustomV21Layout);
+        panelCustomV21Layout.setHorizontalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        panelCustomV21Layout.setVerticalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelCustomV22.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV22.setBorderTopThickness(1);
+        panelCustomV22.setRoundBottomLeft(15);
+        panelCustomV22.setRoundBottomRight(15);
+
+        btnTutupStruk.setText("Tutup");
+        btnTutupStruk.setActiveBorderColor(new java.awt.Color(231, 189, 187));
+        btnTutupStruk.setActiveForeground(new java.awt.Color(0, 0, 0));
+        btnTutupStruk.setActiveHoverBorderColor(new java.awt.Color(231, 189, 187));
+        btnTutupStruk.setActiveHoverForeground(new java.awt.Color(0, 0, 0));
+        btnTutupStruk.setBorderPainted(true);
+        btnTutupStruk.setBorderThickness(1);
+        btnTutupStruk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnTutupStruk.setHoverBorderColor(new java.awt.Color(231, 189, 187));
+        btnTutupStruk.setHoverForeground(new java.awt.Color(0, 0, 0));
+        btnTutupStruk.setInactiveBorderColor(new java.awt.Color(231, 189, 187));
+        btnTutupStruk.setInactiveForeground(new java.awt.Color(0, 0, 0));
+        btnTutupStruk.setPressedBorderColor(new java.awt.Color(231, 189, 187));
+        btnTutupStruk.setPressedForeground(new java.awt.Color(0, 0, 0));
+
+        btnCetakStruk.setBackground(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/pratinjau.png"))); // NOI18N
+        btnCetakStruk.setText("Cetak");
+        btnCetakStruk.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setActiveBorderColor(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnCetakStruk.setActiveHoverBorderColor(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnCetakStruk.setBorderThickness(1);
+        btnCetakStruk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnCetakStruk.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setHoverBorderColor(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnCetakStruk.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setInactiveBorderColor(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnCetakStruk.setPressedBackground(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setPressedBorderColor(new java.awt.Color(215, 4, 39));
+        btnCetakStruk.setPressedForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panelCustomV22Layout = new javax.swing.GroupLayout(panelCustomV22);
+        panelCustomV22.setLayout(panelCustomV22Layout);
+        panelCustomV22Layout.setHorizontalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnTutupStruk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(8, 8, 8))
+        );
+        panelCustomV22Layout.setVerticalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV22Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(btnTutupStruk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(panelCustomV21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCustomV22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(panelCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -83,5 +185,11 @@ public class Struk extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private seblakratupos.view.component.ButtonCustomV2 btnCetakStruk;
+    private seblakratupos.view.component.ButtonCustomV2 btnTutupStruk;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     // End of variables declaration//GEN-END:variables
 }
