@@ -83,7 +83,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="usrContainer" max="32767" attributes="0"/>
-                              <Component id="buttonCustom1" max="32767" attributes="0"/>
+                              <Component id="btnLogin" max="32767" attributes="0"/>
                               <Component id="passContainer" max="32767" attributes="0"/>
                               <Component id="passContainer1" max="32767" attributes="0"/>
                           </Group>
@@ -101,7 +101,7 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="passContainer1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="39" max="32767" attributes="0"/>
-                          <Component id="buttonCustom1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnLogin" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -119,7 +119,7 @@
                     <Property name="useNullLayout" type="boolean" value="false"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="lblUsernameLogin">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -214,13 +214,13 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="panelCustom2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblPassword" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="panelCustom2" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -228,7 +228,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel5">
+                    <Component class="javax.swing.JLabel" name="lblPassword">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -300,7 +300,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class="seblakratupos.view.component.ButtonCustom" name="buttonCustom1">
+                <Component class="seblakratupos.view.component.ButtonCustom" name="btnLogin">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="27" green="4" red="d6" type="rgb"/>
@@ -328,7 +328,7 @@
                     <Property name="roundTopRight" type="int" value="3"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="passContainer1">
@@ -344,13 +344,13 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="panelCustom3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblMasukSebagai" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMasukSebagai" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="panelCustom3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -358,7 +358,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="lblMasukSebagai">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -388,7 +388,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" pref="31" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="comboBoxCustom1" min="-2" pref="348" max="-2" attributes="0"/>
+                                  <Component id="cMasukSebagai" min="-2" pref="348" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -399,7 +399,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel8" max="32767" attributes="0"/>
-                                      <Component id="comboBoxCustom1" max="32767" attributes="0"/>
+                                      <Component id="cMasukSebagai" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -415,7 +415,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="seblakratupos.view.component.ComboBoxCustom" name="comboBoxCustom1">
+                        <Component class="seblakratupos.view.component.ComboBoxCustom" name="cMasukSebagai">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
@@ -441,6 +441,9 @@
                               <Color blue="e8" green="e9" red="fc" type="rgb"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cMasukSebagaiActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
