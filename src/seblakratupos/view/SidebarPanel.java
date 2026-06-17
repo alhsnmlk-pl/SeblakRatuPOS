@@ -5,8 +5,8 @@
 package seblakratupos.view;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import seblakratupos.view.LoginFrame;
-import seblakratupos.view.MainFrame;
+
+import seblakratupos.view.component.ButtonCustomV2;  //mengimport custom button
 
 /**
  *
@@ -20,6 +20,80 @@ public class SidebarPanel extends javax.swing.JPanel {
     public SidebarPanel() {
         initComponents();
     }
+    
+    //membuat getter aga main frame dapat membaca button
+    public ButtonCustomV2 getBtnTransaksi() {
+        return btnTransaksi;
+    }
+
+    public ButtonCustomV2 getBtnProduk() {
+        return btnProduk;
+    }
+
+    public ButtonCustomV2 getBtnStok() {
+        return btnStok;
+    }
+
+    public ButtonCustomV2 getBtnPengguna() {
+        return btnPengguna;
+    }
+
+    public ButtonCustomV2 getBtnDiskon() {
+        return btnDiskon;
+    }
+
+    public ButtonCustomV2 getBtnLaporan() {
+        return btnLaporan;
+    }
+    
+    public ButtonCustomV2 getBtnLogout() {
+        return btnLogout;
+    }
+    
+    public ButtonCustomV2 getBtnPengaturan() {
+    return btnPengaturan;
+}
+    
+    
+    //membuat fungsi aktif button sesuai dengan pilihanya
+    public void setActiveMenu(String menu) {
+        
+    btnTransaksi.setActive(false);
+    btnProduk.setActive(false);
+    btnStok.setActive(false);
+    btnPengguna.setActive(false);
+    btnDiskon.setActive(false);
+    btnLaporan.setActive(false);
+
+    switch (menu) {
+        case "transaksi":
+            btnTransaksi.setActive(true);
+            break;
+
+        case "produk":
+            btnProduk.setActive(true);
+            break;
+
+        case "stok":
+            btnStok.setActive(true);
+            break;
+
+        case "pengguna":
+            btnPengguna.setActive(true);
+            break;
+
+        case "diskon":
+            btnDiskon.setActive(true);
+            break;
+
+        case "laporan":
+            btnLaporan.setActive(true);
+            break;
+    }
+
+    repaint();
+    revalidate();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,15 +111,15 @@ public class SidebarPanel extends javax.swing.JPanel {
         txtSeblakRatu = new javax.swing.JLabel();
         txtPosSystem = new javax.swing.JLabel();
         containerBtnSideBar = new seblakratupos.view.component.PanelCustomV2();
-        btnTrx = new seblakratupos.view.component.ButtonCustomV2();
+        btnTransaksi = new seblakratupos.view.component.ButtonCustomV2();
         btnProduk = new seblakratupos.view.component.ButtonCustomV2();
         btnStok = new seblakratupos.view.component.ButtonCustomV2();
         btnPengguna = new seblakratupos.view.component.ButtonCustomV2();
-        btndiskon = new seblakratupos.view.component.ButtonCustomV2();
+        btnDiskon = new seblakratupos.view.component.ButtonCustomV2();
         btnLaporan = new seblakratupos.view.component.ButtonCustomV2();
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
-        btnLaporan1 = new seblakratupos.view.component.ButtonCustomV2();
-        btnLaporan3 = new seblakratupos.view.component.ButtonCustomV2();
+        btnLogout = new seblakratupos.view.component.ButtonCustomV2();
+        btnPengaturan = new seblakratupos.view.component.ButtonCustomV2();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(205, 720));
@@ -90,40 +164,38 @@ public class SidebarPanel extends javax.swing.JPanel {
         containerBtnSideBar.setPreferredSize(new java.awt.Dimension(204, 336));
         containerBtnSideBar.setLayout(new java.awt.GridLayout(6, 1));
 
-        btnTrx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconTrx.png"))); // NOI18N
-        btnTrx.setText("Transaksi");
-        btnTrx.setActiveBackground(new java.awt.Color(255, 237, 214));
-        btnTrx.setActiveHoverBackground(new java.awt.Color(255, 237, 214));
-        btnTrx.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
+        btnTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconTrx.png"))); // NOI18N
+        btnTransaksi.setText("Transaksi");
+        btnTransaksi.setActiveBackground(new java.awt.Color(255, 237, 214));
+        btnTransaksi.setActiveHoverBackground(new java.awt.Color(255, 237, 214));
+        btnTransaksi.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
         );
-        btnTrx.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
+        btnTransaksi.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
         );
-        btnTrx.setActiveOnClick(true);
-        btnTrx.setBorderRightThickness(5);
-        btnTrx.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        btnTrx.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnTrx.setDisabledForeground(new java.awt.Color(150, 150, 150));
-        btnTrx.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconTrx.png"))); // NOI18N
-        btnTrx.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/DisIconTrx.svg")
+        btnTransaksi.setBorderRightThickness(5);
+        btnTransaksi.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnTransaksi.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnTransaksi.setDisabledForeground(new java.awt.Color(150, 150, 150));
+        btnTransaksi.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconTrx.png"))); // NOI18N
+        btnTransaksi.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/DisIconTrx.svg")
         );
-        btnTrx.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/DisIconTrx.svg")
+        btnTransaksi.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/DisIconTrx.svg")
         );
-        btnTrx.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
-        btnTrx.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnTrx.setHoverBackground(new java.awt.Color(247, 247, 247));
-        btnTrx.setHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btnTrx.setHoverForeground(new java.awt.Color(150, 150, 150));
-        btnTrx.setIconTextGap(16);
-        btnTrx.setPaddingLeft(22);
-        btnTrx.setPressedBackground(new java.awt.Color(255, 237, 214));
-        btnTrx.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
+        btnTransaksi.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
+        btnTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTransaksi.setHoverBackground(new java.awt.Color(247, 247, 247));
+        btnTransaksi.setHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnTransaksi.setHoverForeground(new java.awt.Color(150, 150, 150));
+        btnTransaksi.setIconTextGap(16);
+        btnTransaksi.setPaddingLeft(22);
+        btnTransaksi.setPressedBackground(new java.awt.Color(255, 237, 214));
+        btnTransaksi.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconTrx.svg")
         );
-        btnTrx.setRoundBottomLeft(0);
-        btnTrx.setRoundBottomRight(0);
-        btnTrx.setRoundTopLeft(0);
-        btnTrx.setRoundTopRight(0);
-        btnTrx.addActionListener(this::btnTrxActionPerformed);
-        containerBtnSideBar.add(btnTrx);
+        btnTransaksi.setRoundBottomLeft(0);
+        btnTransaksi.setRoundBottomRight(0);
+        btnTransaksi.setRoundTopLeft(0);
+        btnTransaksi.setRoundTopRight(0);
+        containerBtnSideBar.add(btnTransaksi);
 
         btnProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconProduk.png"))); // NOI18N
         btnProduk.setText("Produk");
@@ -227,39 +299,39 @@ public class SidebarPanel extends javax.swing.JPanel {
         btnPengguna.setRoundTopRight(0);
         containerBtnSideBar.add(btnPengguna);
 
-        btndiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconDiskon.png"))); // NOI18N
-        btndiskon.setText("Diskon");
-        btndiskon.setActiveBackground(new java.awt.Color(255, 237, 214));
-        btndiskon.setActiveHoverBackground(new java.awt.Color(255, 237, 214));
-        btndiskon.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
+        btnDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconDiskon.png"))); // NOI18N
+        btnDiskon.setText("Diskon");
+        btnDiskon.setActiveBackground(new java.awt.Color(255, 237, 214));
+        btnDiskon.setActiveHoverBackground(new java.awt.Color(255, 237, 214));
+        btnDiskon.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
         );
-        btndiskon.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
+        btnDiskon.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
         );
-        btndiskon.setActiveOnClick(true);
-        btndiskon.setBorderRightThickness(5);
-        btndiskon.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        btndiskon.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btndiskon.setDisabledForeground(new java.awt.Color(150, 150, 150));
-        btndiskon.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconDiskon.png"))); // NOI18N
-        btndiskon.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/DisIconDiskon.svg")
+        btnDiskon.setActiveOnClick(true);
+        btnDiskon.setBorderRightThickness(5);
+        btnDiskon.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnDiskon.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnDiskon.setDisabledForeground(new java.awt.Color(150, 150, 150));
+        btnDiskon.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconDiskon.png"))); // NOI18N
+        btnDiskon.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/DisIconDiskon.svg")
         );
-        btndiskon.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/DisIconDiskon.svg")
+        btnDiskon.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/DisIconDiskon.svg")
         );
-        btndiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
-        btndiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btndiskon.setHoverBackground(new java.awt.Color(247, 247, 247));
-        btndiskon.setHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btndiskon.setHoverForeground(new java.awt.Color(150, 150, 150));
-        btndiskon.setIconTextGap(16);
-        btndiskon.setPaddingLeft(22);
-        btndiskon.setPressedBackground(new java.awt.Color(255, 237, 214));
-        btndiskon.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
+        btnDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
+        btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDiskon.setHoverBackground(new java.awt.Color(247, 247, 247));
+        btnDiskon.setHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnDiskon.setHoverForeground(new java.awt.Color(150, 150, 150));
+        btnDiskon.setIconTextGap(16);
+        btnDiskon.setPaddingLeft(22);
+        btnDiskon.setPressedBackground(new java.awt.Color(255, 237, 214));
+        btnDiskon.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconDiskon.svg")
         );
-        btndiskon.setRoundBottomLeft(0);
-        btndiskon.setRoundBottomRight(0);
-        btndiskon.setRoundTopLeft(0);
-        btndiskon.setRoundTopRight(0);
-        containerBtnSideBar.add(btndiskon);
+        btnDiskon.setRoundBottomLeft(0);
+        btnDiskon.setRoundBottomRight(0);
+        btnDiskon.setRoundTopLeft(0);
+        btnDiskon.setRoundTopRight(0);
+        containerBtnSideBar.add(btnDiskon);
 
         btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/DisIconLaporan.png"))); // NOI18N
         btnLaporan.setText("Laporan");
@@ -299,99 +371,101 @@ public class SidebarPanel extends javax.swing.JPanel {
         panelCustomV21.setBorderColor(new java.awt.Color(204, 204, 204));
         panelCustomV21.setBorderTopThickness(1);
 
-        btnLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconLogout.png"))); // NOI18N
-        btnLaporan1.setText("Logout");
-        btnLaporan1.setActiveBackground(new java.awt.Color(255, 255, 255));
-        btnLaporan1.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        btnLaporan1.setActiveForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan1.setActiveHoverBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setActiveHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setActiveHoverForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan1.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconLogout.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.setActiveBackground(new java.awt.Color(255, 255, 255));
+        btnLogout.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnLogout.setActiveForeground(new java.awt.Color(150, 150, 150));
+        btnLogout.setActiveHoverBackground(new java.awt.Color(247, 247, 247));
+        btnLogout.setActiveHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnLogout.setActiveHoverForeground(new java.awt.Color(150, 150, 150));
+        btnLogout.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
         );
-        btnLaporan1.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
+        btnLogout.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
         );
-        btnLaporan1.setActiveOnClick(true);
-        btnLaporan1.setBorderRightThickness(5);
-        btnLaporan1.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        btnLaporan1.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnLaporan1.setDisabledForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan1.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconLogout.png"))); // NOI18N
-        btnLaporan1.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
+        btnLogout.setActiveOnClick(true);
+        btnLogout.setBorderRightThickness(5);
+        btnLogout.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnLogout.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnLogout.setDisabledForeground(new java.awt.Color(150, 150, 150));
+        btnLogout.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconLogout.png"))); // NOI18N
+        btnLogout.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
         );
-        btnLaporan1.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
+        btnLogout.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
         );
-        btnLaporan1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
-        btnLaporan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnLaporan1.setHoverBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setHoverForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan1.setIconTextGap(16);
-        btnLaporan1.setPaddingLeft(22);
-        btnLaporan1.setPressedBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setPressedBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan1.setPressedForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan1.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
+        btnLogout.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
+        btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogout.setHoverBackground(new java.awt.Color(247, 247, 247));
+        btnLogout.setHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnLogout.setHoverForeground(new java.awt.Color(150, 150, 150));
+        btnLogout.setIconTextGap(16);
+        btnLogout.setPaddingLeft(22);
+        btnLogout.setPressedBackground(new java.awt.Color(247, 247, 247));
+        btnLogout.setPressedBorderColor(new java.awt.Color(247, 247, 247));
+        btnLogout.setPressedForeground(new java.awt.Color(150, 150, 150));
+        btnLogout.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconLogout.svg")
         );
-        btnLaporan1.setRoundBottomLeft(0);
-        btnLaporan1.setRoundBottomRight(0);
-        btnLaporan1.setRoundTopLeft(0);
-        btnLaporan1.setRoundTopRight(0);
+        btnLogout.setRoundBottomLeft(0);
+        btnLogout.setRoundBottomRight(0);
+        btnLogout.setRoundTopLeft(0);
+        btnLogout.setRoundTopRight(0);
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
-        btnLaporan3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSetting.png"))); // NOI18N
-        btnLaporan3.setText("Pengaturan");
-        btnLaporan3.setActiveBackground(new java.awt.Color(255, 255, 255));
-        btnLaporan3.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        btnLaporan3.setActiveForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan3.setActiveHoverBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setActiveHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setActiveHoverForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan3.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconSetting.png"))); // NOI18N
+        btnPengaturan.setText("Pengaturan");
+        btnPengaturan.setActiveBackground(new java.awt.Color(255, 255, 255));
+        btnPengaturan.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnPengaturan.setActiveForeground(new java.awt.Color(150, 150, 150));
+        btnPengaturan.setActiveHoverBackground(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setActiveHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setActiveHoverForeground(new java.awt.Color(150, 150, 150));
+        btnPengaturan.setActiveHoverIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setActiveIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setActiveOnClick(true);
-        btnLaporan3.setBorderRightThickness(5);
-        btnLaporan3.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        btnLaporan3.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnLaporan3.setDisabledForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan3.setDisabledIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setActiveOnClick(true);
+        btnPengaturan.setBorderRightThickness(5);
+        btnPengaturan.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnPengaturan.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnPengaturan.setDisabledForeground(new java.awt.Color(150, 150, 150));
+        btnPengaturan.setDisabledIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setDisabledIconCustom(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setDisabledSelectedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
-        btnLaporan3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnLaporan3.setHoverBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setHoverBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setHoverForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan3.setIconTextGap(16);
-        btnLaporan3.setPaddingLeft(22);
-        btnLaporan3.setPressedBackground(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setPressedBorderColor(new java.awt.Color(247, 247, 247));
-        btnLaporan3.setPressedForeground(new java.awt.Color(150, 150, 150));
-        btnLaporan3.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
+        btnPengaturan.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 16)); // NOI18N
+        btnPengaturan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPengaturan.setHoverBackground(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setHoverBorderColor(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setHoverForeground(new java.awt.Color(150, 150, 150));
+        btnPengaturan.setIconTextGap(16);
+        btnPengaturan.setPaddingLeft(22);
+        btnPengaturan.setPressedBackground(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setPressedBorderColor(new java.awt.Color(247, 247, 247));
+        btnPengaturan.setPressedForeground(new java.awt.Color(150, 150, 150));
+        btnPengaturan.setPressedIcon(new FlatSVGIcon("seblakratupos/asset/icon/IconSetting.svg")
         );
-        btnLaporan3.setRoundBottomLeft(0);
-        btnLaporan3.setRoundBottomRight(0);
-        btnLaporan3.setRoundTopLeft(0);
-        btnLaporan3.setRoundTopRight(0);
+        btnPengaturan.setRoundBottomLeft(0);
+        btnPengaturan.setRoundBottomRight(0);
+        btnPengaturan.setRoundTopLeft(0);
+        btnPengaturan.setRoundTopRight(0);
+        btnPengaturan.addActionListener(this::btnPengaturanActionPerformed);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
         panelCustomV21.setLayout(panelCustomV21Layout);
         panelCustomV21Layout.setHorizontalGroup(
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnLaporan3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         panelCustomV21Layout.setVerticalGroup(
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV21Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btnLaporan3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -428,20 +502,27 @@ public class SidebarPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTrxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTrxActionPerformed
+
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnPengaturanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengaturanActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_btnPengaturanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private seblakratupos.view.component.ButtonCustomV2 btnDiskon;
     private seblakratupos.view.component.ButtonCustomV2 btnLaporan;
-    private seblakratupos.view.component.ButtonCustomV2 btnLaporan1;
-    private seblakratupos.view.component.ButtonCustomV2 btnLaporan3;
+    private seblakratupos.view.component.ButtonCustomV2 btnLogout;
+    private seblakratupos.view.component.ButtonCustomV2 btnPengaturan;
     private seblakratupos.view.component.ButtonCustomV2 btnPengguna;
     private seblakratupos.view.component.ButtonCustomV2 btnProduk;
     private seblakratupos.view.component.ButtonCustomV2 btnStok;
-    private seblakratupos.view.component.ButtonCustomV2 btnTrx;
-    private seblakratupos.view.component.ButtonCustomV2 btndiskon;
+    private seblakratupos.view.component.ButtonCustomV2 btnTransaksi;
     private seblakratupos.view.component.PanelCustomV2 containerBtnSideBar;
     private seblakratupos.view.component.PanelCustomV2 containerHeader;
     private seblakratupos.view.component.PanelCustomV2 containerSidebar;

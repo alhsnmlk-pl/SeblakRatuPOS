@@ -30,11 +30,11 @@ public class StokPanel extends javax.swing.JPanel {
         panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnTambah = new seblakratupos.view.component.ButtonCustomV2();
+        btnTambahPengguna = new seblakratupos.view.component.ButtonCustomV2();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustom1 = new seblakratupos.view.component.TableCustom();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
-        panelCustomV28 = new seblakratupos.view.component.PanelCustomV2();
+        panelCustomV31 = new seblakratupos.view.component.PanelCustomV2();
         jLabel13 = new javax.swing.JLabel();
         panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
         jLabel14 = new javax.swing.JLabel();
@@ -43,15 +43,18 @@ public class StokPanel extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtJumlah = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         txtSatuan = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         txtHarga = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         panelCustomV210 = new seblakratupos.view.component.PanelCustomV2();
         btnSimpan = new seblakratupos.view.component.ButtonCustomV2();
         btnHapus = new seblakratupos.view.component.ButtonCustomV2();
         btnBatal = new seblakratupos.view.component.ButtonCustomV2();
 
+        setBackground(new java.awt.Color(252, 249, 255));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 14, 14, 14));
         setPreferredSize(new java.awt.Dimension(1075, 639));
 
         panelCustomV21.setBackground(new java.awt.Color(255, 255, 255));
@@ -62,53 +65,53 @@ public class StokPanel extends javax.swing.JPanel {
         panelCustomV24.setBorderBottomThickness(1);
         panelCustomV24.setBorderColor(new java.awt.Color(231, 189, 187));
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
         jLabel1.setText("Daftar Stok");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTambah.setBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/Container (1).png"))); // NOI18N
-        btnTambah.setText(" Tambah Baru");
-        btnTambah.setActiveBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambah.setActiveForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambah.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setDisabledBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambah.setDisabledForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnTambah.setHoverBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setHoverForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setInactiveBackground(new java.awt.Color(215, 4, 39));
-        btnTambah.setInactiveForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setPressedBackground(new java.awt.Color(175, 3, 31));
-        btnTambah.setPressedBorderColor(new java.awt.Color(255, 255, 255));
-        btnTambah.setPressedForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setRoundBottomLeft(0);
-        btnTambah.setRoundBottomRight(0);
-        btnTambah.setRoundTopLeft(0);
-        btnTambah.setRoundTopRight(0);
-        btnTambah.addActionListener(this::btnTambahActionPerformed);
+        btnTambahPengguna.setBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconPlus.png"))); // NOI18N
+        btnTambahPengguna.setText("Tambah Baru");
+        btnTambahPengguna.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setDisabledBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnTambahPengguna.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnTambahPengguna.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnTambahPengguna.setPressedBorderColor(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setPressedForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengguna.setRoundBottomLeft(0);
+        btnTambahPengguna.setRoundBottomRight(0);
+        btnTambahPengguna.setRoundTopLeft(0);
+        btnTambahPengguna.setRoundTopRight(0);
+        btnTambahPengguna.addActionListener(this::btnTambahPenggunaActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnTambahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(btnTambahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout panelCustomV24Layout = new javax.swing.GroupLayout(panelCustomV24);
@@ -118,7 +121,7 @@ public class StokPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV24Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCustomV24Layout.setVerticalGroup(
@@ -172,34 +175,35 @@ public class StokPanel extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addComponent(panelCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                 .addGap(1, 1, 1))
         );
 
         panelCustomV22.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV22.setBorderThickness(1);
 
-        panelCustomV28.setBackground(new java.awt.Color(255, 255, 255));
-        panelCustomV28.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV31.setBackground(new java.awt.Color(255, 255, 255));
+        panelCustomV31.setBorderColor(new java.awt.Color(231, 189, 187));
+        panelCustomV31.setPreferredSize(new java.awt.Dimension(345, 62));
 
-        jLabel13.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
         jLabel13.setText("Tambah Stok Bahan");
 
-        javax.swing.GroupLayout panelCustomV28Layout = new javax.swing.GroupLayout(panelCustomV28);
-        panelCustomV28.setLayout(panelCustomV28Layout);
-        panelCustomV28Layout.setHorizontalGroup(
-            panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV28Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+        javax.swing.GroupLayout panelCustomV31Layout = new javax.swing.GroupLayout(panelCustomV31);
+        panelCustomV31.setLayout(panelCustomV31Layout);
+        panelCustomV31Layout.setHorizontalGroup(
+            panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV31Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
-        panelCustomV28Layout.setVerticalGroup(
-            panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCustomV28Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+        panelCustomV31Layout.setVerticalGroup(
+            panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV31Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel13)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         panelCustomV29.setBackground(new java.awt.Color(255, 255, 255));
@@ -223,14 +227,14 @@ public class StokPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtNamaBahan, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addComponent(txtNamaBahan, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtNamaBahan, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(txtNamaBahan, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -243,29 +247,68 @@ public class StokPanel extends javax.swing.JPanel {
 
         txtJumlah.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         txtJumlah.setText("0");
+        txtJumlah.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 14, Short.MAX_VALUE)
+                .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel16.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel16.setText("Harga Satuan");
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         txtSatuan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         txtSatuan.setText("Kilogram (Kg)");
+        txtSatuan.setBorder(null);
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(txtSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(txtSatuan)
+                .addGap(0, 0, 0))
+        );
+
+        jLabel16.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        jLabel16.setText("Harga Satuan");
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+
+        txtHarga.setBorder(null);
         txtHarga.addActionListener(this::txtHargaActionPerformed);
 
-        jTextField4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("Rp");
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
         javax.swing.GroupLayout panelCustomV29Layout = new javax.swing.GroupLayout(panelCustomV29);
         panelCustomV29.setLayout(panelCustomV29Layout);
@@ -274,28 +317,25 @@ public class StokPanel extends javax.swing.JPanel {
             .addGroup(panelCustomV29Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelCustomV29Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV29Layout.createSequentialGroup()
                         .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
                                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
-                                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panelCustomV29Layout.createSequentialGroup()
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, 0)
-                                            .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(24, 24, 24))))
+                        .addGap(24, 24, 24))
+                    .addGroup(panelCustomV29Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelCustomV29Layout.setVerticalGroup(
             panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,14 +348,12 @@ public class StokPanel extends javax.swing.JPanel {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSatuan)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtHarga)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -441,15 +479,15 @@ public class StokPanel extends javax.swing.JPanel {
             .addComponent(panelCustomV210, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelCustomV22Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(panelCustomV28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCustomV31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, 347, Short.MAX_VALUE)
         );
         panelCustomV22Layout.setVerticalGroup(
             panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV22Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(panelCustomV28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCustomV31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelCustomV29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
@@ -478,10 +516,6 @@ public class StokPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTambahActionPerformed
-
     private void txtNamaBahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaBahanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaBahanActionPerformed
@@ -506,12 +540,16 @@ public class StokPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaActionPerformed
 
+    private void btnTambahPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPenggunaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahPenggunaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private seblakratupos.view.component.ButtonCustomV2 btnBatal;
     private seblakratupos.view.component.ButtonCustomV2 btnHapus;
     private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
-    private seblakratupos.view.component.ButtonCustomV2 btnTambah;
+    private seblakratupos.view.component.ButtonCustomV2 btnTambahPengguna;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -520,14 +558,15 @@ public class StokPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV210;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
-    private seblakratupos.view.component.PanelCustomV2 panelCustomV28;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
+    private seblakratupos.view.component.PanelCustomV2 panelCustomV31;
     private seblakratupos.view.component.TableCustom tableCustom1;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtJumlah;
