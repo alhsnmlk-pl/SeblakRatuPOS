@@ -35,22 +35,26 @@ public class Bayar extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        lblSubTotal = new javax.swing.JLabel();
+        lblDiskon = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
-        buttonCustomV21 = new seblakratupos.view.component.ButtonCustomV2();
-        buttonCustomV22 = new seblakratupos.view.component.ButtonCustomV2();
+        btnTunai = new seblakratupos.view.component.ButtonCustomV2();
+        btnQris = new seblakratupos.view.component.ButtonCustomV2();
         jLabel3 = new javax.swing.JLabel();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        buttonCustomV23 = new seblakratupos.view.component.ButtonCustomV2();
-        buttonCustomV24 = new seblakratupos.view.component.ButtonCustomV2();
+        tJmlBayar = new javax.swing.JTextField();
+        lblKembalian = new javax.swing.JLabel();
+        btnBatal = new seblakratupos.view.component.ButtonCustomV2();
+        btnProsesCetak = new seblakratupos.view.component.ButtonCustomV2();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelCustomV25.setBackground(new java.awt.Color(244, 242, 255));
+        panelCustomV25.setBorderBottomThickness(1);
 
         jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/ikondompet.png"))); // NOI18N
@@ -76,9 +80,10 @@ public class Bayar extends javax.swing.JDialog {
         panelCustomV26.setBackground(new java.awt.Color(251, 248, 255));
         panelCustomV26.setAutoscrolls(true);
         panelCustomV26.setBorderColor(new java.awt.Color(251, 248, 255));
+        panelCustomV26.setBorderThickness(1);
 
         jLabel5.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jLabel5.setText("sub total   ");
+        jLabel5.setText("Sub total   ");
 
         jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
         jLabel2.setText("Total");
@@ -86,64 +91,92 @@ public class Bayar extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jLabel8.setText("Diskon 10% (jumat berkah)");
 
+        lblSubTotal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 12)); // NOI18N
+        lblSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSubTotal.setText("Rp 13.000");
+
+        lblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 12)); // NOI18N
+        lblDiskon.setForeground(new java.awt.Color(216, 4, 42));
+        lblDiskon.setText("-Rp 0");
+
+        lblTotal.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 21)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(216, 4, 42));
+        lblTotal.setText("Rp 11.000");
+
         javax.swing.GroupLayout panelCustomV26Layout = new javax.swing.GroupLayout(panelCustomV26);
         panelCustomV26.setLayout(panelCustomV26Layout);
         panelCustomV26Layout.setHorizontalGroup(
             panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCustomV26Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(lblDiskon))
+                    .addGroup(panelCustomV26Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCustomV26Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTotal)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCustomV26Layout.setVerticalGroup(
             panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSubTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(lblDiskon))
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotal))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        buttonCustomV21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/iconvector.png"))); // NOI18N
-        buttonCustomV21.setText("Tunai");
-        buttonCustomV21.setActiveBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV21.setActiveHoverBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV21.setBorderThickness(2);
-        buttonCustomV21.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV21.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        buttonCustomV21.setHoverBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV21.setInactiveBackground(new java.awt.Color(255, 241, 241));
-        buttonCustomV21.setInactiveBorderColor(new java.awt.Color(216, 3, 41));
-        buttonCustomV21.setPressedBackground(new java.awt.Color(216, 3, 41));
-        buttonCustomV21.setRoundBottomLeft(3);
-        buttonCustomV21.setRoundBottomRight(3);
-        buttonCustomV21.setRoundTopLeft(3);
-        buttonCustomV21.setRoundTopRight(3);
+        btnTunai.setForeground(new java.awt.Color(216, 3, 41));
+        btnTunai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/iconvector.png"))); // NOI18N
+        btnTunai.setText("Tunai");
+        btnTunai.setActiveBackground(new java.awt.Color(255, 255, 255));
+        btnTunai.setActiveHoverBackground(new java.awt.Color(255, 255, 255));
+        btnTunai.setBorderThickness(2);
+        btnTunai.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnTunai.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        btnTunai.setHoverBackground(new java.awt.Color(255, 255, 255));
+        btnTunai.setInactiveBackground(new java.awt.Color(255, 241, 241));
+        btnTunai.setInactiveBorderColor(new java.awt.Color(216, 3, 41));
+        btnTunai.setPressedBackground(new java.awt.Color(216, 3, 41));
+        btnTunai.setRoundBottomLeft(3);
+        btnTunai.setRoundBottomRight(3);
+        btnTunai.setRoundTopLeft(3);
+        btnTunai.setRoundTopRight(3);
 
-        buttonCustomV22.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCustomV22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/iconqris.png"))); // NOI18N
-        buttonCustomV22.setText("Qris");
-        buttonCustomV22.setActiveBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV22.setActiveHoverBackground(new java.awt.Color(230, 187, 186));
-        buttonCustomV22.setBorderBottomThickness(2);
-        buttonCustomV22.setBorderLeftThickness(2);
-        buttonCustomV22.setBorderRightThickness(2);
-        buttonCustomV22.setBorderThickness(2);
-        buttonCustomV22.setDisabledBackground(new java.awt.Color(255, 255, 255));
-        buttonCustomV22.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        buttonCustomV22.setHoverBackground(new java.awt.Color(230, 187, 186));
-        buttonCustomV22.setPressedBackground(new java.awt.Color(230, 187, 186));
-        buttonCustomV22.setRoundBottomLeft(3);
-        buttonCustomV22.setRoundBottomRight(3);
-        buttonCustomV22.setRoundTopLeft(3);
-        buttonCustomV22.setRoundTopRight(3);
-        buttonCustomV22.addActionListener(this::buttonCustomV22ActionPerformed);
+        btnQris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/iconqris.png"))); // NOI18N
+        btnQris.setText("Qris");
+        btnQris.setActiveBackground(new java.awt.Color(255, 255, 255));
+        btnQris.setActiveHoverBackground(new java.awt.Color(230, 187, 186));
+        btnQris.setBorderBottomThickness(2);
+        btnQris.setBorderLeftThickness(2);
+        btnQris.setBorderRightThickness(2);
+        btnQris.setBorderThickness(2);
+        btnQris.setDisabledBackground(new java.awt.Color(255, 255, 255));
+        btnQris.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        btnQris.setHoverBackground(new java.awt.Color(230, 187, 186));
+        btnQris.setInactiveBorderColor(new java.awt.Color(204, 204, 204));
+        btnQris.setPressedBackground(new java.awt.Color(230, 187, 186));
+        btnQris.setRoundBottomLeft(3);
+        btnQris.setRoundBottomRight(3);
+        btnQris.setRoundTopLeft(3);
+        btnQris.setRoundTopRight(3);
+        btnQris.addActionListener(this::btnQrisActionPerformed);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
         panelCustomV21.setLayout(panelCustomV21Layout);
@@ -151,9 +184,9 @@ public class Bayar extends javax.swing.JDialog {
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTunai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnQris, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCustomV21Layout.setVerticalGroup(
@@ -161,8 +194,8 @@ public class Bayar extends javax.swing.JDialog {
             .addGroup(panelCustomV21Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTunai, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQris, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -175,25 +208,29 @@ public class Bayar extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         jLabel7.setText("Kembalian");
 
-        jTextField1.setText("jTextField1");
+        tJmlBayar.setText("jTextField1");
 
-        jTextField2.setText("jTextField2");
+        lblKembalian.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblKembalian.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblKembalian.setText("0");
 
         javax.swing.GroupLayout panelCustomV22Layout = new javax.swing.GroupLayout(panelCustomV22);
         panelCustomV22.setLayout(panelCustomV22Layout);
         panelCustomV22Layout.setHorizontalGroup(
             panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV22Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCustomV22Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1))
-                .addContainerGap())
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tJmlBayar)
+                        .addContainerGap())
+                    .addGroup(panelCustomV22Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         panelCustomV22Layout.setVerticalGroup(
             panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,80 +238,77 @@ public class Bayar extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tJmlBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(lblKembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        buttonCustomV23.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCustomV23.setText("Batal");
-        buttonCustomV23.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        buttonCustomV23.setRoundBottomLeft(3);
-        buttonCustomV23.setRoundBottomRight(3);
-        buttonCustomV23.setRoundTopLeft(3);
-        buttonCustomV23.setRoundTopRight(3);
+        btnBatal.setForeground(new java.awt.Color(0, 0, 0));
+        btnBatal.setText("Batal");
+        btnBatal.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        btnBatal.setRoundBottomLeft(3);
+        btnBatal.setRoundBottomRight(3);
+        btnBatal.setRoundTopLeft(3);
+        btnBatal.setRoundTopRight(3);
 
-        buttonCustomV24.setBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV24.setText("Proses & Cetak struk");
-        buttonCustomV24.setActiveBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setActiveHoverBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setDisabledBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        buttonCustomV24.setHoverBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setInactiveBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setPressedBackground(new java.awt.Color(216, 4, 42));
-        buttonCustomV24.setRoundBottomLeft(3);
-        buttonCustomV24.setRoundBottomRight(3);
-        buttonCustomV24.setRoundTopLeft(3);
-        buttonCustomV24.setRoundTopRight(3);
-        buttonCustomV24.addActionListener(this::buttonCustomV24ActionPerformed);
+        btnProsesCetak.setBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setForeground(new java.awt.Color(255, 255, 255));
+        btnProsesCetak.setText("Proses & Cetak struk");
+        btnProsesCetak.setActiveBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setActiveHoverBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setDisabledBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        btnProsesCetak.setHoverBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setInactiveBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setPressedBackground(new java.awt.Color(216, 4, 42));
+        btnProsesCetak.setRoundBottomLeft(3);
+        btnProsesCetak.setRoundBottomRight(3);
+        btnProsesCetak.setRoundTopLeft(3);
+        btnProsesCetak.setRoundTopRight(3);
+        btnProsesCetak.addActionListener(this::btnProsesCetakActionPerformed);
 
         jLabel4.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        jLabel4.setText("Metode Pembayaran");
+        jLabel4.setText("Jumlah Pembayaran");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(panelCustomV22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buttonCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(buttonCustomV24, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 8, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelCustomV22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelCustomV26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnProsesCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelCustomV26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelCustomV25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(panelCustomV26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel3)
@@ -286,21 +320,21 @@ public class Bayar extends javax.swing.JDialog {
                 .addComponent(panelCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCustomV23, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                    .addComponent(btnProsesCetak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCustomV24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV24ActionPerformed
+    private void btnProsesCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesCetakActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustomV24ActionPerformed
+    }//GEN-LAST:event_btnProsesCetakActionPerformed
 
-    private void buttonCustomV22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV22ActionPerformed
+    private void btnQrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQrisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustomV22ActionPerformed
+    }//GEN-LAST:event_btnQrisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,10 +374,10 @@ public class Bayar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV21;
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV22;
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV23;
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV24;
+    private seblakratupos.view.component.ButtonCustomV2 btnBatal;
+    private seblakratupos.view.component.ButtonCustomV2 btnProsesCetak;
+    private seblakratupos.view.component.ButtonCustomV2 btnQris;
+    private seblakratupos.view.component.ButtonCustomV2 btnTunai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -352,11 +386,14 @@ public class Bayar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblDiskon;
+    private javax.swing.JLabel lblKembalian;
+    private javax.swing.JLabel lblSubTotal;
+    private javax.swing.JLabel lblTotal;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV25;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV26;
+    private javax.swing.JTextField tJmlBayar;
     // End of variables declaration//GEN-END:variables
 }

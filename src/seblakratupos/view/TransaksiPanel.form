@@ -97,11 +97,11 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="buttonCustomV21" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSemua" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="buttonCustomV22" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSeblak" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="buttonCustomV23" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMinuman" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -119,9 +119,9 @@
                       <Component id="jLabel1" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonCustomV21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonCustomV22" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonCustomV23" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSemua" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSeblak" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnMinuman" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   </Group>
@@ -140,7 +140,7 @@
                 <Property name="text" type="java.lang.String" value="Daftar Menu"/>
               </Properties>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV21">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnSemua">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Semua"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -197,7 +197,7 @@
                 <Property name="roundTopRight" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV22">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnSeblak">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Seblak"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -254,10 +254,10 @@
                 <Property name="roundTopRight" type="int" value="0"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV22ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSeblakActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV23">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnMinuman">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Minuman"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -567,7 +567,7 @@
                       <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMenu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -578,7 +578,7 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" pref="33" max="32767" attributes="0"/>
+                          <Component id="lblMenu" alignment="3" pref="33" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
@@ -597,7 +597,7 @@
                 <Property name="text" type="java.lang.String" value="Kostumisasi"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="lblMenu">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="0"/>
@@ -633,7 +633,7 @@
             <Property name="verticalGap" type="int" value="6"/>
           </Layout>
           <SubComponents>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV24">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl0">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0 - Ratu Takut Pedas"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -698,10 +698,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV24ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl0ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV30">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="1 - Ratu Baik"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -766,10 +766,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV30ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV31">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="2 - Ratu Santuy"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -834,10 +834,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV31ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV32">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="3 - Ratu Judes"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -902,10 +902,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV32ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl3ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV33">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="4  - Ratu Marah"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -970,10 +970,10 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV33ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV34">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnLvl5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="5  - Ratu Ngamuk"/>
                 <Property name="activeBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1038,7 +1038,7 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV34ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLvl5ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1280,21 +1280,21 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelCustomV211" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cardTopping" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="panelCustomV211" min="-2" max="-2" attributes="0"/>
+                              <Component id="cardTopping" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV211">
+                    <Container class="seblakratupos.view.component.PanelCustomV2" name="cardTopping">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1309,7 +1309,7 @@
                         <Property name="useNullLayout" type="boolean" value="false"/>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel8">
+                        <Component class="javax.swing.JLabel" name="lblTopping">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Plus Jakarta Sans" size="14" style="0"/>
@@ -1322,7 +1322,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel10">
+                        <Component class="javax.swing.JLabel" name="lblHargaTopping">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Plus Jakarta Sans" size="11" style="0"/>
@@ -1336,7 +1336,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Container class="seblakratupos.view.component.qtyStepper" name="qtyStepper1">
+                        <Container class="seblakratupos.view.component.qtyStepper" name="qtyTopping">
                           <Properties>
                             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="bb" green="bd" red="e7" type="rgb"/>
@@ -1472,7 +1472,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/seblakratupos/asset/icon/IconKeranjang.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kostumisasi"/>
+                <Property name="text" type="java.lang.String" value="Keranjang"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
             </Component>
@@ -1492,7 +1492,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="lblTrx" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1500,14 +1500,14 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel12" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="lblTrx" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="lblTrx">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="12" style="1"/>
@@ -1541,7 +1541,7 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="panelCustomV213" max="32767" attributes="0"/>
-                          <Component id="buttonCustom1" max="32767" attributes="0"/>
+                          <Component id="btnBayar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
@@ -1553,14 +1553,14 @@
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="panelCustomV213" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="buttonCustom1" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnBayar" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="seblakratupos.view.component.ButtonCustom" name="buttonCustom1">
+            <Component class="seblakratupos.view.component.ButtonCustom" name="btnBayar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="4" red="d6" type="rgb"/>
@@ -1608,7 +1608,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="117" max="32767" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Component id="lblTotal" min="-2" pref="123" max="-2" attributes="0"/>
                               </Group>
                               <Component id="panelCustomV214" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -1624,7 +1624,7 @@
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                       </Group>
@@ -1651,12 +1651,12 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel16" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="lblSubtotal" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel15" min="-2" pref="193" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel17" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="lblDiskon" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1669,12 +1669,12 @@
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSubtotal" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDiskon" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
@@ -1698,7 +1698,7 @@
                         <Property name="text" type="java.lang.String" value="Diskon 10% (jumat berkah)"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel16">
+                    <Component class="javax.swing.JLabel" name="lblSubtotal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="0"/>
@@ -1707,7 +1707,7 @@
                         <Property name="text" type="java.lang.String" value="Rp 0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel17">
+                    <Component class="javax.swing.JLabel" name="lblDiskon">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="0"/>
@@ -1729,7 +1729,7 @@
                     <Property name="text" type="java.lang.String" value="Total"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="lblTotal">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans SemiBold" size="24" style="0"/>
@@ -1798,18 +1798,18 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="qtyStepper2" min="-2" max="-2" attributes="0"/>
+                              <Component id="qtyPesan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="102" max="32767" attributes="0"/>
-                              <Component id="jLabel20" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="lblHarga" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel18" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="lblMenuPesan" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="lblKetPesan" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="buttonCustom2" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="btnClose" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1817,15 +1817,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                  <Component id="buttonCustom2" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="lblMenuPesan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnClose" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKetPesan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel20" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="qtyStepper2" pref="32" max="32767" attributes="0"/>
+                                  <Component id="lblHarga" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="qtyPesan" pref="32" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
                           </Group>
@@ -1833,7 +1833,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel18">
+                    <Component class="javax.swing.JLabel" name="lblMenuPesan">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="14" style="1"/>
@@ -1841,7 +1841,7 @@
                         <Property name="text" type="java.lang.String" value="Seblak Original"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel19">
+                    <Component class="javax.swing.JLabel" name="lblKetPesan">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="12" style="0"/>
@@ -1849,7 +1849,7 @@
                         <Property name="text" type="java.lang.String" value="Lvl 4, Chikuwa, Sayur"/>
                       </Properties>
                     </Component>
-                    <Container class="seblakratupos.view.component.qtyStepper" name="qtyStepper2">
+                    <Container class="seblakratupos.view.component.qtyStepper" name="qtyPesan">
                       <Properties>
                         <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="bb" green="bd" red="e7" type="rgb"/>
@@ -1873,7 +1873,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="seblakratupos.view.component.ButtonCustom" name="buttonCustom2">
+                    <Component class="seblakratupos.view.component.ButtonCustom" name="btnClose">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/seblakratupos/asset/icon/IconX.png"/>
@@ -1884,10 +1884,10 @@
                         <Property name="roundTopRight" type="int" value="5"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel20">
+                    <Component class="javax.swing.JLabel" name="lblHarga">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Plus Jakarta Sans" size="16" style="0"/>

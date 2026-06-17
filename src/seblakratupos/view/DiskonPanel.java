@@ -182,6 +182,7 @@ public class DiskonPanel extends javax.swing.JPanel {
         tblPanelDiskon.setCellPaddingLeft(25);
         tblPanelDiskon.setCenterColumns("1,2,3");
         tblPanelDiskon.setColumnWidths("60,10.10,10");
+        tblPanelDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblPanelDiskon.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
         tblPanelDiskon.setHeaderPaddingLeft(25);
         tblPanelDiskon.setOuterBorderColor(new java.awt.Color(231, 189, 187));
@@ -235,7 +236,7 @@ public class DiskonPanel extends javax.swing.JPanel {
             .addGroup(panelCustomV31Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblTambahDiskon)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         panelCustomV29.setBackground(new java.awt.Color(255, 255, 255));
