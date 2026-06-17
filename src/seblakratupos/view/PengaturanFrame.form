@@ -235,7 +235,7 @@
                                                   <Component id="logo" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="buttonCustomV25" max="32767" attributes="0"/>
+                                                      <Component id="btnPilihLogo" max="32767" attributes="0"/>
                                                       <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
                                                       <Group type="102" attributes="0">
@@ -248,7 +248,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                                  <Component id="jLabel3" min="-2" pref="641" max="-2" attributes="0"/>
+                                                  <Component id="lblLogoToko" min="-2" pref="641" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -264,7 +264,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="lblLogoToko" min="-2" pref="33" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -282,7 +282,7 @@
                                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="buttonCustomV25" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="btnPilihLogo" min="-2" pref="41" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="logo" pref="175" max="32767" attributes="0"/>
@@ -308,7 +308,7 @@
                             <Property name="iconTextGap" type="int" value="10"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel3">
+                        <Component class="javax.swing.JLabel" name="lblLogoToko">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Plus Jakarta Sans SemiBold" size="18" style="0"/>
@@ -342,7 +342,7 @@
                             <Property name="text" type="java.lang.String" value="Format yang didukung: JPG, JPEG, PNG"/>
                           </Properties>
                         </Component>
-                        <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV25">
+                        <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnPilihLogo">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="27" green="4" red="d7" type="rgb"/>
@@ -412,7 +412,7 @@
                             <Property name="roundTopRight" type="int" value="4"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustomV25ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihLogoActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -515,7 +515,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" pref="641" max="-2" attributes="0"/>
+                                          <Component id="lblInformasiToko" min="-2" pref="641" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                                       <Component id="panelCustomV26" max="32767" attributes="0"/>
@@ -536,14 +536,14 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="lblInformasiToko" min="-2" pref="33" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="panelCustomV26" min="-2" max="-2" attributes="0"/>
@@ -576,7 +576,7 @@
                             <Property name="iconTextGap" type="int" value="10"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel11">
+                        <Component class="javax.swing.JLabel" name="lblInformasiToko">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Plus Jakarta Sans SemiBold" size="18" style="0"/>
@@ -613,7 +613,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jTextField3" min="-2" pref="649" max="-2" attributes="0"/>
+                                      <Component id="txtNamaToko" min="-2" pref="649" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -622,14 +622,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField3" pref="38" max="32767" attributes="0"/>
+                                      <Component id="txtNamaToko" pref="38" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JTextField" name="jTextField3">
+                            <Component class="javax.swing.JTextField" name="txtNamaToko">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Plus Jakarta Sans" size="16" style="0"/>
@@ -643,7 +643,7 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamaTokoActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -706,7 +706,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                                <Component class="javax.swing.JTextArea" name="txtAlamatToko">
                                   <Properties>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -748,7 +748,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jTextField4" min="-2" pref="649" max="-2" attributes="0"/>
+                                      <Component id="txtNomorTelepon" min="-2" pref="649" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -757,14 +757,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField4" pref="38" max="32767" attributes="0"/>
+                                      <Component id="txtNomorTelepon" pref="38" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JTextField" name="jTextField4">
+                            <Component class="javax.swing.JTextField" name="txtNomorTelepon">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Plus Jakarta Sans" size="16" style="0"/>
@@ -778,7 +778,7 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomorTeleponActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -841,7 +841,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                                <Component class="javax.swing.JTextArea" name="txtCatatanStruk">
                                   <Properties>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

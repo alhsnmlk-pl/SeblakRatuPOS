@@ -37,11 +37,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
         mainPengaturan2 = new seblakratupos.view.component.PanelCustomV2();
         logoToko = new seblakratupos.view.component.PanelCustomV2();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblLogoToko = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        buttonCustomV25 = new seblakratupos.view.component.ButtonCustomV2();
+        btnPilihLogo = new seblakratupos.view.component.ButtonCustomV2();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -49,21 +49,21 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         infoToko = new seblakratupos.view.component.PanelCustomV2();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblInformasiToko = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         panelCustomV26 = new seblakratupos.view.component.PanelCustomV2();
-        jTextField3 = new javax.swing.JTextField();
+        txtNamaToko = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         panelCustomV27 = new seblakratupos.view.component.PanelCustomV2();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAlamatToko = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         panelCustomV28 = new seblakratupos.view.component.PanelCustomV2();
-        jTextField4 = new javax.swing.JTextField();
+        txtNomorTelepon = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtCatatanStruk = new javax.swing.JTextArea();
         btnSimpan = new seblakratupos.view.component.ButtonCustomV2();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,9 +127,9 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconGaleri.png"))); // NOI18N
         jLabel2.setIconTextGap(10);
 
-        jLabel3.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        jLabel3.setText("Logo Toko");
-        jLabel3.setIconTextGap(10);
+        lblLogoToko.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblLogoToko.setText("Logo Toko");
+        lblLogoToko.setIconTextGap(10);
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/img/logo.png"))); // NOI18N
@@ -141,33 +141,33 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jLabel5.setText("Format yang didukung: JPG, JPEG, PNG");
 
-        buttonCustomV25.setBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconUpload.png"))); // NOI18N
-        buttonCustomV25.setText("Pilih Foto Logo");
-        buttonCustomV25.setActiveBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setActiveBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setActiveForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setDisabledBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setDisabledForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        buttonCustomV25.setHoverBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setHoverForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setIconTextGap(10);
-        buttonCustomV25.setInactiveBackground(new java.awt.Color(215, 4, 39));
-        buttonCustomV25.setInactiveForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setPressedBackground(new java.awt.Color(175, 3, 31));
-        buttonCustomV25.setPressedBorderColor(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setPressedForeground(new java.awt.Color(255, 255, 255));
-        buttonCustomV25.setRoundBottomLeft(4);
-        buttonCustomV25.setRoundBottomRight(4);
-        buttonCustomV25.setRoundTopLeft(4);
-        buttonCustomV25.setRoundTopRight(4);
-        buttonCustomV25.addActionListener(this::buttonCustomV25ActionPerformed);
+        btnPilihLogo.setBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconUpload.png"))); // NOI18N
+        btnPilihLogo.setText("Pilih Foto Logo");
+        btnPilihLogo.setActiveBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setActiveBorderColor(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setActiveForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setActiveHoverBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setActiveHoverBorderColor(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setActiveHoverForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setDisabledBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setDisabledBorderColor(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setDisabledForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnPilihLogo.setHoverBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setHoverForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setIconTextGap(10);
+        btnPilihLogo.setInactiveBackground(new java.awt.Color(215, 4, 39));
+        btnPilihLogo.setInactiveForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setPressedBackground(new java.awt.Color(175, 3, 31));
+        btnPilihLogo.setPressedBorderColor(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setPressedForeground(new java.awt.Color(255, 255, 255));
+        btnPilihLogo.setRoundBottomLeft(4);
+        btnPilihLogo.setRoundBottomRight(4);
+        btnPilihLogo.setRoundTopLeft(4);
+        btnPilihLogo.setRoundTopRight(4);
+        btnPilihLogo.addActionListener(this::btnPilihLogoActionPerformed);
 
         jLabel6.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jLabel6.setText("Ukuran maksimal: 5 MB");
@@ -225,7 +225,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
                                 .addComponent(logo)
                                 .addGap(29, 29, 29)
                                 .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPilihLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(logoTokoLayout.createSequentialGroup()
@@ -235,7 +235,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, logoTokoLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(15, 15, 15)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblLogoToko, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(24, 24, 24))))
         );
@@ -245,7 +245,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addGroup(logoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(logoTokoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblLogoToko, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(logoTokoLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel2)))
@@ -260,7 +260,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCustomV25, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPilihLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,9 +282,9 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/IconGaleri.png"))); // NOI18N
         jLabel10.setIconTextGap(10);
 
-        jLabel11.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        jLabel11.setText("Informasi Toko");
-        jLabel11.setIconTextGap(10);
+        lblInformasiToko.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblInformasiToko.setText("Informasi Toko");
+        lblInformasiToko.setIconTextGap(10);
 
         jLabel14.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         jLabel14.setText(" Nama Toko");
@@ -297,11 +297,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
         panelCustomV26.setRoundTopLeft(7);
         panelCustomV26.setRoundTopRight(7);
 
-        jTextField3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextField3.setText("RATU SEBLAK");
-        jTextField3.setBorder(null);
-        jTextField3.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        jTextField3.addActionListener(this::jTextField3ActionPerformed);
+        txtNamaToko.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtNamaToko.setText("RATU SEBLAK");
+        txtNamaToko.setBorder(null);
+        txtNamaToko.setMargin(new java.awt.Insets(10, 10, 10, 6));
+        txtNamaToko.addActionListener(this::txtNamaTokoActionPerformed);
 
         javax.swing.GroupLayout panelCustomV26Layout = new javax.swing.GroupLayout(panelCustomV26);
         panelCustomV26.setLayout(panelCustomV26Layout);
@@ -309,14 +309,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
             panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV26Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNamaToko, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelCustomV26Layout.setVerticalGroup(
             panelCustomV26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtNamaToko, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -335,11 +335,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Jl. Lawu, No. 06, RT 03 / RW 01\nKec. Berbek (Timur Pasar Berbek)");
-        jScrollPane2.setViewportView(jTextArea1);
+        txtAlamatToko.setColumns(20);
+        txtAlamatToko.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtAlamatToko.setRows(5);
+        txtAlamatToko.setText("Jl. Lawu, No. 06, RT 03 / RW 01\nKec. Berbek (Timur Pasar Berbek)");
+        jScrollPane2.setViewportView(txtAlamatToko);
 
         javax.swing.GroupLayout panelCustomV27Layout = new javax.swing.GroupLayout(panelCustomV27);
         panelCustomV27.setLayout(panelCustomV27Layout);
@@ -369,11 +369,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
         panelCustomV28.setRoundTopLeft(7);
         panelCustomV28.setRoundTopRight(7);
 
-        jTextField4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextField4.setText("0819-9899-1827");
-        jTextField4.setBorder(null);
-        jTextField4.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        jTextField4.addActionListener(this::jTextField4ActionPerformed);
+        txtNomorTelepon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtNomorTelepon.setText("0819-9899-1827");
+        txtNomorTelepon.setBorder(null);
+        txtNomorTelepon.setMargin(new java.awt.Insets(10, 10, 10, 6));
+        txtNomorTelepon.addActionListener(this::txtNomorTeleponActionPerformed);
 
         javax.swing.GroupLayout panelCustomV28Layout = new javax.swing.GroupLayout(panelCustomV28);
         panelCustomV28.setLayout(panelCustomV28Layout);
@@ -381,14 +381,14 @@ public class PengaturanFrame extends javax.swing.JFrame {
             panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV28Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelCustomV28Layout.setVerticalGroup(
             panelCustomV28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtNomorTelepon, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -407,11 +407,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Terima Kasih Atas Kunjungan Anda!\nSilakan datang kembali");
-        jScrollPane3.setViewportView(jTextArea2);
+        txtCatatanStruk.setColumns(20);
+        txtCatatanStruk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtCatatanStruk.setRows(5);
+        txtCatatanStruk.setText("Terima Kasih Atas Kunjungan Anda!\nSilakan datang kembali");
+        jScrollPane3.setViewportView(txtCatatanStruk);
 
         javax.swing.GroupLayout panelCustomV29Layout = new javax.swing.GroupLayout(panelCustomV29);
         panelCustomV29.setLayout(panelCustomV29Layout);
@@ -440,7 +440,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
                     .addGroup(infoTokoLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblInformasiToko, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCustomV26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -457,11 +457,11 @@ public class PengaturanFrame extends javax.swing.JFrame {
                 .addGroup(infoTokoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(infoTokoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblInformasiToko, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(infoTokoLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel10)))
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelCustomV26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -586,17 +586,17 @@ public class PengaturanFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCustomV25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustomV25ActionPerformed
+    private void btnPilihLogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilihLogoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustomV25ActionPerformed
+    }//GEN-LAST:event_btnPilihLogoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtNamaTokoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaTokoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtNamaTokoActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtNomorTeleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomorTeleponActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtNomorTeleponActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
@@ -634,18 +634,16 @@ public class PengaturanFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private seblakratupos.view.component.ButtonCustomV2 btnPilihLogo;
     private seblakratupos.view.component.ButtonCustomV2 btnSimpan;
-    private seblakratupos.view.component.ButtonCustomV2 buttonCustomV25;
     private seblakratupos.view.component.PanelCustomV2 headerPengaturan;
     private seblakratupos.view.component.PanelCustomV2 infoToko;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -655,11 +653,9 @@ public class PengaturanFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblBack;
+    private javax.swing.JLabel lblInformasiToko;
+    private javax.swing.JLabel lblLogoToko;
     private javax.swing.JLabel lblPengaturan;
     private javax.swing.JLabel logo;
     private seblakratupos.view.component.PanelCustomV2 logoToko;
@@ -671,5 +667,9 @@ public class PengaturanFrame extends javax.swing.JFrame {
     private seblakratupos.view.component.PanelCustomV2 panelCustomV27;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV28;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
+    private javax.swing.JTextArea txtAlamatToko;
+    private javax.swing.JTextArea txtCatatanStruk;
+    private javax.swing.JTextField txtNamaToko;
+    private javax.swing.JTextField txtNomorTelepon;
     // End of variables declaration//GEN-END:variables
 }
