@@ -52,6 +52,8 @@ public class SidebarPanel extends javax.swing.JPanel {
     
     public ButtonCustomV2 getBtnPengaturan() {
     return btnPengaturan;
+    
+    
 }
     
     
