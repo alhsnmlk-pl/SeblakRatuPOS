@@ -767,7 +767,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Status Ketersedian"/>
+                <Property name="text" type="java.lang.String" value="Status Ketersediaan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblketerangan">

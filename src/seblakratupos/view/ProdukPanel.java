@@ -348,7 +348,7 @@ public class ProdukPanel extends javax.swing.JPanel {
         txthargaproduk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         lblstatus.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblstatus.setText("Status Ketersedian");
+        lblstatus.setText("Status Ketersediaan");
 
         lblketerangan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         lblketerangan.setText("Matikan jika stok bahan habis");
