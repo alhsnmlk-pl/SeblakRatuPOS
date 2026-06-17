@@ -254,7 +254,6 @@ public class Bayar extends javax.swing.JDialog {
         btnBatal.setRoundTopRight(3);
 
         btnProsesCetak.setBackground(new java.awt.Color(216, 4, 42));
-        btnProsesCetak.setForeground(new java.awt.Color(255, 255, 255));
         btnProsesCetak.setText("Proses & Cetak struk");
         btnProsesCetak.setActiveBackground(new java.awt.Color(216, 4, 42));
         btnProsesCetak.setActiveHoverBackground(new java.awt.Color(216, 4, 42));
@@ -325,6 +324,7 @@ public class Bayar extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProsesCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesCetakActionPerformed

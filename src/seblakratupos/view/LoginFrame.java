@@ -409,6 +409,8 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         new MainFrame().setVisible(true);
         dispose();
+        
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void cMasukSebagaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cMasukSebagaiActionPerformed

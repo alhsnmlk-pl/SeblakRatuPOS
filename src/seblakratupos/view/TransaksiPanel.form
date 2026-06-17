@@ -1067,9 +1067,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="buttonCustomV25" pref="144" max="32767" attributes="0"/>
+                      <Component id="btnReset" pref="144" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="buttonCustomV26" pref="155" max="32767" attributes="0"/>
+                      <Component id="btnNext" pref="155" max="32767" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1079,8 +1079,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonCustomV25" alignment="3" max="32767" attributes="0"/>
-                          <Component id="buttonCustomV26" alignment="3" max="32767" attributes="0"/>
+                          <Component id="btnReset" alignment="3" max="32767" attributes="0"/>
+                          <Component id="btnNext" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1088,7 +1088,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV25">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnReset">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="f9" red="fc" type="rgb"/>
@@ -1144,7 +1144,7 @@
                   <Color blue="2e" green="1a" red="18" type="rgb"/>
                 </Property>
                 <Property name="pressedBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="f9" red="fc" type="rgb"/>
+                  <Color blue="f7" green="f1" red="f4" type="rgb"/>
                 </Property>
                 <Property name="pressedBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="bb" green="bd" red="e7" type="rgb"/>
@@ -1158,7 +1158,7 @@
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
             </Component>
-            <Component class="seblakratupos.view.component.ButtonCustomV2" name="buttonCustomV26">
+            <Component class="seblakratupos.view.component.ButtonCustomV2" name="btnNext">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="f9" red="fc" type="rgb"/>
@@ -1214,7 +1214,7 @@
                   <Color blue="1a" green="1a" red="bb" type="rgb"/>
                 </Property>
                 <Property name="pressedBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="f9" red="fc" type="rgb"/>
+                  <Color blue="f7" green="f1" red="f4" type="rgb"/>
                 </Property>
                 <Property name="pressedBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="1a" green="1a" red="bb" type="rgb"/>
@@ -1587,6 +1587,9 @@
                 <Property name="roundTopLeft" type="int" value="3"/>
                 <Property name="roundTopRight" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBayarActionPerformed"/>
+              </Events>
             </Component>
             <Container class="seblakratupos.view.component.PanelCustomV2" name="panelCustomV213">
               <Properties>
