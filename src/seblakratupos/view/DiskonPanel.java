@@ -187,6 +187,7 @@ public class DiskonPanel extends javax.swing.JPanel {
         tableCustom2.setOuterBorderColor(new java.awt.Color(231, 189, 187));
         tableCustom2.setOuterBorderThickness(0);
         tableCustom2.setRowBorderColor(new java.awt.Color(231, 189, 187));
+        tableCustom2.addActionListener(this::tableCustom2ActionPerformed);
         jScrollPane2.setViewportView(tableCustom2);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
@@ -601,6 +602,10 @@ public class DiskonPanel extends javax.swing.JPanel {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void tableCustom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableCustom2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableCustom2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
