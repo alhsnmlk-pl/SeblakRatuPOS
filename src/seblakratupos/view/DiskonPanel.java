@@ -65,29 +65,29 @@ public class DiskonPanel extends javax.swing.JPanel {
 
         panelCustomV21 = new seblakratupos.view.component.PanelCustomV2();
         panelCustomV24 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel1 = new javax.swing.JLabel();
+        lblDaftarDiskon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnTambahPengguna = new seblakratupos.view.component.ButtonCustomV2();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableCustom2 = new seblakratupos.view.component.TableCustom();
+        tblPanelDiskon = new seblakratupos.view.component.TableCustom();
         panelCustomV22 = new seblakratupos.view.component.PanelCustomV2();
         panelCustomV31 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel13 = new javax.swing.JLabel();
+        lblTambahDiskon = new javax.swing.JLabel();
         panelCustomV29 = new seblakratupos.view.component.PanelCustomV2();
-        jLabel14 = new javax.swing.JLabel();
+        lblNamaDiskon = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtNamaBahan = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        lblMulai = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jDateChooserMulai = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jDateChooserSelesai = new com.toedter.calendar.JDateChooser();
-        jLabel16 = new javax.swing.JLabel();
+        lblPersentase = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         txtHarga = new javax.swing.JTextField();
         lblPeranPengguna = new javax.swing.JLabel();
         cPeranPengguna = new seblakratupos.view.component.ComboBoxCustom();
-        jLabel17 = new javax.swing.JLabel();
+        lblSelesai = new javax.swing.JLabel();
         panelCustomV210 = new seblakratupos.view.component.PanelCustomV2();
         btnSimpan = new seblakratupos.view.component.ButtonCustomV2();
         btnHapus = new seblakratupos.view.component.ButtonCustomV2();
@@ -104,8 +104,8 @@ public class DiskonPanel extends javax.swing.JPanel {
         panelCustomV24.setBorderBottomThickness(1);
         panelCustomV24.setBorderColor(new java.awt.Color(231, 189, 187));
 
-        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
-        jLabel1.setText("Daftar Diskon");
+        lblDaftarDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
+        lblDaftarDiskon.setText("Daftar Diskon");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -159,19 +159,19 @@ public class DiskonPanel extends javax.swing.JPanel {
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCustomV24Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDaftarDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCustomV24Layout.setVerticalGroup(
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDaftarDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelCustomV24Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1))
         );
 
-        tableCustom2.setModel(new javax.swing.table.DefaultTableModel(
+        tblPanelDiskon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Jumat Berkah", "Persentase", "10%", "19/05/2026-19/05/2026"}
             },
@@ -179,16 +179,16 @@ public class DiskonPanel extends javax.swing.JPanel {
                 "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif"
             }
         ));
-        tableCustom2.setCellPaddingLeft(25);
-        tableCustom2.setCenterColumns("1,2,3");
-        tableCustom2.setColumnWidths("60,10.10,10");
-        tableCustom2.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tableCustom2.setHeaderPaddingLeft(25);
-        tableCustom2.setOuterBorderColor(new java.awt.Color(231, 189, 187));
-        tableCustom2.setOuterBorderThickness(0);
-        tableCustom2.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        tableCustom2.addActionListener(this::tableCustom2ActionPerformed);
-        jScrollPane2.setViewportView(tableCustom2);
+        tblPanelDiskon.setCellPaddingLeft(25);
+        tblPanelDiskon.setCenterColumns("1,2,3");
+        tblPanelDiskon.setColumnWidths("60,10.10,10");
+        tblPanelDiskon.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
+        tblPanelDiskon.setHeaderPaddingLeft(25);
+        tblPanelDiskon.setOuterBorderColor(new java.awt.Color(231, 189, 187));
+        tblPanelDiskon.setOuterBorderThickness(0);
+        tblPanelDiskon.setRowBorderColor(new java.awt.Color(231, 189, 187));
+        tblPanelDiskon.addActionListener(this::tblPanelDiskonActionPerformed);
+        jScrollPane2.setViewportView(tblPanelDiskon);
 
         javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
         panelCustomV21.setLayout(panelCustomV21Layout);
@@ -218,8 +218,8 @@ public class DiskonPanel extends javax.swing.JPanel {
         panelCustomV31.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV31.setPreferredSize(new java.awt.Dimension(345, 62));
 
-        jLabel13.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        jLabel13.setText("Tambah Diskon");
+        lblTambahDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblTambahDiskon.setText("Tambah Diskon");
 
         javax.swing.GroupLayout panelCustomV31Layout = new javax.swing.GroupLayout(panelCustomV31);
         panelCustomV31.setLayout(panelCustomV31Layout);
@@ -227,23 +227,23 @@ public class DiskonPanel extends javax.swing.JPanel {
             panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV31Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTambahDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         panelCustomV31Layout.setVerticalGroup(
             panelCustomV31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV31Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel13)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(lblTambahDiskon)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         panelCustomV29.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV29.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV29.setBorderThickness(1);
 
-        jLabel14.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel14.setText("Nama Diskon");
+        lblNamaDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNamaDiskon.setText("Nama Diskon");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -270,8 +270,8 @@ public class DiskonPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
-        jLabel15.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel15.setText("Mulai");
+        lblMulai.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblMulai.setText("Mulai");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -322,8 +322,8 @@ public class DiskonPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
-        jLabel16.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel16.setText("Persentase / nominal");
+        lblPersentase.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblPersentase.setText("Persentase / nominal");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -362,8 +362,8 @@ public class DiskonPanel extends javax.swing.JPanel {
         cPeranPengguna.setRound(0);
         cPeranPengguna.setSelectionBackground(new java.awt.Color(252, 233, 232));
 
-        jLabel17.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel17.setText("Selesai");
+        lblSelesai.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblSelesai.setText("Selesai");
 
         javax.swing.GroupLayout panelCustomV29Layout = new javax.swing.GroupLayout(panelCustomV29);
         panelCustomV29.setLayout(panelCustomV29Layout);
@@ -374,7 +374,7 @@ public class DiskonPanel extends javax.swing.JPanel {
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCustomV29Layout.createSequentialGroup()
                         .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNamaDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -384,21 +384,21 @@ public class DiskonPanel extends javax.swing.JPanel {
                             .addComponent(cPeranPengguna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPersentase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, Short.MAX_VALUE))
                                 .addGroup(panelCustomV29Layout.createSequentialGroup()
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(33, 33, 33)
                                     .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(lblSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelCustomV29Layout.setVerticalGroup(
             panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV29Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel14)
+                .addComponent(lblNamaDiskon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -406,13 +406,13 @@ public class DiskonPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cPeranPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(jLabel16)
+                .addComponent(lblPersentase)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel17))
+                    .addComponent(lblMulai)
+                    .addComponent(lblSelesai))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -603,9 +603,9 @@ public class DiskonPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBatalActionPerformed
 
-    private void tableCustom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableCustom2ActionPerformed
+    private void tblPanelDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblPanelDiskonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableCustom2ActionPerformed
+    }//GEN-LAST:event_tblPanelDiskonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -616,26 +616,26 @@ public class DiskonPanel extends javax.swing.JPanel {
     private seblakratupos.view.component.ComboBoxCustom cPeranPengguna;
     private com.toedter.calendar.JDateChooser jDateChooserMulai;
     private com.toedter.calendar.JDateChooser jDateChooserSelesai;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDaftarDiskon;
+    private javax.swing.JLabel lblMulai;
+    private javax.swing.JLabel lblNamaDiskon;
     private javax.swing.JLabel lblPeranPengguna;
+    private javax.swing.JLabel lblPersentase;
+    private javax.swing.JLabel lblSelesai;
+    private javax.swing.JLabel lblTambahDiskon;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV210;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV24;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV29;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV31;
-    private seblakratupos.view.component.TableCustom tableCustom2;
+    private seblakratupos.view.component.TableCustom tblPanelDiskon;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtNamaBahan;
     // End of variables declaration//GEN-END:variables
