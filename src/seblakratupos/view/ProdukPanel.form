@@ -117,7 +117,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="btnsemuaproduk" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="btnseblakproduk" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btntoppingproduk" min="-2" max="-2" attributes="0"/>
@@ -637,6 +637,7 @@
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bb" green="bd" red="e7" type="rgb"/>
             </Property>
+            <Property name="borderLeftThickness" type="int" value="0"/>
             <Property name="borderThickness" type="int" value="1"/>
           </Properties>
 
@@ -702,7 +703,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Plus Jakarta Sans" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Status Ketersedian"/>
+                <Property name="text" type="java.lang.String" value=" Status Ketersediaan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblUsernamePengguna">
@@ -847,9 +848,10 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Kasir"/>
-                    <StringItem index="1" value="Owner"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="Seblak"/>
+                    <StringItem index="1" value="Topping"/>
+                    <StringItem index="2" value="Minuman"/>
                   </StringArray>
                 </Property>
                 <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

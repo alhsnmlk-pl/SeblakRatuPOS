@@ -73,9 +73,6 @@ public class ToggleCustom extends JToggleButton {
         g2.dispose();
     }
 
-    // =========================
-    // GETTER SETTER WARNA
-    // =========================
 
     public Color getOnColor() {
         return onColor;
@@ -122,9 +119,7 @@ public class ToggleCustom extends JToggleButton {
         repaint();
     }
 
-    // =========================
-    // GETTER SETTER ICON
-    // =========================
+
 
     public Icon getOnIcon() {
         return onIcon;
@@ -144,9 +139,7 @@ public class ToggleCustom extends JToggleButton {
         repaint();
     }
 
-    // =========================
-    // BIAR VALUE BOOLEAN BISA DIBACA
-    // =========================
+
 
     public boolean isOn() {
         return isSelected();

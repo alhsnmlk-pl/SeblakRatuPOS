@@ -55,6 +55,7 @@ public class LaporanPanel extends javax.swing.JPanel {
         btnTambahPengguna = new seblakratupos.view.component.ButtonCustomV2();
         btnTambahPengguna1 = new seblakratupos.view.component.ButtonCustomV2();
         btnTambahPengguna2 = new seblakratupos.view.component.ButtonCustomV2();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustom1 = new seblakratupos.view.component.TableCustom();
 
@@ -62,11 +63,9 @@ public class LaporanPanel extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 14, 14, 14));
 
         panelCustomV21.setBackground(new java.awt.Color(252, 249, 255));
-        panelCustomV21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 36)); // NOI18N
         jLabel1.setText("Laporan Pemasukan");
-        panelCustomV21.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 58));
 
         buttonCustom1.setBackground(new java.awt.Color(234, 88, 11));
         buttonCustom1.setBorder(null);
@@ -82,7 +81,6 @@ public class LaporanPanel extends javax.swing.JPanel {
         buttonCustom1.setRoundTopLeft(3);
         buttonCustom1.setRoundTopRight(3);
         buttonCustom1.addActionListener(this::buttonCustom1ActionPerformed);
-        panelCustomV21.add(buttonCustom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(881, 11, 160, 36));
 
         panelCustomV23.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -100,8 +98,8 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jMonthChooser1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jMonthChooser1.setDoubleBuffered(false);
+        jMonthChooser1.setFocusable(false);
         jMonthChooser1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jMonthChooser1.setOpaque(false);
 
         javax.swing.GroupLayout panelCustomV23Layout = new javax.swing.GroupLayout(panelCustomV23);
         panelCustomV23.setLayout(panelCustomV23Layout);
@@ -114,11 +112,30 @@ public class LaporanPanel extends javax.swing.JPanel {
             .addComponent(jMonthChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
-        panelCustomV21.add(panelCustomV23, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 160, 40));
+        javax.swing.GroupLayout panelCustomV21Layout = new javax.swing.GroupLayout(panelCustomV21);
+        panelCustomV21.setLayout(panelCustomV21Layout);
+        panelCustomV21Layout.setHorizontalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelCustomV21Layout.setVerticalGroup(
+            panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(panelCustomV23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCustomV21Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         panelCustomV22.setBackground(new java.awt.Color(252, 249, 255));
         panelCustomV22.setOpaque(true);
-        panelCustomV22.setLayout(new java.awt.GridLayout(1, 3, 16, 16));
 
         panelCustomV27.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV27.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -170,8 +187,6 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        panelCustomV22.add(panelCustomV27);
-
         panelCustomV28.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV28.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV28.setBorderThickness(1);
@@ -222,8 +237,6 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        panelCustomV22.add(panelCustomV28);
-
         panelCustomV29.setBackground(new java.awt.Color(214, 4, 39));
         panelCustomV29.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV29.setBorderThickness(1);
@@ -260,14 +273,14 @@ public class LaporanPanel extends javax.swing.JPanel {
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelCustomV29Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCustomV29Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(24, 24, 24))
+                        .addGap(0, 101, Short.MAX_VALUE)))
+                .addGap(17, 17, 17))
         );
         panelCustomV29Layout.setVerticalGroup(
             panelCustomV29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +298,24 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        panelCustomV22.add(panelCustomV29);
+        javax.swing.GroupLayout panelCustomV22Layout = new javax.swing.GroupLayout(panelCustomV22);
+        panelCustomV22.setLayout(panelCustomV22Layout);
+        panelCustomV22Layout.setHorizontalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustomV22Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(panelCustomV27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(panelCustomV28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelCustomV22Layout.setVerticalGroup(
+            panelCustomV22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelCustomV27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelCustomV28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelCustomV29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         panelCustomV24.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV24.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -410,6 +440,9 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         tableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"19 Mei 2026", "TRX-0001", "Penjualan", "Pemasukan", "+ 11.700"}
@@ -430,26 +463,43 @@ public class LaporanPanel extends javax.swing.JPanel {
         tableCustom1.setRowBorderColor(new java.awt.Color(231, 189, 187));
         jScrollPane1.setViewportView(tableCustom1);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
         javax.swing.GroupLayout panelCustomV24Layout = new javax.swing.GroupLayout(panelCustomV24);
         panelCustomV24.setLayout(panelCustomV24Layout);
         panelCustomV24Layout.setHorizontalGroup(
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV24Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1))
-            .addGroup(panelCustomV24Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1)
-                .addGap(1, 1, 1))
+                .addGroup(panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCustomV24Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
+                    .addGroup(panelCustomV24Layout.createSequentialGroup()
+                        .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))))
         );
         panelCustomV24Layout.setVerticalGroup(
             panelCustomV24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustomV24Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(panelCustomV25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(panelCustomV25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1))
         );
 
@@ -457,19 +507,19 @@ public class LaporanPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCustomV21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelCustomV22, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCustomV22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCustomV21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelCustomV21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(panelCustomV22, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCustomV22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(panelCustomV24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -518,6 +568,7 @@ public class LaporanPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV21;
     private seblakratupos.view.component.PanelCustomV2 panelCustomV22;

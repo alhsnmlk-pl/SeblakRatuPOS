@@ -230,7 +230,7 @@ public class ProdukPanel extends javax.swing.JPanel {
                 .addGroup(panelCustomV59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCustomV59Layout.createSequentialGroup()
                         .addComponent(btnsemuaproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
+                        .addGap(15, 15, 15)
                         .addComponent(btnseblakproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btntoppingproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,10 +332,11 @@ public class ProdukPanel extends javax.swing.JPanel {
 
         mainProdukS.setBackground(new java.awt.Color(255, 255, 255));
         mainProdukS.setBorderColor(new java.awt.Color(231, 189, 187));
+        mainProdukS.setBorderLeftThickness(0);
         mainProdukS.setBorderThickness(1);
 
         lblstatus.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblstatus.setText(" Status Ketersedian");
+        lblstatus.setText(" Status Ketersediaan");
 
         lblUsernamePengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         lblUsernamePengguna.setText(" Nama Produk");
@@ -399,7 +400,7 @@ public class ProdukPanel extends javax.swing.JPanel {
         lblUsernamePengguna2.setText(" Kategori");
 
         cPeranPengguna.setBorder(null);
-        cPeranPengguna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kasir", "Owner" }));
+        cPeranPengguna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seblak", "Topping", "Minuman" }));
         cPeranPengguna.setBorderColor(new java.awt.Color(231, 189, 187));
         cPeranPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         cPeranPengguna.setPopupBorderColor(new java.awt.Color(231, 189, 187));

@@ -6,6 +6,8 @@ package seblakratupos.view;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
+import seblakratupos.view.component.ButtonCustomV2;  //mengimport custom button
+
 /**
  *
  * @author Al
@@ -18,6 +20,80 @@ public class SidebarPanel extends javax.swing.JPanel {
     public SidebarPanel() {
         initComponents();
     }
+    
+    //membuat getter aga main frame dapat membaca button
+    public ButtonCustomV2 getBtnTransaksi() {
+        return btnTransaksi;
+    }
+
+    public ButtonCustomV2 getBtnProduk() {
+        return btnProduk;
+    }
+
+    public ButtonCustomV2 getBtnStok() {
+        return btnStok;
+    }
+
+    public ButtonCustomV2 getBtnPengguna() {
+        return btnPengguna;
+    }
+
+    public ButtonCustomV2 getBtnDiskon() {
+        return btnDiskon;
+    }
+
+    public ButtonCustomV2 getBtnLaporan() {
+        return btnLaporan;
+    }
+    
+    public ButtonCustomV2 getBtnLogout() {
+        return btnLogout;
+    }
+    
+    public ButtonCustomV2 getBtnPengaturan() {
+    return btnPengaturan;
+}
+    
+    
+    //membuat fungsi aktif button sesuai dengan pilihanya
+    public void setActiveMenu(String menu) {
+        
+    btnTransaksi.setActive(false);
+    btnProduk.setActive(false);
+    btnStok.setActive(false);
+    btnPengguna.setActive(false);
+    btnDiskon.setActive(false);
+    btnLaporan.setActive(false);
+
+    switch (menu) {
+        case "transaksi":
+            btnTransaksi.setActive(true);
+            break;
+
+        case "produk":
+            btnProduk.setActive(true);
+            break;
+
+        case "stok":
+            btnStok.setActive(true);
+            break;
+
+        case "pengguna":
+            btnPengguna.setActive(true);
+            break;
+
+        case "diskon":
+            btnDiskon.setActive(true);
+            break;
+
+        case "laporan":
+            btnLaporan.setActive(true);
+            break;
+    }
+
+    repaint();
+    revalidate();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

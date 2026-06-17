@@ -4,6 +4,7 @@
  */
 package seblakratupos.view;
 
+import java.awt.CardLayout;
 
 /**
  *
@@ -13,12 +14,68 @@ public class MainFrame extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
+    private CardLayout cardLayout;
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
 
+        setupContentPanel();
+        setupSidebarAction();
+
+        showPage("transaksi");
+
+    }
+
+    // method buat menyiapkan contentpanel agar bisa menampilkan banyak halaman memakai cardlayout
+    private void setupContentPanel() {
+
+        cardLayout = new CardLayout();
+        contentPanel.setLayout(cardLayout);
+
+        contentPanel.add(new TransaksiPanel(), "transaksi");
+        contentPanel.add(new ProdukPanel(), "produk");
+        contentPanel.add(new StokPanel(), "stok");
+        contentPanel.add(new PenggunaPanel(), "pengguna");
+        contentPanel.add(new DiskonPanel(), "diskon");
+        contentPanel.add(new LaporanPanel(), "laporan");
+    }
+
+// method buat memberikan aksi ke tombol sidebar, jadi setiap tombol bisa pindah halaman
+    private void setupSidebarAction() {
+        sidebarPanel1.getBtnTransaksi().addActionListener(e -> showPage("transaksi"));
+        sidebarPanel1.getBtnProduk().addActionListener(e -> showPage("produk"));
+        sidebarPanel1.getBtnStok().addActionListener(e -> showPage("stok"));
+        sidebarPanel1.getBtnPengguna().addActionListener(e -> showPage("pengguna"));
+        sidebarPanel1.getBtnDiskon().addActionListener(e -> showPage("diskon"));
+        sidebarPanel1.getBtnLaporan().addActionListener(e -> showPage("laporan"));
+
+        sidebarPanel1.getBtnPengaturan().addActionListener(e -> pengaturan());
+        sidebarPanel1.getBtnLogout().addActionListener(e -> logout());
+    }
+
+// method buat menampilkan halaman sesuai nama page, sekaligus menngatur button sidebar yang aktif
+    private void showPage(String pageName) {
+        cardLayout.show(contentPanel, pageName);
+
+        sidebarPanel1.setActiveMenu(pageName);
+
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
+// method untuk keluar dari mainframe dan balik ke loginframe
+    private void logout() {
+        new LoginFrame().setVisible(true);
+        dispose();
+    }
+
+// method untuk pindah dari mainframe ke pengaturanframe
+    private void pengaturan() {
+        new PengaturanFrame().setVisible(true);
+        dispose();
     }
 
     /**

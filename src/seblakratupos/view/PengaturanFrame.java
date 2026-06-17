@@ -320,7 +320,7 @@ public class PengaturanFrame extends javax.swing.JFrame {
         );
 
         jLabel15.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        jLabel15.setText(" Nama Toko");
+        jLabel15.setText("Alamat");
 
         panelCustomV27.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV27.setBorderColor(new java.awt.Color(231, 189, 187));
@@ -603,8 +603,8 @@ public class PengaturanFrame extends javax.swing.JFrame {
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
         // TODO add your handling code here:
-        dispose();
         new MainFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_lblBackMouseClicked
 
     /**
