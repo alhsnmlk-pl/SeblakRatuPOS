@@ -142,7 +142,6 @@ public class Bayar extends javax.swing.JDialog {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        btnTunai.setForeground(new java.awt.Color(216, 3, 41));
         btnTunai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/iconvector.png"))); // NOI18N
         btnTunai.setText("Tunai");
         btnTunai.setActiveBackground(new java.awt.Color(255, 255, 255));
