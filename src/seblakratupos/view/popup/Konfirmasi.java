@@ -103,6 +103,11 @@ public class Konfirmasi extends javax.swing.JDialog {
 
         lblBatal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
         lblBatal.setText("Batal");
+        lblBatal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBatalMouseClicked(evt);
+            }
+        });
 
         btnHapus.setBackground(new java.awt.Color(214, 4, 39));
         btnHapus.setForeground(new java.awt.Color(255, 255, 255));
@@ -181,6 +186,11 @@ public class Konfirmasi extends javax.swing.JDialog {
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void lblBatalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBatalMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_lblBatalMouseClicked
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;

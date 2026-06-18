@@ -5,6 +5,7 @@
 package seblakratupos.view;
 
 import seblakratupos.view.component.ButtonCustomV2;
+import seblakratupos.view.popup.Konfirmasi;
 
 /**
  *
@@ -675,6 +676,8 @@ public class ProdukPanel extends javax.swing.JPanel {
 
     private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
+        new Konfirmasi(null,true).setLocationRelativeTo(null);
+        new Konfirmasi(null,true).setVisible(true);
     }//GEN-LAST:event_btnHapusProdukActionPerformed
 
     private void btnBatalProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalProdukActionPerformed

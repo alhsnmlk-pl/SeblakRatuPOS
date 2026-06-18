@@ -114,6 +114,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Batal"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBatalMouseClicked"/>
+          </Events>
         </Component>
         <Component class="seblakratupos.view.component.ButtonCustom" name="btnHapus">
           <Properties>
