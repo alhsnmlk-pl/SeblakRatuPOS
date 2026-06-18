@@ -122,7 +122,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnToppingProduk" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnMinumanProduk" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMinumanProduk" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -561,14 +561,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="panelCustomV210" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="mainProdukS" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Component id="headerProdukS" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="mainProdukS" alignment="1" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -593,6 +596,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="borderBottomThickness" type="int" value="1"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bb" green="bd" red="e7" type="rgb"/>
             </Property>
@@ -637,7 +641,7 @@
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bb" green="bd" red="e7" type="rgb"/>
             </Property>
-            <Property name="borderThickness" type="int" value="1"/>
+            <Property name="borderLeftThickness" type="int" value="0"/>
           </Properties>
 
           <Layout>
@@ -660,7 +664,7 @@
                           <Component id="lblHargaJual" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -733,7 +737,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="txtNamaProduk" min="-2" pref="279" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -976,7 +980,6 @@
               <Color blue="bb" green="bd" red="e7" type="rgb"/>
             </Property>
             <Property name="borderThickness" type="int" value="1"/>
-            <Property name="borderTopThickness" type="int" value="0"/>
           </Properties>
 
           <Layout>
@@ -988,7 +991,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnBatalProduk" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnHapusProduk" pref="146" max="32767" attributes="0"/>
+                              <Component id="btnHapusProduk" max="32767" attributes="0"/>
                           </Group>
                           <Component id="btnSimpanProduk" alignment="0" max="32767" attributes="0"/>
                       </Group>

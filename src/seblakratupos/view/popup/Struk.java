@@ -83,6 +83,7 @@ public class Struk extends javax.swing.JDialog {
         btnTutupStruk.setInactiveForeground(new java.awt.Color(0, 0, 0));
         btnTutupStruk.setPressedBorderColor(new java.awt.Color(231, 189, 187));
         btnTutupStruk.setPressedForeground(new java.awt.Color(0, 0, 0));
+        btnTutupStruk.addActionListener(this::btnTutupStrukActionPerformed);
 
         btnCetakStruk.setBackground(new java.awt.Color(215, 4, 39));
         btnCetakStruk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seblakratupos/asset/icon/pratinjau.png"))); // NOI18N
@@ -145,7 +146,13 @@ public class Struk extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTutupStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupStrukActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnTutupStrukActionPerformed
 
     /**
      * @param args the command line arguments

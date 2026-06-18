@@ -131,9 +131,9 @@ public class Konfirmasi extends javax.swing.JDialog {
                     .addGroup(panelCustomV21Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblHapus)
-                            .addComponent(lblKonfirmasi))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(lblKonfirmasi)
+                            .addComponent(LblHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         panelCustomV21Layout.setVerticalGroup(
             panelCustomV21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
