@@ -240,7 +240,7 @@ public class ProdukPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnToppingProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMinumanProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMinumanProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelCustomV59Layout.createSequentialGroup()
                         .addComponent(lblDaftarProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,6 +313,7 @@ public class ProdukPanel extends javax.swing.JPanel {
         rProduk.setPreferredSize(new java.awt.Dimension(347, 611));
 
         headerProdukS.setBackground(new java.awt.Color(255, 255, 255));
+        headerProdukS.setBorderBottomThickness(1);
         headerProdukS.setBorderColor(new java.awt.Color(231, 189, 187));
 
         lblTambahProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
@@ -337,7 +338,7 @@ public class ProdukPanel extends javax.swing.JPanel {
 
         mainProdukS.setBackground(new java.awt.Color(255, 255, 255));
         mainProdukS.setBorderColor(new java.awt.Color(231, 189, 187));
-        mainProdukS.setBorderThickness(1);
+        mainProdukS.setBorderLeftThickness(0);
 
         lblStatusProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         lblStatusProduk.setText(" Status Ketersediaan");
@@ -362,7 +363,7 @@ public class ProdukPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(txtNamaProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +474,7 @@ public class ProdukPanel extends javax.swing.JPanel {
                     .addComponent(cKategoriProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHargaJual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                .addGap(13, 13, 13))
         );
         mainProdukSLayout.setVerticalGroup(
             mainProdukSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,7 +507,6 @@ public class ProdukPanel extends javax.swing.JPanel {
         panelCustomV210.setBackground(new java.awt.Color(255, 255, 255));
         panelCustomV210.setBorderColor(new java.awt.Color(231, 189, 187));
         panelCustomV210.setBorderThickness(1);
-        panelCustomV210.setBorderTopThickness(0);
 
         btnSimpanProduk.setBackground(new java.awt.Color(215, 4, 39));
         btnSimpanProduk.setForeground(new java.awt.Color(255, 255, 255));
@@ -602,7 +602,7 @@ public class ProdukPanel extends javax.swing.JPanel {
                     .addGroup(panelCustomV210Layout.createSequentialGroup()
                         .addComponent(btnBatalProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnHapusProduk, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addComponent(btnHapusProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnSimpanProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
@@ -623,13 +623,15 @@ public class ProdukPanel extends javax.swing.JPanel {
         rProdukLayout.setHorizontalGroup(
             rProdukLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelCustomV210, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rProdukLayout.createSequentialGroup()
+            .addGroup(rProdukLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addGroup(rProdukLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rProdukLayout.createSequentialGroup()
-                        .addComponent(headerProdukS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(rProdukLayout.createSequentialGroup()
+                        .addComponent(mainProdukS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(1, 1, 1))
-                    .addComponent(mainProdukS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(rProdukLayout.createSequentialGroup()
+                        .addComponent(headerProdukS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))))
         );
         rProdukLayout.setVerticalGroup(
             rProdukLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

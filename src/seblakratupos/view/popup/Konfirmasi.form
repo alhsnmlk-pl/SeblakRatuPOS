@@ -64,12 +64,12 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="LblHapus" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblKonfirmasi" min="-2" max="-2" attributes="0"/>
+                              <Component id="LblHapus" min="-2" pref="164" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
