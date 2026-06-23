@@ -4,6 +4,11 @@
  */
 package posseblakratu.view;
 
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.JPanel;
+
 
 
 /**
@@ -17,6 +22,14 @@ public class PanelProduk extends javax.swing.JPanel {
      */
     public PanelProduk() {
         initComponents();
+        
+//        borderLengkung(jPanel3, new Insets(5, 5, 5, 5), "#E7BDBB", 1, 10);
+//        borderLengkung(jPanel1,new Insets(5, 5, 5, 5), "#E7BDBB", 1, 10);
+//        borderLengkung(jPanel17, new Insets(0, 0, 0, 0), "#E7BDBB", 1, 10);
+//        borderLengkung(jPanel18, new Insets(0, 0, 0, 0), "#E7BDBB", 1, 10);
+//        borderLengkung(jPanel19, new Insets(3, 3, 3, 3), "#E7BDBB", 1, 10);
+//        borderLengkung(jPanel20, new Insets(3, 3, 3, 3), "#E7BDBB", 1, 10);
+        
         filterSemuaP.setSelected(true);
         filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
         filterSeblakP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
@@ -24,6 +37,15 @@ public class PanelProduk extends javax.swing.JPanel {
         filterMinumanP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         
     }
+    
+//    private void borderLengkung(javax.swing.JComponent komponen, java.awt.Insets insets, String hexColor, int thickness, int arc) {
+//        komponen.setBorder(new FlatLineBorder(
+//                insets,
+//                java.awt.Color.decode(hexColor),
+//                thickness, (int) arc));
+//    }
+    
+    
     
     
     
@@ -88,6 +110,7 @@ public class PanelProduk extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1075, 639));
         setLayout(new java.awt.BorderLayout(15, 0));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel1.setPreferredSize(new java.awt.Dimension(347, 611));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -250,6 +273,7 @@ public class PanelProduk extends javax.swing.JPanel {
         lblNamaProduk2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel14.add(lblNamaProduk2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel20.setLayout(new java.awt.BorderLayout());
 
@@ -358,6 +382,7 @@ public class PanelProduk extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -579,7 +604,6 @@ public class PanelProduk extends javax.swing.JPanel {
 
     private void tNamaProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaProdukMouseClicked
         // TODO add your handling code here:
-        tNamaProduk.setText(null);
     }//GEN-LAST:event_tNamaProdukMouseClicked
 
 

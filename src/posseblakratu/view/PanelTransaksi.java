@@ -4,6 +4,7 @@
  */
 package posseblakratu.view;
 
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
@@ -55,7 +56,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 "borderWidth:1; "
                 + "background:#FBF8FF;"
                 + "pressedBackground:#F6F0FF;"
-                + "arc:5;"
+                + "arc:8;"
                 + "borderColor:#E7BCBA;"
                 + "focusedBorderColor:#E7BCBA; "
                 + "hoverBorderColor:#E7BCBA");
@@ -64,10 +65,16 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 "borderWidth:1; "
                 + "pressedBackground:#F6F0FF;"        
                 + "background:#FBF8FF;"      
-                + "arc:5; "
+                + "arc:8; "
                 + "borderColor:#BA1A1A; "
                 + "focusedBorderColor:#BA1A1A; "
-                + "hoverBorderColor:#BA1A1A");
+                + "hoverBorderColor:#BA1A1A"
+        );
+        
+        btnBayar.putClientProperty("FlatLaf.style",
+                "borderWidth:0; "
+                + "arc:8; "
+        );
     }
     
     void borderLengkung(JPanel panel) {
@@ -170,6 +177,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         keranjangContent.revalidate();
         keranjangContent.repaint();
     }
+    
+    
+    
+    //method untuk memanggil popup
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -228,7 +240,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnBayar = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         keranjangContent = new javax.swing.JPanel();
@@ -597,12 +609,13 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         jSeparator2.setForeground(new java.awt.Color(231, 189, 187));
 
-        jButton1.setBackground(new java.awt.Color(214, 4, 39));
-        jButton1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
-        jButton1.setText("Bayar");
-        jButton1.setIconTextGap(8);
+        btnBayar.setBackground(new java.awt.Color(214, 4, 39));
+        btnBayar.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
+        btnBayar.setText("Bayar");
+        btnBayar.setIconTextGap(8);
+        btnBayar.addActionListener(this::btnBayarActionPerformed);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -621,7 +634,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnBayar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addComponent(jSeparator2)
                 .addContainerGap())
@@ -646,7 +659,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -728,8 +741,19 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         buttonLvl(btnLvl5);
     }//GEN-LAST:event_btnLvl5ItemStateChanged
 
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
+        // TODO add your handling code here:
+        PopupBayar bayar = new PopupBayar(
+                (java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this),true
+        );
+
+        bayar.setVisible(true);
+
+    }//GEN-LAST:event_btnBayarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBayar;
     private javax.swing.JToggleButton btnLvl0;
     private javax.swing.JToggleButton btnLvl1;
     private javax.swing.JToggleButton btnLvl2;
@@ -746,7 +770,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JToggleButton filterMinumanM;
     private javax.swing.JToggleButton filterSeblakM;
     private javax.swing.JToggleButton filterSemuaM;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;

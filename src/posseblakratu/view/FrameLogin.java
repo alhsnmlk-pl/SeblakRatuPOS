@@ -6,13 +6,11 @@
 package posseblakratu.view;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.ui.FlatLineBorder;
-import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import posseblakratu.component.DesainUI;
 
 
 /**
@@ -27,45 +25,22 @@ public final class FrameLogin extends javax.swing.JFrame {
     public FrameLogin() {
         initComponents();
         
+        
         //memanggil method style saat dijalankan
-        borderLengkung(containerLogin);
-        borderLengkung(usrContainer);
-        borderLengkung(passContainer);
-        borderLengkung(roleContainer);
-        buttonLengkung(btnLogin);
-        
-        
-        
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    //membuat method style border lengkung pada button dan panel menggunakan flatline border dari flatlaf
-    void borderLengkung(JPanel panel) {
-        panel.setBorder(new FlatLineBorder(
-                new Insets(0, 0, 0, 0),
-                Color.decode("#E7BDBB"),
-                1f,
-                10
-        ));
-    }
-    
-    void buttonLengkung(JButton tombol) {
-        tombol.putClientProperty("FlatLaf.style",
-                "borderWidth:2; "
-                + "arc:15; "
-                + "borderColor:#000000; "
-                + "focusedBorderColor:#000000; "
-                + "hoverBorderColor:#000000"
-        );
+        DesainUI.borderLengkung(containerLogin);
+        DesainUI.borderLengkung(usrContainer);
+        DesainUI.borderLengkung(passContainer);
+        DesainUI.borderLengkung(roleContainer);
+        DesainUI.borderLengkung(btnLogin);
 
+        
     }
     
+    
+    
+
+    
+
     
 
     /** This method is called from within the constructor to
