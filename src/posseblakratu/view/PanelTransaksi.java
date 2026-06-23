@@ -4,8 +4,13 @@
  */
 package posseblakratu.view;
 
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
 import posseblakratu.component.cardMenu;
 import javax.swing.Box;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import posseblakratu.component.cardKeranjang;
 import posseblakratu.component.cardTopping;
 
@@ -13,26 +18,92 @@ import posseblakratu.component.cardTopping;
  *
  * @author Al
  */
-public class PanelTransaksi extends javax.swing.JPanel {
+public final class PanelTransaksi extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelTransaksi
      */
     public PanelTransaksi() {
         initComponents();
+        
+        buttonDesain();
+        
+        borderLengkung(containerDaftarMenu);
+        borderLengkung(containerKostumisasi);
+        borderLengkung(containerKeranjang);
+        
+        
+        buttonLvl(btnLvl0);
+        buttonLvl(btnLvl1);
+        buttonLvl(btnLvl2);
+        buttonLvl(btnLvl3);
+        buttonLvl(btnLvl4);
+        buttonLvl(btnLvl5);
+        
 
         filterSemuaM.setSelected(true);
-        filterSemuaM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
-        filterSeblakM.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
-        filterMinumanM.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
+        btnFilter(filterSemuaM);
         
         loadMenu();
         loadTopping();
         loadKeranjang();
     }
     
+    void buttonDesain() {
+
+        btnNext.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "background:#FBF8FF;"
+                + "pressedBackground:#F6F0FF;"
+                + "arc:5;"
+                + "borderColor:#E7BCBA;"
+                + "focusedBorderColor:#E7BCBA; "
+                + "hoverBorderColor:#E7BCBA");
+        
+        btnReset.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "pressedBackground:#F6F0FF;"        
+                + "background:#FBF8FF;"      
+                + "arc:5; "
+                + "borderColor:#BA1A1A; "
+                + "focusedBorderColor:#BA1A1A; "
+                + "hoverBorderColor:#BA1A1A");
+    }
     
+    void borderLengkung(JPanel panel) {
+        panel.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10
+        ));
+    }
     
+    void buttonLvl(JToggleButton btn){
+        if (btn.isSelected()) {
+            btn.setBorder(new FlatLineBorder(
+                    new Insets(0, 0, 0, 0),
+                    Color.decode("#EA580C"),
+                    2f,
+                    10
+            ));
+        } else {
+            btn.setBorder(new FlatLineBorder(
+                    new Insets(1, 1, 1, 1),
+                    Color.decode("#E7BCBA"),
+                    1f,
+                    10
+            ));
+        }
+    }
+    
+    void btnFilter(JToggleButton btn){
+        if (btn.isSelected()) {
+            btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+        } else {
+            btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
+        }
+    }
    
     
     //method untuk menampilkan menu
@@ -109,26 +180,25 @@ public class PanelTransaksi extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        jPanel3 = new javax.swing.JPanel();
+        buttonGroupFilter = new javax.swing.ButtonGroup();
+        buttonGroupLvl = new javax.swing.ButtonGroup();
+        containerDaftarMenu = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         filterSemuaM = new javax.swing.JToggleButton();
         filterSeblakM = new javax.swing.JToggleButton();
         filterMinumanM = new javax.swing.JToggleButton();
-        jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         menuContent = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        containerKostumisasi = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblMenu = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
-        btnReset = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -143,11 +213,11 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jPanel15 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         toppingContent = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        containerKeranjang = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        lblTrx = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -158,7 +228,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        btnBayar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         keranjangContent = new javax.swing.JPanel();
@@ -169,12 +239,13 @@ public class PanelTransaksi extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1075, 639));
         setLayout(new java.awt.GridLayout(1, 3, 15, 15));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        containerDaftarMenu.setBackground(new java.awt.Color(255, 255, 255));
+        containerDaftarMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        containerDaftarMenu.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
+        jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(337, 87));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
@@ -187,8 +258,9 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jPanel4.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setOpaque(false);
 
-        buttonGroup1.add(filterSemuaM);
+        buttonGroupFilter.add(filterSemuaM);
         filterSemuaM.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         filterSemuaM.setForeground(new java.awt.Color(92, 62, 60));
         filterSemuaM.setText("Semua");
@@ -201,7 +273,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
         filterSemuaM.setMargin(new java.awt.Insets(0, 0, 0, 0));
         filterSemuaM.addItemListener(this::filterSemuaMItemStateChanged);
 
-        buttonGroup1.add(filterSeblakM);
+        buttonGroupFilter.add(filterSeblakM);
         filterSeblakM.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         filterSeblakM.setForeground(new java.awt.Color(92, 62, 60));
         filterSeblakM.setText("Seblak");
@@ -213,7 +285,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
         filterSeblakM.setMargin(new java.awt.Insets(1, 1, 20, 1));
         filterSeblakM.addItemListener(this::filterSeblakMItemStateChanged);
 
-        buttonGroup1.add(filterMinumanM);
+        buttonGroupFilter.add(filterMinumanM);
         filterMinumanM.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         filterMinumanM.setForeground(new java.awt.Color(92, 62, 60));
         filterMinumanM.setText("Minuman");
@@ -247,42 +319,25 @@ public class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel4.add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+        containerDaftarMenu.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setOpaque(false);
 
         menuContent.setBackground(new java.awt.Color(255, 255, 255));
-        menuContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 5, 15));
+        menuContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 0, 10));
         menuContent.setLayout(new javax.swing.BoxLayout(menuContent, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(menuContent);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1)
-                .addGap(0, 0, 0))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1)
-                .addGap(0, 0, 0))
-        );
+        containerDaftarMenu.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jPanel3.add(jPanel7, java.awt.BorderLayout.CENTER);
+        add(containerDaftarMenu);
 
-        add(jPanel3);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        containerKostumisasi.setBackground(new java.awt.Color(255, 255, 255));
+        containerKostumisasi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        containerKostumisasi.setLayout(new java.awt.BorderLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -318,7 +373,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        jPanel2.add(jPanel8, java.awt.BorderLayout.PAGE_START);
+        containerKostumisasi.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(231, 189, 187)));
@@ -329,18 +384,22 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jPanel17.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jPanel17.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
 
-        btnReset.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnReset.setText("Reset");
-        jPanel17.add(btnReset);
-
+        btnNext.setBackground(new java.awt.Color(251, 248, 255));
         btnNext.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(187, 26, 26));
-        btnNext.setText("Next");
+        btnNext.setText("Reset");
+        btnNext.setFocusPainted(false);
         jPanel17.add(btnNext);
+
+        btnReset.setBackground(new java.awt.Color(251, 248, 255));
+        btnReset.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(187, 26, 26));
+        btnReset.setText("Next");
+        btnReset.setFocusPainted(false);
+        jPanel17.add(btnReset);
 
         jPanel14.add(jPanel17, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel14, java.awt.BorderLayout.PAGE_END);
+        containerKostumisasi.add(jPanel14, java.awt.BorderLayout.PAGE_END);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
@@ -358,38 +417,46 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setLayout(new java.awt.GridLayout(3, 0, 6, 6));
 
-        buttonGroup2.add(btnLvl0);
+        buttonGroupLvl.add(btnLvl0);
         btnLvl0.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl0.setText("0 - Ratu Takut");
-        btnLvl0.addActionListener(this::btnLvl0ActionPerformed);
+        btnLvl0.setContentAreaFilled(false);
+        btnLvl0.addItemListener(this::btnLvl0ItemStateChanged);
         jPanel16.add(btnLvl0);
 
-        buttonGroup2.add(btnLvl1);
+        buttonGroupLvl.add(btnLvl1);
         btnLvl1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl1.setText("1 - Ratu Baik");
-        btnLvl1.addActionListener(this::btnLvl1ActionPerformed);
+        btnLvl1.setContentAreaFilled(false);
+        btnLvl1.addItemListener(this::btnLvl1ItemStateChanged);
         jPanel16.add(btnLvl1);
 
-        buttonGroup2.add(btnLvl2);
+        buttonGroupLvl.add(btnLvl2);
         btnLvl2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl2.setText("2 - Ratu Santuy");
+        btnLvl2.setContentAreaFilled(false);
+        btnLvl2.addItemListener(this::btnLvl2ItemStateChanged);
         jPanel16.add(btnLvl2);
 
-        buttonGroup2.add(btnLvl3);
+        buttonGroupLvl.add(btnLvl3);
         btnLvl3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl3.setText("3 - Ratu Judes");
-        btnLvl3.addActionListener(this::btnLvl3ActionPerformed);
+        btnLvl3.setContentAreaFilled(false);
+        btnLvl3.addItemListener(this::btnLvl3ItemStateChanged);
         jPanel16.add(btnLvl3);
 
-        buttonGroup2.add(btnLvl4);
+        buttonGroupLvl.add(btnLvl4);
         btnLvl4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl4.setText("4 - Ratu Marah");
-        btnLvl4.addActionListener(this::btnLvl4ActionPerformed);
+        btnLvl4.setContentAreaFilled(false);
+        btnLvl4.addItemListener(this::btnLvl4ItemStateChanged);
         jPanel16.add(btnLvl4);
 
-        buttonGroup2.add(btnLvl5);
+        buttonGroupLvl.add(btnLvl5);
         btnLvl5.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl5.setText("5 - Ratu Ngamuk");
+        btnLvl5.setContentAreaFilled(false);
+        btnLvl5.addItemListener(this::btnLvl5ItemStateChanged);
         jPanel16.add(btnLvl5);
 
         jLabel8.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
@@ -443,13 +510,13 @@ public class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel5.add(jPanel15, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
+        containerKostumisasi.add(jPanel5, java.awt.BorderLayout.CENTER);
 
-        add(jPanel2);
+        add(containerKostumisasi);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        containerKeranjang.setBackground(new java.awt.Color(255, 255, 255));
+        containerKeranjang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        containerKeranjang.setLayout(new java.awt.BorderLayout());
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -467,11 +534,11 @@ public class PanelTransaksi extends javax.swing.JPanel {
         jPanel18.setPreferredSize(new java.awt.Dimension(80, 23));
         jPanel18.setLayout(new java.awt.BorderLayout());
 
-        lblTrx.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
-        lblTrx.setForeground(new java.awt.Color(255, 255, 255));
-        lblTrx.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTrx.setText("TRX-0001");
-        jPanel18.add(lblTrx, java.awt.BorderLayout.CENTER);
+        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("TRX-0001");
+        jPanel18.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -494,7 +561,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        jPanel1.add(jPanel10, java.awt.BorderLayout.PAGE_START);
+        containerKeranjang.add(jPanel10, java.awt.BorderLayout.PAGE_START);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 20, 15, 20));
@@ -530,12 +597,12 @@ public class PanelTransaksi extends javax.swing.JPanel {
 
         jSeparator2.setForeground(new java.awt.Color(231, 189, 187));
 
-        btnBayar.setBackground(new java.awt.Color(214, 4, 39));
-        btnBayar.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
-        btnBayar.setText("Bayar");
-        btnBayar.setIconTextGap(8);
+        jButton1.setBackground(new java.awt.Color(214, 4, 39));
+        jButton1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
+        jButton1.setText("Bayar");
+        jButton1.setIconTextGap(8);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -554,7 +621,7 @@ public class PanelTransaksi extends javax.swing.JPanel {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(btnBayar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addComponent(jSeparator2)
                 .addContainerGap())
@@ -579,13 +646,13 @@ public class PanelTransaksi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
         jPanel11.add(jPanel13, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel11, java.awt.BorderLayout.PAGE_END);
+        containerKeranjang.add(jPanel11, java.awt.BorderLayout.PAGE_END);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -609,58 +676,60 @@ public class PanelTransaksi extends javax.swing.JPanel {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel12, java.awt.BorderLayout.CENTER);
+        containerKeranjang.add(jPanel12, java.awt.BorderLayout.CENTER);
 
-        add(jPanel1);
+        add(containerKeranjang);
     }// </editor-fold>//GEN-END:initComponents
 
     private void filterSemuaMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSemuaMItemStateChanged
         // TODO add your handling code here:
-        if (filterSemuaM.isSelected()) {
-            filterSemuaM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
-        } else {
-            filterSemuaM.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
-        }
+        btnFilter(filterSemuaM);
     }//GEN-LAST:event_filterSemuaMItemStateChanged
 
     private void filterSeblakMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSeblakMItemStateChanged
         // TODO add your handling code here:
-        if (filterSeblakM.isSelected()) {
-            filterSeblakM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
-        } else {
-            filterSeblakM.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
-        }
+        btnFilter(filterSeblakM);
     }//GEN-LAST:event_filterSeblakMItemStateChanged
 
     private void filterMinumanMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterMinumanMItemStateChanged
         // TODO add your handling code here:
-        if (filterMinumanM.isSelected()) {
-            filterMinumanM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
-        } else {
-            filterMinumanM.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
-        }
+        btnFilter(filterMinumanM);
     }//GEN-LAST:event_filterMinumanMItemStateChanged
 
-    private void btnLvl0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLvl0ActionPerformed
+    private void btnLvl0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl0ItemStateChanged
         // TODO add your handling code here:
+        buttonLvl(btnLvl0);
+         
 
-    }//GEN-LAST:event_btnLvl0ActionPerformed
+    }//GEN-LAST:event_btnLvl0ItemStateChanged
 
-    private void btnLvl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLvl1ActionPerformed
+    private void btnLvl1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl1ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLvl1ActionPerformed
+        buttonLvl(btnLvl1);
+    }//GEN-LAST:event_btnLvl1ItemStateChanged
 
-    private void btnLvl3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLvl3ActionPerformed
+    private void btnLvl2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl2ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLvl3ActionPerformed
+        buttonLvl(btnLvl2);
+    }//GEN-LAST:event_btnLvl2ItemStateChanged
 
-    private void btnLvl4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLvl4ActionPerformed
+    private void btnLvl3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl3ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLvl4ActionPerformed
+        buttonLvl(btnLvl3);
+    }//GEN-LAST:event_btnLvl3ItemStateChanged
+
+    private void btnLvl4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl4ItemStateChanged
+        // TODO add your handling code here:
+        buttonLvl(btnLvl4);
+    }//GEN-LAST:event_btnLvl4ItemStateChanged
+
+    private void btnLvl5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl5ItemStateChanged
+        // TODO add your handling code here:
+        buttonLvl(btnLvl5);
+    }//GEN-LAST:event_btnLvl5ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBayar;
     private javax.swing.JToggleButton btnLvl0;
     private javax.swing.JToggleButton btnLvl1;
     private javax.swing.JToggleButton btnLvl2;
@@ -669,20 +738,24 @@ public class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnLvl5;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnReset;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroupFilter;
+    private javax.swing.ButtonGroup buttonGroupLvl;
+    private javax.swing.JPanel containerDaftarMenu;
+    private javax.swing.JPanel containerKeranjang;
+    private javax.swing.JPanel containerKostumisasi;
     private javax.swing.JToggleButton filterMinumanM;
     private javax.swing.JToggleButton filterSeblakM;
     private javax.swing.JToggleButton filterSemuaM;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -692,12 +765,9 @@ public class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -710,7 +780,6 @@ public class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblTrx;
     private javax.swing.JPanel menuContent;
     private javax.swing.JPanel toppingContent;
     // End of variables declaration//GEN-END:variables
