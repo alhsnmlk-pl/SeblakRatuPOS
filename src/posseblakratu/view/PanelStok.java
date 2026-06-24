@@ -4,6 +4,12 @@
  */
 package posseblakratu.view;
 
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.JPanel;
+import posseblakratu.component.DesainUI;
+
 /**
  *
  * @author Al
@@ -15,6 +21,39 @@ public class PanelStok extends javax.swing.JPanel {
      */
     public PanelStok() {
         initComponents();
+        
+        panelLengkung(jPanel17);
+        panelLengkung(jPanel9);
+        panelLengkung(jPanel14);
+        panelLengkung(jPanel19);
+
+        DesainUI.setGlobal(new Insets(5, 5, 5, 5), "#E7BDBB", 1f, 10);
+        DesainUI.borderLengkung(jPanel1);
+        DesainUI.borderLengkung(jPanel3);
+    }
+    
+    
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(3, 3, 3, 3),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        
+        jPanel1.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        jPanel3.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
     }
 
     /**
@@ -67,6 +106,7 @@ public class PanelStok extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1075, 639));
         setLayout(new java.awt.BorderLayout(15, 0));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel1.setPreferredSize(new java.awt.Dimension(347, 611));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -105,6 +145,7 @@ public class PanelStok extends javax.swing.JPanel {
         btnSimpanStok.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpanStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanStok.setText("Simpan Perubahan");
+        btnSimpanStok.setBorderPainted(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -267,14 +308,17 @@ public class PanelStok extends javax.swing.JPanel {
         tHargaStok.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         tHargaStok.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tHargaStok.setMargin(new java.awt.Insets(10, 20, 10, 6));
+        tHargaStok.setOpaque(true);
         tHargaStok.addActionListener(this::tHargaStokActionPerformed);
         jPanel19.add(tHargaStok, java.awt.BorderLayout.CENTER);
 
+        lblRupiahProduk.setBackground(new java.awt.Color(255, 255, 255));
         lblRupiahProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
         lblRupiahProduk.setForeground(new java.awt.Color(215, 4, 39));
         lblRupiahProduk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRupiahProduk.setText("Rp");
         lblRupiahProduk.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12)));
+        lblRupiahProduk.setOpaque(true);
         jPanel19.add(lblRupiahProduk, java.awt.BorderLayout.LINE_START);
 
         jPanel15.add(jPanel19, java.awt.BorderLayout.CENTER);
@@ -300,6 +344,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -321,6 +366,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
+        jPanel10.setPreferredSize(new java.awt.Dimension(150, 60));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
         btnTambahProduk.setBackground(new java.awt.Color(214, 4, 39));
@@ -328,7 +374,7 @@ public class PanelStok extends javax.swing.JPanel {
         btnTambahProduk.setForeground(new java.awt.Color(255, 255, 255));
         btnTambahProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
         btnTambahProduk.setText("Tambah Baru");
-        btnTambahProduk.setBorder(null);
+        btnTambahProduk.setBorderPainted(false);
         jPanel10.add(btnTambahProduk, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -338,8 +384,8 @@ public class PanelStok extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(JLabell, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         jPanel8Layout.setVerticalGroup(

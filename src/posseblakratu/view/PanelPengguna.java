@@ -4,6 +4,9 @@
  */
 package posseblakratu.view;
 
+import java.awt.Insets;
+import posseblakratu.component.DesainUI;
+
 /**
  *
  * @author Al
@@ -15,6 +18,16 @@ public class PanelPengguna extends javax.swing.JPanel {
      */
     public PanelPengguna() {
         initComponents();
+
+        DesainUI.setGlobal(new Insets(3, 3, 3, 3), "#E7BDBB", 1f, 10);
+        DesainUI.setGlobal(new Insets(3, 3, 3, 3), "#E7BDBB", 1f, 10);
+        DesainUI.borderLengkung(jPanel17);
+        DesainUI.borderLengkung(jPanel18);
+        DesainUI.borderLengkung(jPanel20);
+
+        DesainUI.setGlobal(new Insets(5, 5, 5, 5), "#E7BDBB", 1f, 10);
+        DesainUI.borderLengkung(jPanel1);
+        DesainUI.borderLengkung(jPanel3);
     }
 
     /**
@@ -69,6 +82,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1075, 639));
         setLayout(new java.awt.BorderLayout(15, 0));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel1.setPreferredSize(new java.awt.Dimension(347, 611));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -107,6 +121,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnSimpanPengguna.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpanPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanPengguna.setText("Simpan Perubahan");
+        btnSimpanPengguna.setBorderPainted(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -240,6 +255,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         lblNamaProduk2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel14.add(lblNamaProduk2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel20.setLayout(new java.awt.BorderLayout());
 
@@ -331,6 +347,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -350,6 +367,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
+        jPanel10.setPreferredSize(new java.awt.Dimension(150, 60));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
         btnTambahPengguna.setBackground(new java.awt.Color(214, 4, 39));
@@ -357,7 +375,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnTambahPengguna.setForeground(new java.awt.Color(255, 255, 255));
         btnTambahPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
         btnTambahPengguna.setText("Tambah Baru");
-        btnTambahPengguna.setBorder(null);
+        btnTambahPengguna.setBorderPainted(false);
         jPanel10.add(btnTambahPengguna, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -367,8 +385,8 @@ public class PanelPengguna extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(lblDaftarProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         jPanel8Layout.setVerticalGroup(

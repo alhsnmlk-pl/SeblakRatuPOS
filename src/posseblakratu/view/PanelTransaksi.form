@@ -1010,6 +1010,7 @@
                       <Image iconType="3" name="/posseblakratu/icon/Icon Bayar.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Bayar"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="iconTextGap" type="int" value="8"/>
                   </Properties>
                   <Events>

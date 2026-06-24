@@ -4,7 +4,6 @@
  */
 package posseblakratu.view;
 
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
@@ -12,6 +11,7 @@ import posseblakratu.component.cardMenu;
 import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import posseblakratu.component.DesainUI;
 import posseblakratu.component.cardKeranjang;
 import posseblakratu.component.cardTopping;
 
@@ -26,14 +26,13 @@ public final class PanelTransaksi extends javax.swing.JPanel {
      */
     public PanelTransaksi() {
         initComponents();
-        
+
         buttonDesain();
-        
-        borderLengkung(containerDaftarMenu);
-        borderLengkung(containerKostumisasi);
-        borderLengkung(containerKeranjang);
-        
-        
+
+        panelLengkung(containerDaftarMenu);
+        panelLengkung(containerKostumisasi);
+        panelLengkung(containerKeranjang);
+
         buttonLvl(btnLvl0);
         buttonLvl(btnLvl1);
         buttonLvl(btnLvl2);
@@ -49,6 +48,23 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         loadTopping();
         loadKeranjang();
     }
+    
+    
+    
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        
+        
+    }
+    
+    
     
     void buttonDesain() {
 
@@ -71,20 +87,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 + "hoverBorderColor:#BA1A1A"
         );
         
-        btnBayar.putClientProperty("FlatLaf.style",
-                "borderWidth:0; "
-                + "arc:8; "
-        );
     }
     
-    void borderLengkung(JPanel panel) {
-        panel.setBorder(new FlatLineBorder(
-                new Insets(5, 5, 5, 5),
-                Color.decode("#E7BDBB"),
-                1f,
-                10
-        ));
-    }
+    
+    
     
     void buttonLvl(JToggleButton btn){
         if (btn.isSelected()) {
@@ -103,6 +109,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             ));
         }
     }
+    
+    
     
     void btnFilter(JToggleButton btn){
         if (btn.isSelected()) {
@@ -614,6 +622,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnBayar.setForeground(new java.awt.Color(255, 255, 255));
         btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
         btnBayar.setText("Bayar");
+        btnBayar.setBorderPainted(false);
         btnBayar.setIconTextGap(8);
         btnBayar.addActionListener(this::btnBayarActionPerformed);
 

@@ -4,10 +4,12 @@
  */
 package posseblakratu.view;
 
+
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JPanel;
+import posseblakratu.component.DesainUI;
 
 
 
@@ -15,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author Al
  */
-public class PanelProduk extends javax.swing.JPanel {
+public final class PanelProduk extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelProduk
@@ -23,12 +25,14 @@ public class PanelProduk extends javax.swing.JPanel {
     public PanelProduk() {
         initComponents();
         
-//        borderLengkung(jPanel3, new Insets(5, 5, 5, 5), "#E7BDBB", 1, 10);
-//        borderLengkung(jPanel1,new Insets(5, 5, 5, 5), "#E7BDBB", 1, 10);
-//        borderLengkung(jPanel17, new Insets(0, 0, 0, 0), "#E7BDBB", 1, 10);
-//        borderLengkung(jPanel18, new Insets(0, 0, 0, 0), "#E7BDBB", 1, 10);
-//        borderLengkung(jPanel19, new Insets(3, 3, 3, 3), "#E7BDBB", 1, 10);
-//        borderLengkung(jPanel20, new Insets(3, 3, 3, 3), "#E7BDBB", 1, 10);
+        panelLengkung(jPanel17);
+        panelLengkung(jPanel18);
+        panelLengkung(jPanel20);
+        panelLengkung(jPanel19);
+
+
+        
+
         
         filterSemuaP.setSelected(true);
         filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
@@ -38,12 +42,30 @@ public class PanelProduk extends javax.swing.JPanel {
         
     }
     
-//    private void borderLengkung(javax.swing.JComponent komponen, java.awt.Insets insets, String hexColor, int thickness, int arc) {
-//        komponen.setBorder(new FlatLineBorder(
-//                insets,
-//                java.awt.Color.decode(hexColor),
-//                thickness, (int) arc));
-//    }
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(3, 3, 3, 3),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        
+        jPanel1.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        jPanel3.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+    }
+    
+
     
     
     
@@ -150,6 +172,7 @@ public class PanelProduk extends javax.swing.JPanel {
         btnSimpanProduk.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpanProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanProduk.setText("Simpan Perubahan");
+        btnSimpanProduk.setBorderPainted(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -305,14 +328,17 @@ public class PanelProduk extends javax.swing.JPanel {
         tHargaProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 15));
         tHargaProduk.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tHargaProduk.setMargin(new java.awt.Insets(10, 20, 10, 6));
+        tHargaProduk.setOpaque(true);
         tHargaProduk.addActionListener(this::tHargaProdukActionPerformed);
         jPanel19.add(tHargaProduk, java.awt.BorderLayout.CENTER);
 
+        lblRupiahProduk.setBackground(new java.awt.Color(255, 255, 255));
         lblRupiahProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
         lblRupiahProduk.setForeground(new java.awt.Color(215, 4, 39));
         lblRupiahProduk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRupiahProduk.setText("Rp");
         lblRupiahProduk.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12)));
+        lblRupiahProduk.setOpaque(true);
         jPanel19.add(lblRupiahProduk, java.awt.BorderLayout.LINE_START);
 
         jPanel15.add(jPanel19, java.awt.BorderLayout.CENTER);
@@ -404,6 +430,7 @@ public class PanelProduk extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
+        jPanel10.setPreferredSize(new java.awt.Dimension(150, 60));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
         btnTambahProduk.setBackground(new java.awt.Color(214, 4, 39));
@@ -411,7 +438,7 @@ public class PanelProduk extends javax.swing.JPanel {
         btnTambahProduk.setForeground(new java.awt.Color(255, 255, 255));
         btnTambahProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
         btnTambahProduk.setText("Tambah Baru");
-        btnTambahProduk.setBorder(null);
+        btnTambahProduk.setBorderPainted(false);
         jPanel10.add(btnTambahProduk, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -421,8 +448,8 @@ public class PanelProduk extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabell, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         jPanel8Layout.setVerticalGroup(

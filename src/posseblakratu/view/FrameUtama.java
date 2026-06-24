@@ -7,6 +7,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -117,7 +118,6 @@ public final class FrameUtama extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         grupButtonSidebar = new javax.swing.ButtonGroup();
         headerPanel = new javax.swing.JPanel();
@@ -137,8 +137,8 @@ public final class FrameUtama extends javax.swing.JFrame {
         btnProduk = new javax.swing.JToggleButton();
         btnStok = new javax.swing.JToggleButton();
         btnPengguna = new javax.swing.JToggleButton();
-        btnLaporan = new javax.swing.JToggleButton();
         btnDiskon = new javax.swing.JToggleButton();
+        btnLaporan = new javax.swing.JToggleButton();
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,7 +152,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(204, 204, 204)));
         jPanel3.setMinimumSize(new java.awt.Dimension(205, 80));
         jPanel3.setPreferredSize(new java.awt.Dimension(205, 80));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
 
         containerTxtHeader.setBackground(new java.awt.Color(255, 255, 255));
         containerTxtHeader.setLayout(new java.awt.BorderLayout());
@@ -168,12 +167,21 @@ public final class FrameUtama extends javax.swing.JFrame {
         txtPosSystem.setAlignmentY(0.0F);
         containerTxtHeader.add(txtPosSystem, java.awt.BorderLayout.PAGE_END);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 20, 25, 50);
-        jPanel3.add(containerTxtHeader, gridBagConstraints);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(containerTxtHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(containerTxtHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         headerPanel.add(jPanel3, java.awt.BorderLayout.LINE_START);
 
@@ -319,6 +327,22 @@ public final class FrameUtama extends javax.swing.JFrame {
         btnPengguna.addItemListener(this::btnPenggunaItemStateChanged);
         jPanel5.add(btnPengguna);
 
+        grupButtonSidebar.add(btnDiskon);
+        btnDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnDiskon.setForeground(new java.awt.Color(100, 116, 139));
+        btnDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconDiskon.png"))); // NOI18N
+        btnDiskon.setText("Diskon");
+        btnDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
+        btnDiskon.setContentAreaFilled(false);
+        btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDiskon.setIconTextGap(14);
+        btnDiskon.setMargin(new java.awt.Insets(2, 90, 3, 14));
+        btnDiskon.setOpaque(true);
+        btnDiskon.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconDiskon.svg"));
+        btnDiskon.addItemListener(this::btnDiskonItemStateChanged);
+        btnDiskon.addActionListener(this::btnDiskonActionPerformed);
+        jPanel5.add(btnDiskon);
+
         grupButtonSidebar.add(btnLaporan);
         btnLaporan.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnLaporan.setForeground(new java.awt.Color(100, 116, 139));
@@ -333,21 +357,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         btnLaporan.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconLaporan.svg"));
         btnLaporan.addItemListener(this::btnLaporanItemStateChanged);
         jPanel5.add(btnLaporan);
-
-        grupButtonSidebar.add(btnDiskon);
-        btnDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnDiskon.setForeground(new java.awt.Color(100, 116, 139));
-        btnDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconDiskon.png"))); // NOI18N
-        btnDiskon.setText("Diskon");
-        btnDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnDiskon.setContentAreaFilled(false);
-        btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDiskon.setIconTextGap(14);
-        btnDiskon.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnDiskon.setOpaque(true);
-        btnDiskon.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconDiskon.svg"));
-        btnDiskon.addItemListener(this::btnDiskonItemStateChanged);
-        jPanel5.add(btnDiskon);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -414,8 +423,22 @@ public final class FrameUtama extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         
-        new FrameLogin().setVisible(true);
-        dispose();
+        int pilihan = JOptionPane.showConfirmDialog(
+                null,
+                "Apakah Anda yakin ingin keluar?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
+
+        switch (pilihan) {
+            case JOptionPane.YES_OPTION:
+                dispose();
+                new FrameLogin().setVisible(true);
+                break;
+            case JOptionPane.NO_OPTION:
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
@@ -434,6 +457,10 @@ public final class FrameUtama extends javax.swing.JFrame {
         hoverkeluar(btnTransaksi); //dan mouse exited
     }//GEN-LAST:event_btnTransaksiMouseExited
 
+    private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDiskonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +469,7 @@ public final class FrameUtama extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
        
         try {
+            UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }

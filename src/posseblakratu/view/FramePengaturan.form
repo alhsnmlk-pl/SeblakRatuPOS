@@ -167,11 +167,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jPanel7" min="-2" pref="450" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jPanel7" min="-2" pref="470" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="btnSimpan" min="-2" pref="45" max="-2" attributes="0"/>
-                              <EmptySpace pref="30" max="32767" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -388,6 +388,7 @@
                               <Image iconType="3" name="/posseblakratu/icon/IconUpload.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Pilih Foto Logo"/>
+                            <Property name="borderPainted" type="boolean" value="false"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -405,7 +406,7 @@
                           </Border>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 535]"/>
+                          <Dimension value="[720, 550]"/>
                         </Property>
                         <Property name="requestFocusEnabled" type="boolean" value="false"/>
                         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
@@ -454,7 +455,7 @@
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -755,6 +756,7 @@
                           <Image iconType="3" name="/posseblakratu/icon/IconSimpan.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Simpan Perubahan"/>
+                        <Property name="borderPainted" type="boolean" value="false"/>
                         <Property name="iconTextGap" type="int" value="10"/>
                       </Properties>
                       <Events>

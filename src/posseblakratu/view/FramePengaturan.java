@@ -5,6 +5,10 @@
 package posseblakratu.view;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -21,6 +25,32 @@ public class FramePengaturan extends javax.swing.JFrame {
      */
     public FramePengaturan() {
         initComponents();
+        panelLengkung(jPanel5);
+        panelLengkung(jPanel7);
+        panelLengkung(jPanel8);
+        panelLengkung(jPanel9);
+        panelLengkung(jPanel10);
+        panelLengkung(jPanel11);
+        
+    }
+    
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(3, 3, 3, 3),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        jPanel6.setBorder(new FlatLineBorder(
+                new Insets(0, 0, 0, 0),
+                Color.decode("#E7BDBB"),
+                0f,
+                10));
+        
+        
+        
     }
 
     /**
@@ -175,6 +205,7 @@ public class FramePengaturan extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconUpload.png"))); // NOI18N
         jButton1.setText("Pilih Foto Logo");
+        jButton1.setBorderPainted(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -233,7 +264,7 @@ public class FramePengaturan extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel7.setPreferredSize(new java.awt.Dimension(720, 535));
+        jPanel7.setPreferredSize(new java.awt.Dimension(720, 550));
         jPanel7.setRequestFocusEnabled(false);
         jPanel7.setVerifyInputWhenFocusTarget(false);
 
@@ -406,7 +437,7 @@ public class FramePengaturan extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
 
         btnSimpan.setBackground(new java.awt.Color(215, 4, 39));
@@ -414,6 +445,7 @@ public class FramePengaturan extends javax.swing.JFrame {
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpan.setText("Simpan Perubahan");
+        btnSimpan.setBorderPainted(false);
         btnSimpan.setIconTextGap(10);
         btnSimpan.addActionListener(this::btnSimpanActionPerformed);
 
@@ -434,11 +466,11 @@ public class FramePengaturan extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel4);
@@ -490,6 +522,7 @@ public class FramePengaturan extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }

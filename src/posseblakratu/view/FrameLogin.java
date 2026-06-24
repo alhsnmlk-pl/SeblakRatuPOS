@@ -6,11 +6,12 @@
 package posseblakratu.view;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
 import java.awt.Insets;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import posseblakratu.component.DesainUI;
 
 
 /**
@@ -25,19 +26,31 @@ public final class FrameLogin extends javax.swing.JFrame {
     public FrameLogin() {
         initComponents();
         
+        panelLengkung(usrContainer);
+        panelLengkung(passContainer);
+        panelLengkung(roleContainer);
         
-        //memanggil method style saat dijalankan
-        DesainUI.borderLengkung(containerLogin);
-        DesainUI.borderLengkung(usrContainer);
-        DesainUI.borderLengkung(passContainer);
-        DesainUI.borderLengkung(roleContainer);
-        DesainUI.borderLengkung(btnLogin);
 
         
     }
-    
-    
-    
+
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(0, 0, 0, 0),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        
+        containerLogin.setBorder(new FlatLineBorder(
+                new Insets(0, 0, 0, 0),
+                Color.decode("#E7BDBB"),
+                1f,
+                20));
+    }
+
+
 
     
 
@@ -392,6 +405,7 @@ public final class FrameLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }

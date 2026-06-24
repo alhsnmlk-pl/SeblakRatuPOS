@@ -15,14 +15,21 @@ import javax.swing.JComponent;
  */
 
 
-//membuat class panel melengkung agar bisa di panggil dari manapun panel ataupun frame
+//membuat class komponen border melengkung, dengan 2 method style default dan custom
 
 public class DesainUI {
 
-    private static final String globalColor = "#E7BDBB";
-    private static final float globalThickness = 1f;
-    private static final int globalArc = 10;
-    private static final Insets globalInsets = new Insets(0, 0, 0, 0);
+    private static String globalColor = "#E7BDBB";
+    private static float globalThickness = 1f;
+    private static int globalArc = 10;
+    private static Insets globalInsets = new Insets(0, 0, 0, 0);
+
+    public static void setGlobal(Insets insets, String hex, float thickness, int arc) {
+        globalInsets = insets;
+        globalColor = hex;
+        globalThickness = thickness;
+        globalArc = arc;
+    }
 
     public static void borderLengkung(JComponent c) {
         c.setBorder(new FlatLineBorder(
@@ -34,10 +41,10 @@ public class DesainUI {
     }
 
     public static void borderLengkung(JComponent c,
-                                     Insets insets,
-                                     String hex,
-                                     float thickness,
-                                     int arc) {
+                                      Insets insets,
+                                      String hex,
+                                      float thickness,
+                                      int arc) {
 
         c.setBorder(new FlatLineBorder(
                 insets,
