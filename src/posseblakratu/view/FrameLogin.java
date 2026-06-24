@@ -26,14 +26,15 @@ public final class FrameLogin extends javax.swing.JFrame {
     public FrameLogin() {
         initComponents();
         
-        panelLengkung(usrContainer);
+        panelLengkung(usrContainer); //memanggil panel melengkung pada setiap panel yg di lengkungkan
         panelLengkung(passContainer);
         panelLengkung(roleContainer);
         
 
         
     }
-
+    
+    //method untuk membuat panel melengkung
     void panelLengkung(JPanel p) {
         
         p.setBorder(new FlatLineBorder(

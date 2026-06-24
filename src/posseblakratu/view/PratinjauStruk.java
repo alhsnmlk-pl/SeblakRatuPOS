@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,10 +17,10 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Al
  */
 public final class PratinjauStruk extends javax.swing.JDialog {
-    
 
     /**
-     * Creates new form 
+     * Creates new form
+     *
      * @param parent
      * @param modal
      */
@@ -28,22 +29,31 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         initComponents();
         
         this.setBackground(new Color(0, 0, 0, 0));
-        if (this.getContentPane() instanceof javax.swing.JComponent) {
-            ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+        if (this.getContentPane() instanceof javax.swing.JComponent jComponent) {
+            jComponent.setOpaque(false);
         }
-
-
-
-
+        
+        panelLengkung(popupStruk);
+        
         buttonDesain();
-
+        
     }
-
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                2f,
+                15));
+        
+    }
+    
     public PratinjauStruk() {
     }
-
+    
     void buttonDesain() {
-        btnBatal.putClientProperty("FlatLaf.style",
+        btnTutup.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "background:#FBF8FF;"
                 + "foreground:#B03A2E;"
@@ -53,54 +63,15 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                 + "borderColor:#E7BCBA;"
                 + "focusedBorderColor:#E7BCBA; "
                 + "hoverBorderColor:#E7BCBA");
-
-        btnProses.putClientProperty("FlatLaf.style",
+        
+        btnCetak.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "arc:8; "
         );
     }
+    
 
     
-    private void setCustomBorder(javax.swing.JComponent komponen, java.awt.Insets insets, String hexColor, int thickness, int arc) {
-        komponen.setBorder(new FlatLineBorder(
-                insets,
-                java.awt.Color.decode(hexColor),
-                thickness, (int) arc));
-    }
-
-
-    
-    
-      private void stateBtnBayar(javax.swing.JToggleButton tombol) {
-        tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
-
-
-        if (tombol.isSelected()) {
-            //state aktif
-            tombol.setBackground(new java.awt.Color(255, 241, 241));
-            tombol.setForeground(new java.awt.Color(216, 3, 41));
-
-            tombol.setBorder(new FlatLineBorder(
-                new Insets(0, 0, 0, 0),
-                Color.decode("#D80329"),
-                2f,
-                10
-        ));
-        } else {
-            //state nonaktif
-            tombol.setBackground(new java.awt.Color(255, 255, 255));
-            tombol.setForeground(new java.awt.Color(93, 63, 61));
-
-            tombol.setBorder(new FlatLineBorder(
-                new Insets(1, 1, 1, 1),
-                Color.decode("#E6BBBA"),
-                1f,
-                10
-         ));           
-        }
-    }
-
-
 
 
     /**
@@ -113,15 +84,15 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        popupBayar = new javax.swing.JPanel();
+        popupStruk = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        btnBatal = new javax.swing.JButton();
-        btnProses = new javax.swing.JButton();
+        btnTutup = new javax.swing.JButton();
+        btnCetak = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -130,9 +101,9 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(345, 675));
         setResizable(false);
 
-        popupBayar.setBackground(new java.awt.Color(255, 255, 255));
-        popupBayar.setOpaque(false);
-        popupBayar.setLayout(new java.awt.BorderLayout());
+        popupStruk.setBackground(new java.awt.Color(255, 255, 255));
+        popupStruk.setOpaque(false);
+        popupStruk.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(244, 242, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -173,7 +144,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        popupBayar.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        popupStruk.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
@@ -187,27 +158,27 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.GridLayout(1, 2, 10, 10));
 
-        btnBatal.setBackground(new java.awt.Color(251, 248, 255));
-        btnBatal.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnBatal.setText("Tutup");
-        btnBatal.setFocusPainted(false);
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
-        jPanel6.add(btnBatal);
+        btnTutup.setBackground(new java.awt.Color(251, 248, 255));
+        btnTutup.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnTutup.setText("Tutup");
+        btnTutup.setFocusPainted(false);
+        btnTutup.addActionListener(this::btnTutupActionPerformed);
+        jPanel6.add(btnTutup);
 
-        btnProses.setBackground(new java.awt.Color(187, 26, 26));
-        btnProses.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnProses.setForeground(new java.awt.Color(255, 255, 255));
-        btnProses.setText("Cetak");
-        btnProses.setBorderPainted(false);
-        btnProses.setFocusPainted(false);
-        jPanel6.add(btnProses);
+        btnCetak.setBackground(new java.awt.Color(187, 26, 26));
+        btnCetak.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnCetak.setForeground(new java.awt.Color(255, 255, 255));
+        btnCetak.setText("Cetak");
+        btnCetak.setBorderPainted(false);
+        btnCetak.setFocusPainted(false);
+        jPanel6.add(btnCetak);
 
         jPanel8.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanel8, java.awt.BorderLayout.PAGE_END);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
         jPanel3.setPreferredSize(new java.awt.Dimension(345, 539));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -223,9 +194,9 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        popupBayar.add(jPanel2, java.awt.BorderLayout.CENTER);
+        popupStruk.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(popupBayar, java.awt.BorderLayout.CENTER);
+        getContentPane().add(popupStruk, java.awt.BorderLayout.CENTER);
 
         setSize(new java.awt.Dimension(345, 675));
         setLocationRelativeTo(null);
@@ -236,10 +207,10 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+    private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_btnBatalActionPerformed
+    }//GEN-LAST:event_btnTutupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,8 +244,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBatal;
-    private javax.swing.JButton btnProses;
+    private javax.swing.JButton btnCetak;
+    private javax.swing.JButton btnTutup;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -283,6 +254,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel popupBayar;
+    private javax.swing.JPanel popupStruk;
     // End of variables declaration//GEN-END:variables
 }

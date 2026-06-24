@@ -8,7 +8,6 @@ import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JPanel;
-import posseblakratu.component.DesainUI;
 
 /**
  *
@@ -27,9 +26,7 @@ public class PanelStok extends javax.swing.JPanel {
         panelLengkung(jPanel14);
         panelLengkung(jPanel19);
 
-        DesainUI.setGlobal(new Insets(5, 5, 5, 5), "#E7BDBB", 1f, 10);
-        DesainUI.borderLengkung(jPanel1);
-        DesainUI.borderLengkung(jPanel3);
+
     }
     
     

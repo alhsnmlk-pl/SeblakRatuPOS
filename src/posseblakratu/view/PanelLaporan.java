@@ -4,8 +4,10 @@
  */
 package posseblakratu.view;
 
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
 import java.awt.Insets;
-import posseblakratu.component.DesainUI;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,15 +20,25 @@ public class PanelLaporan extends javax.swing.JPanel {
      */
     public PanelLaporan() {
         initComponents();
-        DesainUI.setGlobal(new Insets(3, 3, 3, 3), "#E7BDBB", 1f, 10);
-        DesainUI.borderLengkung(jPanel9);
-        DesainUI.borderLengkung(jPanel10);
-        DesainUI.borderLengkung(jPanel14);
-        DesainUI.borderLengkung(main);
-        
-        
-       
+        panelLengkung(jPanel9);
+        panelLengkung(jPanel10);
+        panelLengkung(jPanel14);
+        panelLengkung(main);
+
     }
+
+    void panelLengkung(JPanel p) {
+
+        p.setBorder(new FlatLineBorder(
+                new Insets(3, 3, 3, 3),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+
+    }
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.

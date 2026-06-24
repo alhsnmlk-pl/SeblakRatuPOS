@@ -9,7 +9,6 @@ import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JPanel;
-import posseblakratu.component.DesainUI;
 
 
 

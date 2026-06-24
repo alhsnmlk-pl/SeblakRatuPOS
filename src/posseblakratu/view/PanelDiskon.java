@@ -3,13 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package posseblakratu.view;
+import com.formdev.flatlaf.ui.FlatLineBorder;
 import com.toedter.calendar.JTextFieldDateEditor;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import posseblakratu.component.DesainUI;
+import javax.swing.JPanel;
 
 
 /**
@@ -23,16 +25,34 @@ public class PanelDiskon extends javax.swing.JPanel {
      */
     public PanelDiskon() {
         initComponents();
-        DesainUI.setGlobal(new Insets(3, 3, 3, 3), "#E7BDBB", 1f, 10);
-        DesainUI.borderLengkung(jPanel17);
-        DesainUI.borderLengkung(jPanel18);
-        DesainUI.borderLengkung(jPanel20);
-        DesainUI.borderLengkung(jPanel22);
-        DesainUI.borderLengkung(jPanel24);
-        DesainUI.setGlobal(new Insets(5, 5, 5, 5), "#E7BDBB", 1f, 10);
-        DesainUI.borderLengkung(jPanel1);
-        DesainUI.borderLengkung(jPanel3);
+        panelLengkung(jPanel17);
+        panelLengkung(jPanel18);
+        panelLengkung(jPanel20);
+        panelLengkung(jPanel22);
+        panelLengkung(jPanel24);
         desainDate();
+    }
+    
+    void panelLengkung(JPanel p) {
+        
+        p.setBorder(new FlatLineBorder(
+                new Insets(3, 3, 3, 3),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        
+        jPanel1.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
+        
+        jPanel3.setBorder(new FlatLineBorder(
+                new Insets(5, 5, 5, 5),
+                Color.decode("#E7BDBB"),
+                1f,
+                10));
     }
     
     
