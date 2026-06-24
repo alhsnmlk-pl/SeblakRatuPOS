@@ -52,7 +52,7 @@ public class PanelLaporan extends javax.swing.JPanel {
         lblPersentasePemasukan = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        lblpemasukkan1 = new javax.swing.JLabel();
+        lblpengeluaran = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblRpPemasukkan1 = new javax.swing.JLabel();
         lblPeresentasePengeluaran = new javax.swing.JLabel();
@@ -190,8 +190,8 @@ public class PanelLaporan extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
 
-        lblpemasukkan1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 16)); // NOI18N
-        lblpemasukkan1.setText("Pengeluaran");
+        lblpengeluaran.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 16)); // NOI18N
+        lblpengeluaran.setText("Pengeluaran");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/bdgePengeluaran.png"))); // NOI18N
 
@@ -208,7 +208,7 @@ public class PanelLaporan extends javax.swing.JPanel {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addComponent(lblpemasukkan1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblpengeluaran, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4))
             .addComponent(lblPeresentasePengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +219,7 @@ public class PanelLaporan extends javax.swing.JPanel {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(lblpemasukkan1))
+                    .addComponent(lblpengeluaran))
                 .addGap(0, 0, 0)
                 .addComponent(lblRpPemasukkan1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -388,7 +388,7 @@ public class PanelLaporan extends javax.swing.JPanel {
     private javax.swing.JLabel lblRpPemasukkan1;
     private javax.swing.JLabel lblTotalPemasukan;
     private javax.swing.JLabel lblpemasukkan;
-    private javax.swing.JLabel lblpemasukkan1;
+    private javax.swing.JLabel lblpengeluaran;
     private javax.swing.JPanel main;
     private com.toedter.calendar.JMonthChooser pilihBulan;
     private posseblakratu.component.TableCustom tblLaporan;

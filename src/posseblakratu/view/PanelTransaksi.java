@@ -68,7 +68,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     
     void buttonDesain() {
 
-        btnNext.putClientProperty("FlatLaf.style",
+        btnResetT.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "background:#FBF8FF;"
                 + "pressedBackground:#F6F0FF;"
@@ -77,7 +77,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 + "focusedBorderColor:#E7BCBA; "
                 + "hoverBorderColor:#E7BCBA");
         
-        btnReset.putClientProperty("FlatLaf.style",
+        btnNextT.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "pressedBackground:#F6F0FF;"        
                 + "background:#FBF8FF;"      
@@ -217,8 +217,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         lblMenu = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
-        btnNext = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        btnResetT = new javax.swing.JButton();
+        btnNextT = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -237,7 +237,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTrx = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -404,18 +404,18 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jPanel17.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jPanel17.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
 
-        btnNext.setBackground(new java.awt.Color(251, 248, 255));
-        btnNext.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnNext.setText("Reset");
-        btnNext.setFocusPainted(false);
-        jPanel17.add(btnNext);
+        btnResetT.setBackground(new java.awt.Color(251, 248, 255));
+        btnResetT.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnResetT.setText("Reset");
+        btnResetT.setFocusPainted(false);
+        jPanel17.add(btnResetT);
 
-        btnReset.setBackground(new java.awt.Color(251, 248, 255));
-        btnReset.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnReset.setForeground(new java.awt.Color(187, 26, 26));
-        btnReset.setText("Next");
-        btnReset.setFocusPainted(false);
-        jPanel17.add(btnReset);
+        btnNextT.setBackground(new java.awt.Color(251, 248, 255));
+        btnNextT.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnNextT.setForeground(new java.awt.Color(187, 26, 26));
+        btnNextT.setText("Next");
+        btnNextT.setFocusPainted(false);
+        jPanel17.add(btnNextT);
 
         jPanel14.add(jPanel17, java.awt.BorderLayout.CENTER);
 
@@ -554,11 +554,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jPanel18.setPreferredSize(new java.awt.Dimension(80, 23));
         jPanel18.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("TRX-0001");
-        jPanel18.add(jLabel2, java.awt.BorderLayout.CENTER);
+        lblTrx.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
+        lblTrx.setForeground(new java.awt.Color(255, 255, 255));
+        lblTrx.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTrx.setText("TRX-0001");
+        jPanel18.add(lblTrx, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -769,8 +769,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnLvl3;
     private javax.swing.JToggleButton btnLvl4;
     private javax.swing.JToggleButton btnLvl5;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnNextT;
+    private javax.swing.JButton btnResetT;
     private javax.swing.ButtonGroup buttonGroupFilter;
     private javax.swing.ButtonGroup buttonGroupLvl;
     private javax.swing.JPanel containerDaftarMenu;
@@ -783,7 +783,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -812,6 +811,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblTrx;
     private javax.swing.JPanel menuContent;
     private javax.swing.JPanel toppingContent;
     // End of variables declaration//GEN-END:variables

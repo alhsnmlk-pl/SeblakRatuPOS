@@ -87,21 +87,21 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        lblNamaProduk = new javax.swing.JLabel();
+        lblNama = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         tNamaDiskon = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
-        lblNamaProduk1 = new javax.swing.JLabel();
+        lblTipeDiskon = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         cTipeDiskon = new javax.swing.JComboBox<>();
         jPanel14 = new javax.swing.JPanel();
-        lblNamaProduk2 = new javax.swing.JLabel();
+        lblNominal = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         tValueDiskon = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        lblNamaProduk3 = new javax.swing.JLabel();
-        lblNamaProduk4 = new javax.swing.JLabel();
+        lblMulai = new javax.swing.JLabel();
+        lblBerakhir = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         tglMulai = new com.toedter.calendar.JDateChooser();
@@ -117,21 +117,21 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jPanel28 = new javax.swing.JPanel();
-        lblNamaProduk5 = new javax.swing.JLabel();
+        lblNamaDiskon = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
         tNamaDiskon1 = new javax.swing.JTextField();
         jPanel30 = new javax.swing.JPanel();
-        lblNamaProduk6 = new javax.swing.JLabel();
+        lblTipe = new javax.swing.JLabel();
         jPanel31 = new javax.swing.JPanel();
         cTipeDiskon1 = new javax.swing.JComboBox<>();
         jPanel32 = new javax.swing.JPanel();
-        lblNamaProduk7 = new javax.swing.JLabel();
+        lblPersentase = new javax.swing.JLabel();
         jPanel33 = new javax.swing.JPanel();
         tValueDiskon1 = new javax.swing.JTextField();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
-        lblNamaProduk8 = new javax.swing.JLabel();
-        lblNamaProduk9 = new javax.swing.JLabel();
+        lblmulaiD = new javax.swing.JLabel();
+        lblAkhirD = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         tglMulai1 = new com.toedter.calendar.JDateChooser();
@@ -140,7 +140,7 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        lblDaftarProduk = new javax.swing.JLabel();
+        lblDaftarDiskon = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         btnTambahDiskon = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -244,11 +244,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk.setText("Nama Diskon");
-        lblNamaProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel12.add(lblNamaProduk, java.awt.BorderLayout.PAGE_START);
+        lblNama.setBackground(new java.awt.Color(255, 255, 255));
+        lblNama.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNama.setText("Nama Diskon");
+        lblNama.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel12.add(lblNama, java.awt.BorderLayout.PAGE_START);
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -276,11 +276,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk1.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk1.setText("Tipe Diskon");
-        lblNamaProduk1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel13.add(lblNamaProduk1, java.awt.BorderLayout.PAGE_START);
+        lblTipeDiskon.setBackground(new java.awt.Color(255, 255, 255));
+        lblTipeDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblTipeDiskon.setText("Tipe Diskon");
+        lblTipeDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel13.add(lblTipeDiskon, java.awt.BorderLayout.PAGE_START);
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -299,11 +299,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk2.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk2.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk2.setText("Nominal / Persentase");
-        lblNamaProduk2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel14.add(lblNamaProduk2, java.awt.BorderLayout.PAGE_START);
+        lblNominal.setBackground(new java.awt.Color(255, 255, 255));
+        lblNominal.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNominal.setText("Nominal / Persentase");
+        lblNominal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel14.add(lblNominal, java.awt.BorderLayout.PAGE_START);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -336,17 +336,17 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel9.setPreferredSize(new java.awt.Dimension(309, 23));
         jPanel9.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
 
-        lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText(" Mulai");
-        lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel9.add(lblNamaProduk3);
+        lblMulai.setBackground(new java.awt.Color(255, 255, 255));
+        lblMulai.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblMulai.setText(" Mulai");
+        lblMulai.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel9.add(lblMulai);
 
-        lblNamaProduk4.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk4.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk4.setText("Berakhir");
-        lblNamaProduk4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel9.add(lblNamaProduk4);
+        lblBerakhir.setBackground(new java.awt.Color(255, 255, 255));
+        lblBerakhir.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblBerakhir.setText("Berakhir");
+        lblBerakhir.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel9.add(lblBerakhir);
 
         jPanel16.add(jPanel9, java.awt.BorderLayout.PAGE_START);
 
@@ -507,11 +507,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel28.setBackground(new java.awt.Color(255, 255, 255));
         jPanel28.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk5.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk5.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk5.setText("Nama Diskon");
-        lblNamaProduk5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel28.add(lblNamaProduk5, java.awt.BorderLayout.PAGE_START);
+        lblNamaDiskon.setBackground(new java.awt.Color(255, 255, 255));
+        lblNamaDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNamaDiskon.setText("Nama Diskon");
+        lblNamaDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel28.add(lblNamaDiskon, java.awt.BorderLayout.PAGE_START);
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 255));
         jPanel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -539,11 +539,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel30.setBackground(new java.awt.Color(255, 255, 255));
         jPanel30.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk6.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk6.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk6.setText("Tipe Diskon");
-        lblNamaProduk6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel30.add(lblNamaProduk6, java.awt.BorderLayout.PAGE_START);
+        lblTipe.setBackground(new java.awt.Color(255, 255, 255));
+        lblTipe.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblTipe.setText("Tipe Diskon");
+        lblTipe.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel30.add(lblTipe, java.awt.BorderLayout.PAGE_START);
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 255));
         jPanel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -562,11 +562,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel32.setBackground(new java.awt.Color(255, 255, 255));
         jPanel32.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk7.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk7.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk7.setText("Nominal / Persentase");
-        lblNamaProduk7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel32.add(lblNamaProduk7, java.awt.BorderLayout.PAGE_START);
+        lblPersentase.setBackground(new java.awt.Color(255, 255, 255));
+        lblPersentase.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblPersentase.setText("Nominal / Persentase");
+        lblPersentase.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel32.add(lblPersentase, java.awt.BorderLayout.PAGE_START);
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 255));
         jPanel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -599,17 +599,17 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel35.setPreferredSize(new java.awt.Dimension(309, 23));
         jPanel35.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
 
-        lblNamaProduk8.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk8.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk8.setText(" Mulai");
-        lblNamaProduk8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel35.add(lblNamaProduk8);
+        lblmulaiD.setBackground(new java.awt.Color(255, 255, 255));
+        lblmulaiD.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblmulaiD.setText(" Mulai");
+        lblmulaiD.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel35.add(lblmulaiD);
 
-        lblNamaProduk9.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk9.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk9.setText("Berakhir");
-        lblNamaProduk9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel35.add(lblNamaProduk9);
+        lblAkhirD.setBackground(new java.awt.Color(255, 255, 255));
+        lblAkhirD.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblAkhirD.setText("Berakhir");
+        lblAkhirD.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel35.add(lblAkhirD);
 
         jPanel34.add(jPanel35, java.awt.BorderLayout.PAGE_START);
 
@@ -699,11 +699,11 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setPreferredSize(new java.awt.Dimension(681, 63));
 
-        lblDaftarProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
-        lblDaftarProduk.setForeground(new java.awt.Color(24, 26, 46));
-        lblDaftarProduk.setText("Daftar Diskon");
-        lblDaftarProduk.setName(""); // NOI18N
-        lblDaftarProduk.setPreferredSize(new java.awt.Dimension(198, 63));
+        lblDaftarDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
+        lblDaftarDiskon.setForeground(new java.awt.Color(24, 26, 46));
+        lblDaftarDiskon.setText("Daftar Diskon");
+        lblDaftarDiskon.setName(""); // NOI18N
+        lblDaftarDiskon.setPreferredSize(new java.awt.Dimension(198, 63));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
@@ -725,7 +725,7 @@ public class PanelDiskon extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(lblDaftarProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDaftarDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -735,7 +735,7 @@ public class PanelDiskon extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblDaftarProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDaftarDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -863,19 +863,19 @@ public class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblDaftarProduk;
-    private javax.swing.JLabel lblNamaProduk;
-    private javax.swing.JLabel lblNamaProduk1;
-    private javax.swing.JLabel lblNamaProduk2;
-    private javax.swing.JLabel lblNamaProduk3;
-    private javax.swing.JLabel lblNamaProduk4;
-    private javax.swing.JLabel lblNamaProduk5;
-    private javax.swing.JLabel lblNamaProduk6;
-    private javax.swing.JLabel lblNamaProduk7;
-    private javax.swing.JLabel lblNamaProduk8;
-    private javax.swing.JLabel lblNamaProduk9;
+    private javax.swing.JLabel lblAkhirD;
+    private javax.swing.JLabel lblBerakhir;
+    private javax.swing.JLabel lblDaftarDiskon;
+    private javax.swing.JLabel lblMulai;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblNamaDiskon;
+    private javax.swing.JLabel lblNominal;
+    private javax.swing.JLabel lblPersentase;
     private javax.swing.JLabel lblTambahDiskon;
     private javax.swing.JLabel lblTambahDiskon1;
+    private javax.swing.JLabel lblTipe;
+    private javax.swing.JLabel lblTipeDiskon;
+    private javax.swing.JLabel lblmulaiD;
     private javax.swing.JTextField tNamaDiskon;
     private javax.swing.JTextField tNamaDiskon1;
     private javax.swing.JTextField tValueDiskon;

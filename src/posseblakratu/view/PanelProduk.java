@@ -97,15 +97,15 @@ public final class PanelProduk extends javax.swing.JPanel {
         jPanel17 = new javax.swing.JPanel();
         tNamaProduk = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
-        lblNamaProduk1 = new javax.swing.JLabel();
+        lblDeskripsi = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         tDeskProduk = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
-        lblNamaProduk2 = new javax.swing.JLabel();
+        lblKategori = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         cKategoriProduk = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
-        lblNamaProduk3 = new javax.swing.JLabel();
+        lblHargaJual = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         tHargaProduk = new javax.swing.JTextField();
         lblRupiahProduk = new javax.swing.JLabel();
@@ -258,11 +258,11 @@ public final class PanelProduk extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk1.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk1.setText("Deskripsi");
-        lblNamaProduk1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel13.add(lblNamaProduk1, java.awt.BorderLayout.PAGE_START);
+        lblDeskripsi.setBackground(new java.awt.Color(255, 255, 255));
+        lblDeskripsi.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblDeskripsi.setText("Deskripsi");
+        lblDeskripsi.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel13.add(lblDeskripsi, java.awt.BorderLayout.PAGE_START);
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -290,11 +290,11 @@ public final class PanelProduk extends javax.swing.JPanel {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk2.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk2.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk2.setText("Kategori");
-        lblNamaProduk2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel14.add(lblNamaProduk2, java.awt.BorderLayout.PAGE_START);
+        lblKategori.setBackground(new java.awt.Color(255, 255, 255));
+        lblKategori.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblKategori.setText("Kategori");
+        lblKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel14.add(lblKategori, java.awt.BorderLayout.PAGE_START);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -312,11 +312,11 @@ public final class PanelProduk extends javax.swing.JPanel {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText("Harga Jual");
-        lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel15.add(lblNamaProduk3, java.awt.BorderLayout.PAGE_START);
+        lblHargaJual.setBackground(new java.awt.Color(255, 255, 255));
+        lblHargaJual.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblHargaJual.setText("Harga Jual");
+        lblHargaJual.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel15.add(lblHargaJual, java.awt.BorderLayout.PAGE_START);
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -668,10 +668,10 @@ public final class PanelProduk extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDeskripsi;
+    private javax.swing.JLabel lblHargaJual;
+    private javax.swing.JLabel lblKategori;
     private javax.swing.JLabel lblNamaProduk;
-    private javax.swing.JLabel lblNamaProduk1;
-    private javax.swing.JLabel lblNamaProduk2;
-    private javax.swing.JLabel lblNamaProduk3;
     private javax.swing.JLabel lblRupiahProduk;
     private javax.swing.JLabel lblStatusProduk;
     private javax.swing.JLabel lblTambahProduk;

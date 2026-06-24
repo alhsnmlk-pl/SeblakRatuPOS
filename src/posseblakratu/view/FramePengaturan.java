@@ -75,10 +75,10 @@ public class FramePengaturan extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblPreview = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPilihFotoLogo = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         lblInformasiToko = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -89,11 +89,11 @@ public class FramePengaturan extends javax.swing.JFrame {
         txtAlamatToko = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        txtNamaToko1 = new javax.swing.JTextField();
+        txtNoTlp = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtAlamatToko1 = new javax.swing.JTextArea();
+        txtCatatan = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         btnSimpan = new javax.swing.JButton();
 
@@ -171,9 +171,9 @@ public class FramePengaturan extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jLabel7.setText("Rekomendasi: gambar persegi (1:1)");
 
-        jLabel8.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Preview Logo");
+        lblPreview.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 14)); // NOI18N
+        lblPreview.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPreview.setText("Preview Logo");
 
         jPanel6.setBackground(new java.awt.Color(240, 239, 255));
 
@@ -200,12 +200,12 @@ public class FramePengaturan extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(215, 4, 39));
-        jButton1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconUpload.png"))); // NOI18N
-        jButton1.setText("Pilih Foto Logo");
-        jButton1.setBorderPainted(false);
+        btnPilihFotoLogo.setBackground(new java.awt.Color(215, 4, 39));
+        btnPilihFotoLogo.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnPilihFotoLogo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPilihFotoLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconUpload.png"))); // NOI18N
+        btnPilihFotoLogo.setText("Pilih Foto Logo");
+        btnPilihFotoLogo.setBorderPainted(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -215,7 +215,7 @@ public class FramePengaturan extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,7 +231,7 @@ public class FramePengaturan extends javax.swing.JFrame {
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btnPilihFotoLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(24, 24, 24))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -253,10 +253,10 @@ public class FramePengaturan extends javax.swing.JFrame {
                                 .addComponent(jLabel7))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPilihFotoLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(lblPreview)
                 .addGap(24, 24, 24)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -338,11 +338,11 @@ public class FramePengaturan extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
-        txtNamaToko1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        txtNamaToko1.setText("08123456789");
-        txtNamaToko1.setBorder(null);
-        txtNamaToko1.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        txtNamaToko1.addActionListener(this::txtNamaToko1ActionPerformed);
+        txtNoTlp.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtNoTlp.setText("08123456789");
+        txtNoTlp.setBorder(null);
+        txtNoTlp.setMargin(new java.awt.Insets(10, 10, 10, 6));
+        txtNoTlp.addActionListener(this::txtNoTlpActionPerformed);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -350,14 +350,14 @@ public class FramePengaturan extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(txtNamaToko1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNoTlp, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNamaToko1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addComponent(txtNoTlp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -371,11 +371,11 @@ public class FramePengaturan extends javax.swing.JFrame {
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        txtAlamatToko1.setColumns(20);
-        txtAlamatToko1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        txtAlamatToko1.setRows(5);
-        txtAlamatToko1.setText("Terima Kasih Atas Kunjungan Anda!\nSilakan datang kembali");
-        jScrollPane3.setViewportView(txtAlamatToko1);
+        txtCatatan.setColumns(20);
+        txtCatatan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        txtCatatan.setRows(5);
+        txtCatatan.setText("Terima Kasih Atas Kunjungan Anda!\nSilakan datang kembali");
+        jScrollPane3.setViewportView(txtCatatan);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -504,9 +504,9 @@ public class FramePengaturan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaTokoActionPerformed
 
-    private void txtNamaToko1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaToko1ActionPerformed
+    private void txtNoTlpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoTlpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaToko1ActionPerformed
+    }//GEN-LAST:event_txtNoTlpActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
@@ -533,8 +533,8 @@ public class FramePengaturan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPilihFotoLogo;
     private javax.swing.JButton btnSimpan;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -543,7 +543,6 @@ public class FramePengaturan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -562,10 +561,11 @@ public class FramePengaturan extends javax.swing.JFrame {
     private javax.swing.JLabel lblInformasiToko;
     private javax.swing.JLabel lblLogoToko;
     private javax.swing.JLabel lblPengaturan;
+    private javax.swing.JLabel lblPreview;
     private javax.swing.JLabel logo;
     private javax.swing.JTextArea txtAlamatToko;
-    private javax.swing.JTextArea txtAlamatToko1;
+    private javax.swing.JTextArea txtCatatan;
     private javax.swing.JTextField txtNamaToko;
-    private javax.swing.JTextField txtNamaToko1;
+    private javax.swing.JTextField txtNoTlp;
     // End of variables declaration//GEN-END:variables
 }

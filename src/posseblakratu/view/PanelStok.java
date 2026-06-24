@@ -68,7 +68,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblTambahProduk = new javax.swing.JLabel();
+        lblTambahStok = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnSimpanStok = new javax.swing.JButton();
         btnBatalStok = new javax.swing.JButton();
@@ -80,23 +80,23 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel17 = new javax.swing.JPanel();
         tNamaStok = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
-        lblNamaProduk1 = new javax.swing.JLabel();
+        lblJumlahStok = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         tJmlStok = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         tSatuanStok = new javax.swing.JTextField();
         jPanel15 = new javax.swing.JPanel();
-        lblNamaProduk3 = new javax.swing.JLabel();
+        lblHargaJual = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         tHargaStok = new javax.swing.JTextField();
-        lblRupiahProduk = new javax.swing.JLabel();
+        lblRupiahStok = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         JLabell = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        btnTambahProduk = new javax.swing.JButton();
+        btnTambahStok = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPanelStok = new posseblakratu.component.TableCustom();
@@ -115,8 +115,8 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
         jPanel2.setMinimumSize(new java.awt.Dimension(335, 63));
 
-        lblTambahProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        lblTambahProduk.setText("Tambah  Stok");
+        lblTambahStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        lblTambahStok.setText("Tambah  Stok");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -124,12 +124,12 @@ public class PanelStok extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(lblTambahProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTambahStok, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTambahProduk, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(lblTambahStok, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -226,11 +226,11 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk1.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk1.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk1.setText("Jumlah Stok");
-        lblNamaProduk1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel13.add(lblNamaProduk1, java.awt.BorderLayout.PAGE_START);
+        lblJumlahStok.setBackground(new java.awt.Color(255, 255, 255));
+        lblJumlahStok.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblJumlahStok.setText("Jumlah Stok");
+        lblJumlahStok.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel13.add(lblJumlahStok, java.awt.BorderLayout.PAGE_START);
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 1, 0, 1));
@@ -292,11 +292,11 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setLayout(new java.awt.BorderLayout());
 
-        lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText("Harga Jual");
-        lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel15.add(lblNamaProduk3, java.awt.BorderLayout.PAGE_START);
+        lblHargaJual.setBackground(new java.awt.Color(255, 255, 255));
+        lblHargaJual.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblHargaJual.setText("Harga Jual");
+        lblHargaJual.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel15.add(lblHargaJual, java.awt.BorderLayout.PAGE_START);
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -312,14 +312,14 @@ public class PanelStok extends javax.swing.JPanel {
         tHargaStok.addActionListener(this::tHargaStokActionPerformed);
         jPanel19.add(tHargaStok, java.awt.BorderLayout.CENTER);
 
-        lblRupiahProduk.setBackground(new java.awt.Color(255, 255, 255));
-        lblRupiahProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
-        lblRupiahProduk.setForeground(new java.awt.Color(215, 4, 39));
-        lblRupiahProduk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRupiahProduk.setText("Rp");
-        lblRupiahProduk.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12)));
-        lblRupiahProduk.setOpaque(true);
-        jPanel19.add(lblRupiahProduk, java.awt.BorderLayout.LINE_START);
+        lblRupiahStok.setBackground(new java.awt.Color(255, 255, 255));
+        lblRupiahStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 18)); // NOI18N
+        lblRupiahStok.setForeground(new java.awt.Color(215, 4, 39));
+        lblRupiahStok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRupiahStok.setText("Rp");
+        lblRupiahStok.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12)));
+        lblRupiahStok.setOpaque(true);
+        jPanel19.add(lblRupiahStok, java.awt.BorderLayout.LINE_START);
 
         jPanel15.add(jPanel19, java.awt.BorderLayout.CENTER);
 
@@ -369,13 +369,13 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel10.setPreferredSize(new java.awt.Dimension(150, 60));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
-        btnTambahProduk.setBackground(new java.awt.Color(214, 4, 39));
-        btnTambahProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnTambahProduk.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambahProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
-        btnTambahProduk.setText("Tambah Baru");
-        btnTambahProduk.setBorderPainted(false);
-        jPanel10.add(btnTambahProduk, java.awt.BorderLayout.CENTER);
+        btnTambahStok.setBackground(new java.awt.Color(214, 4, 39));
+        btnTambahStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnTambahStok.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
+        btnTambahStok.setText("Tambah Baru");
+        btnTambahStok.setBorderPainted(false);
+        jPanel10.add(btnTambahStok, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -455,7 +455,7 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JButton btnBatalStok;
     private javax.swing.JButton btnHapusStok;
     private javax.swing.JButton btnSimpanStok;
-    private javax.swing.JButton btnTambahProduk;
+    private javax.swing.JButton btnTambahStok;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -475,11 +475,11 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblHargaJual;
+    private javax.swing.JLabel lblJumlahStok;
     private javax.swing.JLabel lblNamaProduk;
-    private javax.swing.JLabel lblNamaProduk1;
-    private javax.swing.JLabel lblNamaProduk3;
-    private javax.swing.JLabel lblRupiahProduk;
-    private javax.swing.JLabel lblTambahProduk;
+    private javax.swing.JLabel lblRupiahStok;
+    private javax.swing.JLabel lblTambahStok;
     private javax.swing.JTextField tHargaStok;
     private javax.swing.JTextField tJmlStok;
     private javax.swing.JTextField tNamaStok;
