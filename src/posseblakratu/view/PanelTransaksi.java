@@ -7,6 +7,10 @@ package posseblakratu.view;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import posseblakratu.component.cardMenu;
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -19,6 +23,8 @@ import posseblakratu.component.cardTopping;
  * @author Al
  */
 public final class PanelTransaksi extends javax.swing.JPanel {
+
+    private final List<cardMenu> daftarCard = new ArrayList<>(); //Membuat list penyimpan card untuk menyimpan semua card menu
 
     /**
      * Creates new form PanelTransaksi
@@ -38,11 +44,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         buttonLvl(btnLvl3);
         buttonLvl(btnLvl4);
         buttonLvl(btnLvl5);
-        
 
         filterSemuaM.setSelected(true);
         btnFilter(filterSemuaM);
-        
+
         loadMenu();
         loadTopping();
         loadKeranjang();
@@ -50,23 +55,18 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     
     
     
-    
+    //method styling panel
     void panelLengkung(JPanel p) {
-        
         p.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
-        
-        
     }
     
     
-    
+    //method styling button
     void buttonDesain() {
-
         btnNext.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "background:#FBF8FF;"
@@ -75,73 +75,86 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 + "borderColor:#E7BCBA;"
                 + "focusedBorderColor:#E7BCBA; "
                 + "hoverBorderColor:#E7BCBA");
-        
+
         btnReset.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
-                + "pressedBackground:#F6F0FF;"        
-                + "background:#FBF8FF;"      
+                + "pressedBackground:#F6F0FF;"
+                + "background:#FBF8FF;"
                 + "arc:8; "
                 + "borderColor:#BA1A1A; "
                 + "focusedBorderColor:#BA1A1A; "
                 + "hoverBorderColor:#BA1A1A"
         );
-        
     }
     
     
-    
-    
-    void buttonLvl(JToggleButton btn){
+    //method styling selected dan !selected pd button lvl
+    void buttonLvl(JToggleButton btn) {
         if (btn.isSelected()) {
             btn.setBorder(new FlatLineBorder(
                     new Insets(0, 0, 0, 0),
                     Color.decode("#EA580C"),
                     2f,
-                    10
-            ));
+                    10));
         } else {
             btn.setBorder(new FlatLineBorder(
                     new Insets(1, 1, 1, 1),
                     Color.decode("#E7BCBA"),
                     1f,
-                    10
-            ));
+                    10));
         }
     }
     
     
-    
-    void btnFilter(JToggleButton btn){
+    //method styling button filter menu
+    void btnFilter(JToggleButton btn) {
         if (btn.isSelected()) {
-            btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+            btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
         } else {
             btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         }
     }
-   
     
+    
+
     //method untuk menampilkan menu
     private void loadMenu() {
 
-        menuContent.removeAll();
+        menuContent.removeAll(); //membersihkan panel
+        daftarCard.clear(); //bersihkan data card lama
 
         for (int i = 1; i <= 10; i++) {
 
-            cardMenu card = new cardMenu();
+            cardMenu card = new cardMenu(); //membuat card baru
 
-            menuContent.add(card);
-            
+            daftarCard.add(card); //menyimpan card
 
-            menuContent.add(
-                    Box.createVerticalStrut(10)
-            );
+            card.addMouseListener(new MouseAdapter() {       
+                @Override
+                public void mouseClicked(MouseEvent e) {  //menangkap klik pd card
+                    selectCard(card);  //dan menjadikannya selected
+                }
+            });
+
+            menuContent.add(card);  //menambahhkan card ke menuContent
+            menuContent.add(Box.createVerticalStrut(10)); //memberikan jarak
         }
 
         menuContent.revalidate();
-        menuContent.repaint();
+        menuContent.repaint();   //refres layout
     }
     
     
+    //membuat method selected card
+    private void selectCard(cardMenu selectedCard) {
+        for (cardMenu card : daftarCard) {
+            card.setSelected(false);
+        }
+        selectedCard.setSelected(true);
+    }
+    
+    
+
     //method untuk menampilkan topping
     private void loadTopping() {
 
@@ -163,7 +176,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     }
     
     
-    
+
     //method untuk menampilkan keranjang
     private void loadKeranjang() {
 
@@ -174,22 +187,18 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             cardKeranjang card = new cardKeranjang();
 
             keranjangContent.add(card);
-            
+
             keranjangContent.add(
                     Box.createVerticalStrut(10)
             );
-            
+
         }
 
         keranjangContent.revalidate();
         keranjangContent.repaint();
     }
-    
-    
-    
-    //method untuk memanggil popup
-    
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -720,7 +729,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private void btnLvl0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl0ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl0);
-         
+
 
     }//GEN-LAST:event_btnLvl0ItemStateChanged
 
@@ -752,7 +761,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         // TODO add your handling code here:
         PopupBayar bayar = new PopupBayar(
-                (java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this),true
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
         );
 
         bayar.setVisible(true);

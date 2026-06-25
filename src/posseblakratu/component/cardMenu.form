@@ -53,11 +53,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" max="32767" attributes="0"/>
+                      <Component id="lblDesk" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="127" max="-2" attributes="0"/>
+                          <Component id="lblMenu" min="-2" pref="127" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="127" max="-2" attributes="0"/>
+                          <Component id="lblHarga" min="-2" pref="127" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -69,17 +69,17 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblHarga" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDesk" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -93,7 +93,7 @@
             <Property name="text" type="java.lang.String" value="Seblak Original"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblHarga">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -108,7 +108,7 @@
             <Property name="text" type="java.lang.String" value="Rp. 9000"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblDesk">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="ff" red="99" type="rgb"/>

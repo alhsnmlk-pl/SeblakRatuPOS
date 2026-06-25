@@ -6,9 +6,7 @@ package posseblakratu.view;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
-import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -67,20 +65,7 @@ public final class FrameUtama extends javax.swing.JFrame {
     
     
     
-    // method untuk membuat efek hover pada button sidebar
-    void hoverMasuk(JToggleButton btn){
-        if (!btn.isSelected()) {
-            btn.setBackground(new Color(245, 245, 245));
-        }
-    }
     
-    void hoverkeluar(JToggleButton btn){
-        
-        if (!btn.isSelected()) {
-            btn.setBackground(new Color(255, 255, 255)); 
-        }
-    }
-
 
     
     
@@ -269,7 +254,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         btnTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTransaksi.setIconTextGap(14);
         btnTransaksi.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnTransaksi.setOpaque(true);
         btnTransaksi.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconTrx.svg"));
         btnTransaksi.addItemListener(this::btnTransaksiItemStateChanged);
         btnTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -430,14 +414,14 @@ public final class FrameUtama extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION);
 
         switch (pilihan) {
-            case JOptionPane.YES_OPTION:
+            case JOptionPane.YES_OPTION -> {
                 dispose();
                 new FrameLogin().setVisible(true);
-                break;
-            case JOptionPane.NO_OPTION:
-                break;
-            default:
-                break;
+            }
+            case JOptionPane.NO_OPTION -> {
+            }
+            default -> {
+            }
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -449,12 +433,10 @@ public final class FrameUtama extends javax.swing.JFrame {
 
     private void btnTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseEntered
         // TODO add your handling code here:
-        hoverMasuk(btnTransaksi); //memanggil method hover pada event mouse entered
     }//GEN-LAST:event_btnTransaksiMouseEntered
 
     private void btnTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseExited
         // TODO add your handling code here:
-        hoverkeluar(btnTransaksi); //dan mouse exited
     }//GEN-LAST:event_btnTransaksiMouseExited
 
     private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed

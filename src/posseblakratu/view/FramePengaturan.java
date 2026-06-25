@@ -16,9 +16,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Al
  */
-public class FramePengaturan extends javax.swing.JFrame {
+public final class FramePengaturan extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FramePengaturan.class.getName());
 
     /**
      * Creates new form FramePengaturan
