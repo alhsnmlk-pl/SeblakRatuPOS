@@ -1060,7 +1060,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -1072,54 +1072,52 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="posseblakratu.component.TableCustom" name="tblDaftarProduk">
+                <Component class="jtablecustom.JTableCustom" name="jTableCustom1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="3">
+                      <Table columnCount="5" rowCount="4">
                         <Column editable="true" title="ID" type="java.lang.Object">
                           <Data value="M001"/>
-                          <Data value="M002"/>
-                          <Data value="S001"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Nama Produk" type="java.lang.Object">
                           <Data value="Es Jeruk"/>
-                          <Data value="Es Teh"/>
-                          <Data value="Seblak Original"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Kategori" type="java.lang.Object">
                           <Data value="Minuman"/>
-                          <Data value="Minuman"/>
-                          <Data value="Seblak"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Harga Jual" type="java.lang.Object">
-                          <Data value="Rp 4.000"/>
-                          <Data value="Rp 3.000"/>
-                          <Data value="Rp 9.000"/>
+                          <Data value="5.000"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Status" type="java.lang.Object">
                           <Data value="Tersedia"/>
-                          <Data value="Tersedia"/>
-                          <Data value="Tersedia"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                       </Table>
                     </Property>
                     <Property name="cellPaddingLeft" type="int" value="25"/>
+                    <Property name="cellPaddingRight" type="int" value="25"/>
                     <Property name="centerColumns" type="java.lang.String" value="2,3,4"/>
-                    <Property name="columnWidths" type="java.lang.String" value="70,200,110,110,110"/>
+                    <Property name="columnWidths" type="java.lang.String" value="90,200,110,110,110"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="14" style="0"/>
                     </Property>
-                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
-                    <Property name="headerBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
                     <Property name="headerPaddingLeft" type="int" value="25"/>
-                    <Property name="outerBorderThickness" type="int" value="0"/>
-                    <Property name="rowBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
+                    <Property name="headerPaddingRight" type="int" value="25"/>
+                    <Property name="leftColumns" type="java.lang.String" value="0,1"/>
                   </Properties>
                 </Component>
               </SubComponents>

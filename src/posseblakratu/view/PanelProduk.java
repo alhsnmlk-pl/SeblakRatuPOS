@@ -123,8 +123,8 @@ public final class PanelProduk extends javax.swing.JPanel {
         filterToppingP = new javax.swing.JToggleButton();
         filterMinumanP = new javax.swing.JToggleButton();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblDaftarProduk = new posseblakratu.component.TableCustom();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCustom1 = new jtablecustom.JTableCustom();
 
         setBackground(new java.awt.Color(252, 249, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -552,28 +552,28 @@ public final class PanelProduk extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        tblDaftarProduk.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"M001", "Es Jeruk", "Minuman", "Rp 4.000", "Tersedia"},
-                {"M002", "Es Teh", "Minuman", "Rp 3.000", "Tersedia"},
-                {"S001", "Seblak Original", "Seblak", "Rp 9.000", "Tersedia"}
+                {"M001", "Es Jeruk", "Minuman", "5.000", "Tersedia"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "ID", "Nama Produk", "Kategori", "Harga Jual", "Status"
             }
         ));
-        tblDaftarProduk.setCellPaddingLeft(25);
-        tblDaftarProduk.setCenterColumns("2,3,4");
-        tblDaftarProduk.setColumnWidths("70,200,110,110,110");
-        tblDaftarProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tblDaftarProduk.setGridColor(new java.awt.Color(231, 189, 187));
-        tblDaftarProduk.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tblDaftarProduk.setHeaderPaddingLeft(25);
-        tblDaftarProduk.setOuterBorderThickness(0);
-        tblDaftarProduk.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        jScrollPane2.setViewportView(tblDaftarProduk);
+        jTableCustom1.setCellPaddingLeft(25);
+        jTableCustom1.setCellPaddingRight(25);
+        jTableCustom1.setCenterColumns("2,3,4");
+        jTableCustom1.setColumnWidths("90,200,110,110,110");
+        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jTableCustom1.setHeaderPaddingLeft(25);
+        jTableCustom1.setHeaderPaddingRight(25);
+        jTableCustom1.setLeftColumns("0,1");
+        jScrollPane1.setViewportView(jTableCustom1);
 
-        jPanel6.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
 
@@ -666,7 +666,8 @@ public final class PanelProduk extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk2;
@@ -677,6 +678,5 @@ public final class PanelProduk extends javax.swing.JPanel {
     private javax.swing.JTextField tDeskProduk;
     private javax.swing.JTextField tHargaProduk;
     private javax.swing.JTextField tNamaProduk;
-    private posseblakratu.component.TableCustom tblDaftarProduk;
     // End of variables declaration//GEN-END:variables
 }

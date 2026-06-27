@@ -96,7 +96,7 @@ public class PanelStok extends javax.swing.JPanel {
         btnTambahProduk = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPanelStok = new posseblakratu.component.TableCustom();
+        jTableCustom1 = new jtablecustom.JTableCustom();
 
         setBackground(new java.awt.Color(252, 249, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -401,31 +401,26 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        tblPanelStok.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Cabai Rawit Merah", "3", "Kilogram(Kg)"},
-                {"Bawang Merah", "2", "Kilogram(Kg)"},
-                {"Kencur", "1", "Kilogram(Kg)"},
-                {"Garam", "5", "Bungkus"},
-                {"Penyedap Rasa", "8", "Bungkus"},
-                {"Kaldu Bubuk", "6", "Bungkus"},
-                {"Saus Sambal", "4", "Botol"}
+                {"Cabai Rawit Merah", "3", "15.000"},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Nama Bahan", "Stok", "Satuan"
             }
         ));
-        tblPanelStok.setCellPaddingLeft(25);
-        tblPanelStok.setCenterColumns("1,2");
-        tblPanelStok.setColumnWidths("235,50,80,");
-        tblPanelStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tblPanelStok.setGridColor(new java.awt.Color(231, 189, 187));
-        tblPanelStok.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tblPanelStok.setHeaderPaddingLeft(25);
-        tblPanelStok.setOuterBorderThickness(0);
-        tblPanelStok.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        tblPanelStok.addActionListener(this::tblPanelStokActionPerformed);
-        jScrollPane1.setViewportView(tblPanelStok);
+        jTableCustom1.setCellPaddingLeft(25);
+        jTableCustom1.setCellPaddingRight(25);
+        jTableCustom1.setCenterColumns("1,2");
+        jTableCustom1.setColumnWidths("250,50,80");
+        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jTableCustom1.setHeaderPaddingLeft(25);
+        jTableCustom1.setHeaderPaddingRight(25);
+        jTableCustom1.setLeftColumns("0");
+        jScrollPane1.setViewportView(jTableCustom1);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -433,10 +428,6 @@ public class PanelStok extends javax.swing.JPanel {
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblPanelStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblPanelStokActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblPanelStokActionPerformed
 
     private void tNamaStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaStokActionPerformed
         // TODO add your handling code here:
@@ -472,6 +463,7 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk3;
@@ -481,6 +473,5 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JTextField tJmlStok;
     private javax.swing.JTextField tNamaStok;
     private javax.swing.JTextField tSatuanStok;
-    private posseblakratu.component.TableCustom tblPanelStok;
     // End of variables declaration//GEN-END:variables
 }

@@ -788,60 +788,41 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="posseblakratu.component.TableCustom" name="tblPanelStok">
+                <Component class="jtablecustom.JTableCustom" name="jTableCustom1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="7">
+                      <Table columnCount="3" rowCount="4">
                         <Column editable="true" title="Nama Bahan" type="java.lang.Object">
                           <Data value="Cabai Rawit Merah"/>
-                          <Data value="Bawang Merah"/>
-                          <Data value="Kencur"/>
-                          <Data value="Garam"/>
-                          <Data value="Penyedap Rasa"/>
-                          <Data value="Kaldu Bubuk"/>
-                          <Data value="Saus Sambal"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Stok" type="java.lang.Object">
                           <Data value="3"/>
-                          <Data value="2"/>
-                          <Data value="1"/>
-                          <Data value="5"/>
-                          <Data value="8"/>
-                          <Data value="6"/>
-                          <Data value="4"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Satuan" type="java.lang.Object">
-                          <Data value="Kilogram(Kg)"/>
-                          <Data value="Kilogram(Kg)"/>
-                          <Data value="Kilogram(Kg)"/>
-                          <Data value="Bungkus"/>
-                          <Data value="Bungkus"/>
-                          <Data value="Bungkus"/>
-                          <Data value="Botol"/>
+                          <Data value="15.000"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
                         </Column>
                       </Table>
                     </Property>
                     <Property name="cellPaddingLeft" type="int" value="25"/>
+                    <Property name="cellPaddingRight" type="int" value="25"/>
                     <Property name="centerColumns" type="java.lang.String" value="1,2"/>
-                    <Property name="columnWidths" type="java.lang.String" value="235,50,80,"/>
+                    <Property name="columnWidths" type="java.lang.String" value="250,50,80"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="14" style="0"/>
                     </Property>
-                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
-                    <Property name="headerBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
                     <Property name="headerPaddingLeft" type="int" value="25"/>
-                    <Property name="outerBorderThickness" type="int" value="0"/>
-                    <Property name="rowBorderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="bd" red="e7" type="rgb"/>
-                    </Property>
+                    <Property name="headerPaddingRight" type="int" value="25"/>
+                    <Property name="leftColumns" type="java.lang.String" value="0"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblPanelStokActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>

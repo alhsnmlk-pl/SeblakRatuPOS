@@ -24,6 +24,14 @@ public class cardMenu extends javax.swing.JPanel {
         initComponents();
 
         updateStyle();  //memanggil style awal
+
+        lblDesk.setRows(2);
+        lblDesk.setLineWrap(true);
+        lblDesk.setWrapStyleWord(true);
+        lblDesk.setEditable(false);
+        lblDesk.setOpaque(false);
+        lblDesk.setBorder(null);
+        lblDesk.setFocusable(false);
     }
     
     
@@ -71,6 +79,30 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk.addMouseListener(listener);
     }
 
+    //method untuk mengisi data pada card menu
+    public void setData(String nama, double harga, String deskripsi) {
+
+        //menampilkan nama produk
+        lblMenu.setText(nama);
+
+        //menampilkan harga produk
+        lblHarga.setText("Rp. " + (int) harga);
+
+        //memeriksa apakah deskripsi kosong
+        if (deskripsi == null || deskripsi.trim().isEmpty()) {
+
+            //jika deskripsi kosong, tampilkan tanda "-"
+            lblDesk.setText("-");
+
+        } else {
+
+            //jika deskripsi ada, tampilkan deskripsi produk
+            lblDesk.setText(deskripsi);
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,7 +115,7 @@ public class cardMenu extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lblMenu = new javax.swing.JLabel();
         lblHarga = new javax.swing.JLabel();
-        lblDesk = new javax.swing.JLabel();
+        lblDesk = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -101,11 +133,14 @@ public class cardMenu extends javax.swing.JPanel {
         lblHarga.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHarga.setText("Rp. 9000");
 
-        lblDesk.setBackground(new java.awt.Color(153, 255, 153));
+        lblDesk.setEditable(false);
+        lblDesk.setBackground(new java.awt.Color(255, 255, 255));
+        lblDesk.setColumns(100);
         lblDesk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 12)); // NOI18N
-        lblDesk.setForeground(new java.awt.Color(51, 51, 51));
-        lblDesk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblDesk.setText("Sayur, mie, makaroni, telur, kerupuk, sosis");
+        lblDesk.setLineWrap(true);
+        lblDesk.setRows(2);
+        lblDesk.setTabSize(0);
+        lblDesk.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,23 +148,23 @@ public class cardMenu extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDesk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblDesk, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMenu)
                     .addComponent(lblHarga))
-                .addGap(6, 6, 6)
-                .addComponent(lblDesk))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDesk, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -138,7 +173,7 @@ public class cardMenu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
@@ -153,7 +188,7 @@ public class cardMenu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblDesk;
+    private javax.swing.JTextArea lblDesk;
     private javax.swing.JLabel lblHarga;
     private javax.swing.JLabel lblMenu;
     // End of variables declaration//GEN-END:variables

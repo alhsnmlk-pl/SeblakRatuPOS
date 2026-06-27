@@ -66,6 +66,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         lblLogoToko = new javax.swing.JLabel();
@@ -495,7 +496,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
 
     private void lblPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseClicked
         // TODO add your handling code here:
-        new FrameUtama().setVisible(true);
+        new FrameOwner().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPengaturanMouseClicked
 

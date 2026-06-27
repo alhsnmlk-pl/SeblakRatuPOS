@@ -29,7 +29,7 @@ public class cardTopping extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblTopping = new javax.swing.JLabel();
         lblHargaTopping = new javax.swing.JLabel();
-        qtyStepper1 = new posseblakratu.component.qtyStepper();
+        qtyStepper2 = new qtystepper.qtyStepper();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -43,19 +43,17 @@ public class cardTopping extends javax.swing.JPanel {
         lblHargaTopping.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHargaTopping.setText("+ 1.000");
 
-        qtyStepper1.setBorderColor(new java.awt.Color(231, 189, 187));
-        qtyStepper1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        qtyStepper1.setRadius(5);
+        qtyStepper2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout qtyStepper1Layout = new javax.swing.GroupLayout(qtyStepper1);
-        qtyStepper1.setLayout(qtyStepper1Layout);
-        qtyStepper1Layout.setHorizontalGroup(
-            qtyStepper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 87, Short.MAX_VALUE)
+        javax.swing.GroupLayout qtyStepper2Layout = new javax.swing.GroupLayout(qtyStepper2);
+        qtyStepper2.setLayout(qtyStepper2Layout);
+        qtyStepper2Layout.setHorizontalGroup(
+            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 82, Short.MAX_VALUE)
         );
-        qtyStepper1Layout.setVerticalGroup(
-            qtyStepper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 36, Short.MAX_VALUE)
+        qtyStepper2Layout.setVerticalGroup(
+            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -68,19 +66,19 @@ public class cardTopping extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(lblHargaTopping, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(qtyStepper1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1))
+                .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTopping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTopping, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(lblHargaTopping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(qtyStepper1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(qtyStepper2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -101,6 +99,6 @@ public class cardTopping extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHargaTopping;
     private javax.swing.JLabel lblTopping;
-    private posseblakratu.component.qtyStepper qtyStepper1;
+    private qtystepper.qtyStepper qtyStepper2;
     // End of variables declaration//GEN-END:variables
 }

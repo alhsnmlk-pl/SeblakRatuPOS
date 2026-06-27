@@ -30,8 +30,8 @@ public class cardKeranjang extends javax.swing.JPanel {
         lblMenuPesan = new javax.swing.JLabel();
         lblKetPesan = new javax.swing.JLabel();
         lblHarga = new javax.swing.JLabel();
-        qtyStepper1 = new posseblakratu.component.qtyStepper();
         jButton1 = new javax.swing.JButton();
+        qtyStepper2 = new qtystepper.qtyStepper();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 0, 5, 0));
@@ -51,19 +51,6 @@ public class cardKeranjang extends javax.swing.JPanel {
         lblHarga.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHarga.setText("Rp 13.000");
 
-        qtyStepper1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout qtyStepper1Layout = new javax.swing.GroupLayout(qtyStepper1);
-        qtyStepper1.setLayout(qtyStepper1Layout);
-        qtyStepper1Layout.setHorizontalGroup(
-            qtyStepper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 87, Short.MAX_VALUE)
-        );
-        qtyStepper1Layout.setVerticalGroup(
-            qtyStepper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconX.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -71,20 +58,33 @@ public class cardKeranjang extends javax.swing.JPanel {
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jButton1.setOpaque(true);
 
+        qtyStepper2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout qtyStepper2Layout = new javax.swing.GroupLayout(qtyStepper2);
+        qtyStepper2.setLayout(qtyStepper2Layout);
+        qtyStepper2Layout.setHorizontalGroup(
+            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 93, Short.MAX_VALUE)
+        );
+        qtyStepper2Layout.setVerticalGroup(
+            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(qtyStepper1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lblKetPesan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lblMenuPesan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -97,9 +97,13 @@ public class cardKeranjang extends javax.swing.JPanel {
                 .addComponent(lblKetPesan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHarga, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(qtyStepper1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGap(12, 12, 12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblHarga, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -112,6 +116,6 @@ public class cardKeranjang extends javax.swing.JPanel {
     private javax.swing.JLabel lblHarga;
     private javax.swing.JLabel lblKetPesan;
     private javax.swing.JLabel lblMenuPesan;
-    private posseblakratu.component.qtyStepper qtyStepper1;
+    private qtystepper.qtyStepper qtyStepper2;
     // End of variables declaration//GEN-END:variables
 }

@@ -80,7 +80,7 @@ public class PanelLaporan extends javax.swing.JPanel {
         lblRincian = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLaporan = new posseblakratu.component.TableCustom();
+        jTableCustom1 = new jtablecustom.JTableCustom();
 
         setBackground(new java.awt.Color(252, 249, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -339,27 +339,26 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        tblLaporan.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"19 Mei 2026", "TRX-0001", "Penjualan", "Pemasukan", "+ 11.700"}
+                {"20/07/2026", "TRX-0001", "Penjualan", "Pemasukan", "+0"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Tanggal", "No Referensi", "Kategori", "Tipe", "Jumlah"
             }
         ));
-        tblLaporan.setCellPaddingRight(20);
-        tblLaporan.setCenterColumns("3,4");
-        tblLaporan.setColumnWidths("40,60,200,50,50");
-        tblLaporan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tblLaporan.setGridColor(new java.awt.Color(231, 189, 187));
-        tblLaporan.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tblLaporan.setHeaderPaddingRight(20);
-        tblLaporan.setOuterBorderColor(new java.awt.Color(231, 189, 187));
-        tblLaporan.setOuterBorderThickness(0);
-        tblLaporan.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        jScrollPane1.setViewportView(tblLaporan);
+        jTableCustom1.setCellPaddingLeft(25);
+        jTableCustom1.setCellPaddingRight(25);
+        jTableCustom1.setCenterColumns("2,3,4");
+        jTableCustom1.setColumnWidths("50,50,50,50,150");
+        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jTableCustom1.setHeaderPaddingLeft(25);
+        jTableCustom1.setHeaderPaddingRight(25);
+        jTableCustom1.setLeftColumns("0");
+        jScrollPane1.setViewportView(jTableCustom1);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -390,6 +389,7 @@ public class PanelLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblLaba;
     private javax.swing.JLabel lblLaporan;
     private javax.swing.JLabel lblMargin;
@@ -403,6 +403,5 @@ public class PanelLaporan extends javax.swing.JPanel {
     private javax.swing.JLabel lblpemasukkan1;
     private javax.swing.JPanel main;
     private com.toedter.calendar.JMonthChooser pilihBulan;
-    private posseblakratu.component.TableCustom tblLaporan;
     // End of variables declaration//GEN-END:variables
 }

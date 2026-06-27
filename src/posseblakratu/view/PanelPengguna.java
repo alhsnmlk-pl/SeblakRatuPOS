@@ -97,7 +97,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnTambahPengguna = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPengguna = new posseblakratu.component.TableCustom();
+        jTableCustom1 = new jtablecustom.JTableCustom();
 
         setBackground(new java.awt.Color(252, 249, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -427,26 +427,26 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        tblPengguna.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "owner1", "Owner", "Aktif"},
-                {"2", "kasir1", "Kasir", "Aktif"},
-                {"3", "kasir2", "Kasir", "Nonaktif"}
+                {"1", "kasir1", "Kasir", "Aktif"},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No", "Username", "Peran", "Status"
+                "No", "Username", "Role", "Status"
             }
         ));
-        tblPengguna.setCellPaddingLeft(25);
-        tblPengguna.setCenterColumns("2,3");
-        tblPengguna.setColumnWidths("70,200,110,110,110");
-        tblPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tblPengguna.setGridColor(new java.awt.Color(231, 189, 187));
-        tblPengguna.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tblPengguna.setHeaderPaddingLeft(25);
-        tblPengguna.setOuterBorderThickness(0);
-        tblPengguna.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        jScrollPane1.setViewportView(tblPengguna);
+        jTableCustom1.setCellPaddingLeft(25);
+        jTableCustom1.setCellPaddingRight(25);
+        jTableCustom1.setCenterColumns("0,2,3");
+        jTableCustom1.setColumnWidths("70,200,110,110,110");
+        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jTableCustom1.setHeaderPaddingLeft(25);
+        jTableCustom1.setHeaderPaddingRight(25);
+        jTableCustom1.setLeftColumns("0,1");
+        jScrollPane1.setViewportView(jTableCustom1);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -487,6 +487,7 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JLabel lblDaftarProduk;
     private javax.swing.JLabel lblNamaProduk;
@@ -496,6 +497,5 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JLabel lblTambahPengguna;
     private javax.swing.JTextField tNamaPengguna;
     private javax.swing.JPasswordField tPasswordPengguna;
-    private posseblakratu.component.TableCustom tblPengguna;
     // End of variables declaration//GEN-END:variables
 }

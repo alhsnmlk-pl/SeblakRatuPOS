@@ -42,7 +42,7 @@ public class PanelDiskon extends javax.swing.JPanel {
                 10));
         
         
-        jPanel1.setBorder(new FlatLineBorder(
+        tambahDiskon.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
@@ -96,7 +96,6 @@ public class PanelDiskon extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jCheckBox1 = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
         tambahDiskon = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblTambahDiskon = new javax.swing.JLabel();
@@ -127,36 +126,6 @@ public class PanelDiskon extends javax.swing.JPanel {
         tglMulai = new com.toedter.calendar.JDateChooser();
         jPanel24 = new javax.swing.JPanel();
         tglSelesai = new com.toedter.calendar.JDateChooser();
-        editDiskon = new javax.swing.JPanel();
-        jPanel23 = new javax.swing.JPanel();
-        lblTambahDiskon1 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
-        btnSimpanDiskon1 = new javax.swing.JButton();
-        btnBatalDiskon1 = new javax.swing.JButton();
-        btnHapusDiskon1 = new javax.swing.JButton();
-        jPanel26 = new javax.swing.JPanel();
-        jPanel27 = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        lblNamaProduk5 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
-        tNamaDiskon1 = new javax.swing.JTextField();
-        jPanel30 = new javax.swing.JPanel();
-        lblNamaProduk6 = new javax.swing.JLabel();
-        jPanel31 = new javax.swing.JPanel();
-        cTipeDiskon1 = new javax.swing.JComboBox<>();
-        jPanel32 = new javax.swing.JPanel();
-        lblNamaProduk7 = new javax.swing.JLabel();
-        jPanel33 = new javax.swing.JPanel();
-        tValueDiskon1 = new javax.swing.JTextField();
-        jPanel34 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        lblNamaProduk8 = new javax.swing.JLabel();
-        lblNamaProduk9 = new javax.swing.JLabel();
-        jPanel36 = new javax.swing.JPanel();
-        jPanel37 = new javax.swing.JPanel();
-        tglMulai1 = new com.toedter.calendar.JDateChooser();
-        jPanel38 = new javax.swing.JPanel();
-        tglSelesai1 = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -164,8 +133,8 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         btnTambahDiskon = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblDiskon = new posseblakratu.component.TableCustom();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCustom1 = new jtablecustom.JTableCustom();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -174,11 +143,9 @@ public class PanelDiskon extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1075, 639));
         setLayout(new java.awt.BorderLayout(15, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(347, 611));
-        jPanel1.setLayout(new java.awt.CardLayout());
-
+        tambahDiskon.setBackground(new java.awt.Color(255, 255, 255));
+        tambahDiskon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        tambahDiskon.setPreferredSize(new java.awt.Dimension(347, 611));
         tambahDiskon.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -262,6 +229,8 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel11.setLayout(new java.awt.GridLayout(5, 1, 0, 10));
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 0, 0, 0));
+        jPanel12.setPreferredSize(new java.awt.Dimension(128, 42));
         jPanel12.setLayout(new java.awt.BorderLayout());
 
         lblNamaProduk.setBackground(new java.awt.Color(255, 255, 255));
@@ -440,272 +409,7 @@ public class PanelDiskon extends javax.swing.JPanel {
 
         tambahDiskon.add(jPanel7, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(tambahDiskon, "card2");
-
-        editDiskon.setLayout(new java.awt.BorderLayout());
-
-        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel23.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
-        jPanel23.setMinimumSize(new java.awt.Dimension(335, 63));
-
-        lblTambahDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
-        lblTambahDiskon1.setText("Edit Diskon");
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblTambahDiskon1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTambahDiskon1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-        );
-
-        editDiskon.add(jPanel23, java.awt.BorderLayout.PAGE_START);
-
-        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel25.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
-        jPanel25.setMinimumSize(new java.awt.Dimension(345, 130));
-        jPanel25.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel25.setLayout(new java.awt.GridBagLayout());
-
-        btnSimpanDiskon1.setBackground(new java.awt.Color(214, 4, 39));
-        btnSimpanDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnSimpanDiskon1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanDiskon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
-        btnSimpanDiskon1.setText("Simpan Perubahan");
-        btnSimpanDiskon1.setBorderPainted(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel25.add(btnSimpanDiskon1, gridBagConstraints);
-
-        btnBatalDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnBatalDiskon1.setText("Batal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel25.add(btnBatalDiskon1, gridBagConstraints);
-
-        btnHapusDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnHapusDiskon1.setForeground(new java.awt.Color(214, 4, 39));
-        btnHapusDiskon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
-        btnHapusDiskon1.setText("Hapus");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel25.add(btnHapusDiskon1, gridBagConstraints);
-
-        editDiskon.add(jPanel25, java.awt.BorderLayout.PAGE_END);
-
-        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel26.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
-
-        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel27.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 18, 0, 18));
-        jPanel27.setMaximumSize(new java.awt.Dimension(32767, 350));
-        jPanel27.setPreferredSize(new java.awt.Dimension(345, 340));
-        jPanel27.setLayout(new java.awt.GridLayout(5, 1, 0, 10));
-
-        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel28.setLayout(new java.awt.BorderLayout());
-
-        lblNamaProduk5.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk5.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk5.setText("Nama Diskon");
-        lblNamaProduk5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel28.add(lblNamaProduk5, java.awt.BorderLayout.PAGE_START);
-
-        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel29.setLayout(new java.awt.BorderLayout());
-
-        tNamaDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tNamaDiskon1.setForeground(new java.awt.Color(92, 62, 60));
-        tNamaDiskon1.setText("Contoh: Jumat Berkah");
-        tNamaDiskon1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 18, 1, 1));
-        tNamaDiskon1.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        tNamaDiskon1.setOpaque(true);
-        tNamaDiskon1.setPreferredSize(new java.awt.Dimension(126, 19));
-        tNamaDiskon1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tNamaDiskon1MouseClicked(evt);
-            }
-        });
-        tNamaDiskon1.addActionListener(this::tNamaDiskon1ActionPerformed);
-        jPanel29.add(tNamaDiskon1, java.awt.BorderLayout.CENTER);
-
-        jPanel28.add(jPanel29, java.awt.BorderLayout.CENTER);
-
-        jPanel27.add(jPanel28);
-
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel30.setLayout(new java.awt.BorderLayout());
-
-        lblNamaProduk6.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk6.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk6.setText("Tipe Diskon");
-        lblNamaProduk6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel30.add(lblNamaProduk6, java.awt.BorderLayout.PAGE_START);
-
-        jPanel31.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel31.setLayout(new java.awt.BorderLayout());
-
-        cTipeDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        cTipeDiskon1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nominal", "Persentase" }));
-        cTipeDiskon1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12));
-        cTipeDiskon1.setOpaque(true);
-        jPanel31.add(cTipeDiskon1, java.awt.BorderLayout.CENTER);
-
-        jPanel30.add(jPanel31, java.awt.BorderLayout.CENTER);
-
-        jPanel27.add(jPanel30);
-
-        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel32.setLayout(new java.awt.BorderLayout());
-
-        lblNamaProduk7.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk7.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk7.setText("Nominal / Persentase");
-        lblNamaProduk7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel32.add(lblNamaProduk7, java.awt.BorderLayout.PAGE_START);
-
-        jPanel33.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel33.setLayout(new java.awt.BorderLayout());
-
-        tValueDiskon1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tValueDiskon1.setForeground(new java.awt.Color(92, 62, 60));
-        tValueDiskon1.setText("0");
-        tValueDiskon1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 18, 1, 1));
-        tValueDiskon1.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        tValueDiskon1.setOpaque(true);
-        tValueDiskon1.setPreferredSize(new java.awt.Dimension(126, 19));
-        tValueDiskon1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tValueDiskon1MouseClicked(evt);
-            }
-        });
-        tValueDiskon1.addActionListener(this::tValueDiskon1ActionPerformed);
-        jPanel33.add(tValueDiskon1, java.awt.BorderLayout.CENTER);
-
-        jPanel32.add(jPanel33, java.awt.BorderLayout.CENTER);
-
-        jPanel27.add(jPanel32);
-
-        jPanel34.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel34.setLayout(new java.awt.BorderLayout());
-
-        jPanel35.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel35.setMinimumSize(new java.awt.Dimension(100, 50));
-        jPanel35.setPreferredSize(new java.awt.Dimension(309, 23));
-        jPanel35.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
-
-        lblNamaProduk8.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk8.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk8.setText(" Mulai");
-        lblNamaProduk8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel35.add(lblNamaProduk8);
-
-        lblNamaProduk9.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk9.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk9.setText("Berakhir");
-        lblNamaProduk9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel35.add(lblNamaProduk9);
-
-        jPanel34.add(jPanel35, java.awt.BorderLayout.PAGE_START);
-
-        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel36.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
-
-        jPanel37.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel37.setForeground(new java.awt.Color(92, 62, 60));
-
-        tglMulai1.setBackground(new java.awt.Color(255, 255, 255));
-        tglMulai1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tglMulai1.setIcon(iconDate);
-
-        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
-        jPanel37.setLayout(jPanel37Layout);
-        jPanel37Layout.setHorizontalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(tglMulai1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel37Layout.setVerticalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tglMulai1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-        );
-
-        jPanel36.add(jPanel37);
-
-        jPanel38.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel38.setForeground(new java.awt.Color(92, 62, 60));
-
-        tglSelesai1.setBackground(new java.awt.Color(255, 255, 255));
-        tglSelesai1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tglSelesai1.setIcon(iconDate);
-
-        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
-        jPanel38.setLayout(jPanel38Layout);
-        jPanel38Layout.setHorizontalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(tglSelesai1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel38Layout.setVerticalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tglSelesai1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-        );
-
-        jPanel36.add(jPanel38);
-
-        jPanel34.add(jPanel36, java.awt.BorderLayout.CENTER);
-
-        jPanel27.add(jPanel34);
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        editDiskon.add(jPanel26, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(editDiskon, "card2");
-
-        add(jPanel1, java.awt.BorderLayout.LINE_END);
+        add(tambahDiskon, java.awt.BorderLayout.LINE_END);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -746,7 +450,7 @@ public class PanelDiskon extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(lblDaftarProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -766,36 +470,33 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        tblDiskon.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Jumat Berkah", "Persentase", "10%", "19/05/2026-19/05/2026"}
+                {"Jumat Berkah", "Persentase", "10%", "25/11/2005-25/11/2005"},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif"
             }
         ));
-        tblDiskon.setCellPaddingLeft(25);
-        tblDiskon.setCenterColumns("1,2,3");
-        tblDiskon.setColumnWidths("60,10.10,10");
-        tblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        tblDiskon.setHeaderBorderColor(new java.awt.Color(231, 189, 187));
-        tblDiskon.setHeaderPaddingLeft(25);
-        tblDiskon.setOuterBorderColor(new java.awt.Color(231, 189, 187));
-        tblDiskon.setOuterBorderThickness(0);
-        tblDiskon.setRowBorderColor(new java.awt.Color(231, 189, 187));
-        tblDiskon.addActionListener(this::tblDiskonActionPerformed);
-        jScrollPane2.setViewportView(tblDiskon);
+        jTableCustom1.setCellPaddingLeft(25);
+        jTableCustom1.setCellPaddingRight(25);
+        jTableCustom1.setCenterColumns("1,2,3");
+        jTableCustom1.setColumnWidths("100,10,10,100");
+        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        jTableCustom1.setHeaderPaddingLeft(25);
+        jTableCustom1.setHeaderPaddingRight(25);
+        jTableCustom1.setLeftColumns("0");
+        jScrollPane1.setViewportView(jTableCustom1);
 
-        jPanel6.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblDiskonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblDiskonActionPerformed
 
     private void btnTambahDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahDiskonActionPerformed
         // TODO add your handling code here:
@@ -817,36 +518,14 @@ public class PanelDiskon extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tValueDiskonActionPerformed
 
-    private void tNamaDiskon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaDiskon1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaDiskon1MouseClicked
-
-    private void tNamaDiskon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaDiskon1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaDiskon1ActionPerformed
-
-    private void tValueDiskon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tValueDiskon1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tValueDiskon1MouseClicked
-
-    private void tValueDiskon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tValueDiskon1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tValueDiskon1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatalDiskon;
-    private javax.swing.JButton btnBatalDiskon1;
     private javax.swing.JButton btnHapusDiskon;
-    private javax.swing.JButton btnHapusDiskon1;
     private javax.swing.JButton btnSimpanDiskon;
-    private javax.swing.JButton btnSimpanDiskon1;
     private javax.swing.JButton btnTambahDiskon;
     private javax.swing.JComboBox<String> cTipeDiskon;
-    private javax.swing.JComboBox<String> cTipeDiskon1;
-    private javax.swing.JPanel editDiskon;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -859,52 +538,27 @@ public class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblDaftarProduk;
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk2;
     private javax.swing.JLabel lblNamaProduk3;
     private javax.swing.JLabel lblNamaProduk4;
-    private javax.swing.JLabel lblNamaProduk5;
-    private javax.swing.JLabel lblNamaProduk6;
-    private javax.swing.JLabel lblNamaProduk7;
-    private javax.swing.JLabel lblNamaProduk8;
-    private javax.swing.JLabel lblNamaProduk9;
     private javax.swing.JLabel lblTambahDiskon;
-    private javax.swing.JLabel lblTambahDiskon1;
     private javax.swing.JTextField tNamaDiskon;
-    private javax.swing.JTextField tNamaDiskon1;
     private javax.swing.JTextField tValueDiskon;
-    private javax.swing.JTextField tValueDiskon1;
     private javax.swing.JPanel tambahDiskon;
-    private posseblakratu.component.TableCustom tblDiskon;
     private com.toedter.calendar.JDateChooser tglMulai;
-    private com.toedter.calendar.JDateChooser tglMulai1;
     private com.toedter.calendar.JDateChooser tglSelesai;
-    private com.toedter.calendar.JDateChooser tglSelesai1;
     // End of variables declaration//GEN-END:variables
 }

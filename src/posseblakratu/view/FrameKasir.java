@@ -14,13 +14,13 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Al
  */
-public final class FrameUtama extends javax.swing.JFrame {
+public final class FrameKasir extends javax.swing.JFrame {
     CardLayout page;
 
     /**
      * Creates new form FrameUtama
      */
-    public FrameUtama() {
+    public FrameKasir() {
         initComponents();
         
         TanggalJam();
@@ -115,15 +115,9 @@ public final class FrameUtama extends javax.swing.JFrame {
         sidebarPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        btnSetting = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnTransaksi = new javax.swing.JToggleButton();
-        btnProduk = new javax.swing.JToggleButton();
-        btnStok = new javax.swing.JToggleButton();
-        btnPengguna = new javax.swing.JToggleButton();
-        btnDiskon = new javax.swing.JToggleButton();
-        btnLaporan = new javax.swing.JToggleButton();
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -210,8 +204,8 @@ public final class FrameUtama extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(204, 204, 204)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(205, 121));
-        jPanel1.setLayout(new java.awt.GridLayout(2, 1));
+        jPanel1.setPreferredSize(new java.awt.Dimension(205, 70));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 1));
 
         btnLogout.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(100, 116, 139));
@@ -223,17 +217,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         btnLogout.setIconTextGap(14);
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
         jPanel1.add(btnLogout);
-
-        btnSetting.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnSetting.setForeground(new java.awt.Color(100, 116, 139));
-        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSetting.png"))); // NOI18N
-        btnSetting.setText("Pengaturan");
-        btnSetting.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
-        btnSetting.setContentAreaFilled(false);
-        btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnSetting.setIconTextGap(14);
-        btnSetting.addActionListener(this::btnSettingActionPerformed);
-        jPanel1.add(btnSetting);
 
         sidebarPanel.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -266,82 +249,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         });
         jPanel5.add(btnTransaksi);
 
-        grupButtonSidebar.add(btnProduk);
-        btnProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnProduk.setForeground(new java.awt.Color(100, 116, 139));
-        btnProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconProduk.png"))); // NOI18N
-        btnProduk.setText("Produk");
-        btnProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnProduk.setContentAreaFilled(false);
-        btnProduk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnProduk.setIconTextGap(14);
-        btnProduk.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnProduk.setOpaque(true);
-        btnProduk.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconProduk.svg"));
-        btnProduk.addItemListener(this::btnProdukItemStateChanged);
-        jPanel5.add(btnProduk);
-
-        grupButtonSidebar.add(btnStok);
-        btnStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnStok.setForeground(new java.awt.Color(100, 116, 139));
-        btnStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconStok.png"))); // NOI18N
-        btnStok.setText("Stok");
-        btnStok.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnStok.setContentAreaFilled(false);
-        btnStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnStok.setIconTextGap(14);
-        btnStok.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnStok.setOpaque(true);
-        btnStok.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconStok.svg"));
-        btnStok.addItemListener(this::btnStokItemStateChanged);
-        jPanel5.add(btnStok);
-
-        grupButtonSidebar.add(btnPengguna);
-        btnPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnPengguna.setForeground(new java.awt.Color(100, 116, 139));
-        btnPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconPengguna.png"))); // NOI18N
-        btnPengguna.setText("Pengguna");
-        btnPengguna.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnPengguna.setContentAreaFilled(false);
-        btnPengguna.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPengguna.setIconTextGap(14);
-        btnPengguna.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnPengguna.setOpaque(true);
-        btnPengguna.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconPengguna.svg"));
-        btnPengguna.addItemListener(this::btnPenggunaItemStateChanged);
-        jPanel5.add(btnPengguna);
-
-        grupButtonSidebar.add(btnDiskon);
-        btnDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnDiskon.setForeground(new java.awt.Color(100, 116, 139));
-        btnDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconDiskon.png"))); // NOI18N
-        btnDiskon.setText("Diskon");
-        btnDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnDiskon.setContentAreaFilled(false);
-        btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDiskon.setIconTextGap(14);
-        btnDiskon.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnDiskon.setOpaque(true);
-        btnDiskon.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconDiskon.svg"));
-        btnDiskon.addItemListener(this::btnDiskonItemStateChanged);
-        btnDiskon.addActionListener(this::btnDiskonActionPerformed);
-        jPanel5.add(btnDiskon);
-
-        grupButtonSidebar.add(btnLaporan);
-        btnLaporan.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnLaporan.setForeground(new java.awt.Color(100, 116, 139));
-        btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconLaporan.png"))); // NOI18N
-        btnLaporan.setText("Laporan");
-        btnLaporan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
-        btnLaporan.setContentAreaFilled(false);
-        btnLaporan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnLaporan.setIconTextGap(14);
-        btnLaporan.setMargin(new java.awt.Insets(2, 90, 3, 14));
-        btnLaporan.setOpaque(true);
-        btnLaporan.setSelectedIcon(new FlatSVGIcon("posseblakratu/icon/IconLaporan.svg"));
-        btnLaporan.addItemListener(this::btnLaporanItemStateChanged);
-        jPanel5.add(btnLaporan);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -373,37 +280,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnTransaksiItemStateChanged
 
-    private void btnLaporanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLaporanItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnLaporan);
-        page.show(contentPanel, "laporan");
-    }//GEN-LAST:event_btnLaporanItemStateChanged
-
-    private void btnProdukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnProdukItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnProduk);
-        page.show(contentPanel, "produk");
-
-    }//GEN-LAST:event_btnProdukItemStateChanged
-
-    private void btnStokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnStokItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnStok);
-        page.show(contentPanel, "stok");
-    }//GEN-LAST:event_btnStokItemStateChanged
-
-    private void btnPenggunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnPenggunaItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnPengguna);
-        page.show(contentPanel, "pengguna");
-    }//GEN-LAST:event_btnPenggunaItemStateChanged
-
-    private void btnDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnDiskonItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnDiskon);
-        page.show(contentPanel, "diskon");
-    }//GEN-LAST:event_btnDiskonItemStateChanged
-
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         
@@ -425,12 +301,6 @@ public final class FrameUtama extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
-        // TODO add your handling code here:
-        new FramePengaturan().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnSettingActionPerformed
-
     private void btnTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTransaksiMouseEntered
@@ -438,10 +308,6 @@ public final class FrameUtama extends javax.swing.JFrame {
     private void btnTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTransaksiMouseExited
-
-    private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDiskonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,17 +324,11 @@ public final class FrameUtama extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrameUtama().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrameKasir().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnDiskon;
-    private javax.swing.JToggleButton btnLaporan;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JToggleButton btnPengguna;
-    private javax.swing.JToggleButton btnProduk;
-    private javax.swing.JButton btnSetting;
-    private javax.swing.JToggleButton btnStok;
     private javax.swing.JToggleButton btnTransaksi;
     private javax.swing.JPanel containerTxtHeader;
     private javax.swing.JPanel contentPanel;
