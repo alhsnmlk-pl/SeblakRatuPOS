@@ -48,13 +48,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="lblTopping" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <Component id="lblTopping" pref="110" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblHargaTopping" min="-2" pref="73" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="qtyStepper2" min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="qtyStepperT" min="-2" pref="82" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -70,7 +70,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="qtyStepper2" pref="36" max="32767" attributes="0"/>
+                  <Component id="qtyStepperT" pref="36" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -94,7 +94,7 @@
             <Property name="text" type="java.lang.String" value="+ 1.000"/>
           </Properties>
         </Component>
-        <Container class="qtystepper.qtyStepper" name="qtyStepper2">
+        <Container class="qtystepper.qtyStepper" name="qtyStepperT">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Plus Jakarta Sans SemiBold" size="14" style="0"/>

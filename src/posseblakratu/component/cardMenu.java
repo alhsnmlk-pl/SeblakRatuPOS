@@ -17,39 +17,32 @@ public class cardMenu extends javax.swing.JPanel {
 
     private boolean selected = false;  //membuat variable status card menu false !selected
 
+    //membuat variable untuk menyimpan data
+    private String idProduk;
+    private String namaMenu;
+    private double hargaMenu;
+    private String kategoriMenu;
+    private String deskripsiMenu;
+
     /**
      * Creates new form cardMenu
      */
     public cardMenu() {
         initComponents();
 
-        updateStyle();  //memanggil style awal
+        updateStyle();  //memanggil style
 
-        lblDesk.setRows(2);
-        lblDesk.setLineWrap(true);
-        lblDesk.setWrapStyleWord(true);
-        lblDesk.setEditable(false);
-        lblDesk.setOpaque(false);
-        lblDesk.setBorder(null);
-        lblDesk.setFocusable(false);
     }
-    
-    
-    
 
     public void setSelected(boolean selected) {     //membuat setter selected
         this.selected = selected; //mengubah status card
         updateStyle();  //memperbarui tampilan setelah status berubah
     }
-    
-    
 
     public boolean isSelected() {  //membuat getter selected untuk mengembalikan nilai selected
         return selected;
     }
 
-
-    
     //membuat styling selected dan !selected
     private void updateStyle() {
         if (selected) {
@@ -67,9 +60,7 @@ public class cardMenu extends javax.swing.JPanel {
         }
         repaint();
     }
-    
-    
-    
+
     //Membuat method click listener agar saat semua bagian card bisa di klik
     public void addClickListener(MouseListener listener) {
         addMouseListener(listener);
@@ -80,16 +71,23 @@ public class cardMenu extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card menu
-    public void setData(String nama, double harga, String deskripsi) {
+    public void setData(String idProduk, String namaMenu, double hargaMenu, String kategoriMenu, String deskripsiMenu) { //pastikan urutan penamaan variable di ingat
+
+        //menyimpan data produk
+        this.idProduk = idProduk;
+        this.namaMenu = namaMenu;
+        this.hargaMenu = hargaMenu;
+        this.kategoriMenu = kategoriMenu;
+        this.deskripsiMenu = deskripsiMenu;
 
         //menampilkan nama produk
-        lblMenu.setText(nama);
+        lblMenu.setText(namaMenu);
 
         //menampilkan harga produk
-        lblHarga.setText("Rp. " + (int) harga);
+        lblHarga.setText("Rp. " + (int) hargaMenu);
 
         //memeriksa apakah deskripsi kosong
-        if (deskripsi == null || deskripsi.trim().isEmpty()) {
+        if (deskripsiMenu == null || deskripsiMenu.trim().isEmpty()) {
 
             //jika deskripsi kosong, tampilkan tanda "-"
             lblDesk.setText("-");
@@ -97,10 +95,31 @@ public class cardMenu extends javax.swing.JPanel {
         } else {
 
             //jika deskripsi ada, tampilkan deskripsi produk
-            lblDesk.setText(deskripsi);
+            lblDesk.setText(deskripsiMenu);
 
         }
 
+    }
+
+    //membuat getter agar data dapat di panggil dari class manapun
+    public String getIdProduk() {
+        return idProduk;
+    }
+
+    public String getNama() {
+        return namaMenu;
+    }
+
+    public double getHarga() {
+        return hargaMenu;
+    }
+
+    public String getKategori() {
+        return kategoriMenu;
+    }
+
+    public String getDeskripsi() {
+        return deskripsiMenu;
     }
 
     /**
@@ -121,6 +140,7 @@ public class cardMenu extends javax.swing.JPanel {
         setOpaque(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFocusable(false);
 
         lblMenu.setBackground(new java.awt.Color(153, 255, 153));
         lblMenu.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
@@ -141,6 +161,9 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk.setRows(2);
         lblDesk.setTabSize(0);
         lblDesk.setBorder(null);
+        lblDesk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        lblDesk.setEnabled(false);
+        lblDesk.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

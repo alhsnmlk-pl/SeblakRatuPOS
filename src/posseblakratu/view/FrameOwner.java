@@ -23,12 +23,12 @@ public final class FrameOwner extends javax.swing.JFrame {
     public FrameOwner() {
         initComponents();
         
-        TanggalJam();
+        TanggalJam(); //memanggil method waktu
         
-        inisiasiPanel();
+        inisiasiPanel(); //memanggil method inisiasi panel
         
-        btnTransaksi.setSelected(true);
-        stateSidebar(btnTransaksi);
+        btnTransaksi.setSelected(true); //membuat btnTransaksi bernilai true/selected 
+        stateSidebar(btnTransaksi); //memanggil state button sidebar untuk btnTransaksi
     }
     
     
@@ -46,20 +46,29 @@ public final class FrameOwner extends javax.swing.JFrame {
 
     
     
-    //method jam
+    //method untuk menampilkan tanggal dan jam pada header
     private void TanggalJam() {
+
+        //membuat timer yang berjalan setiap 1 detik
         javax.swing.Timer timer = new javax.swing.Timer(1000, (java.awt.event.ActionEvent e) -> {
+
+            //mengatur locale ke bahasa Indonesia
             java.util.Locale localeIndonesia = new java.util.Locale("id", "ID");
 
+            //mengatur format tanggal dan jam
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
                     "EEEE, dd MMMM yyyy | HH.mm",
                     localeIndonesia
             );
 
+            //mengambil tanggal dan jam saat ini
             String waktu = sdf.format(new java.util.Date());
+
+            //menampilkan tanggal dan jam pada label
             lblTanggalJam.setText(waktu);
         });
 
+        //menjalankan timer
         timer.start();
     }
     
@@ -71,8 +80,8 @@ public final class FrameOwner extends javax.swing.JFrame {
     
     
     
-      //method utk state aktif dan nonaktif untuk sidebar
-      private void stateSidebar(javax.swing.JToggleButton tombol) {
+    //method utk state aktif dan nonaktif untuk sidebar
+    private void stateSidebar(javax.swing.JToggleButton tombol) {
         tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
 
         //margin kiri
@@ -368,7 +377,7 @@ public final class FrameOwner extends javax.swing.JFrame {
 
     private void btnTransaksiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnTransaksiItemStateChanged
         // TODO add your handling code here:
-        stateSidebar(btnTransaksi); //memanggil method state aktif dan nonaktif tombol du event state change
+        stateSidebar(btnTransaksi); //memanggil method state aktif dan nonaktif tombol di event state change
         page.show(contentPanel, "transaksi"); //memanggil method inisiasi panel
         
     }//GEN-LAST:event_btnTransaksiItemStateChanged

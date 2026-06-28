@@ -32,9 +32,12 @@ public final class FrameLogin extends javax.swing.JFrame {
     public FrameLogin() {
         initComponents();
         
-        panelLengkung(usrContainer); //memanggil panel melengkung pada setiap panel yg di lengkungkan
+        //memanggil panel melengkung pada setiap panel yg di lengkungkan
+        panelLengkung(usrContainer); 
         panelLengkung(passContainer);
         panelLengkung(roleContainer);
+        
+        
      
         tPassword.setEchoChar((char) 0); // placeholder dibuat jadi terlihat
         tPassword.setText("Masukkan Password"); //placehokder bertuliskan masukkan password
@@ -43,15 +46,18 @@ public final class FrameLogin extends javax.swing.JFrame {
         
     }
     
-    //method untuk membuat panel melengkung
+    //method untuk mengatur style panel agar terlihat melengkung
+    //menerapkan border dengan warna dan radius tertentu
     void panelLengkung(JPanel p) {
 
+        //mengatur border panel utama yang dikirim sebagai parameter
         p.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
 
+        //mengatur border container login agar lebih melengkung
         containerLogin.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E7BDBB"),
@@ -116,7 +122,6 @@ public final class FrameLogin extends javax.swing.JFrame {
         usrContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         tUsername.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tUsername.setText("Masukkan Username");
         tUsername.setBorder(null);
         tUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -380,6 +385,8 @@ public final class FrameLogin extends javax.swing.JFrame {
 
     private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
         // TODO add your handling code here:
+        
+        // membuat logika icon mata, jika icon mata klik maka teks akan terlihat
         if (btnMata.isSelected()) {
             // Password terlihat
             tPassword.setEchoChar((char) 0);
@@ -459,26 +466,36 @@ public final class FrameLogin extends javax.swing.JFrame {
 
     private void tUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusGained
         // TODO add your handling code here:
+        // focus gained aktif ketika pengguna mengklik atau mengarahkan kursor ke dalam field text
+        // mengambil teks yang saat ini ada di dalam kolom tUsername
         String username = tUsername.getText();
+        // memeriksa apakah teks di dalam kolom masih berupa tulisan placeholder ("Masukkan Username")
         if(username.equals("Masukkan Username")){
+            // jika benar masih placeholder, kosongkan kolom agar pengguna bisa langsung mengetik
             tUsername.setText("");
         }
     }//GEN-LAST:event_tUsernameFocusGained
 
     private void tUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusLost
         // TODO add your handling code here:
+        // Memeriksa apakah kolom dalam keadaan kosong atau memang teksnya masih placeholder
         String username = tUsername.getText();
         if(username.equals("")||username.equals("Masukkan Username")){
+            // Jika kosong, kembalikan tulisan placeholder
             tUsername.setText("Masukkan Username");
         }
     }//GEN-LAST:event_tUsernameFocusLost
 
     private void tPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordFocusGained
         // TODO add your handling code here:
+        // Mengambil teks password dan mengubahnya dari bentuk char[] menjadi String
         String password = String.valueOf(tPassword.getPassword());
-
+        
+        // Memeriksa apakah teks di dalam kolom adalah placeholder ("Masukkan Password")
         if (password.equals("Masukkan Password")) {
+            // Jika benar, kosongkan kolom agar siap menerima input dari pengguna
             tPassword.setText("");
+            // Aktifkan karakter penyamat (bullet '•') agar password yang diketik bersifat rahasia/bintang-bintang
             tPassword.setEchoChar('•');
         }
 
@@ -486,13 +503,17 @@ public final class FrameLogin extends javax.swing.JFrame {
 
     private void tPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordFocusLost
         // TODO add your handling code here:
+        // Mengambil teks password saat ini untuk dicek
         String password = String.valueOf(tPassword.getPassword());
 
+        // Memeriksa apakah pengguna membiarkan kolom password ini kosong (tidak mengetik apa pun)
         if (password.isEmpty()) {
+            // Matikan fungsi echo char (diubah ke angka 0) agar teks placeholder bisa terbaca normal (bukan berupa titik-titik)
             tPassword.setEchoChar((char) 0);
+            // Tampilkan kembali teks petunjuk placeholder-nya
             tPassword.setText("Masukkan Password");
         }
-        
+
     }//GEN-LAST:event_tPasswordFocusLost
 
     /**
@@ -505,7 +526,9 @@ public final class FrameLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            UIManager.put("Button.arc", 10);
+            UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252,232,230)); //memgatur warna selection backround di combo box
+            UIManager.put("ComboBox.selectionForeground", new java.awt.Color(0,0,0)); //mengatur warna teks / foreground di selection combo box
+            UIManager.put("Button.arc", 10); //membaut button melengkung
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }

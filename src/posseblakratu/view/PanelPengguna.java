@@ -72,6 +72,10 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnHapusPengguna = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        lblNamaProduk3 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        tNamaPengguna1 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         lblNamaProduk = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
@@ -189,12 +193,44 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel11.setPreferredSize(new java.awt.Dimension(345, 340));
         jPanel11.setLayout(new java.awt.GridLayout(5, 1, 0, 10));
 
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setLayout(new java.awt.BorderLayout());
+
+        lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
+        lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblNamaProduk3.setText("Nama");
+        lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
+        jPanel15.add(lblNamaProduk3, java.awt.BorderLayout.PAGE_START);
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        jPanel19.setLayout(new java.awt.GridBagLayout());
+
+        tNamaPengguna1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        tNamaPengguna1.setForeground(new java.awt.Color(92, 62, 60));
+        tNamaPengguna1.setText("Contoh: Kasir Utama");
+        tNamaPengguna1.setBorder(null);
+        tNamaPengguna1.setMargin(new java.awt.Insets(10, 10, 10, 6));
+        tNamaPengguna1.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaPengguna1.addActionListener(this::tNamaPengguna1ActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 278;
+        gridBagConstraints.ipady = 19;
+        gridBagConstraints.insets = new java.awt.Insets(1, 18, 1, 12);
+        jPanel19.add(tNamaPengguna1, gridBagConstraints);
+
+        jPanel15.add(jPanel19, java.awt.BorderLayout.CENTER);
+
+        jPanel11.add(jPanel15);
+
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.BorderLayout());
 
         lblNamaProduk.setBackground(new java.awt.Color(255, 255, 255));
         lblNamaProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk.setText("Nama Pengguna");
+        lblNamaProduk.setText("Username");
         lblNamaProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel12.add(lblNamaProduk, java.awt.BorderLayout.PAGE_START);
 
@@ -204,7 +240,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         tNamaPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tNamaPengguna.setForeground(new java.awt.Color(92, 62, 60));
-        tNamaPengguna.setText("Contoh: Kasir Utama");
+        tNamaPengguna.setText("Contoh: kasir1");
         tNamaPengguna.setBorder(null);
         tNamaPengguna.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaPengguna.setPreferredSize(new java.awt.Dimension(126, 19));
@@ -429,19 +465,19 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "kasir1", "Kasir", "Aktif"},
+                {"Kasir Utama", "kasir1", "Kasir", "Aktif"},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "No", "Username", "Role", "Status"
+                "Nama", "Username", "Role", "Status"
             }
         ));
         jTableCustom1.setCellPaddingLeft(25);
         jTableCustom1.setCellPaddingRight(25);
         jTableCustom1.setCenterColumns("0,2,3");
-        jTableCustom1.setColumnWidths("70,200,110,110,110");
+        jTableCustom1.setColumnWidths("140,90,110,110,110");
         jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jTableCustom1.setHeaderPaddingLeft(25);
         jTableCustom1.setHeaderPaddingRight(25);
@@ -459,6 +495,10 @@ public class PanelPengguna extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tNamaPenggunaActionPerformed
 
+    private void tNamaPengguna1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaPengguna1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaPengguna1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GbuttonStatus;
@@ -475,9 +515,11 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
@@ -493,9 +535,11 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk2;
+    private javax.swing.JLabel lblNamaProduk3;
     private javax.swing.JLabel lblStatusProduk;
     private javax.swing.JLabel lblTambahPengguna;
     private javax.swing.JTextField tNamaPengguna;
+    private javax.swing.JTextField tNamaPengguna1;
     private javax.swing.JPasswordField tPasswordPengguna;
     // End of variables declaration//GEN-END:variables
 }

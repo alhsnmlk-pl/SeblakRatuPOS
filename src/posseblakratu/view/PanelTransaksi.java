@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import posseblakratu.component.DetailTopping;
 
 /**
  *
@@ -32,51 +33,52 @@ import javax.swing.SwingUtilities;
  */
 public final class PanelTransaksi extends javax.swing.JPanel {
 
-    private final List<cardMenu> daftarCard = new ArrayList<>(); //Membuat list penyimpan card untuk menyimpan semua card menu
-    
-    private CardLayout cardLayoutC;
+    private List<cardMenu> daftarMenu = new ArrayList<>(); //Membuat list penyimpan card untuk menyimpan semua card menu
+    private List<cardTopping> daftarTopping = new ArrayList<>(); //Membuat list penyimpan card topping
+    private List<cardKeranjang> daftarKeranjang = new ArrayList<>(); //membuat list penyimpan card keranjang
+
+    private CardLayout cardLayout; //mendeklarasikan CardLayout menjadi cardLayout agar bisa eipakai di banyak method
+
+    //deklarasikan variable untuk menyimpan data menu yg di pilih
+    private cardMenu menuDipilih;
+
+    //menyimpan level pedas yang dipilih (default -1 / belum memilih level)
+    private int levelPedas = -1;
 
     /**
      * Creates new form PanelTransaksi
      */
     public PanelTransaksi() {
         initComponents();
-        
-        cardLayoutC = (CardLayout)
-        containerKostumisasi1.getLayout();
-        cardLayoutC.show(containerKostumisasi1, "kostumKosong");
 
-        buttonDesain();
+        //mengambil layout pada panel kostumisasi
+        cardLayout = (CardLayout) containerKostumisasi1.getLayout();
 
-        panelLengkung(containerDaftarMenu);
+        //menampilkan panel kostumisasi kosong sebagai tampilan awal
+        cardLayout.show(containerKostumisasi1, "kostumKosong");
+
+        buttonDesain(); //memanggil method desain button next dan reset
+
+        panelLengkung(containerDaftarMenu); //memanggil method desain panel dgn panel yg ingin di sesuaikan
         panelLengkung(containerKostumisasi1);
         panelLengkung(containerKeranjang1);
 
-        buttonLvl(btnLvl0);
+        buttonLvl(btnLvl0); //memanggil method desain button (button level) dgn panel yg di sesuaikan
         buttonLvl(btnLvl1);
         buttonLvl(btnLvl2);
         buttonLvl(btnLvl3);
         buttonLvl(btnLvl4);
         buttonLvl(btnLvl5);
 
-        filterSemuaM.setSelected(true);
+        filterSemuaM.setSelected(true); //membuat btnFilter semua bernilai true/selected 
         btnFilter(filterSemuaM);
+        ////memanggil state button filter untuk btnFilter semua
 
-        loadMenu("Semua");
-        loadTopping();
-        
+        loadMenu("Semua"); //load menu untuk kategori semua
+        loadTopping(); //load toping
+
     }
-    
-    
-    
-    
-    
-    
 
-    
-    
-    
-    
     //method styling panel
     void panelLengkung(JPanel p) {
         p.setBorder(new FlatLineBorder(
@@ -85,11 +87,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 1f,
                 10));
     }
-    
-    
-    
-    
-    
+
     //method styling button
     void buttonDesain() {
         btnReset.putClientProperty("FlatLaf.style",
@@ -108,13 +106,27 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 + "arc:8; "
                 + "borderColor:#BA1A1A; "
                 + "focusedBorderColor:#BA1A1A; "
-                + "hoverBorderColor:#BA1A1A"
-        );
+                + "hoverBorderColor:#BA1A1A");
+
+        btnResetM.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "background:#FBF8FF;"
+                + "pressedBackground:#F6F0FF;"
+                + "arc:8;"
+                + "borderColor:#E7BCBA;"
+                + "focusedBorderColor:#E7BCBA; "
+                + "hoverBorderColor:#E7BCBA");
+
+        btnNextM.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "pressedBackground:#F6F0FF;"
+                + "background:#FBF8FF;"
+                + "arc:8; "
+                + "borderColor:#BA1A1A; "
+                + "focusedBorderColor:#BA1A1A; "
+                + "hoverBorderColor:#BA1A1A");
     }
-    
-    
-    
-    
+
     //method styling selected dan !selected pd button lvl
     void buttonLvl(JToggleButton btn) {
         if (btn.isSelected()) {
@@ -131,22 +143,19 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                     10));
         }
     }
-    
-    
-    
-    
+
     //method styling button filter menu
     void btnFilter(JToggleButton btn) {
+        //jika button selected
         if (btn.isSelected()) {
+            //maka tambahkan border warna merah di bagian bawah menggunakan matte border
             btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
         } else {
+            //jika tidak tambahkan border sebesar 3 px juga mengguakan empety border
             btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         }
     }
-    
-    
-    
-    
+
     //method untuk menampilkan menu berdasarkan kategori
     private void loadMenu(String kategori) {
 
@@ -154,7 +163,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         menuContent.removeAll();
 
         //membersihkan data card sebelumnya
-        daftarCard.clear();
+        daftarMenu.clear();
 
         try {
 
@@ -198,15 +207,17 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 //membuat card menu baru
                 cardMenu card = new cardMenu();
 
-                //mengisi data pada card menu
+                //mengisi data pada card menu, pastikan urutan sesuai dengan penamaan variable dan tipedata di card menu
                 card.setData(
+                        rs.getString("id_produk"),
                         rs.getString("nama_produk"),
                         rs.getDouble("harga_jual"),
+                        rs.getString("kategori"),
                         rs.getString("deskripsi")
                 );
 
                 //menyimpan card ke dalam daftar
-                daftarCard.add(card);
+                daftarMenu.add(card);
 
                 //menambahkan event klik pada card
                 card.addClickListener(new MouseAdapter() {
@@ -242,82 +253,127 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             jScrollPane1.getVerticalScrollBar().setValue(0);
         });
     }
-    
-    
-    
-    
 
-    //membuat method selected card
-    private void selectCard(cardMenu selectedCard) {
-        for (cardMenu card : daftarCard) {
+    //method untuk memilih card menu
+    void selectCard(cardMenu selectedCard) {
+
+        //menyimpan menu yang dipilih
+        menuDipilih = selectedCard;
+
+        //menghapus status terpilih pada semua card
+        for (cardMenu card : daftarMenu) {
             card.setSelected(false);
         }
+
+        //menjadikan card yang dipilih sebagai card aktif
         selectedCard.setSelected(true);
-        showKostum();
+
+        //memeriksa kategori menu yang dipilih
+        if (selectedCard.getKategori().equals("Seblak")) {
+
+            //menampilkan panel kostumisasi seblak
+            showKostum();
+
+        } else if (selectedCard.getKategori().equals("Minuman")) {
+
+            //menampilkan panel kostumisasi minuman
+            cardLayout.show(containerKostumisasi1, "kostumMinum");
+
+        }
+
+        //menampilkan nama menu pada panel kostumisasi seblak
+        lblMenu.setText(selectedCard.getNama());
+
+        //menampilkan nama menu pada panel kostumisasi minuman
+        lblMenu2.setText(selectedCard.getNama());
+
     }
 
+    //membuat method untuk menampilkan panel kostumisai
     void showKostum() {
-        cardLayoutC.show(containerKostumisasi1, "kostum");
+        cardLayout.show(containerKostumisasi1, "kostum");
     }
 
+    //membuat method reset untuk mengosongkan panel kostumisasi
     void reset() {
 
-        for (cardMenu card : daftarCard) {
+        // Menghapus status terpilih pada semua card menu
+        for (cardMenu card : daftarMenu) {
             card.setSelected(false);
         }
-        cardLayoutC.show(containerKostumisasi1, "kostumKosong");
+
+        buttonGroupLvl.clearSelection(); //menegmbalikan selection button lvl ke posisi awa;
+        levelPedas = -1; //mengembalikan nilai lvl pedas ke -1
+
+        //mengembalikan qty seluruh topping ke nilai awal
+        for (cardTopping topping : daftarTopping) {
+
+            topping.resetQty();
+        }
+
+        //menampilkan panel kostumisasi (kosong)
+        cardLayout.show(containerKostumisasi1, "kostumKosong");
+
+        //mengembalikan posisi scroll topping ke paling atas
+        SwingUtilities.invokeLater(() -> {
+            jScrollPane3.getVerticalScrollBar().setValue(0);
+        });
     }
-    
-    
-    
 
     //method untuk menampilkan topping
     private void loadTopping() {
 
-        toppingContent.removeAll();
+        //membersihkan daftar topping
+        daftarTopping.clear();
 
-        for (int i = 1; i <= 10; i++) {
+        try {
 
-            cardTopping card = new cardTopping();
+            //query sql untuk mengambil data topping
+            String sql = "SELECT * FROM produk WHERE kategori='Topping' ORDER BY id_produk";
 
-            toppingContent.add(card);
+            //membuat koneksi ke database
+            Connection con = Koneksi.konek();
 
-            toppingContent.add(
-                    Box.createVerticalStrut(10)
-            );
+            //siapkan statement sql
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            //jalankan query dan ambil hasilnya
+            ResultSet rs = ps.executeQuery();
+
+            //melakukan perulangan selama data masih ada
+            while (rs.next()) {
+
+                //membuat card topping baru
+                cardTopping card = new cardTopping();
+
+                //mengisi data topping pada card
+                card.setData(
+                        rs.getString("id_produk"),
+                        rs.getString("nama_produk"),
+                        rs.getDouble("harga_jual")
+                );
+
+                //menyimpan card topping
+                daftarTopping.add(card);
+
+                //menambahkan card ke panel topping
+                toppingContent.add(card);
+
+                //memberikan jarak antar card
+                toppingContent.add(Box.createVerticalStrut(10));
+            }
+
+        } catch (SQLException sQLException) {
+
+            //jika terjadi kesalahan sql, tampilkan pesan error
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+
         }
 
+        //memperbarui tampilan panel
         toppingContent.revalidate();
         toppingContent.repaint();
     }
-    
-    
-    
-
-    //method untuk menampilkan keranjang
-    private void loadKeranjang() {
-
-        keranjangContent.removeAll();
-
-        for (int i = 1; i <= 1; i++) {
-
-            cardKeranjang card = new cardKeranjang();
-
-            keranjangContent.add(card);
-
-            keranjangContent.add(
-                    Box.createVerticalStrut(10)
-            );
-
-        }
-
-        keranjangContent.revalidate();
-        keranjangContent.repaint();
-    }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -374,6 +430,16 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnReset1 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        containerKostumisasiMinuman = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        lblMenu2 = new javax.swing.JLabel();
+        jPanel28 = new javax.swing.JPanel();
+        jPanel29 = new javax.swing.JPanel();
+        btnResetM = new javax.swing.JButton();
+        btnNextM = new javax.swing.JButton();
+        jPanel30 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         containerKeranjang1 = new javax.swing.JPanel();
         KeranjangIsi = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -636,14 +702,14 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         buttonGroupLvl.add(btnLvl4);
         btnLvl4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
-        btnLvl4.setText("4 - Ratu Marah");
+        btnLvl4.setText("4 - Ratu Marah  +1k");
         btnLvl4.setContentAreaFilled(false);
         btnLvl4.addItemListener(this::btnLvl4ItemStateChanged);
         jPanel16.add(btnLvl4);
 
         buttonGroupLvl.add(btnLvl5);
         btnLvl5.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
-        btnLvl5.setText("5 - Ratu Ngamuk");
+        btnLvl5.setText("5 - Ratu Ngamuk +2k");
         btnLvl5.setContentAreaFilled(false);
         btnLvl5.addItemListener(this::btnLvl5ItemStateChanged);
         jPanel16.add(btnLvl5);
@@ -755,7 +821,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnNext1.setBackground(new java.awt.Color(251, 248, 255));
         btnNext1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnNext1.setText("Reset");
+        btnNext1.setEnabled(false);
         btnNext1.setFocusPainted(false);
+        btnNext1.setFocusable(false);
         btnNext1.addActionListener(this::btnNext1ActionPerformed);
         jPanel21.add(btnNext1);
 
@@ -763,7 +831,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnReset1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnReset1.setForeground(new java.awt.Color(187, 26, 26));
         btnReset1.setText("Next");
+        btnReset1.setEnabled(false);
         btnReset1.setFocusPainted(false);
+        btnReset1.setFocusable(false);
         jPanel21.add(btnReset1);
 
         jPanel20.add(jPanel21, java.awt.BorderLayout.CENTER);
@@ -781,6 +851,85 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         containerKostumisasiKosong.add(jPanel7, java.awt.BorderLayout.CENTER);
 
         containerKostumisasi1.add(containerKostumisasiKosong, "kostumKosong");
+
+        containerKostumisasiMinuman.setBackground(new java.awt.Color(255, 255, 255));
+        containerKostumisasiMinuman.setLayout(new java.awt.BorderLayout());
+
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
+        jPanel27.setPreferredSize(new java.awt.Dimension(335, 63));
+
+        jLabel18.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(24, 26, 46));
+        jLabel18.setText("Kostumisasi");
+        jLabel18.setPreferredSize(new java.awt.Dimension(99, 19));
+
+        lblMenu2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        lblMenu2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenu2.setText(" ");
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMenu2)
+                .addGap(16, 16, 16))
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(lblMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
+        );
+
+        containerKostumisasiMinuman.add(jPanel27, java.awt.BorderLayout.PAGE_START);
+
+        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel28.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(231, 189, 187)));
+        jPanel28.setPreferredSize(new java.awt.Dimension(335, 43));
+        jPanel28.setLayout(new java.awt.BorderLayout());
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jPanel29.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
+
+        btnResetM.setBackground(new java.awt.Color(251, 248, 255));
+        btnResetM.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnResetM.setText("Reset");
+        btnResetM.setFocusPainted(false);
+        btnResetM.addActionListener(this::btnResetMActionPerformed);
+        jPanel29.add(btnResetM);
+
+        btnNextM.setBackground(new java.awt.Color(251, 248, 255));
+        btnNextM.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnNextM.setForeground(new java.awt.Color(187, 26, 26));
+        btnNextM.setText("Next");
+        btnNextM.setFocusPainted(false);
+        btnNextM.addActionListener(this::btnNextMActionPerformed);
+        jPanel29.add(btnNextM);
+
+        jPanel28.add(jPanel29, java.awt.BorderLayout.CENTER);
+
+        containerKostumisasiMinuman.add(jPanel28, java.awt.BorderLayout.PAGE_END);
+
+        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel30.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Minuman Tidak Perlu Kostumisasi");
+        jPanel30.add(jLabel6, java.awt.BorderLayout.CENTER);
+
+        containerKostumisasiMinuman.add(jPanel30, java.awt.BorderLayout.CENTER);
+
+        containerKostumisasi1.add(containerKostumisasiMinuman, "kostumMinum");
 
         add(containerKostumisasi1);
 
@@ -936,7 +1085,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         keranjangContent.setBackground(new java.awt.Color(255, 255, 255));
-        keranjangContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 10, 15));
+        keranjangContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 0, 15));
         keranjangContent.setLayout(new javax.swing.BoxLayout(keranjangContent, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane2.setViewportView(keranjangContent);
 
@@ -1145,6 +1294,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private void btnLvl0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl0ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl0);
+        //menyimpan level pedas yang dipilih
+        levelPedas = 0;
 
 
     }//GEN-LAST:event_btnLvl0ItemStateChanged
@@ -1152,26 +1303,31 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private void btnLvl1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl1ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl1);
+        levelPedas = 1;
     }//GEN-LAST:event_btnLvl1ItemStateChanged
 
     private void btnLvl2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl2ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl2);
+        levelPedas = 2;
     }//GEN-LAST:event_btnLvl2ItemStateChanged
 
     private void btnLvl3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl3ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl3);
+        levelPedas = 3;
     }//GEN-LAST:event_btnLvl3ItemStateChanged
 
     private void btnLvl4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl4ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl4);
+        levelPedas = 4;
     }//GEN-LAST:event_btnLvl4ItemStateChanged
 
     private void btnLvl5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl5ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl5);
+        levelPedas = 5;
     }//GEN-LAST:event_btnLvl5ItemStateChanged
 
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
@@ -1198,11 +1354,172 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
 
+        //memeriksa apakah ada menu yang dipilih
+        if (menuDipilih == null) {
+
+            JOptionPane.showMessageDialog(null, "Silakan pilih menu terlebih dahulu");
+            return;
+
+        }
+
+        //memeriksa apakah level pedas belum dipilih
+        if (levelPedas == -1) {
+
+            JOptionPane.showMessageDialog(null, "Silakan pilih level pedas");
+            return;
+
+        }
+
+        //membuat card keranjang baru
+        cardKeranjang card = new cardKeranjang();
+
+        //membuat list untuk menyimpan data topping yang dipilih
+        List<DetailTopping> toppingDipilih = new ArrayList<>();
+
+        //melakukan perulangan seluruh topping
+        for (cardTopping topping : daftarTopping) {
+
+            //memeriksa apakah qty topping lebih dari nol
+            if (topping.getQty() > 0) {
+
+                //menyimpan data topping yang dipilih
+                toppingDipilih.add(
+                        new DetailTopping(
+                                topping.getIdProduk(),
+                                topping.getNama(),
+                                topping.getHarga(),
+                                topping.getQty()
+                        )
+                );
+
+            }
+
+        }
+
+        //menyimpan biaya tambahan level pedas
+        double hargaLevel = 0;
+
+        //memeriksa level pedas yang dipilih
+        if (levelPedas == 4) {
+
+            //menambahkan biaya level 4
+            hargaLevel = 1000;
+
+        } else if (levelPedas == 5) {
+
+            //menambahkan biaya level 5
+            hargaLevel = 2000;
+
+        }
+
+        card.setData(
+                menuDipilih.getIdProduk(),
+                menuDipilih.getNama(),
+                menuDipilih.getHarga(),
+                levelPedas,
+                hargaLevel,
+                toppingDipilih
+        );
+
+        //menyimpan card ke daftar keranjang
+        daftarKeranjang.add(card);
+
+        //menambahkan event pada tombol hapus
+        card.addDeleteListener(e -> {
+
+            //menghapus card dari panel keranjang
+            keranjangContent.remove(card);
+
+            //menghapus card dari daftar keranjang
+            daftarKeranjang.remove(card);
+
+            //memperbarui tampilan panel keranjang
+            keranjangContent.revalidate();
+            keranjangContent.repaint();
+
+        });
+
+        //menambahkan card ke panel keranjang
+        keranjangContent.add(card);
+
+        //memberikan jarak antar card
+        keranjangContent.add(Box.createVerticalStrut(10));
+
+        //memperbarui tampilan panel keranjang
+        keranjangContent.revalidate();
+        keranjangContent.repaint();
+
+        //mengembalikan panel kostumisasi ke kondisi awal
+        reset();
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBayar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBayar1ActionPerformed
+
+    private void btnResetMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetMActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(containerKostumisasi1, "kostumKosong");
+    }//GEN-LAST:event_btnResetMActionPerformed
+
+    private void btnNextMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMActionPerformed
+        // TODO add your handling code here:
+
+        //memeriksa apakah ada menu yang dipilih
+        if (menuDipilih == null) {
+
+            JOptionPane.showMessageDialog(null, "Silakan pilih menu terlebih dahulu");
+            return;
+
+        }
+
+        //membuat card keranjang baru
+        cardKeranjang card = new cardKeranjang();
+
+        //mengisi data pada card keranjang
+        card.setData(
+                menuDipilih.getIdProduk(),
+                menuDipilih.getNama(),
+                menuDipilih.getHarga(),
+                -1,
+                0,
+                new ArrayList<>()
+        );
+
+        //menyimpan card ke daftar keranjang
+        daftarKeranjang.add(card);
+
+        //menambahkan event pada tombol hapus
+        card.addDeleteListener(e -> {
+
+            //menghapus card dari panel keranjang
+            keranjangContent.remove(card);
+
+            //menghapus card dari daftar keranjang
+            daftarKeranjang.remove(card);
+
+            //memperbarui tampilan panel keranjang
+            keranjangContent.revalidate();
+            keranjangContent.repaint();
+
+        });
+
+        //menambahkan card ke panel keranjang
+        keranjangContent.add(card);
+
+        //memberikan jarak antar card
+        keranjangContent.add(Box.createVerticalStrut(10));
+
+        //memperbarui tampilan panel keranjang
+        keranjangContent.revalidate();
+        keranjangContent.repaint();
+
+        //mengembalikan panel kostumisasi ke kondisi awal
+        reset();
+
+
+    }//GEN-LAST:event_btnNextMActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1218,8 +1535,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnLvl5;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
+    private javax.swing.JButton btnNextM;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnReset1;
+    private javax.swing.JButton btnResetM;
     private javax.swing.ButtonGroup buttonGroupFilter;
     private javax.swing.ButtonGroup buttonGroupLvl;
     private javax.swing.JPanel containerDaftarMenu;
@@ -1227,6 +1546,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JPanel containerKostumisasi;
     private javax.swing.JPanel containerKostumisasi1;
     private javax.swing.JPanel containerKostumisasiKosong;
+    private javax.swing.JPanel containerKostumisasiMinuman;
     private javax.swing.JToggleButton filterMinumanM;
     private javax.swing.JToggleButton filterSeblakM;
     private javax.swing.JToggleButton filterSemuaM;
@@ -1239,10 +1559,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1263,6 +1585,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1283,6 +1609,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JLabel lblDiskon1;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblMenu1;
+    private javax.swing.JLabel lblMenu2;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblSubtotal1;
     private javax.swing.JLabel lblTotal;

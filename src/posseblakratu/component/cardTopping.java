@@ -10,11 +10,57 @@ package posseblakratu.component;
  */
 public class cardTopping extends javax.swing.JPanel {
 
+    private String idProduk;
+    private String namaTopping;
+    private double hargaTopping;
+
     /**
      * Creates new form cardTopping
      */
     public cardTopping() {
         initComponents();
+    }
+
+    //method untuk mengembalikan qty topping ke nilai awal
+    public void resetQty() {
+
+        //mengatur qty menjadi nol
+        qtyStepperT.setValue(0);
+
+    }
+
+    //method untuk mengisi data pada card menu
+    public void setData(String idProduk, String namaTopping, double hargaTopping) {
+
+        //menyimpan data topping
+        this.idProduk = idProduk;
+        this.namaTopping = namaTopping;
+        this.hargaTopping = hargaTopping;
+
+        //menampilkan nama produk
+        lblTopping.setText(namaTopping);
+
+        //menampilkan harga produk
+        lblHargaTopping.setText("Rp. " + (int) hargaTopping);
+
+    }
+
+    public String getIdProduk() {
+        return idProduk;
+    }
+
+    public String getNama() {
+        return namaTopping;
+    }
+
+    public double getHarga() {
+        return hargaTopping;
+    }
+
+    //getter qty stepper untuk membaca value dari qtystepper
+    public int getQty() {
+        return qtyStepperT.getValue();
+
     }
 
     /**
@@ -29,7 +75,7 @@ public class cardTopping extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblTopping = new javax.swing.JLabel();
         lblHargaTopping = new javax.swing.JLabel();
-        qtyStepper2 = new qtystepper.qtyStepper();
+        qtyStepperT = new qtystepper.qtyStepper();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -43,16 +89,16 @@ public class cardTopping extends javax.swing.JPanel {
         lblHargaTopping.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHargaTopping.setText("+ 1.000");
 
-        qtyStepper2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        qtyStepperT.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout qtyStepper2Layout = new javax.swing.GroupLayout(qtyStepper2);
-        qtyStepper2.setLayout(qtyStepper2Layout);
-        qtyStepper2Layout.setHorizontalGroup(
-            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout qtyStepperTLayout = new javax.swing.GroupLayout(qtyStepperT);
+        qtyStepperT.setLayout(qtyStepperTLayout);
+        qtyStepperTLayout.setHorizontalGroup(
+            qtyStepperTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 82, Short.MAX_VALUE)
         );
-        qtyStepper2Layout.setVerticalGroup(
-            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        qtyStepperTLayout.setVerticalGroup(
+            qtyStepperTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -62,11 +108,11 @@ public class cardTopping extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(lblTopping, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(lblTopping, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblHargaTopping, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(qtyStepperT, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,7 +124,7 @@ public class cardTopping extends javax.swing.JPanel {
                     .addComponent(lblHargaTopping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(qtyStepper2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addComponent(qtyStepperT, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -99,6 +145,6 @@ public class cardTopping extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHargaTopping;
     private javax.swing.JLabel lblTopping;
-    private qtystepper.qtyStepper qtyStepper2;
+    private qtystepper.qtyStepper qtyStepperT;
     // End of variables declaration//GEN-END:variables
 }
