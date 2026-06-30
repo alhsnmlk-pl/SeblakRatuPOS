@@ -12,12 +12,15 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
 import posseblakratu.config.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
+import posseblakratu.session.SessionLogin;
 
 
 /**
@@ -64,6 +67,8 @@ public final class FrameLogin extends javax.swing.JFrame {
                 1f,
                 20));
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -411,7 +416,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         //periksa apakah username dan password tidak kosong
         if (username.length() != 0 && password.length() != 0) {
             try {
-                //query sql utk mencari user dengan username, password dan role
+                //query sql utk mencari user dengan username, password, role dan status
                 String sql = "SELECT * FROM pengguna WHERE username=? AND password=MD5(?) AND role=? AND status='Aktif'";
 
                 //membuat koneksi ke database
@@ -435,7 +440,22 @@ public final class FrameLogin extends javax.swing.JFrame {
                 //jika hasil query memiliki hasil (berarti login berhasil)
                 if (rs.next()) {
 
-                    //tutup form login
+                    //menyimpan id pengguna yang sedang login
+                    SessionLogin.setIdPengguna(
+                            rs.getString("id_pengguna")
+                    );
+
+                    //menyimpan username yang sedang login
+                    SessionLogin.setUsername(
+                            rs.getString("username")
+                    );
+
+                    //menyimpan role pengguna
+                    SessionLogin.setRole(
+                            rs.getString("role")
+                    );
+
+                    //menutup form login
                     dispose();
 
                     //cek role untuk membuka frame yang sesuai
@@ -451,7 +471,7 @@ public final class FrameLogin extends javax.swing.JFrame {
 
                 } else {
                     //jika data tdk ditemukan, tampilkan pesan error
-                    JOptionPane.showMessageDialog(null, "Username/Password/Role salah");
+                    JOptionPane.showMessageDialog(null, "Username/Password/Role salah atau akun tidak aktif");
                 }
 
             } catch (SQLException sQLException) {

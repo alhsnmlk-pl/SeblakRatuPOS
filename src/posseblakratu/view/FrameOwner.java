@@ -23,6 +23,7 @@ public final class FrameOwner extends javax.swing.JFrame {
     public FrameOwner() {
         initComponents();
         
+        
         TanggalJam(); //memanggil method waktu
         
         inisiasiPanel(); //memanggil method inisiasi panel

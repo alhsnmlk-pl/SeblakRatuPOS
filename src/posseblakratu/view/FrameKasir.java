@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import posseblakratu.session.SessionLogin;
 
 /**
  *
@@ -22,7 +23,9 @@ public final class FrameKasir extends javax.swing.JFrame {
      */
     public FrameKasir() {
         initComponents();
-        
+
+
+
         TanggalJam();
         
         inisiasiPanel();
@@ -30,6 +33,8 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnTransaksi.setSelected(true);
         stateSidebar(btnTransaksi);
     }
+    
+    
     
     
     //method untuk menginisiasi panel

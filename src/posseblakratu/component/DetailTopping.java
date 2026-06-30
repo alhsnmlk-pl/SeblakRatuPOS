@@ -23,16 +23,17 @@ public class DetailTopping {
     //menyimpan qty topping
     private final int qty;
 
+    //menyimpan subtotal topping
+    private final double subtotal;
+
     //constructor
-    public DetailTopping(String idProduk,
-            String nama,
-            double harga,
-            int qty) {
+    public DetailTopping(String idProduk, String nama, double harga, int qty) {
 
         this.idProduk = idProduk;
         this.nama = nama;
         this.harga = harga;
         this.qty = qty;
+         this.subtotal = harga * qty;
 
     }
 
@@ -54,6 +55,11 @@ public class DetailTopping {
     //mengembalikan qty
     public int getQty() {
         return qty;
+    }
+
+    //mengembalikan subtotal topping
+    public double getSubtotal() {
+        return subtotal;
     }
 
 }

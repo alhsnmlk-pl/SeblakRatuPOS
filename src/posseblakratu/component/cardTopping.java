@@ -29,7 +29,7 @@ public class cardTopping extends javax.swing.JPanel {
 
     }
 
-    //method untuk mengisi data pada card menu
+    //method untuk mengisi data pada card topping
     public void setData(String idProduk, String namaTopping, double hargaTopping) {
 
         //menyimpan data topping
@@ -45,14 +45,17 @@ public class cardTopping extends javax.swing.JPanel {
 
     }
 
+    //mengembalikan id produk topping
     public String getIdProduk() {
         return idProduk;
     }
 
+    //mengembalikan nama topping
     public String getNama() {
         return namaTopping;
     }
 
+    //mengembalikan harga topping
     public double getHarga() {
         return hargaTopping;
     }
@@ -60,7 +63,6 @@ public class cardTopping extends javax.swing.JPanel {
     //getter qty stepper untuk membaca value dari qtystepper
     public int getQty() {
         return qtyStepperT.getValue();
-
     }
 
     /**

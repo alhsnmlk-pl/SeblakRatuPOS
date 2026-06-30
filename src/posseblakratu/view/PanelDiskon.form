@@ -293,7 +293,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Container class="javax.swing.JPanel" name="jPanel17">
+                    <Container class="javax.swing.JPanel" name="jPanel23">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -325,7 +325,7 @@
                             <Property name="text" type="java.lang.String" value="Contoh: Jumat Berkah"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                                <EmptyBorder bottom="1" left="18" right="1" top="1"/>
+                                <EmptyBorder bottom="0" left="17" right="0" top="0"/>
                               </Border>
                             </Property>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -704,6 +704,81 @@
                     </Container>
                   </SubComponents>
                 </Container>
+                <Container class="javax.swing.JPanel" name="jPanel19">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="309" max="32767" attributes="0"/>
+                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblStatusProduk" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <EmptySpace pref="181" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnStatusProduk" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                                  <Component id="lblStatusProduk" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                                  <Component id="btnStatusProduk" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lblStatusProduk">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Plus Jakarta Sans" size="14" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value=" Status Diskon"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="btnStatusProduk">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/posseblakratu/icon/Property 1=Variant2.png"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="null"/>
+                        </Property>
+                        <Property name="contentAreaFilled" type="boolean" value="false"/>
+                        <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/posseblakratu/icon/Property 1=Variant2.png"/>
+                        </Property>
+                        <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/posseblakratu/icon/icon on.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -888,28 +963,34 @@
                 <Component class="jtablecustom.JTableCustom" name="jTableCustom1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="5" rowCount="4">
                         <Column editable="true" title="Nama Diskon" type="java.lang.Object">
-                          <Data value="Jumat Berkah"/>
-                          <Data value="null"/>
+                          <Data value="Persen"/>
+                          <Data value="Uang"/>
                           <Data value="null"/>
                           <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Tipe" type="java.lang.Object">
                           <Data value="Persentase"/>
-                          <Data value="null"/>
+                          <Data value="Nominal"/>
                           <Data value="null"/>
                           <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Nilai" type="java.lang.Object">
                           <Data value="10%"/>
-                          <Data value="null"/>
+                          <Data value="Rp. 5000"/>
                           <Data value="null"/>
                           <Data value="null"/>
                         </Column>
                         <Column editable="true" title="Tanggal Aktif" type="java.lang.Object">
-                          <Data value="25/11/2005-25/11/2005"/>
+                          <Data value="26/06-01/07"/>
+                          <Data value="26/06-01/07"/>
                           <Data value="null"/>
+                          <Data value="null"/>
+                        </Column>
+                        <Column editable="true" title="Status" type="java.lang.Object">
+                          <Data value="Aktif"/>
+                          <Data value="Nonaktif"/>
                           <Data value="null"/>
                           <Data value="null"/>
                         </Column>
@@ -917,8 +998,8 @@
                     </Property>
                     <Property name="cellPaddingLeft" type="int" value="25"/>
                     <Property name="cellPaddingRight" type="int" value="25"/>
-                    <Property name="centerColumns" type="java.lang.String" value="1,2,3"/>
-                    <Property name="columnWidths" type="java.lang.String" value="100,10,10,100"/>
+                    <Property name="centerColumns" type="java.lang.String" value="1,2,3,4"/>
+                    <Property name="columnWidths" type="java.lang.String" value="150,110,100,150,90"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="14" style="0"/>
                     </Property>

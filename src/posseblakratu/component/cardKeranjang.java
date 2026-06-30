@@ -12,9 +12,6 @@ import java.util.List;
  */
 public class cardKeranjang extends javax.swing.JPanel {
 
-    //id detail transaksi
-    private String idDetail;
-
     //id produk menu
     private String idProduk;
 
@@ -25,7 +22,9 @@ public class cardKeranjang extends javax.swing.JPanel {
     private double hargaSatuan;
 
     //jumlah menu
-    private int qty;
+    private int qty = 1;
+    //menyimpan event ketika qty berubah
+    private Runnable qtyListener;
 
     //level pedas
     private int level;
@@ -38,6 +37,8 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     //menyimpan daftar topping pesanan
     private List<DetailTopping> daftarTopping;
+    
+    
 
     /**
      * Creates new form cardKeranjang
@@ -47,12 +48,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card keranjang
-    public void setData(String idProduk,
-            String namaMenu,
-            double hargaSatuan,
-            int level,
-            double hargaLevel,
-            List<DetailTopping> daftarTopping) {
+    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<DetailTopping> daftarTopping) {
 
         //menyimpan data menu
         this.idProduk = idProduk;
@@ -60,7 +56,6 @@ public class cardKeranjang extends javax.swing.JPanel {
         this.hargaSatuan = hargaSatuan;
         this.level = level;
         this.hargaLevel = hargaLevel;
-
         //menyimpan daftar topping
         this.daftarTopping = daftarTopping;
 
@@ -117,7 +112,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     //method untuk menghitung subtotal pesanan
     private void updateHarga() {
 
-        //mengambil jumlah pesanan
+        //mengambil jumlah pesanan langsung dari qtyStepper
         qty = qtyStepper2.getValue();
 
         //menghitung harga satu porsi
@@ -145,10 +140,23 @@ public class cardKeranjang extends javax.swing.JPanel {
         jButton1.addActionListener(listener);
 
     }
+    
+    //method untuk menambahkan event ketika qty berubah
+    public void addQtyListener(Runnable listener) {
+
+        //menyimpan listener
+        this.qtyListener = listener;
+
+    }
 
     //mengembalikan id produk
     public String getIdProduk() {
         return idProduk;
+    }
+    
+    //mengembalikan nama menu
+    public String getNamaMenu() {
+        return namaMenu;
     }
 
     //mengembalikan harga satuan
@@ -336,7 +344,16 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     private void qtyStepper2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtyStepper2ActionPerformed
         // TODO add your handling code here:
+        //memperbarui subtotal card
         updateHarga();
+
+        //memanggil event apabila tersedia
+        if (qtyListener != null) {
+
+            qtyListener.run();
+
+        }
+
     }//GEN-LAST:event_qtyStepper2ActionPerformed
 
 

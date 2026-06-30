@@ -25,7 +25,7 @@ public class PanelDiskon extends javax.swing.JPanel {
      */
     public PanelDiskon() {
         initComponents();
-        panelLengkung(jPanel17);
+        panelLengkung(jPanel23);
         panelLengkung(jPanel18);
         panelLengkung(jPanel20);
         panelLengkung(jPanel22);
@@ -107,7 +107,7 @@ public class PanelDiskon extends javax.swing.JPanel {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         lblNamaProduk = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
         tNamaDiskon = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         lblNamaProduk1 = new javax.swing.JLabel();
@@ -126,6 +126,9 @@ public class PanelDiskon extends javax.swing.JPanel {
         tglMulai = new com.toedter.calendar.JDateChooser();
         jPanel24 = new javax.swing.JPanel();
         tglSelesai = new com.toedter.calendar.JDateChooser();
+        jPanel19 = new javax.swing.JPanel();
+        lblStatusProduk = new javax.swing.JLabel();
+        btnStatusProduk = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -239,14 +242,14 @@ public class PanelDiskon extends javax.swing.JPanel {
         lblNamaProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel12.add(lblNamaProduk, java.awt.BorderLayout.PAGE_START);
 
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel17.setLayout(new java.awt.BorderLayout());
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        jPanel23.setLayout(new java.awt.BorderLayout());
 
         tNamaDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tNamaDiskon.setForeground(new java.awt.Color(92, 62, 60));
         tNamaDiskon.setText("Contoh: Jumat Berkah");
-        tNamaDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 18, 1, 1));
+        tNamaDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 17, 0, 0));
         tNamaDiskon.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaDiskon.setOpaque(true);
         tNamaDiskon.setPreferredSize(new java.awt.Dimension(126, 19));
@@ -256,9 +259,9 @@ public class PanelDiskon extends javax.swing.JPanel {
             }
         });
         tNamaDiskon.addActionListener(this::tNamaDiskonActionPerformed);
-        jPanel17.add(tNamaDiskon, java.awt.BorderLayout.CENTER);
+        jPanel23.add(tNamaDiskon, java.awt.BorderLayout.CENTER);
 
-        jPanel12.add(jPanel17, java.awt.BorderLayout.CENTER);
+        jPanel12.add(jPanel23, java.awt.BorderLayout.CENTER);
 
         jPanel11.add(jPanel12);
 
@@ -392,6 +395,50 @@ public class PanelDiskon extends javax.swing.JPanel {
 
         jPanel11.add(jPanel16);
 
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblStatusProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblStatusProduk.setText(" Status Diskon");
+
+        btnStatusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
+        btnStatusProduk.setBorder(null);
+        btnStatusProduk.setContentAreaFilled(false);
+        btnStatusProduk.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
+        btnStatusProduk.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/icon on.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 309, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel19Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblStatusProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(181, Short.MAX_VALUE)))
+            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel19Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnStatusProduk)
+                    .addGap(0, 0, 0)))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                    .addContainerGap(25, Short.MAX_VALUE)
+                    .addComponent(lblStatusProduk)
+                    .addContainerGap(26, Short.MAX_VALUE)))
+            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel19Layout.createSequentialGroup()
+                    .addGap(0, 19, Short.MAX_VALUE)
+                    .addComponent(btnStatusProduk)
+                    .addGap(0, 19, Short.MAX_VALUE)))
+        );
+
+        jPanel11.add(jPanel19);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -472,19 +519,19 @@ public class PanelDiskon extends javax.swing.JPanel {
 
         jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Jumat Berkah", "Persentase", "10%", "25/11/2005-25/11/2005"},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Persen", "Persentase", "10%", "26/06-01/07", "Aktif"},
+                {"Uang", "Nominal", "Rp. 5000", "26/06-01/07", "Nonaktif"},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif"
+                "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif", "Status"
             }
         ));
         jTableCustom1.setCellPaddingLeft(25);
         jTableCustom1.setCellPaddingRight(25);
-        jTableCustom1.setCenterColumns("1,2,3");
-        jTableCustom1.setColumnWidths("100,10,10,100");
+        jTableCustom1.setCenterColumns("1,2,3,4");
+        jTableCustom1.setColumnWidths("150,110,100,150,90");
         jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jTableCustom1.setHeaderPaddingLeft(25);
         jTableCustom1.setHeaderPaddingRight(25);
@@ -502,14 +549,6 @@ public class PanelDiskon extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTambahDiskonActionPerformed
 
-    private void tNamaDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaDiskonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaDiskonMouseClicked
-
-    private void tNamaDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaDiskonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaDiskonActionPerformed
-
     private void tValueDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tValueDiskonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tValueDiskonMouseClicked
@@ -518,11 +557,20 @@ public class PanelDiskon extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tValueDiskonActionPerformed
 
+    private void tNamaDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaDiskonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaDiskonActionPerformed
+
+    private void tNamaDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaDiskonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaDiskonMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatalDiskon;
     private javax.swing.JButton btnHapusDiskon;
     private javax.swing.JButton btnSimpanDiskon;
+    private javax.swing.JToggleButton btnStatusProduk;
     private javax.swing.JButton btnTambahDiskon;
     private javax.swing.JComboBox<String> cTipeDiskon;
     private javax.swing.JCheckBox jCheckBox1;
@@ -533,11 +581,12 @@ public class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -554,6 +603,7 @@ public class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JLabel lblNamaProduk2;
     private javax.swing.JLabel lblNamaProduk3;
     private javax.swing.JLabel lblNamaProduk4;
+    private javax.swing.JLabel lblStatusProduk;
     private javax.swing.JLabel lblTambahDiskon;
     private javax.swing.JTextField tNamaDiskon;
     private javax.swing.JTextField tValueDiskon;

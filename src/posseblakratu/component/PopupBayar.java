@@ -2,67 +2,105 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package posseblakratu.view;
+package posseblakratu.component;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import java.util.List;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import posseblakratu.config.Koneksi;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+//mengimpor class session login
+import posseblakratu.session.SessionLogin;
+import posseblakratu.view.PanelTransaksi;
 
 /**
  *
  * @author Al
  */
 public final class PopupBayar extends javax.swing.JDialog {
-    
+
+    //menyimpan subtotal transaksi
+    private double subtotal;
+
+    //menyimpan diskon transaksi
+    private double diskon;
+
+    //menyimpan total pembayaran
+    private double totalBayar = 0;
+
+    //menyimpan metode pembayaran
+    private String metodePembayaran = "Tunai";
+
+    //menyimpan nominal pembayaran
+    private double nominalBayar = 0;
+
+    //menyimpan kembalian
+    private double kembalian = 0;
+
+    //menyimpan seluruh data keranjang dari panel transaksi
+    private List<cardKeranjang> daftarKeranjang;
+
+    //menyimpan id transaksi
+    private String idTransaksi;
+
+    //menyimpan object PanelTransaksi
+    private PanelTransaksi panelTransaksi;
 
     /**
-     * Creates new form 
+     * Creates new form
+     *
      * @param parent
      * @param modal
      */
+    
+    //SAAT POPUP BAYAR DI TAMPILKAN
+    
     public PopupBayar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setBackground(new Color(0, 0, 0, 0));
         if (this.getContentPane() instanceof javax.swing.JComponent) {
             ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
         }
-        
+
         panelLengkung();
 
-
-
         stateBtnBayar(btnQris);
-        
+        stateBtnBayar(btnTunai);
+
         buttonDesain();
 
     }
-    
+
     void panelLengkung() {
-        
+
         panelHitung.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
-        
+
         popupBayar.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 2f,
                 15));
-        
+
         panelInput.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E926F6D"),
                 2f,
                 15));
-        
+
         panelKembalian.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E7BDBB"),
@@ -70,37 +108,26 @@ public final class PopupBayar extends javax.swing.JDialog {
                 10));
     }
 
+    void buttonDesain() {
+        btnBatal.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "background:#FBF8FF;"
+                + "foreground:#B03A2E;"
+                + "hoverBackground:#F3EDFF;"
+                + "pressedBackground:#F6F0FF;"
+                + "arc:8;"
+                + "borderColor:#E7BCBA;"
+                + "focusedBorderColor:#E7BCBA; "
+                + "hoverBorderColor:#E7BCBA");
 
+        btnProses.putClientProperty("FlatLaf.style",
+                "borderWidth:1; "
+                + "arc:8; "
+        );
+    }
     
-    
-     void buttonDesain() {
-    btnBatal.putClientProperty("FlatLaf.style",
-            "borderWidth:1; "
-            + "background:#FBF8FF;"
-            + "foreground:#B03A2E;" 
-            + "hoverBackground:#F3EDFF;" 
-            + "pressedBackground:#F6F0FF;"
-            + "arc:8;"
-            + "borderColor:#E7BCBA;"
-            + "focusedBorderColor:#E7BCBA; "
-            + "hoverBorderColor:#E7BCBA");
-    
-    btnProses.putClientProperty("FlatLaf.style",
-            "borderWidth:1; "
-            + "arc:8; "
-
-    );
-}
-
-    
- 
-
-
-    
-    
-      private void stateBtnBayar(javax.swing.JToggleButton tombol) {
+     void stateBtnBayar(javax.swing.JToggleButton tombol) {
         tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
-
 
         if (tombol.isSelected()) {
             //state aktif
@@ -108,27 +135,532 @@ public final class PopupBayar extends javax.swing.JDialog {
             tombol.setForeground(new java.awt.Color(216, 3, 41));
 
             tombol.setBorder(new FlatLineBorder(
-                new Insets(0, 0, 0, 0),
-                Color.decode("#D80329"),
-                2f,
-                10
-        ));
+                    new Insets(0, 0, 0, 0),
+                    Color.decode("#D80329"),
+                    2f,
+                    10
+            ));
         } else {
             //state nonaktif
             tombol.setBackground(new java.awt.Color(255, 255, 255));
             tombol.setForeground(new java.awt.Color(93, 63, 61));
 
             tombol.setBorder(new FlatLineBorder(
-                new Insets(1, 1, 1, 1),
-                Color.decode("#E6BBBA"),
-                1f,
-                10
-         ));           
+                    new Insets(1, 1, 1, 1),
+                    Color.decode("#E6BBBA"),
+                    1f,
+                    10
+            ));
         }
+    }
+
+    
+    
+    
+    
+
+ 
+    //MENERIMA DATA DARI PANEL TRANSAKSI
+    
+    //dipanggil dari btnBayarActionPerformed untuk mengisi label subtotal, diskon, dan total
+    public void setPembayaran(double subtotal,
+            double diskon,
+            double total) {
+
+        //menyimpan subtotal
+        this.subtotal = subtotal;
+
+        //menyimpan diskon
+        this.diskon = diskon;
+
+        //menyimpan total pembayaran
+        this.totalBayar = total;
+
+        //menampilkan subtotal
+        lblSubtotal.setText("Rp. " + (int) subtotal);
+
+        //menampilkan diskon
+        lblDiskon.setText("-Rp. " + (int) diskon);
+
+        //menampilkan total pembayaran
+        lblTotal.setText("Rp. " + (int) total);
+
+    }
+    
+
+   
+
+
+    //USER MEMILIH METODE PEMBAYARAN
+    
+    //pilihTunai() mengaktifkan input nominal dan mengosongkan kembalian
+    //pilihQris() menonaktifkan input nominal dan langsung mengisi nominal dengan total
+    private void pilihTunai() {
+
+        //menyimpan metode pembayaran
+        metodePembayaran = "Tunai";
+
+        //mengaktifkan textfield pembayaran
+        txtNominal.setEditable(true);
+
+        //mengosongkan input pembayaran
+        txtNominal.setText("");
+
+        //mengosongkan nominal pembayaran
+        nominalBayar = 0;
+
+        //mengosongkan kembalian
+        kembalian = 0;
+
+        //menampilkan kembalian
+        lblKembalian.setText("Rp. 0");
+
+    }
+
+    //method memilih pembayaran QRIS
+    private void pilihQris() {
+
+        //menyimpan metode pembayaran
+        metodePembayaran = "QRIS";
+
+        //menonaktifkan input pembayaran
+        txtNominal.setEditable(false);
+
+        //nominal pembayaran sama dengan total
+        nominalBayar = totalBayar;
+
+        //menampilkan nominal pembayaran
+        txtNominal.setText(String.valueOf((int) totalBayar));
+
+        //qris tidak memiliki kembalian
+        kembalian = 0;
+
+        //menampilkan kembalian
+        lblKembalian.setText("Rp. 0");
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //dipanggil setiap kali ada keyReleased di txtNominal
+    //menghitung kembalian = nominalBayar - totalBayar
+    private void hitungKembalian() {
+
+        try {
+
+            //mengambil nominal pembayaran dari textfield
+            nominalBayar = Double.parseDouble(txtNominal.getText());
+
+            //menghitung kembalian
+            kembalian = nominalBayar - totalBayar;
+
+            //menampilkan kembalian
+            lblKembalian.setText("Rp. " + (int) kembalian);
+
+        } catch (NumberFormatException e) {
+
+            //menganggap nominal pembayaran nol apabila input kosong
+            nominalBayar = 0;
+
+            //mengosongkan nilai kembalian
+            kembalian = 0;
+
+            //menampilkan nilai nol
+            lblKembalian.setText("Rp. 0");
+
+        }
+
+    }
+    
+
+
+
+    //MENERIMA DAFTAR KERANJANG DARI PANEL TRANSAKSI
+    //dipanggil dari btnBayarActionPerformed sebelum popup ditampilkan
+    public void setKeranjang(List<cardKeranjang> daftarKeranjang) {
+
+        //menyimpan daftar keranjang
+        this.daftarKeranjang = daftarKeranjang;
+
     }
 
 
 
+    //GENERATE ID TRANSAKSI
+    //mengambil id terakhir dari tabel transaksi lalu increment angkanya
+    //format hasil: TRX0001, TRX0002, dst
+    private String generateIdTransaksi() {
+
+        //menyimpan id transaksi yang akan dibuat
+        String idTransaksi = "";
+
+        //membuat query untuk mengambil id transaksi terbesar
+        String sql = "SELECT id_transaksi FROM transaksi ORDER BY id_transaksi DESC LIMIT 1";
+
+        try {
+
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan query
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            //menjalankan query
+            ResultSet rs = pst.executeQuery();
+
+            //memeriksa apakah data transaksi sudah ada
+            if (rs.next()) {
+
+                //mengambil id transaksi terakhir
+                String idTerakhir = rs.getString("id_transaksi");
+
+                //mengambil angka setelah tulisan TRX
+                int nomor = Integer.parseInt(idTerakhir.substring(3));
+
+                //menambahkan nomor transaksi
+                nomor++;
+
+                //membuat id transaksi baru
+                idTransaksi = String.format("TRX%04d", nomor);
+
+            } else {
+
+                //membuat id transaksi pertama
+                idTransaksi = "TRX0001";
+
+            }
+
+        } catch (NumberFormatException | SQLException e) {
+
+            //menampilkan pesan apabila terjadi kesalahan
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+
+        //mengembalikan id transaksi
+        return idTransaksi;
+
+    }
+
+
+    //GENERATE ID DETAIL TRANSAKSI
+    //mengambil id terakhir dari tabel detail_transaksi lalu increment angkanya
+    //format hasil: DTL0001, DTL0002, dst
+    private String generateIdDetail() {
+
+        //menyimpan id detail transaksi
+        String idDetail = "";
+
+        //membuat query untuk mengambil id detail terakhir
+        String sql = "SELECT id_detail FROM detail_transaksi ORDER BY id_detail DESC LIMIT 1";
+
+        try {
+
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan query
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            //menjalankan query
+            ResultSet rs = pst.executeQuery();
+
+            //memeriksa apakah sudah ada data
+            if (rs.next()) {
+
+                //mengambil id terakhir
+                String idTerakhir = rs.getString("id_detail");
+
+                //mengambil angka setelah tulisan DTL
+                int nomor = Integer.parseInt(idTerakhir.substring(3));
+
+                //menambahkan nomor
+                nomor++;
+
+                //membuat id baru
+                idDetail = String.format("DTL%04d", nomor);
+
+            } else {
+
+                //membuat id pertama
+                idDetail = "DTL0001";
+
+            }
+
+        } catch (NumberFormatException | SQLException e) {
+
+            //menampilkan pesan kesalahan
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+
+        //mengembalikan id detail transaksi
+        return idDetail;
+
+    }
+
+    
+    
+    //GENERATE ID DETAIL TOPPING
+    //mengambil id terakhir dari tabel detail_topping lalu increment angkanya
+    //format hasil: TTP0001, TTP0002, dst
+    private String generateIdDetailTopping() {
+
+        String lastId = null;
+
+        try {
+
+            Connection conn = Koneksi.konek();
+
+            String sql = "SELECT id_detail_topping FROM detail_topping ORDER BY id_detail_topping DESC LIMIT 1";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                lastId = rs.getString("id_detail_topping");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+        //kalau masih kosong
+        if (lastId == null) {
+            return "TTP0001";
+        }
+
+        //ambil angka terakhir
+        int angka = Integer.parseInt(lastId.substring(3));
+        angka++;
+
+        return String.format("TTP%04d", angka);
+    }
+
+    
+    
+    //SIMPAN DETAIL TRANSAKSI DAN TOPPING KE DATABASE
+    //dipanggil setelah simpanTransaksi() berhasil
+    //loop seluruh keranjang lalu insert ke detail_transaksi dan detail_topping
+    private boolean simpanDetailTransaksi() {
+
+        //membuat query untuk menyimpan detail transaksi
+        String sql = "INSERT INTO detail_transaksi VALUES (?,?,?,?,?,?,?,?)";
+
+        try {
+
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //melakukan perulangan seluruh isi keranjang
+            for (cardKeranjang card : daftarKeranjang) {
+
+                //menyiapkan query
+                PreparedStatement pst = conn.prepareStatement(sql);
+
+                //membuat id detail transaksi baru
+                String idDetail = generateIdDetail();
+
+                //mengisi parameter id detail
+                pst.setString(1, idDetail);
+
+                //mengisi parameter jumlah pesanan
+                pst.setInt(2, card.getQty());
+
+                //mengubah level menjadi format database
+                String level = null;
+
+                //memeriksa apakah menu memiliki level
+                if (card.getLevel() != -1) {
+
+                    //mengubah level menjadi format enum database
+                    level = card.getLevel() + "-Ratu "
+                            + switch (card.getLevel()) {
+                        case 0 ->
+                            "Takut Pedas";
+                        case 1 ->
+                            "Baik";
+                        case 2 ->
+                            "Santuy";
+                        case 3 ->
+                            "Judes";
+                        case 4 ->
+                            "Marah";
+                        default ->
+                            "Ngamuk";
+                    };
+
+                }
+
+                //mengisi parameter level
+                pst.setString(3, level);
+
+                //mengisi parameter harga level
+                pst.setDouble(4, card.getHargaLevel());
+
+                //mengisi parameter harga satuan
+                pst.setDouble(5, card.getHargaSatuan());
+
+                //mengisi parameter subtotal produk
+                pst.setDouble(6, card.getSubtotal());
+
+                //mengisi parameter id transaksi
+                pst.setString(7, idTransaksi);
+
+                //mengisi parameter id produk
+                pst.setString(8, card.getIdProduk());
+
+                //menjalankan proses penyimpanan
+                pst.executeUpdate();
+
+                //loop semua topping di dalam 1 card
+                for (DetailTopping topping : card.getDaftarTopping()) {
+
+                    //query insert topping
+                    String sqlTopping = "INSERT INTO detail_topping VALUES (?,?,?,?,?,?)";
+
+                    PreparedStatement pstTopping = conn.prepareStatement(sqlTopping);
+
+                    //id topping
+                    pstTopping.setString(1, generateIdDetailTopping());
+
+                    //kuantitas topping
+                    pstTopping.setInt(2, topping.getQty());
+
+                    //harga satuan topping
+                    pstTopping.setDouble(3, topping.getHarga());
+
+                    //subtotal topping
+                    pstTopping.setDouble(4, topping.getSubtotal());
+
+                    //RELASI KE DETAIL TRANSAKSI (INI KUNCI)
+                    pstTopping.setString(5, idDetail);
+
+                    //id produk topping
+                    pstTopping.setString(6, topping.getIdProduk());
+
+                    pstTopping.executeUpdate();
+                }
+
+            }
+
+            //mengembalikan status berhasil
+            return true;
+
+        } catch (SQLException e) {
+
+            //menampilkan pesan kesalahan
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+
+        //mengembalikan status gagal
+        return false;
+
+    }
+
+
+    
+    
+    
+    //MENERIMA REFERENSI PANEL TRANSAKSI
+    //dibutuhkan untuk mengambil idDiskon dan memanggil resetTransaksi() setelah bayar
+    public void setPanelTransaksi(PanelTransaksi panelTransaksi) {
+
+        //menyimpan object panel transaksi
+        this.panelTransaksi = panelTransaksi;
+
+    }
+
+
+    
+    
+    //SIMPAN HEADER TRANSAKSI KE DATABASE
+    //insert 1 baris ke tabel transaksi berisi id, waktu, subtotal, metode, bayar,
+    //kembalian, total, id_pengguna, dan id_diskon (null jika tidak ada diskon)
+    private boolean simpanTransaksi() {
+
+        //membuat query untuk menyimpan transaksi
+        String sql = "INSERT INTO transaksi VALUES (?,?,?,?,?,?,?,?,?)";
+
+        try {
+
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan query
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            //membuat id transaksi baru
+            idTransaksi = generateIdTransaksi();
+
+            //mengisi parameter id transaksi
+            pst.setString(1, idTransaksi);
+
+            //mengisi parameter tanggal transaksi
+            pst.setTimestamp(2, new java.sql.Timestamp(System.currentTimeMillis()));
+
+            //mengisi parameter subtotal transaksi
+            pst.setDouble(3, subtotal);
+
+            //mengisi parameter metode pembayaran
+            pst.setString(4, metodePembayaran);
+
+            //mengisi parameter jumlah bayar
+            pst.setDouble(5, nominalBayar);
+
+            //mengisi parameter kembalian
+            pst.setDouble(6, kembalian);
+
+            //mengisi parameter total akhir
+            pst.setDouble(7, totalBayar);
+
+            //mengisi id pengguna yang sedang login
+            pst.setString(8, SessionLogin.getIdPengguna());
+
+            //mengambil id diskon dari panel transaksi
+            String idDiskon = panelTransaksi.getIdDiskon();
+
+            //memeriksa apakah ada diskon
+            if (idDiskon != null) {
+
+                //menyimpan id diskon ke database
+                pst.setString(9, idDiskon);
+
+            } else {
+
+                //jika tidak ada diskon, simpan NULL
+                pst.setNull(9, java.sql.Types.VARCHAR);
+
+            }
+
+            //menjalankan proses penyimpanan
+            pst.executeUpdate();
+
+            //mengembalikan status berhasil
+            return true;
+
+        } catch (SQLException e) {
+
+            //menampilkan pesan kesalahan
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+
+        //mengembalikan status gagal
+        return false;
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,13 +698,12 @@ public final class PopupBayar extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         panelInput = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNominal = new javax.swing.JTextField();
         panelKembalian = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblKembalian = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(450, 575));
         setMinimumSize(new java.awt.Dimension(450, 575));
         setUndecorated(true);
         setResizable(false);
@@ -234,14 +765,16 @@ public final class PopupBayar extends javax.swing.JDialog {
         lblSubtotal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         lblSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSubtotal.setText("Rp 0");
+        lblSubtotal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 3));
 
         lblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         lblDiskon.setForeground(new java.awt.Color(214, 4, 39));
         lblDiskon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDiskon.setText("- Rp 0");
+        lblDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 3));
 
         jLabel15.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jLabel15.setText("Diskon 10% (jumat berkah)");
+        jLabel15.setText("Diskon ");
 
         jSeparator1.setForeground(new java.awt.Color(231, 189, 187));
 
@@ -260,19 +793,19 @@ public final class PopupBayar extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHitungLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panelHitungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelHitungLayout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
-                        .addComponent(lblSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHitungLayout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHitungLayout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(98, 98, 98)
-                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHitungLayout.createSequentialGroup()
+                        .addGroup(panelHitungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelHitungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(lblSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(24, 24, 24))
         );
         panelHitungLayout.setVerticalGroup(
@@ -335,6 +868,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         btnBatal.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatal.setText("Batal");
         btnBatal.setFocusPainted(false);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
         jPanel6.add(btnBatal);
 
         btnProses.setBackground(new java.awt.Color(187, 26, 26));
@@ -354,6 +888,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 8, 1));
         jPanel5.add(jLabel4, java.awt.BorderLayout.PAGE_START);
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.GridLayout(2, 0, 10, 10));
 
@@ -366,11 +901,19 @@ public final class PopupBayar extends javax.swing.JDialog {
         jLabel5.setText("Rp");
         jLabel5.setPreferredSize(new java.awt.Dimension(50, 21));
 
-        jTextField1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 19)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("0");
-        jTextField1.setBorder(null);
-        jTextField1.setOpaque(true);
+        txtNominal.setBackground(new java.awt.Color(255, 255, 255));
+        txtNominal.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 19)); // NOI18N
+        txtNominal.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNominal.setText("0");
+        txtNominal.setBorder(null);
+        txtNominal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNominalKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNominalKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInputLayout = new javax.swing.GroupLayout(panelInput);
         panelInput.setLayout(panelInputLayout);
@@ -379,7 +922,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             .addGroup(panelInputLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(txtNominal, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelInputLayout.setVerticalGroup(
@@ -389,7 +932,7 @@ public final class PopupBayar extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInputLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(txtNominal)
                 .addContainerGap())
         );
 
@@ -407,11 +950,11 @@ public final class PopupBayar extends javax.swing.JDialog {
         jLabel7.setPreferredSize(new java.awt.Dimension(100, 21));
         panelKembalian.add(jLabel7, java.awt.BorderLayout.LINE_START);
 
-        jLabel8.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 19)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("0");
-        jLabel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 24));
-        panelKembalian.add(jLabel8, java.awt.BorderLayout.LINE_END);
+        lblKembalian.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 19)); // NOI18N
+        lblKembalian.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblKembalian.setText("0");
+        lblKembalian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 24));
+        panelKembalian.add(lblKembalian, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(panelKembalian);
 
@@ -451,25 +994,108 @@ public final class PopupBayar extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    //USER MEMILIH METODE PEMBAYARAN
+
     private void btnTunaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnTunaiItemStateChanged
         // TODO add your handling code here:
-        stateBtnBayar(btnTunai);
+        stateBtnBayar(btnTunai); //memperbarui tampilan tombol tunai
+        pilihTunai(); //mengaktifkan input nominal dan mengosongkan kembalian
     }//GEN-LAST:event_btnTunaiItemStateChanged
 
     private void btnQrisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnQrisItemStateChanged
         // TODO add your handling code here:
-        stateBtnBayar(btnQris);
+        stateBtnBayar(btnQris); //memperbarui tampilan tombol qris
+        pilihQris(); //menonaktifkan input nominal dan mengisi dengan nilai total
     }//GEN-LAST:event_btnQrisItemStateChanged
+
+
+
+    //USER KLIK TOMBOL PROSES DAN CETAK STRUK
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
         // TODO add your handling code here:
-        dispose();
-        PratinjauStruk struk = new PratinjauStruk(
-                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
-        );
+        try {
 
-        struk.setVisible(true);
+            //menyimpan header transaksi ke tabel transaksi
+            boolean berhasil = simpanTransaksi();
+            if (!berhasil) {
+                return;
+            }
+
+            //menyimpan detail item dan topping ke tabel detail_transaksi dan detail_topping
+            boolean berhasilDetail = simpanDetailTransaksi();
+            if (!berhasilDetail) {
+                return;
+            }
+
+            //mengambil waktu transaksi saat ini
+            String waktu = new java.text.SimpleDateFormat("dd-MM-yyyy | HH:mm")
+                    .format(new java.util.Date());
+
+            //membuat dialog pratinjau struk
+            PratinjauStruk struk = new PratinjauStruk(
+                    (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this),
+                    true
+            );
+
+            //mengirim data pembayaran ke struk
+            struk.setPembayaran(
+                    subtotal,
+                    diskon,
+                    totalBayar,
+                    nominalBayar,
+                    kembalian,
+                    metodePembayaran
+            );
+
+            //mengirim header struk (id transaksi, username, waktu)
+            struk.setHeaderData(
+                    idTransaksi,
+                    SessionLogin.username,
+                    waktu
+            );
+
+            //menutup popup bayar
+            dispose();
+
+            //menampilkan pratinjau struk
+            struk.setVisible(true);
+
+            //mereset keranjang di panel transaksi
+            panelTransaksi.resetTransaksi();
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+
     }//GEN-LAST:event_btnProsesActionPerformed
+
+
+    //USER MENGETIK NOMINAL PEMBAYARAN
+
+    private void txtNominalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNominalKeyReleased
+        // TODO add your handling code here:
+        //memeriksa apakah pembayaran menggunakan tunai
+        if (metodePembayaran.equals("Tunai")) {
+
+            //menghitung kembalian
+            hitungKembalian();
+
+        }
+    }//GEN-LAST:event_txtNominalKeyReleased
+
+    private void txtNominalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNominalKeyTyped
+        //dikosongkan karena logika kembalian sudah ditangani oleh keyReleased
+        //keyTyped terpanggil sebelum karakter masuk ke field sehingga nilainya belum terbaca
+    }//GEN-LAST:event_txtNominalKeyTyped
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        //menutup popup bayar tanpa menyimpan apapun
+        dispose();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -517,7 +1143,6 @@ public final class PopupBayar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -526,13 +1151,14 @@ public final class PopupBayar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblDiskon;
+    private javax.swing.JLabel lblKembalian;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel panelHitung;
     private javax.swing.JPanel panelInput;
     private javax.swing.JPanel panelKembalian;
     private javax.swing.JPanel popupBayar;
+    private javax.swing.JTextField txtNominal;
     // End of variables declaration//GEN-END:variables
 }
