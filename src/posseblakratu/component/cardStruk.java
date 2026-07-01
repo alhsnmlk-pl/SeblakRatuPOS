@@ -20,27 +20,22 @@ public class cardStruk extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card struk
-    public void setData(
-            String namaMenu,
-            String detailTopping,
-            int qty,
-            double hargaSatuan,
-            double subtotal) {
+    public void setData(String namaMenu,String detailTopping,int qty,double hargaSatuan, double subtotal) {
 
         //menampilkan nama menu
-        stkMenuLvl.setText(namaMenu);
+        lblMenuLvl.setText(namaMenu);
 
         //menampilkan detail topping
-        stkMenuLvl1.setText(detailTopping);
+        lblTopping.setText(detailTopping);
 
         //membuat tulisan qty dan harga
         String qtyHarga = qty + " x " + "Rp."+(int)hargaSatuan;
 
         //menampilkan qty dan harga
-        stkQty.setText("Rp."+qtyHarga);
+        lblQty.setText("Rp."+qtyHarga);
 
         //menampilkan subtotal pesanan
-        stkTotal.setText(String.valueOf("Rp."+(int) subtotal));
+        lblTotal.setText(String.valueOf("Rp."+(int) subtotal));
 
     }
     
@@ -57,61 +52,61 @@ public class cardStruk extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        stkMenuLvl = new javax.swing.JLabel();
-        stkQty = new javax.swing.JLabel();
-        stkTotal = new javax.swing.JLabel();
-        stkMenuLvl1 = new javax.swing.JLabel();
+        lblMenuLvl = new javax.swing.JLabel();
+        lblQty = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        lblTopping = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 2, 0, 2));
         setMinimumSize(new java.awt.Dimension(302, 60));
         setPreferredSize(new java.awt.Dimension(302, 60));
 
-        stkMenuLvl.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        stkMenuLvl.setText("Seblak Original Lvl 4");
+        lblMenuLvl.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
+        lblMenuLvl.setText("Seblak Original Lvl 4");
 
-        stkQty.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        stkQty.setText("1 x 10000");
+        lblQty.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        lblQty.setText("1 x 10000");
 
-        stkTotal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        stkTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        stkTotal.setText("10000");
-        stkTotal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 3));
+        lblTotal.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotal.setText("10000");
+        lblTotal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 3));
 
-        stkMenuLvl1.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 12)); // NOI18N
-        stkMenuLvl1.setText("Mie 1x");
+        lblTopping.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 12)); // NOI18N
+        lblTopping.setText("Mie 1x");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stkMenuLvl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblMenuLvl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(stkQty, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblQty, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(stkTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(stkMenuLvl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblTopping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(stkMenuLvl)
+                .addComponent(lblMenuLvl)
                 .addGap(0, 0, 0)
-                .addComponent(stkMenuLvl1)
+                .addComponent(lblTopping)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stkQty)
-                    .addComponent(stkTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblQty)
+                    .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel stkMenuLvl;
-    private javax.swing.JLabel stkMenuLvl1;
-    private javax.swing.JLabel stkQty;
-    private javax.swing.JLabel stkTotal;
+    private javax.swing.JLabel lblMenuLvl;
+    private javax.swing.JLabel lblQty;
+    private javax.swing.JLabel lblTopping;
+    private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 }

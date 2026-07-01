@@ -17,7 +17,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-//mengimpor class session login
 import posseblakratu.session.SessionLogin;
 import posseblakratu.view.PanelTransaksi;
 
@@ -75,6 +74,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         panelLengkung();
 
         stateBtnBayar(btnQris);
+        btnTunai.setSelected(true); //default pemilihan tunai
         stateBtnBayar(btnTunai);
 
         buttonDesain();

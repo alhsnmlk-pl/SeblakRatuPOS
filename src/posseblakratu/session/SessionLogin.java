@@ -20,6 +20,9 @@ public class SessionLogin {
 
     //menyimpan role pengguna yang sedang login
     public static String role;
+    
+    
+    
 
     //method untuk menyimpan id pengguna
     public static void setIdPengguna(String idPengguna) {
@@ -36,6 +39,9 @@ public class SessionLogin {
         return idPengguna;
 
     }
+    
+    
+    
 
     //method untuk menyimpan username
     public static void setUsername(String username) {
@@ -52,6 +58,9 @@ public class SessionLogin {
         return username;
 
     }
+    
+    
+    
 
     //method untuk menyimpan role
     public static void setRole(String role) {

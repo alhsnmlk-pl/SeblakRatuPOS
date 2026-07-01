@@ -21,8 +21,10 @@ public class cardMenu extends javax.swing.JPanel {
     private String idProduk;
     private String namaMenu;
     private double hargaMenu;
-    private String kategoriMenu;
     private String deskripsiMenu;
+     private String kategoriMenu;
+   
+    
 
     /**
      * Creates new form cardMenu

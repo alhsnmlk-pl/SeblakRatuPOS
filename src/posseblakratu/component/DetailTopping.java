@@ -33,7 +33,7 @@ public class DetailTopping {
         this.nama = nama;
         this.harga = harga;
         this.qty = qty;
-         this.subtotal = harga * qty;
+        this.subtotal = harga * qty;
 
     }
 

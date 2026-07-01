@@ -4,7 +4,7 @@
  */
 package posseblakratu.component;
 
-import java.util.List;
+import java.util.List;  //Untuk menyimpan daftar topping
 
 /**
  *
@@ -23,6 +23,7 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     //jumlah menu
     private int qty = 1;
+    
     //menyimpan event ketika qty berubah
     private Runnable qtyListener;
 
@@ -56,14 +57,13 @@ public class cardKeranjang extends javax.swing.JPanel {
         this.hargaSatuan = hargaSatuan;
         this.level = level;
         this.hargaLevel = hargaLevel;
-        //menyimpan daftar topping
         this.daftarTopping = daftarTopping;
 
         //menampilkan nama menu
         lblMenuPesan.setText(namaMenu);
 
         //mengatur qty awal menjadi satu
-        qtyStepper2.setValue(1);
+        qtyKeranjang.setValue(1);
 
         //menampilkan detail pesanan
         tampilkanDetail();
@@ -113,7 +113,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     private void updateHarga() {
 
         //mengambil jumlah pesanan langsung dari qtyStepper
-        qty = qtyStepper2.getValue();
+        qty = qtyKeranjang.getValue();
 
         //menghitung harga satu porsi
         double totalPerPorsi = hargaSatuan + hargaLevel;
@@ -137,7 +137,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     public void addDeleteListener(java.awt.event.ActionListener listener) {
 
         //menambahkan event pada tombol hapus
-        jButton1.addActionListener(listener);
+        btnHapusKeranjang.addActionListener(listener);
 
     }
     
@@ -176,7 +176,7 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     //mengembalikan qty menu
     public int getQty() {
-        return qtyStepper2.getValue();
+        return qtyKeranjang.getValue();
     }
 
     //mengembalikan subtotal menu
@@ -201,9 +201,9 @@ public class cardKeranjang extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblMenuPesan = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnHapusKeranjang = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        qtyStepper2 = new qtystepper.qtyStepper();
+        qtyKeranjang = new qtystepper.qtyStepper();
         lblHarga = new javax.swing.JLabel();
         lblKetPesan = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
@@ -221,12 +221,12 @@ public class cardKeranjang extends javax.swing.JPanel {
         lblMenuPesan.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         lblMenuPesan.setText("Seblak Original");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconX.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jButton1.setOpaque(true);
+        btnHapusKeranjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconX.png"))); // NOI18N
+        btnHapusKeranjang.setBorder(null);
+        btnHapusKeranjang.setBorderPainted(false);
+        btnHapusKeranjang.setContentAreaFilled(false);
+        btnHapusKeranjang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnHapusKeranjang.setOpaque(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -236,7 +236,7 @@ public class cardKeranjang extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(lblMenuPesan, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnHapusKeranjang)
                 .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
@@ -244,7 +244,7 @@ public class cardKeranjang extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapusKeranjang, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMenuPesan))
                 .addGap(0, 0, 0))
         );
@@ -252,17 +252,17 @@ public class cardKeranjang extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
-        qtyStepper2.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
-        qtyStepper2.addActionListener(this::qtyStepper2ActionPerformed);
+        qtyKeranjang.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 14)); // NOI18N
+        qtyKeranjang.addActionListener(this::qtyKeranjangActionPerformed);
 
-        javax.swing.GroupLayout qtyStepper2Layout = new javax.swing.GroupLayout(qtyStepper2);
-        qtyStepper2.setLayout(qtyStepper2Layout);
-        qtyStepper2Layout.setHorizontalGroup(
-            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout qtyKeranjangLayout = new javax.swing.GroupLayout(qtyKeranjang);
+        qtyKeranjang.setLayout(qtyKeranjangLayout);
+        qtyKeranjangLayout.setHorizontalGroup(
+            qtyKeranjangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 93, Short.MAX_VALUE)
         );
-        qtyStepper2Layout.setVerticalGroup(
-            qtyStepper2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        qtyKeranjangLayout.setVerticalGroup(
+            qtyKeranjangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
@@ -276,7 +276,7 @@ public class cardKeranjang extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(qtyKeranjang, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -286,7 +286,7 @@ public class cardKeranjang extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(qtyStepper2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(qtyKeranjang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
@@ -342,7 +342,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void qtyStepper2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtyStepper2ActionPerformed
+    private void qtyKeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtyKeranjangActionPerformed
         // TODO add your handling code here:
         //memperbarui subtotal card
         updateHarga();
@@ -354,11 +354,11 @@ public class cardKeranjang extends javax.swing.JPanel {
 
         }
 
-    }//GEN-LAST:event_qtyStepper2ActionPerformed
+    }//GEN-LAST:event_qtyKeranjangActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnHapusKeranjang;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -366,6 +366,6 @@ public class cardKeranjang extends javax.swing.JPanel {
     private javax.swing.JLabel lblHarga;
     private javax.swing.JTextArea lblKetPesan;
     private javax.swing.JLabel lblMenuPesan;
-    private qtystepper.qtyStepper qtyStepper2;
+    private qtystepper.qtyStepper qtyKeranjang;
     // End of variables declaration//GEN-END:variables
 }
