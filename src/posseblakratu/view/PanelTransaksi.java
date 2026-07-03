@@ -632,6 +632,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
+
+
+
+
     //method untuk generate id transaksi otomatis
     private String generateIdTransaksi() {
         //variabel untuk menyimpan id terakhir dari database
@@ -643,7 +647,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
             //query ambil id transaksi terakhir
             String sql = "SELECT id_transaksi FROM transaksi ORDER BY "
-            + "id_transaksi DESC LIMIT 1";
+                    + "id_transaksi DESC LIMIT 1";
 
             //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -653,24 +657,18 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
             //jika ada data
             if (rs.next()) {
-
                 //ambil id terakhir
                 lastId = rs.getString("id_transaksi");
-
             }
 
         } catch (SQLException e) {
-
             //tampilkan error jika gagal
             JOptionPane.showMessageDialog(null, e.getMessage());
-
         }
 
         //jika belum ada transaksi sama sekali
         if (lastId == null) {
-
             return "TRX0001";
-
         }
 
         //mengambil angka dari TRX0001 → 0001
@@ -682,6 +680,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //format ulang jadi TRX0002 dst
         return String.format("TRX%04d", angka);
     }
+
+
+
+
+
+
 
     //method untuk mengambil id diskon yang sedang aktif
     public String getIdDiskon() {
