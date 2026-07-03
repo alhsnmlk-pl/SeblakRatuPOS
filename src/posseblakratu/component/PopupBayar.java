@@ -295,61 +295,15 @@ public final class PopupBayar extends javax.swing.JDialog {
 
 
 
-    //GENERATE ID TRANSAKSI
-    //mengambil id terakhir dari tabel transaksi lalu increment angkanya
-    //format hasil: TRX0001, TRX0002, dst
-    private String generateIdTransaksi() {
+    //MENERIMA ID TRANSAKSI DARI PANEL TRANSAKSI
+    //dipanggil dari btnBayarActionPerformed
+    public void setIdTransaksi(String idTransaksi) {
 
-        //menyimpan id transaksi yang akan dibuat
-        String idTransaksi = "";
-
-        //membuat query untuk mengambil id transaksi terbesar
-        String sql = "SELECT id_transaksi FROM transaksi ORDER BY id_transaksi DESC LIMIT 1";
-
-        try {
-
-            //membuka koneksi ke database
-            Connection conn = Koneksi.konek();
-
-            //menyiapkan query
-            PreparedStatement pst = conn.prepareStatement(sql);
-
-            //menjalankan query
-            ResultSet rs = pst.executeQuery();
-
-            //memeriksa apakah data transaksi sudah ada
-            if (rs.next()) {
-
-                //mengambil id transaksi terakhir
-                String idTerakhir = rs.getString("id_transaksi");
-
-                //mengambil angka setelah tulisan TRX
-                int nomor = Integer.parseInt(idTerakhir.substring(3));
-
-                //menambahkan nomor transaksi
-                nomor++;
-
-                //membuat id transaksi baru
-                idTransaksi = String.format("TRX%04d", nomor);
-
-            } else {
-
-                //membuat id transaksi pertama
-                idTransaksi = "TRX0001";
-
-            }
-
-        } catch (NumberFormatException | SQLException e) {
-
-            //menampilkan pesan apabila terjadi kesalahan
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        }
-
-        //mengembalikan id transaksi
-        return idTransaksi;
+        //menyimpan id transaksi
+        this.idTransaksi = idTransaksi;
 
     }
+
 
 
     //GENERATE ID DETAIL TRANSAKSI
@@ -601,10 +555,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             //menyiapkan query
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            //membuat id transaksi baru
-            idTransaksi = generateIdTransaksi();
-
-            //mengisi parameter id transaksi
+            //mengisi parameter id transaksi (sudah diterima dari PanelTransaksi)
             pst.setString(1, idTransaksi);
 
             //mengisi parameter tanggal transaksi

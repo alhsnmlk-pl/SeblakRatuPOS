@@ -26,7 +26,7 @@ public class DetailTopping {
     //menyimpan subtotal topping
     private final double subtotal;
 
-    //constructor
+    //constructor menerima parameter untuk mengisi semua variable detail topping
     public DetailTopping(String idProduk, String nama, double harga, int qty) {
 
         this.idProduk = idProduk;

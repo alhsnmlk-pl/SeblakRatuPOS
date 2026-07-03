@@ -9,16 +9,21 @@ import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Insets;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+
+import posseblakratu.component.cardMenu;
+import posseblakratu.component.cardTopping;
+import posseblakratu.component.DetailTopping;
+import posseblakratu.component.cardKeranjang;
+
 import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import posseblakratu.component.cardMenu;
+import java.util.ArrayList; //lib untuk menyimpan sekumpulan data secara 
+                            //berurutan dgn ukuran yg fleksibel
 import javax.swing.Box;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import posseblakratu.component.cardKeranjang;
-import posseblakratu.component.cardTopping;
+
 import posseblakratu.config.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +31,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import posseblakratu.component.DetailTopping;
+
 
 /**
  *
@@ -74,15 +79,15 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         initComponents();
 
         //mengambil layout pada panel kostumisasi
-        cardLayout = (CardLayout) containerKostumisasi1.getLayout();
+        cardLayout = (CardLayout) containerKostumisasi.getLayout();
 
         //menampilkan panel kostumisasi kosong sebagai tampilan awal
-        cardLayout.show(containerKostumisasi1, "kostumKosong");
+        cardLayout.show(containerKostumisasi, "kostumKosong");
 
         buttonDesain(); //memanggil method desain button next dan reset
 
         panelLengkung(containerDaftarMenu); //memanggil method desain panel dgn panel yg ingin di sesuaikan
-        panelLengkung(containerKostumisasi1);
+        panelLengkung(containerKostumisasi);
         panelLengkung(containerKeranjang1);
 
         buttonLvl(btnLvl0); //memanggil method desain button (default)
@@ -245,7 +250,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 //membuat card menu baru
                 cardMenu card = new cardMenu();
 
-                //mengisi data pada card menu, pastikan urutan sesuai dengan penamaan variable dan tipedata di card menu
+                //mengisi data pada card menu, pastikan urutan sesuai dengan
+                //penamaan variable dan tipedata di card menu
                 card.setData(
                         rs.getString("id_produk"),
                         rs.getString("nama_produk"),
@@ -363,12 +369,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     
     
     
-    //membuat method untuk menampilkan panel kostumisai
-    void showKostum() {
-        cardLayout.show(containerKostumisasi1, "kostum");
-    }
-    
-    
     //USER MEMILIH MENU
     
     //method untuk memilih card menu
@@ -389,12 +389,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         if (selectedCard.getKategori().equals("Seblak")) {
 
             //menampilkan panel kostumisasi seblak
-            showKostum();
+            cardLayout.show(containerKostumisasi, "kostumSeblak");
 
         } else if (selectedCard.getKategori().equals("Minuman")) {
 
             //menampilkan panel kostumisasi minuman
-            cardLayout.show(containerKostumisasi1, "kostumMinum");
+            cardLayout.show(containerKostumisasi, "kostumMinum");
 
         }
 
@@ -414,7 +414,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     
     
     //method untuk mereset panel kostumisasi ke kondisi awal
-    //dipanggil setelah user klik next agar panel siap untuk pesanan berikutnya
+    //dipanggil setelah user klik next/reset agar panel siap untuk pesanan berikutnya
     void reset() {
 
         // Menghapus status terpilih pada semua card menu
@@ -431,7 +431,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
 
         //menampilkan panel kostumisasi (kosong)
-        cardLayout.show(containerKostumisasi1, "kostumKosong");
+        cardLayout.show(containerKostumisasi, "kostumKosong");
 
         //mengembalikan posisi scroll topping ke paling atas
         SwingUtilities.invokeLater(() -> {
@@ -460,7 +460,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //menampilkan subtotal
         lblSubtotal.setText("Rp. " + (int) subtotal);
 
-        //memperbarui diskon
+        //memperbarui diskon dgn method update diskon
         updateDiskon();
 
     }
@@ -538,13 +538,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     
     
 
-    //method untuk mengambil id diskon yang sedang aktif
-    public String getIdDiskon() {
 
-        //mengembalikan id diskon (null jika tidak ada diskon aktif)
-        return idDiskon;
 
-    }
+
 
     //RESET KERANJANG SETELAH TRANSAKSI SELESAI
     //dipanggil dari PopupBayar setelah struk berhasil ditampilkan
@@ -628,7 +624,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //memperbarui subtotal seluruh pesanan
         updateSubtotal();
 
-        //generate id transaksi baru untuk ditampilkan di badge header keranjang
+        //generate id transaksi baru
         idTransaksi = generateIdTransaksi();
 
         //menampilkan id transaksi di atas keranjang
@@ -642,12 +638,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         String lastId = null;
 
         try {
-
             //koneksi ke database
             Connection conn = Koneksi.konek();
 
             //query ambil id transaksi terakhir
-            String sql = "SELECT id_transaksi FROM transaksi ORDER BY id_transaksi DESC LIMIT 1";
+            String sql = "SELECT id_transaksi FROM transaksi ORDER BY "
+            + "id_transaksi DESC LIMIT 1";
 
             //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -687,6 +683,22 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         return String.format("TRX%04d", angka);
     }
 
+    //method untuk mengambil id diskon yang sedang aktif
+    public String getIdDiskon() {
+
+        //mengembalikan id diskon (null jika tidak ada diskon aktif)
+        return idDiskon;
+
+    }
+
+    //method untuk mengambil id transaksi
+    public String getIdTransaksi() {
+
+        //mengembalikan id transaksi
+        return idTransaksi;
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -708,8 +720,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         menuContent = new javax.swing.JPanel();
-        containerKostumisasi1 = new javax.swing.JPanel();
         containerKostumisasi = new javax.swing.JPanel();
+        KostumisasiSeblak = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblMenu = new javax.swing.JLabel();
@@ -732,7 +744,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane3.getVerticalScrollBar().setUnitIncrement(10);
         toppingContent = new javax.swing.JPanel();
-        containerKostumisasiKosong = new javax.swing.JPanel();
+        KostumisasiKosong = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         lblMenu1 = new javax.swing.JLabel();
@@ -742,7 +754,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnReset1 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        containerKostumisasiMinuman = new javax.swing.JPanel();
+        KostumisasiMinuman = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         lblMenu2 = new javax.swing.JLabel();
@@ -877,12 +889,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         add(containerDaftarMenu);
 
-        containerKostumisasi1.setBackground(new java.awt.Color(255, 255, 255));
-        containerKostumisasi1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        containerKostumisasi1.setLayout(new java.awt.CardLayout());
-
         containerKostumisasi.setBackground(new java.awt.Color(255, 255, 255));
-        containerKostumisasi.setLayout(new java.awt.BorderLayout());
+        containerKostumisasi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
+        containerKostumisasi.setLayout(new java.awt.CardLayout());
+
+        KostumisasiSeblak.setBackground(new java.awt.Color(255, 255, 255));
+        KostumisasiSeblak.setLayout(new java.awt.BorderLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -918,7 +930,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        containerKostumisasi.add(jPanel8, java.awt.BorderLayout.PAGE_START);
+        KostumisasiSeblak.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(231, 189, 187)));
@@ -946,7 +958,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel14.add(jPanel17, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasi.add(jPanel14, java.awt.BorderLayout.PAGE_END);
+        KostumisasiSeblak.add(jPanel14, java.awt.BorderLayout.PAGE_END);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
@@ -1057,12 +1069,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel5.add(jPanel15, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasi.add(jPanel5, java.awt.BorderLayout.CENTER);
+        KostumisasiSeblak.add(jPanel5, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasi1.add(containerKostumisasi, "kostum");
+        containerKostumisasi.add(KostumisasiSeblak, "kostumSeblak");
 
-        containerKostumisasiKosong.setBackground(new java.awt.Color(255, 255, 255));
-        containerKostumisasiKosong.setLayout(new java.awt.BorderLayout());
+        KostumisasiKosong.setBackground(new java.awt.Color(255, 255, 255));
+        KostumisasiKosong.setLayout(new java.awt.BorderLayout());
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -1099,7 +1111,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        containerKostumisasiKosong.add(jPanel19, java.awt.BorderLayout.PAGE_START);
+        KostumisasiKosong.add(jPanel19, java.awt.BorderLayout.PAGE_START);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(231, 189, 187)));
@@ -1129,7 +1141,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel20.add(jPanel21, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasiKosong.add(jPanel20, java.awt.BorderLayout.PAGE_END);
+        KostumisasiKosong.add(jPanel20, java.awt.BorderLayout.PAGE_END);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new java.awt.BorderLayout());
@@ -1139,12 +1151,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jLabel3.setText("Pilih Menu Terlebih Dahulu");
         jPanel7.add(jLabel3, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasiKosong.add(jPanel7, java.awt.BorderLayout.CENTER);
+        KostumisasiKosong.add(jPanel7, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasi1.add(containerKostumisasiKosong, "kostumKosong");
+        containerKostumisasi.add(KostumisasiKosong, "kostumKosong");
 
-        containerKostumisasiMinuman.setBackground(new java.awt.Color(255, 255, 255));
-        containerKostumisasiMinuman.setLayout(new java.awt.BorderLayout());
+        KostumisasiMinuman.setBackground(new java.awt.Color(255, 255, 255));
+        KostumisasiMinuman.setLayout(new java.awt.BorderLayout());
 
         jPanel27.setBackground(new java.awt.Color(255, 255, 255));
         jPanel27.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -1180,7 +1192,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        containerKostumisasiMinuman.add(jPanel27, java.awt.BorderLayout.PAGE_START);
+        KostumisasiMinuman.add(jPanel27, java.awt.BorderLayout.PAGE_START);
 
         jPanel28.setBackground(new java.awt.Color(255, 255, 255));
         jPanel28.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(231, 189, 187)));
@@ -1208,7 +1220,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         jPanel28.add(jPanel29, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasiMinuman.add(jPanel28, java.awt.BorderLayout.PAGE_END);
+        KostumisasiMinuman.add(jPanel28, java.awt.BorderLayout.PAGE_END);
 
         jPanel30.setBackground(new java.awt.Color(255, 255, 255));
         jPanel30.setLayout(new java.awt.BorderLayout());
@@ -1218,11 +1230,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jLabel6.setText("Minuman Tidak Perlu Kostumisasi");
         jPanel30.add(jLabel6, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasiMinuman.add(jPanel30, java.awt.BorderLayout.CENTER);
+        KostumisasiMinuman.add(jPanel30, java.awt.BorderLayout.CENTER);
 
-        containerKostumisasi1.add(containerKostumisasiMinuman, "kostumMinum");
+        containerKostumisasi.add(KostumisasiMinuman, "kostumMinum");
 
-        add(containerKostumisasi1);
+        add(containerKostumisasi);
 
         containerKeranjang1.setBackground(new java.awt.Color(255, 255, 255));
         containerKeranjang1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
@@ -1500,6 +1512,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //mengirim seluruh isi keranjang
         bayar.setKeranjang(daftarKeranjang);
 
+        //mengirim id transaksi yang sudah di-generate
+        bayar.setIdTransaksi(idTransaksi);
+
         bayar.setVisible(true);
     }//GEN-LAST:event_btnBayarActionPerformed
     
@@ -1602,7 +1617,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     private void btnResetMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetMActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(containerKostumisasi1, "kostumKosong");
+        reset(); //memanggil method reset
     }//GEN-LAST:event_btnResetMActionPerformed
 
 
@@ -1646,6 +1661,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel KeranjangIsi;
+    private javax.swing.JPanel KostumisasiKosong;
+    private javax.swing.JPanel KostumisasiMinuman;
+    private javax.swing.JPanel KostumisasiSeblak;
     private javax.swing.JButton btnBayar;
     private javax.swing.JToggleButton btnLvl0;
     private javax.swing.JToggleButton btnLvl1;
@@ -1664,9 +1682,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     private javax.swing.JPanel containerDaftarMenu;
     private javax.swing.JPanel containerKeranjang1;
     private javax.swing.JPanel containerKostumisasi;
-    private javax.swing.JPanel containerKostumisasi1;
-    private javax.swing.JPanel containerKostumisasiKosong;
-    private javax.swing.JPanel containerKostumisasiMinuman;
     private javax.swing.JToggleButton filterMinumanM;
     private javax.swing.JToggleButton filterSeblakM;
     private javax.swing.JToggleButton filterSemuaM;

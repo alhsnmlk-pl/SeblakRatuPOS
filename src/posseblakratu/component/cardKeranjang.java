@@ -4,6 +4,7 @@
  */
 package posseblakratu.component;
 
+//import library list, lib ini berfungsi utuk menyimpan kumpulan data dalam satu variable
 import java.util.List;  //Untuk menyimpan daftar topping
 
 /**
@@ -36,7 +37,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     //subtotal menu
     private double subtotalMenu;
 
-    //menyimpan daftar topping pesanan
+    //menyimpan daftar topping pesanan menggunakan list
     private List<DetailTopping> daftarTopping;
     
     

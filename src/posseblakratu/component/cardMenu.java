@@ -15,14 +15,14 @@ import java.awt.event.MouseListener;
  */
 public class cardMenu extends javax.swing.JPanel {
 
-    private boolean selected = false;  //membuat variable status card menu false !selected
+    private boolean selected = false;  //membuat variable status card menu false
 
-    //membuat variable untuk menyimpan data
+    //deklarasi variable untuk menyimpan data menu
     private String idProduk;
     private String namaMenu;
     private double hargaMenu;
     private String deskripsiMenu;
-     private String kategoriMenu;
+    private String kategoriMenu;
    
     
 
@@ -32,17 +32,8 @@ public class cardMenu extends javax.swing.JPanel {
     public cardMenu() {
         initComponents();
 
-        updateStyle();  //memanggil style
+        updateStyle();  //memanggil style card menu
 
-    }
-
-    public void setSelected(boolean selected) {     //membuat setter selected
-        this.selected = selected; //mengubah status card
-        updateStyle();  //memperbarui tampilan setelah status berubah
-    }
-
-    public boolean isSelected() {  //membuat getter selected untuk mengembalikan nilai selected
-        return selected;
     }
 
     //membuat styling selected dan !selected
@@ -62,6 +53,17 @@ public class cardMenu extends javax.swing.JPanel {
         }
         repaint();
     }
+
+    public void setSelected(boolean selected) {     //membuat setter selected
+        this.selected = selected; //mengubah status card
+        updateStyle();  //memperbarui tampilan setelah status berubah
+    }
+
+    public boolean isSelected() {  //membuat getter selected untuk mengembalikan nilai selected
+        return selected;
+    }
+
+    
 
     //Membuat method click listener agar saat semua bagian card bisa di klik
     public void addClickListener(MouseListener listener) {

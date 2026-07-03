@@ -10,6 +10,7 @@ package posseblakratu.component;
  */
 public class cardTopping extends javax.swing.JPanel {
 
+    //deklarasi varible untuk menyimpan data topping
     private String idProduk;
     private String namaTopping;
     private double hargaTopping;
