@@ -13,53 +13,6 @@ import java.util.List;  //Untuk menyimpan daftar topping
  */
 public class cardKeranjang extends javax.swing.JPanel {
 
-    // -------------------------------------------------------------------------
-    // Inner class pengganti DetailTopping
-    // menyimpan data satu item topping pada pesanan
-    // -------------------------------------------------------------------------
-    public static class ToppingItem {
-
-        //id produk topping
-        private final String idProduk;
-
-        //nama topping
-        private final String nama;
-
-        //harga satuan topping
-        private final double harga;
-
-        //qty topping
-        private final int qty;
-
-        //subtotal topping (harga * qty)
-        private final double subtotal;
-
-        //constructor menerima semua data topping
-        public ToppingItem(String idProduk, String nama, double harga, int qty) {
-            this.idProduk = idProduk;
-            this.nama = nama;
-            this.harga = harga;
-            this.qty = qty;
-            this.subtotal = harga * qty;
-        }
-
-        //mengembalikan id produk
-        public String getIdProduk() { return idProduk; }
-
-        //mengembalikan nama topping
-        public String getNama() { return nama; }
-
-        //mengembalikan harga satuan
-        public double getHarga() { return harga; }
-
-        //mengembalikan qty
-        public int getQty() { return qty; }
-
-        //mengembalikan subtotal
-        public double getSubtotal() { return subtotal; }
-    }
-    // -------------------------------------------------------------------------
-
     //id produk menu
     private String idProduk;
 
@@ -71,7 +24,7 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     //jumlah menu
     private int qty = 1;
-    
+
     //menyimpan event ketika qty berubah
     private Runnable qtyListener;
 
@@ -86,8 +39,6 @@ public class cardKeranjang extends javax.swing.JPanel {
 
     //menyimpan daftar topping pesanan menggunakan list
     private List<ToppingItem> daftarTopping;
-    
-    
 
     /**
      * Creates new form cardKeranjang
@@ -119,6 +70,59 @@ public class cardKeranjang extends javax.swing.JPanel {
         //menghitung subtotal
         updateHarga();
 
+    }
+
+    // menyimpan data satu item topping pada pesanan
+    public static class ToppingItem {
+
+        //id produk topping
+        private final String idProduk;
+
+        //nama topping
+        private final String nama;
+
+        //harga satuan topping
+        private final double harga;
+
+        //qty topping
+        private final int qty;
+
+        //subtotal topping (harga * qty)
+        private final double subtotal;
+
+        //constructor menerima semua data topping
+        public ToppingItem(String idProduk, String nama, double harga, int qty) {
+            this.idProduk = idProduk;
+            this.nama = nama;
+            this.harga = harga;
+            this.qty = qty;
+            this.subtotal = harga * qty;
+        }
+
+        //mengembalikan id produk
+        public String getIdProduk() {
+            return idProduk;
+        }
+
+        //mengembalikan nama topping
+        public String getNama() {
+            return nama;
+        }
+
+        //mengembalikan harga satuan
+        public double getHarga() {
+            return harga;
+        }
+
+        //mengembalikan qty
+        public int getQty() {
+            return qty;
+        }
+
+        //mengembalikan subtotal
+        public double getSubtotal() {
+            return subtotal;
+        }
     }
 
     //method untuk menampilkan detail pesanan
@@ -188,7 +192,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         btnHapusKeranjang.addActionListener(listener);
 
     }
-    
+
     //method untuk menambahkan event ketika qty berubah
     public void addQtyListener(Runnable listener) {
 
@@ -201,7 +205,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     public String getIdProduk() {
         return idProduk;
     }
-    
+
     //mengembalikan nama menu
     public String getNamaMenu() {
         return namaMenu;
@@ -397,11 +401,8 @@ public class cardKeranjang extends javax.swing.JPanel {
 
         //memanggil event apabila tersedia
         if (qtyListener != null) {
-
             qtyListener.run();
-
         }
-
     }//GEN-LAST:event_qtyKeranjangActionPerformed
 
 

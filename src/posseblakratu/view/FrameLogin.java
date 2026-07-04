@@ -29,23 +29,25 @@ public final class FrameLogin extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameLogin.class.getName());
 
-    // -------------------------------------------------------------------------
     // Session data pengguna yang sedang login
-    // disimpan langsung di FrameLogin sebagai pengganti SessionLogin
-    // -------------------------------------------------------------------------
     private static String idPengguna;
     private static String username;
     private static String role;
 
     //mengambil id pengguna yang sedang login
-    public static String getIdPengguna() { return idPengguna; }
+    public static String getIdPengguna() {
+        return idPengguna;
+    }
 
     //mengambil username yang sedang login
-    public static String getUsername() { return username; }
+    public static String getUsername() {
+        return username;
+    }
 
     //mengambil role pengguna yang sedang login
-    public static String getRole() { return role; }
-    // -------------------------------------------------------------------------
+    public static String getRole() {
+        return role;
+    }
 
     /** Creates new form FrameLogin */
     public FrameLogin() {
