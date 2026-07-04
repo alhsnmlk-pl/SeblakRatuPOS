@@ -18,7 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import posseblakratu.session.SessionLogin;
+import posseblakratu.view.FrameLogin;
 import posseblakratu.view.PanelTransaksi;
 
 /**
@@ -479,7 +479,7 @@ public final class PopupBayar extends javax.swing.JDialog {
                 pst.executeUpdate();
 
                 //loop semua topping di dalam 1 card
-                for (DetailTopping topping : card.getDaftarTopping()) {
+                for (cardKeranjang.ToppingItem topping : card.getDaftarTopping()) {
 
                     //query insert topping
                     String sqlTopping = "INSERT INTO detail_topping VALUES (?,?,?,?,?,?)";
@@ -578,7 +578,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             pst.setDouble(7, totalBayar);
 
             //mengisi id pengguna yang sedang login
-            pst.setString(8, SessionLogin.getIdPengguna());
+            pst.setString(8, FrameLogin.getIdPengguna());
 
             //mengambil id diskon dari panel transaksi
             String idDiskon = panelTransaksi.getIdDiskon();
@@ -1003,7 +1003,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             //mengirim header struk (id transaksi, username, waktu)
             struk.setHeaderData(
                     idTransaksi,
-                    SessionLogin.username,
+                    FrameLogin.getUsername(),
                     waktu
             );
 

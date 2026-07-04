@@ -19,7 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import posseblakratu.session.SessionLogin;
 
 
 /**
@@ -29,6 +28,24 @@ import posseblakratu.session.SessionLogin;
 public final class FrameLogin extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameLogin.class.getName());
+
+    // -------------------------------------------------------------------------
+    // Session data pengguna yang sedang login
+    // disimpan langsung di FrameLogin sebagai pengganti SessionLogin
+    // -------------------------------------------------------------------------
+    private static String idPengguna;
+    private static String username;
+    private static String role;
+
+    //mengambil id pengguna yang sedang login
+    public static String getIdPengguna() { return idPengguna; }
+
+    //mengambil username yang sedang login
+    public static String getUsername() { return username; }
+
+    //mengambil role pengguna yang sedang login
+    public static String getRole() { return role; }
+    // -------------------------------------------------------------------------
 
     /** Creates new form FrameLogin */
     public FrameLogin() {
@@ -440,19 +457,13 @@ public final class FrameLogin extends javax.swing.JFrame {
                 if (rs.next()) {
 
                     //menyimpan id pengguna yang sedang login
-                    SessionLogin.setIdPengguna(
-                            rs.getString("id_pengguna")
-                    );
+                    FrameLogin.idPengguna = rs.getString("id_pengguna");
 
                     //menyimpan username yang sedang login
-                    SessionLogin.setUsername(
-                            rs.getString("username")
-                    );
+                    FrameLogin.username = rs.getString("username");
 
                     //menyimpan role pengguna
-                    SessionLogin.setRole(
-                            rs.getString("role")
-                    );
+                    FrameLogin.role = rs.getString("role");
 
                     //menutup form login
                     dispose();

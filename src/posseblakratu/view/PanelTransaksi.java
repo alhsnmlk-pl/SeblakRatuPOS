@@ -14,7 +14,6 @@ import javax.swing.JToggleButton;
 
 import posseblakratu.component.cardMenu;
 import posseblakratu.component.cardTopping;
-import posseblakratu.component.DetailTopping;
 import posseblakratu.component.cardKeranjang;
 
 import java.util.List;
@@ -1558,7 +1557,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         cardKeranjang card = new cardKeranjang();
 
         //membuat list untuk menyimpan data topping yang dipilih
-        List<DetailTopping> toppingDipilih = new ArrayList<>();
+        List<cardKeranjang.ToppingItem> toppingDipilih = new ArrayList<>();
 
         //MENGUMPULKAN TOPPING YANG DIPILIH
 
@@ -1570,7 +1569,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
                 //menyimpan data topping yang dipilih
                 toppingDipilih.add(
-                        new DetailTopping(
+                        new cardKeranjang.ToppingItem(
                                 topping.getIdProduk(),
                                 topping.getNama(),
                                 topping.getHarga(),
@@ -1641,7 +1640,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         cardKeranjang card = new cardKeranjang();
 
         //membuat list topping kosong karena minuman tidak memiliki topping
-        List<DetailTopping> toppingDipilih = new ArrayList<>();
+        List<cardKeranjang.ToppingItem> toppingDipilih = new ArrayList<>();
 
         //mengisi data pada card keranjang
         //level -1 dan hargaLevel 0 karena minuman tidak memiliki level pedas

@@ -13,6 +13,53 @@ import java.util.List;  //Untuk menyimpan daftar topping
  */
 public class cardKeranjang extends javax.swing.JPanel {
 
+    // -------------------------------------------------------------------------
+    // Inner class pengganti DetailTopping
+    // menyimpan data satu item topping pada pesanan
+    // -------------------------------------------------------------------------
+    public static class ToppingItem {
+
+        //id produk topping
+        private final String idProduk;
+
+        //nama topping
+        private final String nama;
+
+        //harga satuan topping
+        private final double harga;
+
+        //qty topping
+        private final int qty;
+
+        //subtotal topping (harga * qty)
+        private final double subtotal;
+
+        //constructor menerima semua data topping
+        public ToppingItem(String idProduk, String nama, double harga, int qty) {
+            this.idProduk = idProduk;
+            this.nama = nama;
+            this.harga = harga;
+            this.qty = qty;
+            this.subtotal = harga * qty;
+        }
+
+        //mengembalikan id produk
+        public String getIdProduk() { return idProduk; }
+
+        //mengembalikan nama topping
+        public String getNama() { return nama; }
+
+        //mengembalikan harga satuan
+        public double getHarga() { return harga; }
+
+        //mengembalikan qty
+        public int getQty() { return qty; }
+
+        //mengembalikan subtotal
+        public double getSubtotal() { return subtotal; }
+    }
+    // -------------------------------------------------------------------------
+
     //id produk menu
     private String idProduk;
 
@@ -38,7 +85,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     private double subtotalMenu;
 
     //menyimpan daftar topping pesanan menggunakan list
-    private List<DetailTopping> daftarTopping;
+    private List<ToppingItem> daftarTopping;
     
     
 
@@ -50,7 +97,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card keranjang
-    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<DetailTopping> daftarTopping) {
+    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<ToppingItem> daftarTopping) {
 
         //menyimpan data menu
         this.idProduk = idProduk;
@@ -89,7 +136,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         }
 
         //melakukan perulangan seluruh topping
-        for (DetailTopping topping : daftarTopping) {
+        for (ToppingItem topping : daftarTopping) {
 
             //menambahkan tanda koma apabila detail tidak kosong
             if (!detail.isEmpty()) {
@@ -120,7 +167,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         double totalPerPorsi = hargaSatuan + hargaLevel;
 
         //menambahkan harga seluruh topping
-        for (DetailTopping topping : daftarTopping) {
+        for (ToppingItem topping : daftarTopping) {
 
             totalPerPorsi += topping.getHarga() * topping.getQty();
 
@@ -186,7 +233,7 @@ public class cardKeranjang extends javax.swing.JPanel {
     }
 
     //mengembalikan daftar topping
-    public List<DetailTopping> getDaftarTopping() {
+    public List<ToppingItem> getDaftarTopping() {
         return daftarTopping;
     }
 
