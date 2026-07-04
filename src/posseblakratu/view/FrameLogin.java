@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package posseblakratu.view;
+
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
@@ -19,7 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -49,24 +48,22 @@ public final class FrameLogin extends javax.swing.JFrame {
         return role;
     }
 
-    /** Creates new form FrameLogin */
+    /**
+     * Creates new form FrameLogin
+     */
     public FrameLogin() {
         initComponents();
-        
+
         //memanggil panel melengkung pada setiap panel yg di lengkungkan
-        panelLengkung(usrContainer); 
+        panelLengkung(usrContainer);
         panelLengkung(passContainer);
         panelLengkung(roleContainer);
-        
-        
-     
+
         tPassword.setEchoChar((char) 0); // placeholder dibuat jadi terlihat
         tPassword.setText("Masukkan Password"); //placehokder bertuliskan masukkan password
-        
 
-        
     }
-    
+
     //method untuk mengatur style panel agar terlihat melengkung
     //menerapkan border dengan warna dan radius tertentu
     void panelLengkung(JPanel p) {
@@ -85,8 +82,6 @@ public final class FrameLogin extends javax.swing.JFrame {
                 1f,
                 20));
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -408,7 +403,7 @@ public final class FrameLogin extends javax.swing.JFrame {
 
     private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
         // TODO add your handling code here:
-        
+
         // membuat logika icon mata, jika icon mata klik maka teks akan terlihat
         if (btnMata.isSelected()) {
             // Password terlihat
@@ -502,7 +497,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         // mengambil teks yang saat ini ada di dalam kolom tUsername
         String username = tUsername.getText();
         // memeriksa apakah teks di dalam kolom masih berupa tulisan placeholder ("Masukkan Username")
-        if(username.equals("Masukkan Username")){
+        if (username.equals("Masukkan Username")) {
             // jika benar masih placeholder, kosongkan kolom agar pengguna bisa langsung mengetik
             tUsername.setText("");
         }
@@ -512,7 +507,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Memeriksa apakah kolom dalam keadaan kosong atau memang teksnya masih placeholder
         String username = tUsername.getText();
-        if(username.equals("")||username.equals("Masukkan Username")){
+        if (username.equals("") || username.equals("Masukkan Username")) {
             // Jika kosong, kembalikan tulisan placeholder
             tUsername.setText("Masukkan Username");
         }
@@ -522,7 +517,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Mengambil teks password dan mengubahnya dari bentuk char[] menjadi String
         String password = String.valueOf(tPassword.getPassword());
-        
+
         // Memeriksa apakah teks di dalam kolom adalah placeholder ("Masukkan Password")
         if (password.equals("Masukkan Password")) {
             // Jika benar, kosongkan kolom agar siap menerima input dari pengguna
@@ -558,8 +553,8 @@ public final class FrameLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252,232,230)); //memgatur warna selection backround di combo box
-            UIManager.put("ComboBox.selectionForeground", new java.awt.Color(0,0,0)); //mengatur warna teks / foreground di selection combo box
+            UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252, 232, 230)); //memgatur warna selection backround di combo box
+            UIManager.put("ComboBox.selectionForeground", new java.awt.Color(0, 0, 0)); //mengatur warna teks / foreground di selection combo box
             UIManager.put("Button.arc", 10); //membaut button melengkung
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {

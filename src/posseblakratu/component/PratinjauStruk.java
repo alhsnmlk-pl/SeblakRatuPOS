@@ -28,7 +28,6 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 
-
 /**
  *
  * @author Al
@@ -68,8 +67,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-
-
     public PratinjauStruk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -86,12 +83,10 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         loadPengaturan(); //mengambil nama toko, alamat, dan footer dari database
 
         loadStrukFromDatabase(); //memanggil pertama kali saat idTransaksi masih null
-        
+
         strukContent.setSize(printStruk.getPreferredSize());
 
     }
-
-
 
     void panelLengkung(JPanel p) {
 
@@ -103,9 +98,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
     }
 
-
-
-    void buttonDesain() {        btnTutup.putClientProperty("FlatLaf.style",
+    void buttonDesain() {
+        btnTutup.putClientProperty("FlatLaf.style",
                 "borderWidth:1; "
                 + "background:#FBF8FF;"
                 + "foreground:#B03A2E;"
@@ -122,11 +116,9 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         );
     }
 
-
     //LOAD DATA PENGATURAN TOKO
     //mengambil nama toko, alamat, nomor telepon, dan footer struk dari tabel pengaturan
     //dipanggil satu kali dari constructor saat dialog pertama kali dibuat
-
     private void loadPengaturan() {
         try {
             Connection conn = Koneksi.konek();
@@ -182,7 +174,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         }
     }
 
-
     //MENERIMA DATA PEMBAYARAN DARI POPUP BAYAR
     //dipanggil dari btnProsesActionPerformed sebelum setHeaderData()
     //menyimpan semua nilai lalu langsung memanggil tampilkanPembayaran()
@@ -218,7 +209,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
     }
 
-
     //MENERIMA HEADER STRUK DARI POPUP BAYAR
     //dipanggil dari btnProsesActionPerformed setelah setPembayaran()
     //mengisi lblNoTrx, lblUser, lblJam lalu memanggil loadStrukFromDatabase() kedua kali
@@ -232,10 +222,9 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         lblNoTrx.setText(idTransaksi);
         lblUser.setText(pengguna);
         lblJam.setText(waktu);
-        
+
         loadStrukFromDatabase();
     }
-
 
     //MENAMPILKAN DATA PEMBAYARAN DI LABEL STRUK
     //mengisi semua label angka di bagian bawah struk (subtotal, diskon, total, metode, bayar, kembali)
@@ -261,14 +250,11 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
     }
 
-
     //LOAD ITEM PESANAN DARI DATABASE KE STRUK
     //pemanggilan pertama dari constructor: idTransaksi null, strukContent kosong
     //pemanggilan kedua dari setHeaderData(): idTransaksi sudah terisi, card struk dibuat
     //setiap item di detail_transaksi dibuatkan satu cardStruk beserta topping-nya
     private void loadStrukFromDatabase() {
-
-       
 
         try {
 
@@ -277,7 +263,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             //bersihkan tampilan struk
             strukContent.removeAll();
 
-         
             //query untuk mengambil detail transaksi
             String sql = """
             SELECT dt.id_detail,
@@ -402,8 +387,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -897,7 +880,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         // TODO add your handling code here:
         cetakStruk();
     }//GEN-LAST:event_btnCetakActionPerformed
-
 
     /**
      * @param args the command line arguments

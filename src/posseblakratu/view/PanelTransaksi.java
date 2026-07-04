@@ -20,7 +20,7 @@ import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList; //lib untuk menyimpan sekumpulan data secara 
-                            //berurutan dgn ukuran yg fleksibel
+//berurutan dgn ukuran yg fleksibel
 import javax.swing.Box;
 
 import posseblakratu.config.Koneksi;
@@ -30,7 +30,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
 
 /**
  *
@@ -61,19 +60,13 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     //menyimpan total pembayaran
     private double total = 0;
-    
+
     //menyimpan id transaksi
     private String idTransaksi;
 
     /**
      * Creates new form PanelTransaksi
      */
-    
-    
-    
-    
-    
-    
     public PanelTransaksi() {
         initComponents();
 
@@ -103,11 +96,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         loadTopping(); //load toping
 
     }
-    
-    
-    
-    
-    
+
     //method styling panel
     void panelLengkung(JPanel p) {
         p.setBorder(new FlatLineBorder(
@@ -185,20 +174,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //MENGISI DAFTAR MENU
-    
     //method untuk menampilkan menu berdasarkan kategori
     void loadMenu(String kategori) {
         //membersihkan panel conten menu
@@ -296,18 +272,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             jScrollPane1.getVerticalScrollBar().setValue(0);
         });
     }
-    
 
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
     //MENGISI DAFTAR TOPPING
     //method untuk menampilkan topping
     void loadTopping() {
@@ -363,13 +328,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         toppingContent.revalidate();
         toppingContent.repaint();
     }
-    
 
-    
-    
-    
     //USER MEMILIH MENU
-    
     //method untuk memilih card menu
     void selectCard(cardMenu selectedCard) {
 
@@ -404,14 +364,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         lblMenu2.setText(selectedCard.getNama());
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     //method untuk mereset panel kostumisasi ke kondisi awal
     //dipanggil setelah user klik next/reset agar panel siap untuk pesanan berikutnya
     void reset() {
@@ -437,11 +390,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             jScrollPane3.getVerticalScrollBar().setValue(0);
         });
     }
-    
-    
+
     //UPDATE SUBTOTAL DAN DISKON
     //dipanggil setiap kali isi keranjang berubah (tambah item, hapus item, atau ubah qty)
-
     //method untuk menghitung subtotal seluruh pesanan
     private void updateSubtotal() {
 
@@ -534,12 +485,22 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         }
     }
-    
-    
 
+    //method untuk mengambil id diskon yang sedang aktif
+    public String getIdDiskon() {
 
+        //mengembalikan id diskon (null jika tidak ada diskon aktif)
+        return idDiskon;
 
+    }
 
+    //method untuk mengambil id transaksi
+    public String getIdTransaksi() {
+
+        //mengembalikan id transaksi
+        return idTransaksi;
+
+    }
 
     //RESET KERANJANG SETELAH TRANSAKSI SELESAI
     //dipanggil dari PopupBayar setelah struk berhasil ditampilkan
@@ -574,7 +535,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         lblTotal.setText("Rp. 0");
 
     }
-
 
     //TAMBAH CARD KE KERANJANG
     //dipanggil dari btnNextActionPerformed dan btnNextMActionPerformed
@@ -631,10 +591,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
-
-
-
-
     //method untuk generate id transaksi otomatis
     private String generateIdTransaksi() {
         //variabel untuk menyimpan id terakhir dari database
@@ -678,28 +634,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         //format ulang jadi TRX0002 dst
         return String.format("TRX%04d", angka);
-    }
-
-
-
-
-
-
-
-    //method untuk mengambil id diskon yang sedang aktif
-    public String getIdDiskon() {
-
-        //mengembalikan id diskon (null jika tidak ada diskon aktif)
-        return idDiskon;
-
-    }
-
-    //method untuk mengambil id transaksi
-    public String getIdTransaksi() {
-
-        //mengembalikan id transaksi
-        return idTransaksi;
-
     }
 
     /**
@@ -1431,14 +1365,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnFilter(filterMinumanM); //memanggil style button filter untuk kategori minuman
         loadMenu("Minuman"); //load menu kategori minuman
     }//GEN-LAST:event_filterMinumanMItemStateChanged
-    
-
-
-
-
 
     //USER PILIH LEVEL PEDAS
-    
+
     private void btnLvl0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl0ItemStateChanged
         // TODO add your handling code here:
         buttonLvl(btnLvl0); //memanggil style button lvl untuk button lvl 0
@@ -1474,17 +1403,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         buttonLvl(btnLvl5); //memanggil style button lvl untuk button lvl 5
         levelPedas = 5;  //menyimpan level pedas yang dipilih = 5
     }//GEN-LAST:event_btnLvl5ItemStateChanged
-    
-    
-    
-    
 
-    
     //USER KLIK TOMBOL BAYAR
-
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         // TODO add your handling code here:
-
         //memeriksa apakah keranjang masih kosong
         if (daftarKeranjang.isEmpty()) {
 
@@ -1500,6 +1422,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             return;
 
         }
+        
         PopupBayar bayar = new PopupBayar((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
 
         //mengirim data pembayaran
@@ -1520,23 +1443,18 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         bayar.setVisible(true);
     }//GEN-LAST:event_btnBayarActionPerformed
-    
-    
-    
-    
+
+
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         reset(); //memanggil method reset
     }//GEN-LAST:event_btnResetActionPerformed
-    
-    
-    //USER KLIK TOMBOL NEXT (SEBLAK)
 
+    //USER KLIK TOMBOL NEXT (SEBLAK)
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
 
         //VALIDASI
-
         //memeriksa apakah ada menu yang dipilih
         if (menuDipilih == null) {
             //jika belum memilih tampilkan pesan
@@ -1552,7 +1470,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
 
         //MEMBUAT CARD KERANJANG
-
         //membuat card keranjang baru
         cardKeranjang card = new cardKeranjang();
 
@@ -1560,7 +1477,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         List<cardKeranjang.ToppingItem> toppingDipilih = new ArrayList<>();
 
         //MENGUMPULKAN TOPPING YANG DIPILIH
-
         //melakukan perulangan seluruh topping
         for (cardTopping topping : daftarTopping) {
 
@@ -1582,7 +1498,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
 
         //HITUNG HARGA LEVEL
-
         //menyimpan biaya tambahan level pedas
         double hargaLevel = 0;
 
@@ -1596,7 +1511,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
 
         //ISI DATA KE CARD KERANJANG
-
         //menyimpan data keranjang
         card.setData(
                 menuDipilih.getIdProduk(),
@@ -1616,17 +1530,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextActionPerformed
 
 
-
-
     private void btnResetMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetMActionPerformed
         // TODO add your handling code here:
         reset(); //memanggil method reset
     }//GEN-LAST:event_btnResetMActionPerformed
 
-
-
     //NEXT DI MINUMAN
-
     private void btnNextMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMActionPerformed
         // TODO add your handling code here:
 

@@ -52,8 +52,6 @@ public class cardTopping extends javax.swing.JPanel {
     public double getHarga() {
         return hargaTopping;
     }
-    
-    
 
     //getter qty stepper untuk membaca value dari qtystepper
     public int getQty() {

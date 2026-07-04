@@ -60,9 +60,7 @@ public final class PopupBayar extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    
     //SAAT POPUP BAYAR DI TAMPILKAN
-    
     public PopupBayar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -126,8 +124,8 @@ public final class PopupBayar extends javax.swing.JDialog {
                 + "arc:8; "
         );
     }
-    
-     void stateBtnBayar(javax.swing.JToggleButton tombol) {
+
+    void stateBtnBayar(javax.swing.JToggleButton tombol) {
         tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
 
         if (tombol.isSelected()) {
@@ -155,14 +153,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         }
     }
 
-    
-    
-    
-    
-
- 
     //MENERIMA DATA DARI PANEL TRANSAKSI
-    
     //dipanggil dari btnBayarActionPerformed untuk mengisi label subtotal, diskon, dan total
     public void setPembayaran(double subtotal,
             double diskon,
@@ -187,13 +178,35 @@ public final class PopupBayar extends javax.swing.JDialog {
         lblTotal.setText("Rp. " + (int) total);
 
     }
-    
 
-   
+    //MENERIMA DAFTAR KERANJANG DARI PANEL TRANSAKSI
+    //dipanggil dari btnBayarActionPerformed sebelum popup ditampilkan
+    public void setKeranjang(List<cardKeranjang> daftarKeranjang) {
 
+        //menyimpan daftar keranjang
+        this.daftarKeranjang = daftarKeranjang;
+
+    }
+
+    //MENERIMA ID TRANSAKSI DARI PANEL TRANSAKSI
+    //dipanggil dari btnBayarActionPerformed
+    public void setIdTransaksi(String idTransaksi) {
+
+        //menyimpan id transaksi
+        this.idTransaksi = idTransaksi;
+
+    }
+
+    //MENERIMA REFERENSI PANEL TRANSAKSI
+    //dibutuhkan untuk mengambil idDiskon dan memanggil resetTransaksi() setelah bayar
+    public void setPanelTransaksi(PanelTransaksi panelTransaksi) {
+
+        //menyimpan object panel transaksi
+        this.panelTransaksi = panelTransaksi;
+
+    }
 
     //USER MEMILIH METODE PEMBAYARAN
-    
     //pilihTunai() mengaktifkan input nominal dan mengosongkan kembalian
     //pilihQris() menonaktifkan input nominal dan langsung mengisi nominal dengan total
     private void pilihTunai() {
@@ -240,18 +253,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         lblKembalian.setText("Rp. 0");
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     //dipanggil setiap kali ada keyReleased di txtNominal
     //menghitung kembalian = nominalBayar - totalBayar
     private void hitungKembalian() {
@@ -281,31 +283,80 @@ public final class PopupBayar extends javax.swing.JDialog {
         }
 
     }
-    
 
+    //SIMPAN HEADER TRANSAKSI KE DATABASE
+    //insert 1 baris ke tabel transaksi berisi id, waktu, subtotal, metode, bayar,
+    //kembalian, total, id_pengguna, dan id_diskon (null jika tidak ada diskon)
+    private boolean simpanTransaksi() {
 
+        //membuat query untuk menyimpan transaksi
+        String sql = "INSERT INTO transaksi VALUES (?,?,?,?,?,?,?,?,?)";
 
-    //MENERIMA DAFTAR KERANJANG DARI PANEL TRANSAKSI
-    //dipanggil dari btnBayarActionPerformed sebelum popup ditampilkan
-    public void setKeranjang(List<cardKeranjang> daftarKeranjang) {
+        try {
 
-        //menyimpan daftar keranjang
-        this.daftarKeranjang = daftarKeranjang;
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan query
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            //mengisi parameter id transaksi (sudah diterima dari PanelTransaksi)
+            pst.setString(1, idTransaksi);
+
+            //mengisi parameter tanggal transaksi
+            pst.setTimestamp(2, new java.sql.Timestamp(System.currentTimeMillis()));
+
+            //mengisi parameter subtotal transaksi
+            pst.setDouble(3, subtotal);
+
+            //mengisi parameter metode pembayaran
+            pst.setString(4, metodePembayaran);
+
+            //mengisi parameter jumlah bayar
+            pst.setDouble(5, nominalBayar);
+
+            //mengisi parameter kembalian
+            pst.setDouble(6, kembalian);
+
+            //mengisi parameter total akhir
+            pst.setDouble(7, totalBayar);
+
+            //mengisi id pengguna yang sedang login
+            pst.setString(8, FrameLogin.getIdPengguna());
+
+            //mengambil id diskon dari panel transaksi
+            String idDiskon = panelTransaksi.getIdDiskon();
+
+            //memeriksa apakah ada diskon
+            if (idDiskon != null) {
+
+                //menyimpan id diskon ke database
+                pst.setString(9, idDiskon);
+
+            } else {
+
+                //jika tidak ada diskon, simpan NULL
+                pst.setNull(9, java.sql.Types.VARCHAR);
+
+            }
+
+            //menjalankan proses penyimpanan
+            pst.executeUpdate();
+
+            //mengembalikan status berhasil
+            return true;
+
+        } catch (SQLException e) {
+
+            //menampilkan pesan kesalahan
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+
+        //mengembalikan status gagal
+        return false;
 
     }
-
-
-
-    //MENERIMA ID TRANSAKSI DARI PANEL TRANSAKSI
-    //dipanggil dari btnBayarActionPerformed
-    public void setIdTransaksi(String idTransaksi) {
-
-        //menyimpan id transaksi
-        this.idTransaksi = idTransaksi;
-
-    }
-
-
 
     //GENERATE ID DETAIL TRANSAKSI
     //mengambil id terakhir dari tabel detail_transaksi lalu increment angkanya
@@ -363,8 +414,6 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     }
 
-    
-    
     //GENERATE ID DETAIL TOPPING
     //mengambil id terakhir dari tabel detail_topping lalu increment angkanya
     //format hasil: TTP0001, TTP0002, dst
@@ -402,8 +451,6 @@ public final class PopupBayar extends javax.swing.JDialog {
         return String.format("TTP%04d", angka);
     }
 
-    
-    
     //SIMPAN DETAIL TRANSAKSI DAN TOPPING KE DATABASE
     //dipanggil setelah simpanTransaksi() berhasil
     //loop seluruh keranjang lalu insert ke detail_transaksi dan detail_topping
@@ -508,96 +555,6 @@ public final class PopupBayar extends javax.swing.JDialog {
                 }
 
             }
-
-            //mengembalikan status berhasil
-            return true;
-
-        } catch (SQLException e) {
-
-            //menampilkan pesan kesalahan
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        }
-
-        //mengembalikan status gagal
-        return false;
-
-    }
-
-
-    
-    
-    
-    //MENERIMA REFERENSI PANEL TRANSAKSI
-    //dibutuhkan untuk mengambil idDiskon dan memanggil resetTransaksi() setelah bayar
-    public void setPanelTransaksi(PanelTransaksi panelTransaksi) {
-
-        //menyimpan object panel transaksi
-        this.panelTransaksi = panelTransaksi;
-
-    }
-
-
-    
-    
-    //SIMPAN HEADER TRANSAKSI KE DATABASE
-    //insert 1 baris ke tabel transaksi berisi id, waktu, subtotal, metode, bayar,
-    //kembalian, total, id_pengguna, dan id_diskon (null jika tidak ada diskon)
-    private boolean simpanTransaksi() {
-
-        //membuat query untuk menyimpan transaksi
-        String sql = "INSERT INTO transaksi VALUES (?,?,?,?,?,?,?,?,?)";
-
-        try {
-
-            //membuka koneksi ke database
-            Connection conn = Koneksi.konek();
-
-            //menyiapkan query
-            PreparedStatement pst = conn.prepareStatement(sql);
-
-            //mengisi parameter id transaksi (sudah diterima dari PanelTransaksi)
-            pst.setString(1, idTransaksi);
-
-            //mengisi parameter tanggal transaksi
-            pst.setTimestamp(2, new java.sql.Timestamp(System.currentTimeMillis()));
-
-            //mengisi parameter subtotal transaksi
-            pst.setDouble(3, subtotal);
-
-            //mengisi parameter metode pembayaran
-            pst.setString(4, metodePembayaran);
-
-            //mengisi parameter jumlah bayar
-            pst.setDouble(5, nominalBayar);
-
-            //mengisi parameter kembalian
-            pst.setDouble(6, kembalian);
-
-            //mengisi parameter total akhir
-            pst.setDouble(7, totalBayar);
-
-            //mengisi id pengguna yang sedang login
-            pst.setString(8, FrameLogin.getIdPengguna());
-
-            //mengambil id diskon dari panel transaksi
-            String idDiskon = panelTransaksi.getIdDiskon();
-
-            //memeriksa apakah ada diskon
-            if (idDiskon != null) {
-
-                //menyimpan id diskon ke database
-                pst.setString(9, idDiskon);
-
-            } else {
-
-                //jika tidak ada diskon, simpan NULL
-                pst.setNull(9, java.sql.Types.VARCHAR);
-
-            }
-
-            //menjalankan proses penyimpanan
-            pst.executeUpdate();
 
             //mengembalikan status berhasil
             return true;
@@ -960,8 +917,6 @@ public final class PopupBayar extends javax.swing.JDialog {
         pilihQris(); //menonaktifkan input nominal dan mengisi dengan nilai total
     }//GEN-LAST:event_btnQrisItemStateChanged
 
-
-
     //USER KLIK TOMBOL PROSES DAN CETAK STRUK
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
@@ -1023,7 +978,6 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnProsesActionPerformed
 
-
     //USER MENGETIK NOMINAL PEMBAYARAN
 
     private void txtNominalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNominalKeyReleased
@@ -1047,7 +1001,6 @@ public final class PopupBayar extends javax.swing.JDialog {
         //menutup popup bayar tanpa menyimpan apapun
         dispose();
     }//GEN-LAST:event_btnBatalActionPerformed
-
 
     /**
      * @param args the command line arguments

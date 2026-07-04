@@ -4,8 +4,6 @@
  */
 package posseblakratu.component;
 
-
-
 /**
  *
  * @author Al
@@ -20,7 +18,7 @@ public class cardStruk extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card struk
-    public void setData(String namaMenu,String detailTopping,int qty,double hargaSatuan, double subtotal) {
+    public void setData(String namaMenu, String detailTopping, int qty, double hargaSatuan, double subtotal) {
 
         //menampilkan nama menu
         lblMenuLvl.setText(namaMenu);
@@ -29,19 +27,15 @@ public class cardStruk extends javax.swing.JPanel {
         lblTopping.setText(detailTopping);
 
         //membuat tulisan qty dan harga
-        String qtyHarga = qty + " x " + "Rp."+(int)hargaSatuan;
+        String qtyHarga = qty + " x " + "Rp." + (int) hargaSatuan;
 
         //menampilkan qty dan harga
-        lblQty.setText("Rp."+qtyHarga);
+        lblQty.setText("Rp." + qtyHarga);
 
         //menampilkan subtotal pesanan
-        lblTotal.setText(String.valueOf("Rp."+(int) subtotal));
+        lblTotal.setText(String.valueOf("Rp." + (int) subtotal));
 
     }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

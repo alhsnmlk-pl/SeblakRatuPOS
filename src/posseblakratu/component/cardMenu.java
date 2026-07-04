@@ -23,8 +23,6 @@ public class cardMenu extends javax.swing.JPanel {
     private double hargaMenu;
     private String deskripsiMenu;
     private String kategoriMenu;
-   
-    
 
     /**
      * Creates new form cardMenu
@@ -34,6 +32,15 @@ public class cardMenu extends javax.swing.JPanel {
 
         updateStyle();  //memanggil style card menu
 
+    }
+
+    public void setSelected(boolean selected) {     //membuat setter selected
+        this.selected = selected; //mengubah status card
+        updateStyle();  //memperbarui tampilan setelah status berubah
+    }
+
+    public boolean isSelected() {  //membuat getter selected untuk mengembalikan nilai selected
+        return selected;
     }
 
     //membuat styling selected dan !selected
@@ -53,17 +60,6 @@ public class cardMenu extends javax.swing.JPanel {
         }
         repaint();
     }
-
-    public void setSelected(boolean selected) {     //membuat setter selected
-        this.selected = selected; //mengubah status card
-        updateStyle();  //memperbarui tampilan setelah status berubah
-    }
-
-    public boolean isSelected() {  //membuat getter selected untuk mengembalikan nilai selected
-        return selected;
-    }
-
-    
 
     //Membuat method click listener agar saat semua bagian card bisa di klik
     public void addClickListener(MouseListener listener) {

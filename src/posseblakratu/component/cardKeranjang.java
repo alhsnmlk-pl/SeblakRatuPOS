@@ -47,32 +47,8 @@ public class cardKeranjang extends javax.swing.JPanel {
         initComponents();
     }
 
-    //method untuk mengisi data pada card keranjang
-    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<ToppingItem> daftarTopping) {
-
-        //menyimpan data menu
-        this.idProduk = idProduk;
-        this.namaMenu = namaMenu;
-        this.hargaSatuan = hargaSatuan;
-        this.level = level;
-        this.hargaLevel = hargaLevel;
-        this.daftarTopping = daftarTopping;
-
-        //menampilkan nama menu
-        lblMenuPesan.setText(namaMenu);
-
-        //mengatur qty awal menjadi satu
-        qtyKeranjang.setValue(1);
-
-        //menampilkan detail pesanan
-        tampilkanDetail();
-
-        //menghitung subtotal
-        updateHarga();
-
-    }
-
-    // menyimpan data satu item topping pada pesanan
+    // membuat class topping item di dslam class
+    // untuk menyimpan data satu item topping pada pesanan
     public static class ToppingItem {
 
         //id produk topping
@@ -90,7 +66,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         //subtotal topping (harga * qty)
         private final double subtotal;
 
-        //constructor menerima semua data topping
+        //menerima semua data topping
         public ToppingItem(String idProduk, String nama, double harga, int qty) {
             this.idProduk = idProduk;
             this.nama = nama;
@@ -123,6 +99,31 @@ public class cardKeranjang extends javax.swing.JPanel {
         public double getSubtotal() {
             return subtotal;
         }
+    }
+
+    //method untuk mengisi data pada card keranjang
+    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<ToppingItem> daftarTopping) {
+
+        //menyimpan data menu
+        this.idProduk = idProduk;
+        this.namaMenu = namaMenu;
+        this.hargaSatuan = hargaSatuan;
+        this.level = level;
+        this.hargaLevel = hargaLevel;
+        this.daftarTopping = daftarTopping;
+
+        //menampilkan nama menu
+        lblMenuPesan.setText(namaMenu);
+
+        //mengatur qty awal menjadi satu
+        qtyKeranjang.setValue(1);
+
+        //menampilkan detail pesanan
+        tampilkanDetail();
+
+        //menghitung subtotal
+        updateHarga();
+
     }
 
     //method untuk menampilkan detail pesanan
