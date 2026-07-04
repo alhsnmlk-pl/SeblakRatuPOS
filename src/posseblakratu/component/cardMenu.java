@@ -71,7 +71,7 @@ public class cardMenu extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card menu
-    public void setData(String idProduk, String namaMenu, double hargaMenu, String kategoriMenu, String deskripsiMenu) { //pastikan urutan penamaan variable di ingat
+    public void setData(String idProduk, String namaMenu, double hargaMenu, String kategoriMenu, String deskripsiMenu) {
 
         //menyimpan data produk
         this.idProduk = idProduk;
@@ -160,6 +160,7 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk.setLineWrap(true);
         lblDesk.setRows(2);
         lblDesk.setTabSize(0);
+        lblDesk.setText("Sayur, mie, makaroni");
         lblDesk.setBorder(null);
         lblDesk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         lblDesk.setEnabled(false);

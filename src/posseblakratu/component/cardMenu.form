@@ -122,6 +122,7 @@
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="2"/>
             <Property name="tabSize" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Sayur, mie, makaroni"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

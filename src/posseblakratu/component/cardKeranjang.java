@@ -5,7 +5,7 @@
 package posseblakratu.component;
 
 //import library list, lib ini berfungsi utuk menyimpan kumpulan data dalam satu variable
-import java.util.List;  //Untuk menyimpan daftar topping
+import java.util.List;
 
 /**
  *
@@ -47,7 +47,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         initComponents();
     }
 
-    // membuat class topping item di dslam class
+    // membuat class toppingItem di dslam class
     // untuk menyimpan data satu item topping pada pesanan
     public static class ToppingItem {
 

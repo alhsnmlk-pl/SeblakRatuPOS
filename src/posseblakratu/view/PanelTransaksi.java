@@ -19,8 +19,7 @@ import posseblakratu.component.cardKeranjang;
 import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList; //lib untuk menyimpan sekumpulan data secara 
-//berurutan dgn ukuran yg fleksibel
+import java.util.ArrayList;
 import javax.swing.Box;
 
 import posseblakratu.config.Koneksi;
@@ -36,12 +35,18 @@ import javax.swing.SwingUtilities;
  * @author Al
  */
 public final class PanelTransaksi extends javax.swing.JPanel {
+    
+    //Membuat list penyimpan card untuk menyimpan semua card menu
+    List<cardMenu> daftarMenu = new ArrayList<>();
 
-    List<cardMenu> daftarMenu = new ArrayList<>(); //Membuat list penyimpan card untuk menyimpan semua card menu
-    List<cardTopping> daftarTopping = new ArrayList<>(); //Membuat list penyimpan card topping
-    List<cardKeranjang> daftarKeranjang = new ArrayList<>(); //membuat list penyimpan card keranjang
+    //Membuat list penyimpan card topping
+    List<cardTopping> daftarTopping = new ArrayList<>();
 
-    private CardLayout cardLayout; //mendeklarasikan CardLayout menjadi cardLayout agar bisa eipakai di banyak method
+    //membuat list penyimpan card keranjang
+    List<cardKeranjang> daftarKeranjang = new ArrayList<>();
+
+    //mendeklarasikan CardLayout menjadi cardLayout agar bisa eipakai di banyak method
+    private CardLayout cardLayout;
 
     //deklarasikan variable untuk menyimpan data menu yg di pilih
     private cardMenu menuDipilih;
