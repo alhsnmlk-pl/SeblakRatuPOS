@@ -7,7 +7,9 @@ package posseblakratu.component;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Insets;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -181,6 +183,32 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                             + footer
                             + "</b></center></html>"
                     );
+
+                }
+
+                //mengambil path logo toko dari database
+                String logo = rs.getString("logo_toko");
+
+                //jika path logo tidak kosong, tampilkan gambar ke label logo struk
+                if (logo != null && !logo.isEmpty()) {
+
+                    //membuat ImageIcon dari path logo
+                    ImageIcon icon = new ImageIcon(logo);
+
+                    //mengubah ukuran gambar agar sesuai dengan label logo struk
+                    Image image = icon.getImage().getScaledInstance(
+                            97,
+                            97,
+                            Image.SCALE_SMOOTH
+                    );
+
+                    //menampilkan gambar logo ke dalam label struk
+                    jLabel3.setIcon(new ImageIcon(image));
+
+                } else {
+
+                    //jika tidak ada logo, hapus icon dan biarkan label kosong
+                    jLabel3.setIcon(null);
 
                 }
 
