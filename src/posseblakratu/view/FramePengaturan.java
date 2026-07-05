@@ -687,6 +687,15 @@ public final class FramePengaturan extends javax.swing.JFrame {
                     String sourcePath = file.getAbsolutePath();
                     File sourceFile = new File(sourcePath);
 
+                    //menghapus file logo lama jika ada
+                    String pathLama = tPathFoto.getText();
+                    if (pathLama != null && !pathLama.isEmpty()) {
+                        File fileLama = new File(pathLama);
+                        if (fileLama.exists()) {
+                            fileLama.delete();
+                        }
+                    }
+
                     //menentukan folder tujuan untuk menyimpan logo
                     String destinationFolderPath = "src/logo/";
                     File destinationFolder = new File(destinationFolderPath);
