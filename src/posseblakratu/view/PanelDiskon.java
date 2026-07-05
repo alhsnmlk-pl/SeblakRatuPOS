@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  *
  * @author Al
  */
-public class PanelDiskon extends javax.swing.JPanel {
+public final class PanelDiskon extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelDiskon DesainUI.setGlobal

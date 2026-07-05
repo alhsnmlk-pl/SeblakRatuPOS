@@ -402,25 +402,21 @@ public final class FrameLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
-        // TODO add your handling code here:
-
-        // membuat logika icon mata, jika icon mata klik maka teks akan terlihat
+        //jika tombol mata diklik maka tampilkan password, jika diklik lagi sembunyikan
         if (btnMata.isSelected()) {
-            // Password terlihat
+            //tampilkan teks password
             tPassword.setEchoChar((char) 0);
         } else {
-            // Password disembunyikan
+            //sembunyikan teks password dengan karakter bullet
             tPassword.setEchoChar('•');
         }
     }//GEN-LAST:event_btnMataActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-
-        //ambil teks yg dimasukkan user pada field username 
+        //ambil teks yang dimasukkan user pada field username
         String username = tUsername.getText();
 
-        //ambil teks yg dimasukkan user pada field password
+        //ambil teks yang dimasukkan user pada field password
         String password = String.valueOf(tPassword.getPassword());
 
         //ambil role yang dipilih pada combobox
@@ -429,37 +425,37 @@ public final class FrameLogin extends javax.swing.JFrame {
         //periksa apakah username dan password tidak kosong
         if (username.length() != 0 && password.length() != 0) {
             try {
-                //query sql utk mencari user dengan username, password, role dan status
+                //query sql untuk mencari user dengan username, password, role dan status aktif
                 String sql = "SELECT * FROM pengguna WHERE username=? AND password=MD5(?) AND role=? AND status='Aktif'";
 
                 //membuat koneksi ke database
-                Connection con = Koneksi.konek();
+                Connection conn = Koneksi.konek();
 
-                //siapkan statement sql dgn parameter
-                PreparedStatement ps = con.prepareStatement(sql);
+                //siapkan statement sql dengan parameter
+                PreparedStatement ps = conn.prepareStatement(sql);
 
-                //isi parameter pertama (?) dgn username
+                //isi parameter pertama dengan username
                 ps.setString(1, username);
 
-                //isi parameter kedua (?) dgn password yg akan di hash MD5
+                //isi parameter kedua dengan password yang akan di hash MD5
                 ps.setString(2, password);
 
-                //isi parameter ketiga (?) dgn role
+                //isi parameter ketiga dengan role
                 ps.setString(3, role);
 
                 //jalankan query dan ambil hasilnya
                 ResultSet rs = ps.executeQuery();
 
-                //jika hasil query memiliki hasil (berarti login berhasil)
+                //jika hasil query memiliki data berarti login berhasil
                 if (rs.next()) {
 
-                    //menyimpan id pengguna yang sedang login
+                    //menyimpan id pengguna yang sedang login ke session
                     FrameLogin.idPengguna = rs.getString("id_pengguna");
 
-                    //menyimpan username yang sedang login
+                    //menyimpan username yang sedang login ke session
                     FrameLogin.username = rs.getString("username");
 
-                    //menyimpan role pengguna
+                    //menyimpan role pengguna ke session
                     FrameLogin.role = rs.getString("role");
 
                     //menutup form login
@@ -468,79 +464,73 @@ public final class FrameLogin extends javax.swing.JFrame {
                     //cek role untuk membuka frame yang sesuai
                     if (role.equals("Kasir")) {
 
+                        //buka frame kasir
                         new FrameKasir().setVisible(true);
 
                     } else if (role.equals("Owner")) {
 
+                        //buka frame owner
                         new FrameOwner().setVisible(true);
 
                     }
 
                 } else {
-                    //jika data tdk ditemukan, tampilkan pesan error
+                    //jika data tidak ditemukan tampilkan pesan error
                     JOptionPane.showMessageDialog(null, "Username/Password/Role salah atau akun tidak aktif");
                 }
 
             } catch (SQLException sQLException) {
-                //jika terjadi kesalahan sql, tampilkan pesan error
-                JOptionPane.showMessageDialog(null, sQLException.getMessage());
+                //jika terjadi kesalahan sql tampilkan pesan error
+                JOptionPane.showMessageDialog(null, "Gagal melakukan login!");
             }
         } else {
-            //jika username / password kosong, beri peringatan ke user
+            //jika username atau password kosong beri peringatan ke user
             JOptionPane.showMessageDialog(null, "Username/password tidak boleh kosong");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void tUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusGained
-        // TODO add your handling code here:
-        // focus gained aktif ketika pengguna mengklik atau mengarahkan kursor ke dalam field text
-        // mengambil teks yang saat ini ada di dalam kolom tUsername
+        //ambil teks yang saat ini ada di field username
         String username = tUsername.getText();
-        // memeriksa apakah teks di dalam kolom masih berupa tulisan placeholder ("Masukkan Username")
+
+        //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
         if (username.equals("Masukkan Username")) {
-            // jika benar masih placeholder, kosongkan kolom agar pengguna bisa langsung mengetik
             tUsername.setText("");
         }
     }//GEN-LAST:event_tUsernameFocusGained
 
     private void tUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusLost
-        // TODO add your handling code here:
-        // Memeriksa apakah kolom dalam keadaan kosong atau memang teksnya masih placeholder
+        //ambil teks yang ada di field username
         String username = tUsername.getText();
+
+        //jika kosong kembalikan tulisan placeholder
         if (username.equals("") || username.equals("Masukkan Username")) {
-            // Jika kosong, kembalikan tulisan placeholder
             tUsername.setText("Masukkan Username");
         }
     }//GEN-LAST:event_tUsernameFocusLost
 
     private void tPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordFocusGained
-        // TODO add your handling code here:
-        // Mengambil teks password dan mengubahnya dari bentuk char[] menjadi String
+        //ambil teks password dan ubah dari char[] menjadi String
         String password = String.valueOf(tPassword.getPassword());
 
-        // Memeriksa apakah teks di dalam kolom adalah placeholder ("Masukkan Password")
+        //jika masih berisi placeholder kosongkan dan aktifkan karakter bullet
         if (password.equals("Masukkan Password")) {
-            // Jika benar, kosongkan kolom agar siap menerima input dari pengguna
             tPassword.setText("");
-            // Aktifkan karakter penyamat (bullet '•') agar password yang diketik bersifat rahasia/bintang-bintang
             tPassword.setEchoChar('•');
         }
-
     }//GEN-LAST:event_tPasswordFocusGained
 
     private void tPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordFocusLost
-        // TODO add your handling code here:
-        // Mengambil teks password saat ini untuk dicek
+        //ambil teks password untuk dicek
         String password = String.valueOf(tPassword.getPassword());
 
-        // Memeriksa apakah pengguna membiarkan kolom password ini kosong (tidak mengetik apa pun)
+        //jika kosong kembalikan ke placeholder
         if (password.isEmpty()) {
-            // Matikan fungsi echo char (diubah ke angka 0) agar teks placeholder bisa terbaca normal (bukan berupa titik-titik)
+            //nonaktifkan echo char agar teks placeholder bisa terbaca
             tPassword.setEchoChar((char) 0);
-            // Tampilkan kembali teks petunjuk placeholder-nya
+            //tampilkan kembali teks placeholder
             tPassword.setText("Masukkan Password");
         }
-
     }//GEN-LAST:event_tPasswordFocusLost
 
     /**

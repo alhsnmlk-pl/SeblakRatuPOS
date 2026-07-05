@@ -211,10 +211,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             }
 
             //membuat koneksi ke database
-            Connection con = Koneksi.konek();
+            Connection conn = Koneksi.konek();
 
             //siapkan statement sql
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
 
             //mengisi parameter kategori jika bukan semua
             if (!kategori.equals("Semua")) {
@@ -263,8 +263,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         } catch (SQLException sQLException) {
 
-            //jika terjadi kesalahan sql, tampilkan pesan error
-            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+            //jika terjadi kesalahan sql tampilkan pesan error
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data menu!");
 
         }
 
@@ -291,10 +291,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             String sql = "SELECT * FROM produk WHERE kategori='Topping' ORDER BY id_produk";
 
             //membuat koneksi ke database
-            Connection con = Koneksi.konek();
+            Connection conn = Koneksi.konek();
 
             //siapkan statement sql
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
 
             //jalankan query dan ambil hasilnya
             ResultSet rs = ps.executeQuery();
@@ -324,8 +324,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         } catch (SQLException sQLException) {
 
-            //jika terjadi kesalahan sql, tampilkan pesan error
-            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+            //jika terjadi kesalahan sql tampilkan pesan error
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data topping!");
 
         }
 
@@ -374,26 +374,30 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //dipanggil setelah user klik next/reset agar panel siap untuk pesanan berikutnya
     void reset() {
 
-        // Menghapus status terpilih pada semua card menu
+        //menghapus status terpilih pada semua card menu
         for (cardMenu card : daftarMenu) {
             card.setSelected(false);
         }
 
-        buttonGroupLvl.clearSelection(); //menegmbalikan selection button lvl ke posisi awal
-        levelPedas = -1; //mengembalikan nilai lvl pedas ke -1
+        //mengembalikan selection button level ke posisi awal
+        buttonGroupLvl.clearSelection();
+
+        //mengembalikan nilai level pedas ke -1 (belum memilih)
+        levelPedas = -1;
 
         //mengembalikan qty seluruh topping ke nilai awal
         for (cardTopping topping : daftarTopping) {
             topping.resetQty();
         }
 
-        //menampilkan panel kostumisasi (kosong)
+        //menampilkan panel kostumisasi kosong
         cardLayout.show(containerKostumisasi, "kostumKosong");
 
         //mengembalikan posisi scroll topping ke paling atas
         SwingUtilities.invokeLater(() -> {
             jScrollPane3.getVerticalScrollBar().setValue(0);
         });
+
     }
 
     //UPDATE SUBTOTAL DAN DISKON
@@ -423,20 +427,12 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //method untuk menghitung diskon
     private void updateDiskon() {
 
-        try {
+        //query untuk mengambil diskon yang sedang aktif berdasarkan tanggal dan status
+        String sql = "SELECT * FROM diskon WHERE status='Aktif' AND NOW() BETWEEN tgl_mulai AND tgl_selesai LIMIT 1";
 
+        try {
             //menghubungkan ke database
             Connection conn = Koneksi.konek();
-
-            //query mengambil diskon yang sedang aktif
-            String sql = """
-                    SELECT *
-                    FROM diskon
-                    WHERE status='Aktif'
-                    AND NOW() BETWEEN tgl_mulai
-                    AND tgl_selesai
-                    LIMIT 1
-                    """;
 
             //menyiapkan query
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -460,22 +456,17 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 //mengambil nilai diskon
                 double nilaiDiskon = rs.getDouble("nilai_diskon");
 
-                //jika nominal
+                //jika tipe nominal maka diskon tetap
                 if (tipeDiskon.equals("Nominal")) {
-
-                    //diskon tetap
                     diskon = nilaiDiskon;
-
                 } else {
-
-                    //diskon persen
+                    //jika tipe persen maka diskon dihitung dari subtotal
                     diskon = subtotal * (nilaiDiskon / 100);
-
                 }
 
             }
 
-            //menghitung total akhir SEKALI SAJA
+            //menghitung total akhir
             total = subtotal - diskon;
 
             //menampilkan diskon
@@ -484,11 +475,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             //menampilkan total
             lblTotal.setText("Rp. " + (int) total);
 
-        } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data diskon
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data diskon!");
         }
+
     }
 
     //method untuk mengambil id diskon yang sedang aktif
@@ -621,9 +612,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 lastId = rs.getString("id_transaksi");
             }
 
-        } catch (SQLException e) {
-            //tampilkan error jika gagal
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil id transaksi
+            JOptionPane.showMessageDialog(null, "Gagal membuat id transaksi!");
         }
 
         //jika belum ada transaksi sama sekali
@@ -1350,173 +1341,142 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         add(containerKeranjang1);
     }// </editor-fold>//GEN-END:initComponents
 
-    //USER MEMILIH FILTER MENU (OPSIONAL)
-    //dipanggil ketika user mengklik tombol filter semua, seblak, atau minuman
-    //akan memanggil loadMenu() dengan kategori yang dipilih
     private void filterSemuaMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSemuaMItemStateChanged
-        // TODO add your handling code here:
-        btnFilter(filterSemuaM); //memanggil style button filter untuk kategori semua
-        loadMenu("Semua"); //load menu kategori semua
+        //perbarui tampilan tombol filter semua
+        btnFilter(filterSemuaM);
+        //load menu kategori semua
+        loadMenu("Semua");
     }//GEN-LAST:event_filterSemuaMItemStateChanged
 
     private void filterSeblakMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSeblakMItemStateChanged
-        // TODO add your handling code here:
-        btnFilter(filterSeblakM); //memanggil style button filter untuk kategori seblak
-        loadMenu("Seblak"); //load menu kategori seblak
+        //perbarui tampilan tombol filter seblak
+        btnFilter(filterSeblakM);
+        //load menu kategori seblak
+        loadMenu("Seblak");
     }//GEN-LAST:event_filterSeblakMItemStateChanged
 
     private void filterMinumanMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterMinumanMItemStateChanged
-        // TODO add your handling code here:
-        btnFilter(filterMinumanM); //memanggil style button filter untuk kategori minuman
-        loadMenu("Minuman"); //load menu kategori minuman
+        //perbarui tampilan tombol filter minuman
+        btnFilter(filterMinumanM);
+        //load menu kategori minuman
+        loadMenu("Minuman");
     }//GEN-LAST:event_filterMinumanMItemStateChanged
 
-    //USER PILIH LEVEL PEDAS
-
     private void btnLvl0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl0ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl0); //memanggil style button lvl untuk button lvl 0
-        levelPedas = 0; //menyimpan level pedas yang dipilih = 0
+        //perbarui tampilan tombol level 0
+        buttonLvl(btnLvl0);
+        //simpan level pedas yang dipilih
+        levelPedas = 0;
     }//GEN-LAST:event_btnLvl0ItemStateChanged
 
     private void btnLvl1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl1ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl1); //memanggil style button lvl untuk button lvl 1
-        levelPedas = 1; //menyimpan level pedas yang dipilih = 1
+        //perbarui tampilan tombol level 1
+        buttonLvl(btnLvl1);
+        //simpan level pedas yang dipilih
+        levelPedas = 1;
     }//GEN-LAST:event_btnLvl1ItemStateChanged
 
     private void btnLvl2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl2ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl2); //memanggil style button lvl untuk button lvl 2
-        levelPedas = 2; //menyimpan level pedas yang dipilih = 2
+        //perbarui tampilan tombol level 2
+        buttonLvl(btnLvl2);
+        //simpan level pedas yang dipilih
+        levelPedas = 2;
     }//GEN-LAST:event_btnLvl2ItemStateChanged
 
     private void btnLvl3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl3ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl3); //memanggil style button lvl untuk button lvl 3
-        levelPedas = 3; //menyimpan level pedas yang dipilih = 3
+        //perbarui tampilan tombol level 3
+        buttonLvl(btnLvl3);
+        //simpan level pedas yang dipilih
+        levelPedas = 3;
     }//GEN-LAST:event_btnLvl3ItemStateChanged
 
     private void btnLvl4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl4ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl4); //memanggil style button lvl untuk button lvl 4
-        levelPedas = 4; //menyimpan level pedas yang dipilih = 4
+        //perbarui tampilan tombol level 4
+        buttonLvl(btnLvl4);
+        //simpan level pedas yang dipilih
+        levelPedas = 4;
     }//GEN-LAST:event_btnLvl4ItemStateChanged
 
     private void btnLvl5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLvl5ItemStateChanged
-        // TODO add your handling code here:
-        buttonLvl(btnLvl5); //memanggil style button lvl untuk button lvl 5
-        levelPedas = 5;  //menyimpan level pedas yang dipilih = 5
+        //perbarui tampilan tombol level 5
+        buttonLvl(btnLvl5);
+        //simpan level pedas yang dipilih
+        levelPedas = 5;
     }//GEN-LAST:event_btnLvl5ItemStateChanged
 
-    //USER KLIK TOMBOL BAYAR
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
-        // TODO add your handling code here:
-        //memeriksa apakah keranjang masih kosong
+        //periksa apakah keranjang masih kosong
         if (daftarKeranjang.isEmpty()) {
-
-            //menampilkan pesan bahwa belum ada menu yang dipilih
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Keranjang masih kosong.\nSilakan pilih menu terlebih dahulu!",
-                    "Peringatan",
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-            //menghentikan proses pembayaran
+            //tampilkan pesan bahwa belum ada menu yang dipilih
+            JOptionPane.showMessageDialog(null, "Keranjang masih kosong, silakan pilih menu terlebih dahulu!");
             return;
-
         }
-        
+
+        //buat objek popup bayar
         PopupBayar bayar = new PopupBayar((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
 
-        //mengirim data pembayaran
-        bayar.setPembayaran(
-                subtotal,
-                diskon,
-                total
-        );
+        //kirim data subtotal, diskon, dan total ke popup
+        bayar.setPembayaran(subtotal, diskon, total);
 
-        //mengirim object PanelTransaksi ke popup
+        //kirim referensi panel transaksi ke popup
         bayar.setPanelTransaksi(this);
 
-        //mengirim seluruh isi keranjang
+        //kirim seluruh isi keranjang ke popup
         bayar.setKeranjang(daftarKeranjang);
 
-        //mengirim id transaksi yang sudah di-generate
+        //kirim id transaksi yang sudah di-generate ke popup
         bayar.setIdTransaksi(idTransaksi);
 
+        //tampilkan popup bayar
         bayar.setVisible(true);
     }//GEN-LAST:event_btnBayarActionPerformed
 
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // TODO add your handling code here:
-        reset(); //memanggil method reset
+        //panggil method reset untuk mengosongkan pilihan
+        reset();
     }//GEN-LAST:event_btnResetActionPerformed
 
-    //USER KLIK TOMBOL NEXT (SEBLAK)
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-
-        //VALIDASI
-        //memeriksa apakah ada menu yang dipilih
+        //validasi: periksa apakah ada menu yang dipilih
         if (menuDipilih == null) {
-            //jika belum memilih tampilkan pesan
             JOptionPane.showMessageDialog(null, "Silakan pilih menu terlebih dahulu");
             return;
         }
 
-        //memeriksa apakah level pedas belum dipilih
+        //validasi: periksa apakah level pedas sudah dipilih
         if (levelPedas == -1) {
-            //jika belum memilih tampilkan pesan
             JOptionPane.showMessageDialog(null, "Silakan pilih level pedas");
             return;
         }
 
-        //MEMBUAT CARD KERANJANG
-        //membuat card keranjang baru
+        //buat card keranjang baru
         cardKeranjang card = new cardKeranjang();
 
-        //membuat list untuk menyimpan data topping yang dipilih
+        //buat list untuk menyimpan data topping yang dipilih
         List<cardKeranjang.ToppingItem> toppingDipilih = new ArrayList<>();
 
-        //MENGUMPULKAN TOPPING YANG DIPILIH
-        //melakukan perulangan seluruh topping
+        //kumpulkan topping yang qty-nya lebih dari nol
         for (cardTopping topping : daftarTopping) {
-
-            //memeriksa apakah qty topping lebih dari nol
             if (topping.getQty() > 0) {
-
-                //menyimpan data topping yang dipilih
-                toppingDipilih.add(
-                        new cardKeranjang.ToppingItem(
-                                topping.getIdProduk(),
-                                topping.getNama(),
-                                topping.getHarga(),
-                                topping.getQty()
-                        )
-                );
-
+                //tambahkan topping yang dipilih ke list
+                toppingDipilih.add(new cardKeranjang.ToppingItem(
+                        topping.getIdProduk(),
+                        topping.getNama(),
+                        topping.getHarga(),
+                        topping.getQty()
+                ));
             }
-
         }
 
-        //HITUNG HARGA LEVEL
-        //menyimpan biaya tambahan level pedas
+        //hitung biaya tambahan level pedas (level 4 = Rp1.000, level 5 = Rp2.000)
         double hargaLevel = 0;
-
-        //memeriksa level pedas yang dipilih
         if (levelPedas == 4) {
-            //menambahkan biaya level 4
             hargaLevel = 1000;
         } else if (levelPedas == 5) {
-            //menambahkan biaya level 5
             hargaLevel = 2000;
         }
 
-        //ISI DATA KE CARD KERANJANG
-        //menyimpan data keranjang
+        //isi data ke card keranjang
         card.setData(
                 menuDipilih.getIdProduk(),
                 menuDipilih.getNama(),
@@ -1526,38 +1486,32 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 toppingDipilih
         );
 
-        //menambahkan card ke keranjang dan memperbarui tampilan
+        //tambahkan card ke keranjang dan perbarui tampilan
         tambahKeKeranjang(card);
 
-        //mengembalikan panel kostumisasi ke kondisi awal
+        //kembalikan panel kostumisasi ke kondisi awal
         reset();
-
     }//GEN-LAST:event_btnNextActionPerformed
 
-
     private void btnResetMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetMActionPerformed
-        // TODO add your handling code here:
-        reset(); //memanggil method reset
+        //panggil method reset untuk mengosongkan pilihan
+        reset();
     }//GEN-LAST:event_btnResetMActionPerformed
 
-    //NEXT DI MINUMAN
     private void btnNextMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMActionPerformed
-        // TODO add your handling code here:
-
-        //memeriksa apakah ada menu yang dipilih
+        //validasi: periksa apakah ada menu yang dipilih
         if (menuDipilih == null) {
             JOptionPane.showMessageDialog(null, "Silakan pilih menu terlebih dahulu");
             return;
         }
 
-        //membuat card keranjang baru
+        //buat card keranjang baru
         cardKeranjang card = new cardKeranjang();
 
-        //membuat list topping kosong karena minuman tidak memiliki topping
+        //buat list topping kosong karena minuman tidak memiliki topping
         List<cardKeranjang.ToppingItem> toppingDipilih = new ArrayList<>();
 
-        //mengisi data pada card keranjang
-        //level -1 dan hargaLevel 0 karena minuman tidak memiliki level pedas
+        //isi data ke card keranjang dengan level -1 dan hargaLevel 0 (minuman tidak ada level)
         card.setData(
                 menuDipilih.getIdProduk(),
                 menuDipilih.getNama(),
@@ -1567,12 +1521,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 toppingDipilih
         );
 
-        //menambahkan card ke keranjang dan memperbarui tampilan
+        //tambahkan card ke keranjang dan perbarui tampilan
         tambahKeKeranjang(card);
 
-        //mengembalikan panel kostumisasi ke kondisi awal
+        //kembalikan panel kostumisasi ke kondisi awal
         reset();
-
     }//GEN-LAST:event_btnNextMActionPerformed
 
 

@@ -116,27 +116,36 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         );
     }
 
-    //LOAD DATA PENGATURAN TOKO
-    //mengambil nama toko, alamat, nomor telepon, dan footer struk dari tabel pengaturan
-    //dipanggil satu kali dari constructor saat dialog pertama kali dibuat
+    //method untuk mengambil data pengaturan toko dari database
     private void loadPengaturan() {
+
+        //query untuk mengambil data pengaturan toko
+        String sql = "SELECT * FROM pengaturan LIMIT 1";
+
         try {
+            //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            String sql = "SELECT * FROM pengaturan LIMIT 1";
+            //siapkan statement
             PreparedStatement ps = conn.prepareStatement(sql);
+
+            //jalankan query
             ResultSet rs = ps.executeQuery();
 
+            //jika data ditemukan
             if (rs.next()) {
 
+                //tampilkan nama toko di label
                 lblNama.setText(rs.getString("nama_umkm"));
 
+                //ambil alamat dan nomor telepon dari database
                 String alamat = rs.getString("alamat");
                 String telp = rs.getString("no_telepon");
 
-                // Kalau alamat di database pakai Enter
+                //ganti karakter enter dengan tag br agar bisa tampil di label html
                 alamat = alamat.replaceAll("\\r?\\n", "<br>");
 
+                //tampilkan alamat dan nomor telepon
                 lblInfo.setText(
                         "<html><center>"
                         + alamat
@@ -144,39 +153,51 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                         + "</center></html>"
                 );
 
+                //ambil teks footer struk dari database
                 String footer = rs.getString("footer_struk");
 
+                //ganti karakter enter dengan tag br
                 footer = footer.replaceAll("\\r?\\n", "<br>");
 
+                //pisah footer menjadi maksimal dua bagian
                 String[] baris = footer.split("<br>", 2);
 
+                //jika footer memiliki dua baris
                 if (baris.length == 2) {
+
+                    //tampilkan baris pertama tebal dan baris kedua biasa
                     lblFooter.setText(
                             "<html><center>"
                             + "<b>" + baris[0] + "</b><br>"
                             + baris[1]
                             + "</center></html>"
                     );
+
                 } else {
+
+                    //tampilkan satu baris dengan format tebal
                     lblFooter.setText(
                             "<html><center><b>"
                             + footer
                             + "</b></center></html>"
                     );
+
                 }
+
             }
 
+            //tutup result set dan statement
             rs.close();
             ps.close();
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data pengaturan
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data pengaturan!");
         }
+
     }
 
-    //MENERIMA DATA PEMBAYARAN DARI POPUP BAYAR
-    //dipanggil dari btnProsesActionPerformed sebelum setHeaderData()
-    //menyimpan semua nilai lalu langsung memanggil tampilkanPembayaran()
+    //method untuk menerima data pembayaran dari PopupBayar
     public void setPembayaran(
             double subtotal,
             double diskon,
@@ -204,30 +225,38 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         //menyimpan metode pembayaran
         this.metodePembayaran = metodePembayaran;
 
-        //menampilkan data pembayaran
+        //menampilkan data pembayaran ke label struk
         tampilkanPembayaran();
 
     }
 
-    //MENERIMA HEADER STRUK DARI POPUP BAYAR
-    //dipanggil dari btnProsesActionPerformed setelah setPembayaran()
-    //mengisi lblNoTrx, lblUser, lblJam lalu memanggil loadStrukFromDatabase() kedua kali
-    //kali ini idTransaksi sudah terisi sehingga query akan menghasilkan data
+    //method untuk menerima data header struk dari PopupBayar
     public void setHeaderData(String idTransaksi, String pengguna, String waktu) {
 
+        //menyimpan id transaksi
         this.idTransaksi = idTransaksi;
+
+        //menyimpan username kasir
         this.pengguna = pengguna;
+
+        //menyimpan waktu transaksi
         this.waktu = waktu;
 
+        //tampilkan id transaksi di label
         lblNoTrx.setText(idTransaksi);
+
+        //tampilkan username kasir di label
         lblUser.setText(pengguna);
+
+        //tampilkan waktu transaksi di label
         lblJam.setText(waktu);
 
+        //load item pesanan dari database setelah id transaksi terisi
         loadStrukFromDatabase();
+
     }
 
-    //MENAMPILKAN DATA PEMBAYARAN DI LABEL STRUK
-    //mengisi semua label angka di bagian bawah struk (subtotal, diskon, total, metode, bayar, kembali)
+    //method untuk menampilkan semua nilai pembayaran ke label struk
     private void tampilkanPembayaran() {
 
         //menampilkan subtotal transaksi
@@ -250,79 +279,81 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
     }
 
-    //LOAD ITEM PESANAN DARI DATABASE KE STRUK
-    //pemanggilan pertama dari constructor: idTransaksi null, strukContent kosong
-    //pemanggilan kedua dari setHeaderData(): idTransaksi sudah terisi, card struk dibuat
-    //setiap item di detail_transaksi dibuatkan satu cardStruk beserta topping-nya
+    //method untuk mengambil dan menampilkan item pesanan dari database ke struk
+    //dipanggil dua kali: pertama saat konstruktor (idTransaksi null), kedua saat setHeaderData()
     private void loadStrukFromDatabase() {
 
-        try {
+        //query untuk mengambil detail item pesanan berdasarkan id transaksi
+        String sql = "SELECT dt.id_detail, p.nama_produk, dt.kuantitas, dt.level, dt.harga_satuan, dt.subtotal_produk "
+                + "FROM detail_transaksi dt "
+                + "JOIN produk p ON dt.id_produk = p.id_produk "
+                + "WHERE dt.id_transaksi = ?";
 
+        try {
+            //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //bersihkan tampilan struk
+            //bersihkan tampilan struk sebelum diisi ulang
             strukContent.removeAll();
 
-            //query untuk mengambil detail transaksi
-            String sql = """
-            SELECT dt.id_detail,
-                   p.nama_produk,
-                   dt.kuantitas,
-                   dt.level,
-                   dt.harga_satuan,
-                   dt.subtotal_produk
-            FROM detail_transaksi dt
-            JOIN produk p ON dt.id_produk = p.id_produk
-            WHERE dt.id_transaksi = ?
-        """;
-
+            //siapkan statement dengan parameter id transaksi
             PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter id transaksi
             ps.setString(1, idTransaksi);
 
+            //jalankan query dan ambil hasilnya
             ResultSet rs = ps.executeQuery();
 
-            //looping produk
+            //melakukan iterasi untuk setiap item pesanan
             while (rs.next()) {
 
+                //ambil id detail untuk dipakai query topping
                 String idDetail = rs.getString("id_detail");
 
+                //ambil nama produk
                 String namaMenu = rs.getString("nama_produk");
 
+                //jika menu memiliki level pedas, tambahkan ke nama
                 if (rs.getString("level") != null) {
                     namaMenu += " Lvl " + rs.getString("level");
                 }
 
-                //query mengambil topping per produk
-                String sqlTopping = """
-                SELECT p.nama_produk,
-                       tp.kuantitas,
-                       tp.subtotal_topping
-                FROM detail_topping tp
-                JOIN produk p ON tp.id_produk = p.id_produk
-                WHERE tp.id_detail = ?
-            """;
+                //query untuk mengambil topping dari item ini
+                String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
+                        + "FROM detail_topping tp "
+                        + "JOIN produk p ON tp.id_produk = p.id_produk "
+                        + "WHERE tp.id_detail = ?";
 
+                //siapkan statement topping
                 PreparedStatement pst = conn.prepareStatement(sqlTopping);
+
+                //isi parameter id detail
                 pst.setString(1, idDetail);
 
+                //jalankan query topping
                 ResultSet rsT = pst.executeQuery();
 
+                //variabel untuk menyimpan teks topping
                 String detailTopping = "";
 
+                //melakukan iterasi untuk setiap topping
                 while (rsT.next()) {
 
+                    //tambahkan koma jika bukan topping pertama
                     if (!detailTopping.isEmpty()) {
                         detailTopping += ", ";
                     }
 
-                    detailTopping += rsT.getString("nama_produk")
-                            + " x" + rsT.getInt("kuantitas");
+                    //tambahkan nama topping dan qty ke teks detail
+                    detailTopping += rsT.getString("nama_produk") + " x" + rsT.getInt("kuantitas");
 
                 }
 
-                //membuat card struk
+                //membuat card struk baru untuk item ini
                 cardStruk item = new cardStruk();
 
+                //isi data card struk
                 item.setData(
                         namaMenu,
                         detailTopping,
@@ -331,61 +362,83 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                         rs.getDouble("subtotal_produk")
                 );
 
+                //tambahkan jarak sebelum card
                 strukContent.add(Box.createVerticalStrut(7));
+
+                //tambahkan card ke panel struk
                 strukContent.add(item);
+
+                //tutup result set dan statement topping
                 rsT.close();
                 pst.close();
+
             }
 
+            //perbarui tampilan panel struk
             strukContent.revalidate();
             strukContent.repaint();
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data detail transaksi
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data struk!");
         }
+
     }
 
+    //method untuk mencetak struk menggunakan printer
     private void cetakStruk() {
 
         try {
 
-            // ambil job printer
+            //ambil objek printer job
             PrinterJob job = PrinterJob.getPrinterJob();
 
+            //atur konten yang akan dicetak
             job.setPrintable(new Printable() {
 
                 @Override
                 public int print(Graphics g, PageFormat pf, int pageIndex)
                         throws PrinterException {
 
-                    // hanya 1 halaman
+                    //hanya cetak satu halaman
                     if (pageIndex > 0) {
                         return NO_SUCH_PAGE;
                     }
 
+                    //cast graphics ke graphics2d untuk rendering
                     Graphics2D g2d = (Graphics2D) g;
 
-                    // geser margin
+                    //geser posisi sesuai margin halaman
                     g2d.translate(pf.getImageableX(), pf.getImageableY());
 
-                    // render panel struk jadi gambar
+                    //render panel struk ke printer
                     printStruk.printAll(g2d);
 
                     return PAGE_EXISTS;
+
                 }
+
             });
 
-            // tampilkan dialog print
+            //tampilkan dialog pilih printer
             boolean doPrint = job.printDialog();
 
+            //jika pengguna mengkonfirmasi cetak
             if (doPrint) {
+
+                //jalankan proses cetak
                 job.print();
+
+                //tutup dialog pratinjau setelah cetak
                 dispose();
+
             }
 
         } catch (PrinterException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            //tampilkan pesan jika gagal mencetak
+            JOptionPane.showMessageDialog(null, "Gagal mencetak struk!");
         }
+
     }
 
     /**
@@ -862,22 +915,18 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //USER MENUTUP PRATINJAU STRUK
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
         //menutup dialog pratinjau struk dengan klik ikon X di header
         dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
-        // TODO add your handling code here:
         //menutup dialog pratinjau struk dengan tombol tutup
         dispose();
     }//GEN-LAST:event_btnTutupActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        // TODO add your handling code here:
+        //memanggil method cetak struk
         cetakStruk();
     }//GEN-LAST:event_btnCetakActionPerformed
 
