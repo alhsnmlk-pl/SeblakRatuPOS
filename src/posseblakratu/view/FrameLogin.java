@@ -18,6 +18,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,6 +64,8 @@ public final class FrameLogin extends javax.swing.JFrame {
         tPassword.setEchoChar((char) 0); // placeholder dibuat jadi terlihat
         tPassword.setText("Masukkan Password"); //placehokder bertuliskan masukkan password
 
+        //memanggil method untuk menampilkan logo toko dari database
+        loadLogoLogin();
     }
 
     //method untuk mengatur style panel agar terlihat melengkung
@@ -81,6 +85,66 @@ public final class FrameLogin extends javax.swing.JFrame {
                 Color.decode("#E7BDBB"),
                 1f,
                 20));
+    }
+
+
+    //membuat method load logo toko dari database ke label logo di halaman login
+    void loadLogoLogin() {
+
+        //query SQL untuk mengambil data pengaturan toko dari database
+        String sql = "SELECT * FROM pengaturan LIMIT 1";
+
+        try {
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan statement SQL
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //menjalankan query dan menyimpan hasilnya
+            ResultSet rs = ps.executeQuery();
+
+            //jika data ditemukan
+            if (rs.next()) {
+
+                //menampilkan nama toko dari database ke label lblToko
+                lblToko.setText(rs.getString("nama_umkm"));
+
+                //mengambil path logo dari database
+                String logo = rs.getString("logo_toko");
+
+                //jika path logo tidak kosong, tampilkan gambar ke label logo
+                if (logo != null && !logo.isEmpty()) {
+
+                    //membuat ImageIcon dari path logo
+                    ImageIcon icon = new ImageIcon(logo);
+
+                    //mengambil ukuran dari icon default yang sudah terpasang di label
+                    int w = lblLogo.getIcon() != null ? lblLogo.getIcon().getIconWidth() : 150;
+                    int h = lblLogo.getIcon() != null ? lblLogo.getIcon().getIconHeight() : 150;
+
+                    //mengubah ukuran gambar agar sesuai dengan label lblLogo
+                    Image image = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+
+                    //menghapus teks pada label logo
+                    lblLogo.setText("");
+
+                    //menampilkan gambar logo ke dalam label lblLogo
+                    lblLogo.setIcon(new ImageIcon(image));
+
+                } else {
+
+                    //jika tidak ada logo, tampilkan teks default dan hapus icon
+                    lblLogo.setText("Logo Tidak Ada");
+                    lblLogo.setIcon(null);
+
+                }
+            }
+
+        } catch (SQLException sQLException) {
+            //menampilkan pesan error jika gagal mengambil data
+            JOptionPane.showMessageDialog(null, "gagal mengambil data!");
+        }
     }
 
     /**
