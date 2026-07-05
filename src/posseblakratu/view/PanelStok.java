@@ -7,13 +7,26 @@ package posseblakratu.view;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import posseblakratu.config.Koneksi;
 
 /**
  *
  * @author Al
  */
 public class PanelStok extends javax.swing.JPanel {
+
+    //menyimpan id_stok dari baris tabel yang sedang dipilih
+    private String idStokDipilih = "";
+
+    //true jika pengguna sedang mode edit, false jika mode tambah
+    private boolean sedangEdit = false;
 
     /**
      * Creates new form PanelStok
@@ -26,7 +39,8 @@ public class PanelStok extends javax.swing.JPanel {
         panelLengkung(jPanel14);
         panelLengkung(jPanel19);
 
-
+        //memanggil method untuk menampilkan data stok ke tabel
+        load_tabel_stok();
     }
     
     
@@ -53,6 +67,127 @@ public class PanelStok extends javax.swing.JPanel {
                 10));
     }
 
+
+    void reset() {
+        //ubah judul panel kembali ke tambah stok
+        lblTambahProduk.setText("Tambah Stok");
+
+        //kosongkan semua field input
+        tNamaStok.setText(null);
+        tJmlStok.setText(null);
+        tSatuanStok.setText(null);
+        tHargaStok.setText(null);
+
+        //hapus seleksi pada tabel
+        tblStok.clearSelection();
+
+        //kembalikan ke mode tambah
+        sedangEdit = false;
+        idStokDipilih = "";
+    }
+
+
+    //membuat method untuk generate id stok otomatis
+    String generateIdStok() {
+
+        //variabel untuk menyimpan id terakhir dari database
+        String lastId = null;
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //query untuk mengambil id stok terakhir
+            String sql = "SELECT id_stok FROM stok_bahan ORDER BY id_stok DESC LIMIT 1";
+
+            //siapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //jalankan query
+            ResultSet rs = ps.executeQuery();
+
+            //jika ada data
+            if (rs.next()) {
+                 //ambil id terakhirnya
+                lastId = rs.getString("id_stok");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan error jika gagal
+            JOptionPane.showMessageDialog(null, "Gagal membuat id stok!");
+        }
+
+        //jika belum ada stok sama sekali
+        if (lastId == null) {
+            return "STK0001";
+        }
+
+        //mengambil angka dari STK0001 → 0001
+        int angka = Integer.parseInt(lastId.substring(3));
+
+        //increment angka
+        angka++;
+
+        //format ulang jadi STK0002 dst
+        return String.format("STK%04d", angka);
+    }
+
+
+    //membuat method load tabel stok
+    void load_tabel_stok() {
+
+        //membuat model tabel baru
+        DefaultTableModel model = new DefaultTableModel();
+
+        //menambahkan kolom ke dalam model tabel (tidak ada kolom id_stok)
+        model.addColumn("Nama Bahan");
+        model.addColumn("Stok");
+        model.addColumn("Harga");
+        model.addColumn("Satuan");
+
+        //ambil id pengguna yang sedang login dari session
+        String idPenggunaLogin = FrameLogin.getIdPengguna();
+
+        //query SQL hanya mengambil data milik pengguna yang sedang login
+        String sql = "SELECT nama_stok, jumlah_stok, harga_satuan, satuan FROM stok_bahan WHERE id_pengguna = ?";
+
+        try {
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //siapkan statement dengan parameter
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter id_pengguna dari session login
+            ps.setString(1, idPenggunaLogin);
+
+            //jalankan query dan ambil hasilnya
+            ResultSet rs = ps.executeQuery();
+
+            //melakukan iterasi untuk setiap baris hasil query
+            while (rs.next()) {
+
+                //mengambil data dari setiap kolom
+                String namaStok = rs.getString("nama_stok");
+                int jumlahStok = rs.getInt("jumlah_stok");
+                int hargaStok = (int) rs.getDouble("harga_satuan");
+                String satuanStok = rs.getString("satuan");
+
+                //menyimpan data ke dalam array
+                Object[] baris = {namaStok, jumlahStok, hargaStok, satuanStok};
+
+                //menambahkan baris ke model tabel
+                model.addRow(baris);
+            }
+        } catch (SQLException sQLException) {
+            //menampilkan pesan error jika gagal mengambil data
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data stok!");
+        }
+
+        //menampilkan model yang sudah diisi ke dalam tabel GUI
+        tblStok.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,10 +201,6 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblTambahProduk = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnSimpanStok = new javax.swing.JButton();
-        btnBatalStok = new javax.swing.JButton();
-        btnHapusStok = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -88,15 +219,17 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel19 = new javax.swing.JPanel();
         tHargaStok = new javax.swing.JTextField();
         lblRupiahProduk = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btnSimpanTambahStok = new javax.swing.JButton();
+        btnBatalStok = new javax.swing.JButton();
+        btnHapusPengguna = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         JLabell = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        btnTambahProduk = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCustom1 = new jtablecustom.JTableCustom();
+        tblStok = new jtablecustom.JTableCustom();
 
         setBackground(new java.awt.Color(252, 249, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -131,54 +264,6 @@ public class PanelStok extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
-        jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
-        jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
-
-        btnSimpanStok.setBackground(new java.awt.Color(214, 4, 39));
-        btnSimpanStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnSimpanStok.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpanStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
-        btnSimpanStok.setText("Simpan Perubahan");
-        btnSimpanStok.setBorderPainted(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel4.add(btnSimpanStok, gridBagConstraints);
-
-        btnBatalStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnBatalStok.setText("Batal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel4.add(btnBatalStok, gridBagConstraints);
-
-        btnHapusStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnHapusStok.setForeground(new java.awt.Color(214, 4, 39));
-        btnHapusStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
-        btnHapusStok.setText("Hapus");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel4.add(btnHapusStok, gridBagConstraints);
-
-        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
-
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
 
@@ -203,11 +288,9 @@ public class PanelStok extends javax.swing.JPanel {
 
         tNamaStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tNamaStok.setForeground(new java.awt.Color(92, 62, 60));
-        tNamaStok.setText("Contoh: Es Jeruk");
         tNamaStok.setBorder(null);
         tNamaStok.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaStok.setPreferredSize(new java.awt.Dimension(126, 19));
-        tNamaStok.addActionListener(this::tNamaStokActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -238,8 +321,12 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel9.setForeground(new java.awt.Color(92, 62, 60));
 
         tJmlStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tJmlStok.setText("0");
         tJmlStok.setBorder(null);
+        tJmlStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tJmlStokKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -260,7 +347,6 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         tSatuanStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tSatuanStok.setText("Kilogram (Kg)");
         tSatuanStok.setBorder(null);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -291,7 +377,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
         lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText("Harga Jual");
+        lblNamaProduk3.setText("Harga Stok");
         lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel15.add(lblNamaProduk3, java.awt.BorderLayout.PAGE_START);
 
@@ -306,7 +392,11 @@ public class PanelStok extends javax.swing.JPanel {
         tHargaStok.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tHargaStok.setMargin(new java.awt.Insets(10, 20, 10, 6));
         tHargaStok.setOpaque(true);
-        tHargaStok.addActionListener(this::tHargaStokActionPerformed);
+        tHargaStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tHargaStokKeyTyped(evt);
+            }
+        });
         jPanel19.add(tHargaStok, java.awt.BorderLayout.CENTER);
 
         lblRupiahProduk.setBackground(new java.awt.Color(255, 255, 255));
@@ -339,6 +429,59 @@ public class PanelStok extends javax.swing.JPanel {
 
         jPanel1.add(jPanel7, java.awt.BorderLayout.CENTER);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
+        jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
+        jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        btnSimpanTambahStok.setBackground(new java.awt.Color(214, 4, 39));
+        btnSimpanTambahStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnSimpanTambahStok.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanTambahStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
+        btnSimpanTambahStok.setText("Simpan Perubahan");
+        btnSimpanTambahStok.setBorderPainted(false);
+        btnSimpanTambahStok.addActionListener(this::btnSimpanTambahStokActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 111;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
+        jPanel4.add(btnSimpanTambahStok, gridBagConstraints);
+
+        btnBatalStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnBatalStok.setText("Batal");
+        btnBatalStok.setFocusable(false);
+        btnBatalStok.addActionListener(this::btnBatalStokActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 73;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
+        jPanel4.add(btnBatalStok, gridBagConstraints);
+
+        btnHapusPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
+        btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
+        btnHapusPengguna.setText("Hapus");
+        btnHapusPengguna.setFocusable(false);
+        btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 51;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
+        jPanel4.add(btnHapusPengguna, gridBagConstraints);
+
+        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -361,19 +504,6 @@ public class PanelStok extends javax.swing.JPanel {
         JLabell.setName(""); // NOI18N
         JLabell.setPreferredSize(new java.awt.Dimension(198, 63));
 
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
-        jPanel10.setPreferredSize(new java.awt.Dimension(150, 60));
-        jPanel10.setLayout(new java.awt.BorderLayout());
-
-        btnTambahProduk.setBackground(new java.awt.Color(214, 4, 39));
-        btnTambahProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnTambahProduk.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambahProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
-        btnTambahProduk.setText("Tambah Baru");
-        btnTambahProduk.setBorderPainted(false);
-        jPanel10.add(btnTambahProduk, java.awt.BorderLayout.CENTER);
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -381,16 +511,12 @@ public class PanelStok extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(JLabell, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JLabell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(JLabell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -401,26 +527,28 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Cabai Rawit Merah", "3", "15.000"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nama Bahan", "Stok", "Satuan"
+
             }
         ));
-        jTableCustom1.setCellPaddingLeft(25);
-        jTableCustom1.setCellPaddingRight(25);
-        jTableCustom1.setCenterColumns("1,2");
-        jTableCustom1.setColumnWidths("250,50,80");
-        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jTableCustom1.setHeaderPaddingLeft(25);
-        jTableCustom1.setHeaderPaddingRight(25);
-        jTableCustom1.setLeftColumns("0");
-        jScrollPane1.setViewportView(jTableCustom1);
+        tblStok.setCellPaddingLeft(25);
+        tblStok.setCellPaddingRight(25);
+        tblStok.setCenterColumns("1,2,3");
+        tblStok.setColumnWidths("250,50,80");
+        tblStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        tblStok.setHeaderPaddingLeft(25);
+        tblStok.setHeaderPaddingRight(25);
+        tblStok.setLeftColumns("0");
+        tblStok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStokMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblStok);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -429,23 +557,259 @@ public class PanelStok extends javax.swing.JPanel {
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tNamaStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaStokActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaStokActionPerformed
+    private void tblStokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStokMouseClicked
+        //ambil indeks baris yang diklik pada tabel stok
+        int baris = tblStok.rowAtPoint(evt.getPoint());
 
-    private void tHargaStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tHargaStokActionPerformed
+        //abaikan jika klik tidak mengenai baris manapun
+        if (baris == -1) {
+            return;
+        }
+
+        //ambil nilai dari kolom 0 (nama stok)
+        String namaStok = tblStok.getValueAt(baris, 0).toString();
+
+        //ambil nilai dari kolom 1 (jumlah stok)
+        String jumlahStok = tblStok.getValueAt(baris, 1).toString();
+
+        //ambil nilai dari kolom 2 (harga satuan)
+        String hargaStok = tblStok.getValueAt(baris, 2).toString();
+
+        //ambil nilai dari kolom 3 (satuan)
+        String satuanStok = tblStok.getValueAt(baris, 3).toString();
+
+        //query ke database untuk mengambil id_stok berdasarkan nama stok dan id pengguna
+        String sql = "SELECT id_stok FROM stok_bahan WHERE nama_stok = ? AND id_pengguna = ?";
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //siapkan statement dengan parameter
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter nama stok dari baris yang diklik
+            ps.setString(1, namaStok);
+
+            //isi parameter id pengguna dari session login
+            ps.setString(2, FrameLogin.getIdPengguna());
+
+            //jalankan query
+            ResultSet rs = ps.executeQuery();
+
+            //jika data ditemukan, simpan id_stok ke variabel
+            if (rs.next()) {
+                idStokDipilih = rs.getString("id_stok");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil id stok
+            JOptionPane.showMessageDialog(null, "Gagal mengambil id stok!");
+            return;
+        }
+
+        //aktifkan mode edit
+        sedangEdit = true;
+
+        //ubah judul panel menjadi Edit Stok
+        lblTambahProduk.setText("Edit Stok");
+
+        //tampilkan data dari baris yang dipilih ke form input
+        tNamaStok.setText(namaStok);
+        tJmlStok.setText(jumlahStok);
+        tSatuanStok.setText(satuanStok);
+        tHargaStok.setText(hargaStok);
+    }//GEN-LAST:event_tblStokMouseClicked
+
+    private void btnBatalStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalStokActionPerformed
+        //panggil method reset untuk mengosongkan form dan kembali ke mode tambah
+        reset();
+    }//GEN-LAST:event_btnBatalStokActionPerformed
+
+    private void btnSimpanTambahStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanTambahStokActionPerformed
+        //ambil input dari semua field form
+        String namaStok = tNamaStok.getText();
+        String jumlahStok = tJmlStok.getText();
+        String satuanStok = tSatuanStok.getText();
+        String hargaStok = tHargaStok.getText();
+
+        //validasi: semua field wajib diisi
+        if (namaStok.isEmpty() || jumlahStok.isEmpty() || satuanStok.isEmpty() || hargaStok.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+            return;
+        }
+
+        //konversi jumlah dan harga ke tipe numerik
+        int jumlahInt = Integer.parseInt(jumlahStok);
+        double hargaDouble = Double.parseDouble(hargaStok);
+
+        if (sedangEdit) {
+            //MODE EDIT: update data yang sudah ada berdasarkan id_stok
+
+            //query SQL untuk mengubah data stok
+            String sql = "UPDATE stok_bahan SET nama_stok=?, jumlah_stok=?, harga_satuan=?, satuan=? WHERE id_stok=?";
+
+            try {
+                //buka koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //siapkan statement dengan parameter
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //isi parameter nama stok baru
+                ps.setString(1, namaStok);
+
+                //isi parameter jumlah stok baru
+                ps.setInt(2, jumlahInt);
+
+                //isi parameter harga satuan baru
+                ps.setDouble(3, hargaDouble);
+
+                //isi parameter satuan baru
+                ps.setString(4, satuanStok);
+
+                //isi parameter kondisi WHERE dengan id_stok yang dipilih
+                ps.setString(5, idStokDipilih);
+
+                //jalankan query update
+                ps.execute();
+
+                //tampilkan pesan berhasil
+                JOptionPane.showMessageDialog(null, "Data stok berhasil diubah!");
+
+            } catch (SQLException sQLException) {
+                //tampilkan pesan jika gagal mengubah data
+                JOptionPane.showMessageDialog(null, "Data stok gagal diubah!");
+            }
+
+        } else {
+            //MODE TAMBAH: insert data baru ke database
+
+            //generate id_stok baru secara otomatis
+            String idStokBaru = generateIdStok();
+
+            //ambil id pengguna yang sedang login dari session
+            String idPenggunaLogin = FrameLogin.getIdPengguna();
+
+            //query SQL untuk menyisipkan data stok baru
+            String sql = "INSERT INTO stok_bahan (id_stok, nama_stok, jumlah_stok, satuan, harga_satuan, id_pengguna) VALUES (?,?,?,?,?,?)";
+
+            try {
+                //buka koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //siapkan statement dengan parameter
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //isi parameter id_stok yang sudah di-generate
+                ps.setString(1, idStokBaru);
+
+                //isi parameter nama stok
+                ps.setString(2, namaStok);
+
+                //isi parameter jumlah stok
+                ps.setInt(3, jumlahInt);
+
+                //isi parameter satuan
+                ps.setString(4, satuanStok);
+
+                //isi parameter harga satuan
+                ps.setDouble(5, hargaDouble);
+
+                //isi parameter id pengguna dari session login
+                ps.setString(6, idPenggunaLogin);
+
+                //jalankan query insert
+                ps.execute();
+
+                //tampilkan pesan berhasil
+                JOptionPane.showMessageDialog(null, "Data stok berhasil disimpan!");
+
+            } catch (SQLException sQLException) {
+                //tampilkan pesan jika gagal menyimpan data
+                JOptionPane.showMessageDialog(null, "Data stok gagal disimpan!");
+            }
+        }
+
+        //muat ulang tabel agar perubahan tampil
+        load_tabel_stok();
+
+        //reset form kembali ke mode tambah
+        reset();
+    }//GEN-LAST:event_btnSimpanTambahStokActionPerformed
+
+    private void btnHapusPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPenggunaActionPerformed
+        //cek apakah ada baris yang dipilih dari tabel
+        if (!sedangEdit) {
+            JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
+            return;
+        }
+
+        //tampilkan dialog konfirmasi sebelum menghapus
+        int konfirmasi = JOptionPane.showConfirmDialog(null,
+                "Yakin ingin menghapus stok ini?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION);
+
+        //jika pengguna memilih tidak, batalkan hapus
+        if (konfirmasi != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        //query SQL untuk menghapus data stok berdasarkan id_stok
+        String sql = "DELETE FROM stok_bahan WHERE id_stok=?";
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //siapkan statement dengan parameter
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter id_stok dari baris yang dipilih
+            ps.setString(1, idStokDipilih);
+
+            //jalankan query delete
+            ps.execute();
+
+            //tampilkan pesan berhasil
+            JOptionPane.showMessageDialog(null, "Data stok berhasil dihapus!");
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal menghapus data
+            JOptionPane.showMessageDialog(null, "Data stok gagal dihapus!");
+        }
+
+        //muat ulang tabel agar perubahan tampil
+        load_tabel_stok();
+
+        //reset form kembali ke mode tambah
+        reset();
+    }//GEN-LAST:event_btnHapusPenggunaActionPerformed
+
+    private void tJmlStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tJmlStokKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_tHargaStokActionPerformed
+        char huruf = evt.getKeyChar();
+        if(!Character.isDigit(huruf)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tJmlStokKeyTyped
+
+    private void tHargaStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tHargaStokKeyTyped
+        // TODO add your handling code here:
+        char huruf = evt.getKeyChar();
+        if(!Character.isDigit(huruf)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tHargaStokKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabell;
     private javax.swing.JButton btnBatalStok;
-    private javax.swing.JButton btnHapusStok;
-    private javax.swing.JButton btnSimpanStok;
-    private javax.swing.JButton btnTambahProduk;
+    private javax.swing.JButton btnHapusPengguna;
+    private javax.swing.JButton btnSimpanTambahStok;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -463,7 +827,6 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk3;
@@ -473,5 +836,6 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JTextField tJmlStok;
     private javax.swing.JTextField tNamaStok;
     private javax.swing.JTextField tSatuanStok;
+    private jtablecustom.JTableCustom tblStok;
     // End of variables declaration//GEN-END:variables
 }
