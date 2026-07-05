@@ -397,7 +397,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     }
 
     //UPDATE SUBTOTAL DAN DISKON
-    //dipanggil setiap kali isi keranjang berubah (tambah item, hapus item, atau ubah qty)
+    //dipanggil setiap kali isi keranjang berubah (tambah item, hapus item)
     //method untuk menghitung subtotal seluruh pesanan
     private void updateSubtotal() {
 
