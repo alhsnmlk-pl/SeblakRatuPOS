@@ -992,8 +992,10 @@ public final class PopupBayar extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNominalKeyReleased
 
     private void txtNominalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNominalKeyTyped
-        //dikosongkan karena logika kembalian sudah ditangani oleh keyReleased
-        //keyTyped terpanggil sebelum karakter masuk ke field sehingga nilainya belum terbaca
+         char huruf = evt.getKeyChar();
+        if(!Character.isDigit(huruf)){
+            evt.consume();
+        }
     }//GEN-LAST:event_txtNominalKeyTyped
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
