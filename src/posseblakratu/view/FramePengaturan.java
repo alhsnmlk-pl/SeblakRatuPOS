@@ -7,17 +7,31 @@ package posseblakratu.view;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import posseblakratu.config.Koneksi;
 
 /**
  *
  * @author Al
  */
 public final class FramePengaturan extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form FramePengaturan
@@ -30,26 +44,98 @@ public final class FramePengaturan extends javax.swing.JFrame {
         panelLengkung(jPanel9);
         panelLengkung(jPanel10);
         panelLengkung(jPanel11);
-        
+
+        //memanggil method untuk menampilkan data pengaturan ke dalam form
+        loadPengaturan();
     }
-    
-    
+
+
     void panelLengkung(JPanel p) {
-        
+
         p.setBorder(new FlatLineBorder(
                 new Insets(3, 3, 3, 3),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
+
         jPanel6.setBorder(new FlatLineBorder(
                 new Insets(0, 0, 0, 0),
                 Color.decode("#E7BDBB"),
                 0f,
                 10));
-        
-        
-        
+
+    }
+
+
+    //membuat method load data pengaturan dari database ke form
+    void loadPengaturan() {
+
+        //query SQL untuk mengambil data pengaturan
+        String sql = "SELECT * FROM pengaturan LIMIT 1";
+
+        try {
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan statement SQL
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //menjalankan query dan menyimpan hasilnya
+            ResultSet rs = ps.executeQuery();
+
+            //jika data ditemukan, isi semua field form
+            if (rs.next()) {
+
+                //mengisi field nama toko dari database
+                txtNamaToko.setText(rs.getString("nama_umkm"));
+
+                //mengisi field alamat toko dari database
+                txtAlamatToko.setText(rs.getString("alamat"));
+
+                //mengisi field nomor telepon dari database
+                txtNoTelp.setText(rs.getString("no_telepon"));
+
+                //mengisi field catatan / footer struk dari database
+                txtCatatan.setText(rs.getString("footer_struk"));
+
+                //mengambil path logo dari database
+                String logoPath = rs.getString("logo_toko");
+
+                //menyimpan path logo ke label tPathFoto
+                tPathFoto.setText(logoPath);
+
+                //jika path logo tidak kosong, tampilkan gambar ke label logo
+                if (logoPath != null && !logoPath.isEmpty()) {
+
+                    //membuat objek file untuk mengecek keberadaan file logo
+                    File f = new File(logoPath);
+
+                    //jika file logo ditemukan di lokasi tersebut
+                    if (f.exists()) {
+
+                        //membuat ImageIcon dari path logo
+                        ImageIcon icon = new ImageIcon(logoPath);
+
+                        //mengubah ukuran gambar agar sesuai dengan label logo
+                        Image img = icon.getImage().getScaledInstance(
+                                logo.getWidth(),
+                                logo.getHeight(),
+                                Image.SCALE_SMOOTH
+                        );
+
+                        //menghapus teks pada label logo
+                        logo.setText("");
+
+                        //menampilkan gambar logo ke dalam label
+                        logo.setIcon(new ImageIcon(img));
+                    }
+                }
+            }
+
+        } catch (SQLException sQLException) {
+            //menampilkan pesan error jika gagal mengambil data
+            JOptionPane.showMessageDialog(null, "gagal mengambil data!");
+        }
     }
 
     /**
@@ -61,6 +147,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tPathFoto = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblPengaturan = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -96,6 +183,8 @@ public final class FramePengaturan extends javax.swing.JFrame {
         txtCatatan = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         btnSimpan = new javax.swing.JButton();
+
+        tPathFoto.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -206,6 +295,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
         btnPilihLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconUpload.png"))); // NOI18N
         btnPilihLogo.setText("Pilih Foto Logo");
         btnPilihLogo.setBorderPainted(false);
+        btnPilihLogo.addActionListener(this::btnPilihLogoActionPerformed);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -283,7 +373,6 @@ public final class FramePengaturan extends javax.swing.JFrame {
         txtNamaToko.setText("RATU SEBLAK");
         txtNamaToko.setBorder(null);
         txtNamaToko.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        txtNamaToko.addActionListener(this::txtNamaTokoActionPerformed);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -342,7 +431,6 @@ public final class FramePengaturan extends javax.swing.JFrame {
         txtNoTelp.setText("08123456789");
         txtNoTelp.setBorder(null);
         txtNoTelp.setMargin(new java.awt.Insets(10, 10, 10, 6));
-        txtNoTelp.addActionListener(this::txtNoTelpActionPerformed);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -495,22 +583,154 @@ public final class FramePengaturan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseClicked
-        // TODO add your handling code here:
+
+        //menutup frame pengaturan dan kembali ke frame owner
         new FrameOwner().setVisible(true);
         dispose();
+
     }//GEN-LAST:event_lblPengaturanMouseClicked
 
-    private void txtNamaTokoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaTokoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaTokoActionPerformed
-
-    private void txtNoTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoTelpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNoTelpActionPerformed
-
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        // TODO add your handling code here:
+
+        //mengambil teks dari field nama toko
+        String namaToko = txtNamaToko.getText();
+
+        //mengambil teks dari field alamat toko
+        String alamat = txtAlamatToko.getText();
+
+        //mengambil teks dari field nomor telepon
+        String noTelp = txtNoTelp.getText();
+
+        //mengambil teks dari field catatan / footer struk
+        String catatan = txtCatatan.getText();
+
+        //mengambil id pengguna yang sedang login dari session
+        String idPengguna = FrameLogin.getIdPengguna();
+
+        //mengambil path logo dari label tPathFoto
+        String logoPath = tPathFoto.getText();
+
+        try {
+            //query SQL untuk memperbarui data pengaturan berdasarkan id pengguna
+            String sql = "UPDATE pengaturan SET nama_umkm=?, alamat=?, no_telepon=?, logo_toko=?, footer_struk=? WHERE id_pengguna=?";
+
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan statement SQL dengan parameter
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            //mengisi nilai parameter satu per satu
+            statement.setString(1, namaToko);
+            statement.setString(2, alamat);
+            statement.setString(3, noTelp);
+            statement.setString(4, logoPath);
+            statement.setString(5, catatan);
+            statement.setString(6, idPengguna);
+
+            //menjalankan query pembaruan
+            statement.execute();
+
+            //menampilkan pesan bahwa data berhasil diperbarui
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
+
+        } catch (SQLException e) {
+            //menampilkan pesan jika terjadi kesalahan saat memperbarui data
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+        //memuat ulang data pengaturan ke form
+        loadPengaturan();
+
     }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnPilihLogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilihLogoActionPerformed
+
+        //blok try digunakan untuk menangani kemungkinan error saat memilih dan memuat file gambar
+        try {
+
+            //membuat objek JFileChooser untuk membuka dialog pemilihan file
+            JFileChooser chooser = new JFileChooser();
+
+            //menampilkan dialog dan menyimpan hasil aksi pengguna (OK atau Cancel)
+            int result = chooser.showOpenDialog(null);
+
+            //mengecek apakah pengguna menekan tombol "Open" (OK)
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+                //mengambil file yang dipilih oleh pengguna
+                File file = chooser.getSelectedFile();
+
+                //mengecek apakah file yang dipilih tidak null
+                if (file != null) {
+
+                    //membuat objek ImageIcon dari file gambar yang dipilih
+                    ImageIcon icon = new ImageIcon(file.toString());
+
+                    //mengubah ukuran gambar agar sesuai dengan label logo
+                    Image image = icon.getImage().getScaledInstance(
+                            logo.getWidth(),
+                            logo.getHeight(),
+                            Image.SCALE_SMOOTH
+                    );
+
+                    //membuat ImageIcon baru dari gambar yang telah diubah ukurannya
+                    ImageIcon ic = new ImageIcon(image);
+
+                    //menghapus teks pada label logo
+                    logo.setText(null);
+
+                    //menampilkan gambar (icon) ke dalam label logo
+                    logo.setIcon(ic);
+
+                    //menyimpan path sumber file
+                    String sourcePath = file.getAbsolutePath();
+                    File sourceFile = new File(sourcePath);
+
+                    //menentukan folder tujuan untuk menyimpan logo
+                    String destinationFolderPath = "src/logo/";
+                    File destinationFolder = new File(destinationFolderPath);
+
+                    //jika folder tujuan belum ada, buat folder tersebut
+                    if (!destinationFolder.exists()) {
+                        destinationFolder.mkdir();
+                    }
+
+                    //mengambil ekstensi file (contoh: jpg, png, dll)
+                    String extension = sourcePath.substring(sourcePath.lastIndexOf('.') + 1);
+
+                    //membuat nama file baru yang unik berdasarkan timestamp
+                    String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+                    String destinationFileName = "logo-" + timestamp + "." + extension;
+
+                    //membuat file tujuan dengan path dan nama file baru
+                    File destinationFile = new File(destinationFolderPath + destinationFileName);
+
+                    //menyalin file dari sumber ke tujuan
+                    Files.copy(sourceFile.toPath(), destinationFile.toPath());
+
+                    //menyimpan path logo baru ke label tPathFoto
+                    tPathFoto.setText(destinationFile.getPath());
+                }
+
+            } else {
+
+                //jika pengguna menekan tombol Cancel, tampilkan pesan ke konsol
+                System.out.println("Pemilihan file dibatalkan oleh pengguna.");
+            }
+
+        } catch (HeadlessException e) {
+
+            //menangani error jika terjadi kesalahan saat memilih atau memuat file gambar
+            JOptionPane.showMessageDialog(null, "Error Upload: " + e.getMessage());
+
+        } catch (IOException e) {
+
+            //menangani error jika terjadi kesalahan saat menyalin file gambar
+            JOptionPane.showMessageDialog(null, "Gagal upload file: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_btnPilihLogoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -563,6 +783,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogoToko;
     private javax.swing.JLabel lblPengaturan;
     private javax.swing.JLabel logo;
+    private javax.swing.JLabel tPathFoto;
     private javax.swing.JTextArea txtAlamatToko;
     private javax.swing.JTextArea txtCatatan;
     private javax.swing.JTextField txtNamaToko;
