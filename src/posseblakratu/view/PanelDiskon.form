@@ -775,12 +775,29 @@
                 <Component class="jtablecustom.JTableCustom" name="tblDiskon">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="0" rowCount="0"/>
+                      <Table columnCount="4" rowCount="2">
+                        <Column editable="true" title="Nama Diskon" type="java.lang.Object">
+                          <Data value="Uang"/>
+                          <Data value="Persen"/>
+                        </Column>
+                        <Column editable="true" title="Tipe" type="java.lang.Object">
+                          <Data value="Nominal"/>
+                          <Data value="Persentase"/>
+                        </Column>
+                        <Column editable="true" title="Nilai" type="java.lang.Object">
+                          <Data value="1000"/>
+                          <Data value="10"/>
+                        </Column>
+                        <Column editable="true" title="Status" type="java.lang.Object">
+                          <Data value="Aktif"/>
+                          <Data value="Tidak Aktif"/>
+                        </Column>
+                      </Table>
                     </Property>
                     <Property name="cellPaddingLeft" type="int" value="25"/>
                     <Property name="cellPaddingRight" type="int" value="25"/>
                     <Property name="centerColumns" type="java.lang.String" value="1,2,3"/>
-                    <Property name="columnWidths" type="java.lang.String" value="150,110,100,150,90"/>
+                    <Property name="columnWidths" type="java.lang.String" value="100,50,50,50"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Plus Jakarta Sans" size="14" style="0"/>
                     </Property>

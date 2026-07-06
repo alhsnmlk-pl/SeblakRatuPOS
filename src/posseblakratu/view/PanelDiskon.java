@@ -529,16 +529,17 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         tblDiskon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Uang", "Nominal", "1000", "Aktif"},
+                {"Persen", "Persentase", "10", "Tidak Aktif"}
             },
             new String [] {
-
+                "Nama Diskon", "Tipe", "Nilai", "Status"
             }
         ));
         tblDiskon.setCellPaddingLeft(25);
         tblDiskon.setCellPaddingRight(25);
         tblDiskon.setCenterColumns("1,2,3");
-        tblDiskon.setColumnWidths("150,110,100,150,90");
+        tblDiskon.setColumnWidths("100,50,50,50");
         tblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblDiskon.setHeaderPaddingLeft(25);
         tblDiskon.setHeaderPaddingRight(25);

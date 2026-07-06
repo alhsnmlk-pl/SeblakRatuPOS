@@ -28,6 +28,21 @@ import posseblakratu.config.FormatUang;
  */
 public class PanelLaporan extends javax.swing.JPanel {
 
+    //menyimpan instance aktif PanelLaporan untuk di-refresh dari luar
+    private static PanelLaporan instance;
+
+    //mengembalikan instance aktif PanelLaporan
+    public static PanelLaporan getInstance() {
+        return instance;
+    }
+
+    //memanggil refresh laporan dari luar (PopupBayar, PanelStok, dll)
+    public static void refresh() {
+        if (instance != null) {
+            instance.loadLaporan();
+        }
+    }
+
     /**
      * Creates new form PanelLaporan
      */
@@ -38,6 +53,8 @@ public class PanelLaporan extends javax.swing.JPanel {
         panelLengkung(jPanel14);
         panelLengkung(main);
 
+        //simpan instance ini agar bisa di-refresh dari luar
+        instance = this;
 
         //memanggil method untuk menampilkan laporan sesuai bulan yang aktif saat ini
         loadLaporan();
@@ -128,9 +145,31 @@ public class PanelLaporan extends javax.swing.JPanel {
                 totalPemasukanLalu = rsPemasukanLalu.getDouble("total");
             }
 
-            //pengeluaran dianggap 0 karena tidak ada data harga modal di database
+            //pengeluaran diambil dari tabel pengeluaran
+            String sqlPengeluaranIni = "SELECT COALESCE(SUM(total), 0) AS total FROM pengeluaran "
+                    + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ?";
+
+            //menyiapkan statement pengeluaran bulan ini
+            PreparedStatement psPengeluaranIni = conn.prepareStatement(sqlPengeluaranIni);
+            psPengeluaranIni.setString(1, periodeIni);
+            ResultSet rsPengeluaranIni = psPengeluaranIni.executeQuery();
+
+            //mengambil total pengeluaran bulan ini
             double totalPengeluaranIni = 0;
+            if (rsPengeluaranIni.next()) {
+                totalPengeluaranIni = rsPengeluaranIni.getDouble("total");
+            }
+
+            //query untuk mengambil total pengeluaran bulan lalu
+            PreparedStatement psPengeluaranLalu = conn.prepareStatement(sqlPengeluaranIni);
+            psPengeluaranLalu.setString(1, periodeLalu);
+            ResultSet rsPengeluaranLalu = psPengeluaranLalu.executeQuery();
+
+            //mengambil total pengeluaran bulan lalu
             double totalPengeluaranLalu = 0;
+            if (rsPengeluaranLalu.next()) {
+                totalPengeluaranLalu = rsPengeluaranLalu.getDouble("total");
+            }
 
             //menghitung laba bersih bulan ini
             double labaBersih = totalPemasukanIni - totalPengeluaranIni;
@@ -176,39 +215,42 @@ public class PanelLaporan extends javax.swing.JPanel {
         DefaultTableModel model = new DefaultTableModel();
 
         //menambahkan kolom ke dalam model tabel
-        model.addColumn("Tanggal");
         model.addColumn("No Referensi");
+        model.addColumn("Tanggal");
         model.addColumn("Kategori");
         model.addColumn("Tipe");
         model.addColumn("Jumlah");
 
-        //query untuk mengambil rincian transaksi berdasarkan bulan
-        String sql = "SELECT tanggal, id_transaksi, total_akhir "
+        //query untuk mengambil rincian transaksi (pemasukan) berdasarkan bulan
+        String sqlPemasukan = "SELECT tanggal, id_transaksi, total_akhir "
                 + "FROM transaksi "
                 + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ? "
                 + "ORDER BY tanggal ASC";
 
+        //query untuk mengambil rincian pengeluaran berdasarkan bulan
+        String sqlPengeluaran = "SELECT p.tanggal, p.id_pengeluaran, p.total, s.nama_stok "
+                + "FROM pengeluaran p "
+                + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
+                + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
+                + "ORDER BY p.tanggal ASC";
+
         try {
-            //menyiapkan statement SQL dengan parameter periode
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            //mengisi parameter periode
-            ps.setString(1, periode);
-
-            //menjalankan query dan menyimpan hasilnya
-            ResultSet rs = ps.executeQuery();
-
             //membuat formatter tanggal untuk tampilan
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-            //melakukan iterasi untuk setiap baris hasil query
-            while (rs.next()) {
+            //BAGIAN 1: Ambil data pemasukan
+            PreparedStatement psPemasukan = conn.prepareStatement(sqlPemasukan);
+            psPemasukan.setString(1, periode);
+            ResultSet rsPemasukan = psPemasukan.executeQuery();
+
+            //melakukan iterasi untuk setiap baris hasil query pemasukan
+            while (rsPemasukan.next()) {
 
                 //mengambil tanggal transaksi dan memformatnya
-                String tanggal = sdf.format(rs.getTimestamp("tanggal"));
+                String tanggal = sdf.format(rsPemasukan.getTimestamp("tanggal"));
 
                 //mengambil id transaksi sebagai nomor referensi
-                String noRef = rs.getString("id_transaksi");
+                String noRef = rsPemasukan.getString("id_transaksi");
 
                 //kategori transaksi selalu penjualan
                 String kategori = "Penjualan";
@@ -217,11 +259,42 @@ public class PanelLaporan extends javax.swing.JPanel {
                 String tipe = "Pemasukan";
 
                 //mengambil total akhir dan memformatnya dengan tanda positif
-                double total = rs.getDouble("total_akhir");
+                double total = rsPemasukan.getDouble("total_akhir");
                 String jumlah = "+" + FormatUang.format(total);
 
                 //menyimpan data ke dalam array baris
-                Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
+                Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
+
+                //menambahkan baris ke model tabel
+                model.addRow(baris);
+            }
+
+            //BAGIAN 2: Ambil data pengeluaran
+            PreparedStatement psPengeluaran = conn.prepareStatement(sqlPengeluaran);
+            psPengeluaran.setString(1, periode);
+            ResultSet rsPengeluaran = psPengeluaran.executeQuery();
+
+            //melakukan iterasi untuk setiap baris hasil query pengeluaran
+            while (rsPengeluaran.next()) {
+
+                //mengambil tanggal pengeluaran dan memformatnya
+                String tanggal = sdf.format(rsPengeluaran.getTimestamp("tanggal"));
+
+                //mengambil id pengeluaran sebagai nomor referensi
+                String noRef = rsPengeluaran.getString("id_pengeluaran");
+
+                //kategori pengeluaran adalah nama stok
+                String kategori = rsPengeluaran.getString("nama_stok");
+
+                //tipe transaksi selalu pengeluaran
+                String tipe = "Pengeluaran";
+
+                //mengambil total pengeluaran dan memformatnya dengan tanda negatif
+                double total = rsPengeluaran.getDouble("total");
+                String jumlah = "-" + FormatUang.format(total);
+
+                //menyimpan data ke dalam array baris
+                Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
 
                 //menambahkan baris ke model tabel
                 model.addRow(baris);
@@ -548,15 +621,15 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         tblLaporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"TRX0001", "03/07/2026", "Penjualan", "Pemasukan", "+Rp. 30.000"}
             },
             new String [] {
-
+                "No Refrensi", "Tanggal", "Kategori", "Tipe", "Jumlah"
             }
         ));
         tblLaporan.setCellPaddingLeft(25);
         tblLaporan.setCellPaddingRight(25);
-        tblLaporan.setCenterColumns("2,3,4");
+        tblLaporan.setCenterColumns("1,2,3,4");
         tblLaporan.setColumnWidths("50,50,50,50,150");
         tblLaporan.setEnabled(false);
         tblLaporan.setFocusable(false);
@@ -768,6 +841,62 @@ public class PanelLaporan extends javax.swing.JPanel {
             //menutup result set dan statement join
             rsJoin.close();
             psJoin.close();
+
+            //--- BAGIAN 3: RINCIAN PENGELUARAN ---
+            fw.write("\n");
+            fw.write("RINCIAN PENGELUARAN\n");
+            fw.write("Tanggal;No Pengeluaran;Nama Stok;Jumlah;Satuan;Harga Satuan;Total\n");
+
+            //query untuk mengambil rincian pengeluaran
+            String sqlPengeluaran = "SELECT p.tanggal, p.id_pengeluaran, s.nama_stok, "
+                    + "p.jumlah, s.satuan, p.harga_satuan, p.total "
+                    + "FROM pengeluaran p "
+                    + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
+                    + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
+                    + "ORDER BY p.tanggal ASC";
+
+            //menyiapkan statement query pengeluaran
+            PreparedStatement psPengeluaran = conn.prepareStatement(sqlPengeluaran);
+            psPengeluaran.setString(1, periode);
+            ResultSet rsPengeluaran = psPengeluaran.executeQuery();
+
+            //melakukan iterasi untuk setiap baris pengeluaran
+            while (rsPengeluaran.next()) {
+
+                //mengambil dan memformat tanggal pengeluaran
+                String tanggal = sdf.format(rsPengeluaran.getTimestamp("tanggal"));
+
+                //mengambil id pengeluaran
+                String idPengeluaran = rsPengeluaran.getString("id_pengeluaran");
+
+                //mengambil nama stok
+                String namaStok = rsPengeluaran.getString("nama_stok");
+
+                //mengambil jumlah
+                double jumlah = rsPengeluaran.getDouble("jumlah");
+
+                //mengambil satuan
+                String satuan = rsPengeluaran.getString("satuan");
+
+                //mengambil harga satuan
+                double hargaSatuan = rsPengeluaran.getDouble("harga_satuan");
+
+                //mengambil total pengeluaran
+                double total = rsPengeluaran.getDouble("total");
+
+                //menulis satu baris pengeluaran ke CSV
+                fw.write(tanggal + ";"
+                        + idPengeluaran + ";"
+                        + namaStok + ";"
+                        + jumlah + ";"
+                        + satuan + ";"
+                        + FormatUang.format(hargaSatuan) + ";"
+                        + FormatUang.format(total) + "\n");
+            }
+
+            //menutup result set dan statement pengeluaran
+            rsPengeluaran.close();
+            psPengeluaran.close();
 
             //menutup file writer
             fw.close();

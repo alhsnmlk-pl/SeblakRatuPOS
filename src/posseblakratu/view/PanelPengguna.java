@@ -520,10 +520,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         tblPengguna.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"kasir1", "Kasir", "Aktif"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"kasir1", "Kasir", "Aktif"}
             },
             new String [] {
                 "Username", "Role", "Status"
@@ -531,12 +528,12 @@ public class PanelPengguna extends javax.swing.JPanel {
         ));
         tblPengguna.setCellPaddingLeft(25);
         tblPengguna.setCellPaddingRight(25);
-        tblPengguna.setCenterColumns("0,2,3");
+        tblPengguna.setCenterColumns("1,2");
         tblPengguna.setColumnWidths("140,90,110,110,110");
         tblPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblPengguna.setHeaderPaddingLeft(25);
         tblPengguna.setHeaderPaddingRight(25);
-        tblPengguna.setLeftColumns("0,1");
+        tblPengguna.setLeftColumns("0");
         tblPengguna.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPenggunaMouseClicked(evt);

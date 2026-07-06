@@ -127,13 +127,11 @@ private String idProdukTerpilih = null;
         return idBaru; //mengembalikan id produk yang telah dibuat
     }
     void load_tabel_produk(String kategori){
-        DefaultTableModel mdl =new DefaultTableModel(); //membuat object mdl tabel baru
-        //menambahkan kolom ke dalam mdl tabel
-        mdl.addColumn("ID");//Kolom pertama untuk ID
-        mdl.addColumn("Nama Produk"); //Kolom kedua untuk nama produk
-        mdl.addColumn("Kategori"); //Kolom ketiga untuk kategori
-        mdl.addColumn("Harga Jual"); //Kolom keempat untuk harga jual
-        mdl.addColumn("Status"); //Kolom kelima untuk status
+        DefaultTableModel mdl = new DefaultTableModel(); //membuat object mdl tabel baru
+        mdl.addColumn("Nama Produk"); //Kolom pertama untuk nama produk
+        mdl.addColumn("Kategori"); //Kolom kedua untuk kategori
+        mdl.addColumn("Harga Jual"); //Kolom ketiga untuk harga jual
+        mdl.addColumn("Status"); //Kolom keempat untuk status
         
         String sql; 
         if(kategori.equals("Semua")){ ///jika yang dipilih adalah tombol semua
@@ -151,14 +149,13 @@ private String idProdukTerpilih = null;
             ResultSet rs = st.executeQuery(sql);//menjalankan query dan menyimpan hasilnya dalam result set
 
             while (rs.next()) { //mengambil setiap baris data hasil query
-                String idproduk = rs.getString("id_produk"); //mengambil data kolom id_produk
                 String namaProduk = rs.getString("nama_produk"); //mengambil data kolom nama_produk
                 String kategoriProduk = rs.getString("kategori"); //mengambil data kolom kategori
                 double hargaJual = rs.getDouble("harga_jual");//mengambil harga jual bertipe double
                 String hargaProduk = FormatUang.format(hargaJual); //format harga dengan titik ribuan
                 String statusProduk = rs.getString("status"); //mengambil data kolom status
 
-                Object[] baris = {idproduk, namaProduk,kategoriProduk,hargaProduk,statusProduk};//membuat array berisi data satu baris
+                Object[] baris = {namaProduk, kategoriProduk, hargaProduk, statusProduk};//membuat array berisi data satu baris
 
                 mdl.addRow(baris);//menambahkan array baris ke dalam model tabel
             }
@@ -168,10 +165,6 @@ private String idProdukTerpilih = null;
         }
         //menampilkan model data pada tabel daftar produk
         tblProduk.setModel(mdl);
-        //sembunyikan kolom ID PRODUK dari tampilan , tapi datanya tetep ada di mdl 
-        tblProduk.getColumnModel().getColumn(0).setWidth(0);
-        tblProduk.getColumnModel().getColumn(0).setMinWidth(0);
-        tblProduk.getColumnModel().getColumn(0).setMaxWidth(0);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -639,23 +632,20 @@ private String idProdukTerpilih = null;
 
         tblProduk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"M001", "Es Jeruk", "Minuman", "5.000", "Tersedia"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {"Es Jeruk", "Minuman", "5.000", "Tersedia"}
             },
             new String [] {
-                "ID", "Nama Produk", "Kategori", "Harga Jual", "Status"
+                "Nama Produk", "Kategori", "Harga Jual", "Status"
             }
         ));
         tblProduk.setCellPaddingLeft(25);
         tblProduk.setCellPaddingRight(25);
-        tblProduk.setCenterColumns("2,3,4");
-        tblProduk.setColumnWidths("90,200,110,110,110");
+        tblProduk.setCenterColumns("1,2,3");
+        tblProduk.setColumnWidths("100,50,50,50");
         tblProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblProduk.setHeaderPaddingLeft(25);
         tblProduk.setHeaderPaddingRight(25);
-        tblProduk.setLeftColumns("0,1");
+        tblProduk.setLeftColumns("0");
         tblProduk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblProdukMouseClicked(evt);
@@ -869,48 +859,40 @@ private String idProdukTerpilih = null;
     private void tblProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdukMouseClicked
         // TODO add your handling code here:
         //ambil indeks baris yang di klik oleh pengguna di tabel tblProduk
-        int barisYangDipilih=tblProduk.rowAtPoint(evt.getPoint());
-        //ambil nilai dari kolom pertama (indeks 0) pada baris yang dipilih, yaitu 'kode_jur
-        if(barisYangDipilih<0){ //jika baris yang dipilih lebih kecil dari 0 , maka tidak melakukan aksi apa apa
+        int barisYangDipilih = tblProduk.rowAtPoint(evt.getPoint());
+        //jika tidak ada baris yang diklik, abaikan
+        if (barisYangDipilih < 0) {
             return;
         }
-        String idProduk =tblProduk.getValueAt(barisYangDipilih,0).toString();
-        //ambil nilai dari kolom ke satu (indeks 0) pada baris yang dipilih, yaitu 'idProduk
-        String namaProduk =tblProduk.getValueAt(barisYangDipilih,1).toString();
-        //ambil nilai dari kolom kedua (indeks 1) pada baris yang dipilih, yaitu 'namaProduk
-        String kategoriProduk =tblProduk.getValueAt(barisYangDipilih,2).toString();
-        //ambil nilai dari kolom ketiga (indeks 2) pada baris yang dipilih, yaitu 'kategoriProduk
-        String hargaProduk =tblProduk.getValueAt(barisYangDipilih,3).toString();
-        //ambil nilai dari kolom keempat (indeks 3) pada baris yang dipilih, yaitu 'hargaProduk
-        String statusProduk =tblProduk.getValueAt(barisYangDipilih,4).toString();
-        //ambil nilai dari kolom kelima (indeks 4) pada baris yang dipilih, yaitu 'statusProduk
-        
-        tNamaProduk.setText(namaProduk);//tampilkan namaProduk di text field tNamaProduk
-        cKategoriProduk.setSelectedItem(kategoriProduk);//tampilkan pilihan kategori produk di combo box cKategoriProduk
-        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
-        tHargaProduk.setText(hargaProduk.replace("Rp. ", "").replace(".", ""));//tampilkan hargaProduk di text field tHargaProduk
-        btnStatusProduk.setSelected(statusProduk.equals("Tersedia"));//tampilkan btnStatusProduk jika tersedia, maka bernilai true
 
-        String sql = "SELECT deskripsi FROM produk WHERE id_produk=?";//Query SQL untuk menampilkan deskripsi dari tabel produk berdasarkan id_produk
-        
+        //ambil nilai dari setiap kolom (tanpa kolom ID)
+        String namaProduk     = tblProduk.getValueAt(barisYangDipilih, 0).toString();
+        String kategoriProduk = tblProduk.getValueAt(barisYangDipilih, 1).toString();
+        String hargaProduk    = tblProduk.getValueAt(barisYangDipilih, 2).toString();
+        String statusProduk   = tblProduk.getValueAt(barisYangDipilih, 3).toString();
+
+        //ambil id_produk dari database berdasarkan nama produk
+        String sqlId = "SELECT id_produk, deskripsi FROM produk WHERE nama_produk = ?";
         try {
-            //buat koneksi ke database menggunakan method konek() dari class koneksi
             Connection conn = Koneksi.konek();
-            //siapkan query SQL untuk dieksekusi dengan paramater
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-            ps.setString(1, idProduk);//isi paramater pertama (?)  dengan id_produk
-            ResultSet rs = ps.executeQuery();//menjalankan perintah SELECT untuk menampilkan data deskripsi di database, dan ambil hasilnya
-            if ( rs.next()){ ///jika data ditemukan , maka ambil deskripsi
-                String deskripsiProduk = rs.getString("deskripsi");
-                tDeskProduk.setText(deskripsiProduk); //tampilkan deskripsi yang diambil dalam tDeskProduk
+            PreparedStatement ps = conn.prepareStatement(sqlId);
+            ps.setString(1, namaProduk);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idProdukTerpilih = rs.getString("id_produk"); //simpan id produk
+                tDeskProduk.setText(rs.getString("deskripsi")); //tampilkan deskripsi
             }
         } catch (SQLException sQLException) {
-            //jika terjadi kesalahan saat mengambil data , tampilkan pesan gagal
-            JOptionPane.showMessageDialog(null, " Deskripsi gagal di ambil!");
+            JOptionPane.showMessageDialog(null, "Deskripsi gagal di ambil!");
         }
-        modeUbah =true; //user sedang mengubah data
-        idProdukTerpilih = idProduk; //simpan idProduk sebagai idProdukTerpilih saat menyimpan perubahan
+
+        tNamaProduk.setText(namaProduk); //tampilkan namaProduk di text field tNamaProduk
+        cKategoriProduk.setSelectedItem(kategoriProduk); //tampilkan pilihan kategori produk di combo box cKategoriProduk
+        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
+        tHargaProduk.setText(hargaProduk.replace("Rp. ", "").replace(".", "")); //tampilkan hargaProduk di text field tHargaProduk
+        btnStatusProduk.setSelected(statusProduk.equals("Tersedia")); //tampilkan btnStatusProduk jika tersedia, maka bernilai true
+
+        modeUbah = true; //user sedang mengubah data
         lblTambahProduk.setText("Edit Produk"); //mengubah teks lblTambahProduk menjadi Edit Produk
         btnSimpanProduk.setText("Simpan Perubahan"); //mengubah teks btnSimpanProduk menjadi Simpan Perubahan
     }//GEN-LAST:event_tblProdukMouseClicked

@@ -954,6 +954,9 @@ public final class PopupBayar extends javax.swing.JDialog {
         //tampilkan pratinjau struk
         struk.setVisible(true);
 
+        //refresh tabel laporan karena ada pemasukan baru
+        posseblakratu.view.PanelLaporan.refresh();
+
         //reset keranjang di panel transaksi setelah transaksi selesai
         panelTransaksi.resetTransaksi();
     }//GEN-LAST:event_btnProsesActionPerformed

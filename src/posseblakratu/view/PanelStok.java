@@ -148,7 +148,7 @@ public class PanelStok extends javax.swing.JPanel {
         //menambahkan kolom ke dalam model tabel (tidak ada kolom id_stok)
         model.addColumn("Nama Bahan");
         model.addColumn("Stok");
-        model.addColumn("Harga");
+        model.addColumn("Harga Satuan");
         model.addColumn("Satuan");
 
 
@@ -521,16 +521,16 @@ public class PanelStok extends javax.swing.JPanel {
 
         tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Bawang", "13", "Rp. 1.000", "kg"}
             },
             new String [] {
-
+                "Nama Bahan", "Stok", "Harga Satuan", "Satuan"
             }
         ));
         tblStok.setCellPaddingLeft(25);
         tblStok.setCellPaddingRight(25);
         tblStok.setCenterColumns("1,2,3");
-        tblStok.setColumnWidths("250,50,80");
+        tblStok.setColumnWidths("230,50,100,50");
         tblStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblStok.setHeaderPaddingLeft(25);
         tblStok.setHeaderPaddingRight(25);
@@ -623,6 +623,101 @@ public class PanelStok extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_btnBatalStokActionPerformed
 
+    //membuat method untuk generate id pengeluaran otomatis
+    String generateIdPengeluaran() {
+
+        //variabel untuk menyimpan id terakhir dari database
+        String lastId = null;
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //query untuk mengambil id pengeluaran terakhir
+            String sql = "SELECT id_pengeluaran FROM pengeluaran ORDER BY id_pengeluaran DESC LIMIT 1";
+
+            //siapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //jalankan query
+            ResultSet rs = ps.executeQuery();
+
+            //jika ada data
+            if (rs.next()) {
+                //ambil id terakhirnya
+                lastId = rs.getString("id_pengeluaran");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan error jika gagal
+            JOptionPane.showMessageDialog(null, "Gagal membuat id pengeluaran!");
+        }
+
+        //jika belum ada pengeluaran sama sekali
+        if (lastId == null) {
+            return "PGR0001";
+        }
+
+        //mengambil angka dari PGR0001 → 0001
+        int angka = Integer.parseInt(lastId.substring(3));
+
+        //increment angka
+        angka++;
+
+        //format ulang jadi PGR0002 dst
+        return String.format("PGR%04d", angka);
+    }
+
+
+    //membuat method untuk menyimpan pengeluaran stok
+    void simpanPengeluaran(String idStok, int jumlah, double hargaSatuan) {
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //generate id pengeluaran baru
+            String idPengeluaran = generateIdPengeluaran();
+
+            //hitung total pengeluaran
+            double total = jumlah * hargaSatuan;
+
+            //ambil id pengguna yang sedang login dari session
+            String idPengguna = FrameLogin.getIdPengguna();
+
+            //query SQL untuk menyisipkan data pengeluaran
+            String sql = "INSERT INTO pengeluaran (id_pengeluaran, total, harga_satuan, jumlah, tanggal, id_stok, id_pengguna) VALUES (?,?,?,?,NOW(),?,?)";
+
+            //siapkan statement dengan parameter
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter id pengeluaran
+            ps.setString(1, idPengeluaran);
+
+            //isi parameter total
+            ps.setDouble(2, total);
+
+            //isi parameter harga satuan
+            ps.setDouble(3, hargaSatuan);
+
+            //isi parameter jumlah
+            ps.setDouble(4, jumlah);
+
+            //isi parameter id stok
+            ps.setString(5, idStok);
+
+            //isi parameter id pengguna dari session login
+            ps.setString(6, idPengguna);
+
+            //jalankan query insert
+            ps.execute();
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal menyimpan pengeluaran
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan pengeluaran!");
+        }
+    }
+
     private void btnSimpanTambahStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanTambahStokActionPerformed
         //ambil input dari semua field form
         String namaStok = tNamaStok.getText();
@@ -643,12 +738,27 @@ public class PanelStok extends javax.swing.JPanel {
         if (sedangEdit) {
             //MODE EDIT: update data yang sudah ada berdasarkan id_stok
 
-            //query SQL untuk mengubah data stok
-            String sql = "UPDATE stok_bahan SET nama_stok=?, jumlah_stok=?, harga_satuan=?, satuan=? WHERE id_stok=?";
-
             try {
                 //buka koneksi ke database
                 Connection conn = Koneksi.konek();
+
+                //ambil jumlah stok lama untuk menghitung selisih
+                String sqlCek = "SELECT jumlah_stok FROM stok_bahan WHERE id_stok=?";
+                PreparedStatement psCek = conn.prepareStatement(sqlCek);
+                psCek.setString(1, idStokDipilih);
+                ResultSet rsCek = psCek.executeQuery();
+
+                //variabel untuk menyimpan jumlah stok lama
+                int jumlahStokLama = 0;
+                if (rsCek.next()) {
+                    jumlahStokLama = rsCek.getInt("jumlah_stok");
+                }
+
+                //hitung selisih penambahan stok
+                int selisih = jumlahInt - jumlahStokLama;
+
+                //query SQL untuk mengubah data stok
+                String sql = "UPDATE stok_bahan SET nama_stok=?, jumlah_stok=?, harga_satuan=?, satuan=? WHERE id_stok=?";
 
                 //siapkan statement dengan parameter
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -670,6 +780,11 @@ public class PanelStok extends javax.swing.JPanel {
 
                 //jalankan query update
                 ps.execute();
+
+                //jika ada penambahan stok, catat sebagai pengeluaran
+                if (selisih > 0) {
+                    simpanPengeluaran(idStokDipilih, selisih, hargaDouble);
+                }
 
                 //tampilkan pesan berhasil
                 JOptionPane.showMessageDialog(null, "Data stok berhasil diubah!");
@@ -719,6 +834,9 @@ public class PanelStok extends javax.swing.JPanel {
                 //jalankan query insert
                 ps.execute();
 
+                //catat penambahan stok sebagai pengeluaran
+                simpanPengeluaran(idStokBaru, jumlahInt, hargaDouble);
+
                 //tampilkan pesan berhasil
                 JOptionPane.showMessageDialog(null, "Data stok berhasil disimpan!");
 
@@ -730,6 +848,9 @@ public class PanelStok extends javax.swing.JPanel {
 
         //muat ulang tabel agar perubahan tampil
         load_tabel_stok();
+
+        //refresh tabel laporan karena ada transaksi pengeluaran baru
+        PanelLaporan.refresh();
 
         //reset form kembali ke mode tambah
         reset();
