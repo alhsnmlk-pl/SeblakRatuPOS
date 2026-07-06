@@ -138,7 +138,6 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setOpaque(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setFocusable(false);
