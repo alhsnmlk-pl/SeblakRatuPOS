@@ -490,13 +490,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
-    //method untuk mengambil id transaksi
-    public String getIdTransaksi() {
 
-        //mengembalikan id transaksi
-        return idTransaksi;
-
-    }
 
     //RESET KERANJANG SETELAH TRANSAKSI SELESAI
     //dipanggil dari PopupBayar setelah struk berhasil ditampilkan
@@ -630,6 +624,14 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         //format ulang jadi TRX0002 dst
         return String.format("TRX%04d", angka);
+    }
+
+    //method untuk mengambil id transaksi
+    public String getIdTransaksi() {
+
+        //mengembalikan id transaksi
+        return idTransaksi;
+
     }
 
     /**

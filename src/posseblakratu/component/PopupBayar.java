@@ -155,9 +155,7 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     //MENERIMA DATA DARI PANEL TRANSAKSI
     //dipanggil dari btnBayarActionPerformed untuk mengisi label subtotal, diskon, dan total
-    public void setPembayaran(double subtotal,
-            double diskon,
-            double total) {
+    public void setPembayaran(double subtotal, double diskon, double total) {
 
         //menyimpan subtotal
         this.subtotal = subtotal;

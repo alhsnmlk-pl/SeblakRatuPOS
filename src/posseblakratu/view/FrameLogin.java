@@ -65,7 +65,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         tPassword.setText("Masukkan Password"); //placehokder bertuliskan masukkan password
 
         //memanggil method untuk menampilkan logo toko dari database
-        loadLogoLogin();
+        loadLogin();
     }
 
     //method untuk mengatur style panel agar terlihat melengkung
@@ -88,8 +88,8 @@ public final class FrameLogin extends javax.swing.JFrame {
     }
 
 
-    //membuat method load logo toko dari database ke label logo di halaman login
-    void loadLogoLogin() {
+    //membuat method load login untuk menampilkan logo dan nama toko dari database
+    void loadLogin() {
 
         //query SQL untuk mengambil data pengaturan toko dari database
         String sql = "SELECT * FROM pengaturan LIMIT 1";

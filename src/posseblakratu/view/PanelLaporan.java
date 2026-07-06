@@ -639,7 +639,7 @@ public class PanelLaporan extends javax.swing.JPanel {
             //setiap baris mewakili satu item produk dalam satu transaksi
             String sqlJoin = "SELECT "
                     + "t.tanggal, t.id_transaksi, t.subtotal, "
-                    + "COALESCE(d.nama_diskon, '-') AS nama_diskon, "
+                    + "COALESCE(d.nama_diskon, '-') AS nama_diskon, " //menggunakan COALESCE mengganti nilai null menjadi "-"
                     + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
                     + "p.nama_produk, dt.level, dt.kuantitas, dt.harga_satuan, dt.subtotal_produk, "
                     + "dt.id_detail "
