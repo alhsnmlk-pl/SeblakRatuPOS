@@ -628,16 +628,16 @@ public class PanelLaporan extends javax.swing.JPanel {
             fw.write("Margin Keuntungan:;" + lblMargin.getText() + "\n");
             fw.write("\n");
 
-            //--- BAGIAN 2: RINCIAN TRANSAKSI FLAT ---
+            //--- BAGIAN 2: RINCIAN TRANSAKSI ---
             fw.write("RINCIAN TRANSAKSI\n");
 
-            //menulis header kolom flat — setiap baris adalah satu item produk
+            //menulis header kolom — setiap baris adalah satu item produk
             fw.write("Tanggal;No Transaksi;Subtotal;Diskon;Total Bayar;Metode;Jumlah Bayar;Kembalian;"
                     + "Produk;Level;Qty;Harga Satuan;Subtotal Produk;Topping\n");
 
-            //query flat dengan JOIN transaksi + detail_transaksi + produk
+            //query dengan JOIN transaksi + detail_transaksi + produk
             //setiap baris mewakili satu item produk dalam satu transaksi
-            String sqlFlat = "SELECT "
+            String sqlJoin = "SELECT "
                     + "t.tanggal, t.id_transaksi, t.subtotal, "
                     + "COALESCE(d.nama_diskon, '-') AS nama_diskon, "
                     + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
@@ -650,62 +650,62 @@ public class PanelLaporan extends javax.swing.JPanel {
                     + "WHERE DATE_FORMAT(t.tanggal, '%Y-%m') = ? "
                     + "ORDER BY t.tanggal ASC, dt.id_detail ASC";
 
-            //menyiapkan statement query flat
-            PreparedStatement psFlat = conn.prepareStatement(sqlFlat);
+            //menyiapkan statement query join
+            PreparedStatement psJoin = conn.prepareStatement(sqlJoin);
 
             //mengisi parameter periode
-            psFlat.setString(1, periode);
+            psJoin.setString(1, periode);
 
-            //menjalankan query flat
-            ResultSet rsFlat = psFlat.executeQuery();
+            //menjalankan query join
+            ResultSet rsJoin = psJoin.executeQuery();
 
             //membuat formatter tanggal untuk tampilan
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
             //melakukan iterasi untuk setiap baris hasil join
-            while (rsFlat.next()) {
+            while (rsJoin.next()) {
 
                 //mengambil dan memformat tanggal transaksi
-                String tanggal = sdf.format(rsFlat.getTimestamp("tanggal"));
+                String tanggal = sdf.format(rsJoin.getTimestamp("tanggal"));
 
                 //mengambil id transaksi
-                String idTrx = rsFlat.getString("id_transaksi");
+                String idTrx = rsJoin.getString("id_transaksi");
 
                 //mengambil subtotal transaksi
-                double subtotal = rsFlat.getDouble("subtotal");
+                double subtotal = rsJoin.getDouble("subtotal");
 
                 //mengambil nama diskon
-                String namaDiskon = rsFlat.getString("nama_diskon");
+                String namaDiskon = rsJoin.getString("nama_diskon");
 
                 //mengambil total akhir setelah diskon
-                double totalAkhir = rsFlat.getDouble("total_akhir");
+                double totalAkhir = rsJoin.getDouble("total_akhir");
 
                 //mengambil metode pembayaran
-                String metode = rsFlat.getString("metode");
+                String metode = rsJoin.getString("metode");
 
                 //mengambil jumlah yang dibayarkan pelanggan
-                double jumlahBayar = rsFlat.getDouble("jumlah_bayar");
+                double jumlahBayar = rsJoin.getDouble("jumlah_bayar");
 
                 //mengambil kembalian
-                double kembalian = rsFlat.getDouble("kembalian");
+                double kembalian = rsJoin.getDouble("kembalian");
 
                 //mengambil nama produk
-                String namaProduk = rsFlat.getString("nama_produk");
+                String namaProduk = rsJoin.getString("nama_produk");
 
                 //mengambil level pedas (null jika tidak ada)
-                String level = rsFlat.getString("level") != null ? rsFlat.getString("level") : "-";
+                String level = rsJoin.getString("level") != null ? rsJoin.getString("level") : "-";
 
                 //mengambil kuantitas item
-                int qty = rsFlat.getInt("kuantitas");
+                int qty = rsJoin.getInt("kuantitas");
 
                 //mengambil harga satuan item
-                double hargaSatuan = rsFlat.getDouble("harga_satuan");
+                double hargaSatuan = rsJoin.getDouble("harga_satuan");
 
                 //mengambil subtotal produk
-                double subtotalProduk = rsFlat.getDouble("subtotal_produk");
+                double subtotalProduk = rsJoin.getDouble("subtotal_produk");
 
                 //mengambil id detail untuk query topping
-                String idDetail = rsFlat.getString("id_detail");
+                String idDetail = rsJoin.getString("id_detail");
 
                 //query untuk mengambil topping dari item ini
                 String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
@@ -747,7 +747,7 @@ public class PanelLaporan extends javax.swing.JPanel {
                 rsTopping.close();
                 psTopping.close();
 
-                //menulis satu baris flat ke CSV dengan semua kolom
+                //menulis satu baris ke CSV dengan semua kolom
                 fw.write(tanggal + ";"
                         + idTrx + ";"
                         + "Rp. " + (int) subtotal + ";"
@@ -764,9 +764,9 @@ public class PanelLaporan extends javax.swing.JPanel {
                         + daftarTopping + "\n");
             }
 
-            //menutup result set dan statement flat
-            rsFlat.close();
-            psFlat.close();
+            //menutup result set dan statement join
+            rsJoin.close();
+            psJoin.close();
 
             //menutup file writer
             fw.close();
