@@ -6,6 +6,7 @@ package posseblakratu.component;
 
 //import library list, lib ini berfungsi utuk menyimpan kumpulan data dalam satu variable
 import java.util.List;
+import posseblakratu.config.FormatUang;
 
 /**
  *
@@ -182,7 +183,7 @@ public class cardKeranjang extends javax.swing.JPanel {
         subtotalMenu = totalPerPorsi * qty;
 
         //menampilkan subtotal
-        lblHarga.setText("Rp. " + (int) subtotalMenu);
+        lblHarga.setText(FormatUang.format(subtotalMenu));
 
     }
 

@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 
 /**
  *
@@ -141,19 +142,19 @@ public class PanelLaporan extends javax.swing.JPanel {
             lblpemasukkan.setText("Pemasukan");
 
             //menampilkan total pemasukan ke label
-            lblTotalPemasukan.setText("Rp. " + (int) totalPemasukanIni);
+            lblTotalPemasukan.setText(FormatUang.format(totalPemasukanIni));
 
             //menampilkan persentase perubahan pemasukan vs bulan lalu
             lblPersentasePemasukan.setText(formatPersen(totalPemasukanIni, totalPemasukanLalu));
 
             //menampilkan total pengeluaran ke label
-            lblTotalPengeluaran.setText("Rp. " + (int) totalPengeluaranIni);
+            lblTotalPengeluaran.setText(FormatUang.format(totalPengeluaranIni));
 
             //menampilkan persentase perubahan pengeluaran vs bulan lalu
             lblPeresentasePengeluaran.setText(formatPersen(totalPengeluaranIni, totalPengeluaranLalu));
 
             //menampilkan laba bersih ke label
-            lblLabaBersih.setText("Rp. " + (int) labaBersih);
+            lblLabaBersih.setText(FormatUang.format(labaBersih));
 
             //menampilkan margin keuntungan ke label
             lblMargin.setText(String.format("%.0f%%", margin));
@@ -217,7 +218,7 @@ public class PanelLaporan extends javax.swing.JPanel {
 
                 //mengambil total akhir dan memformatnya dengan tanda positif
                 double total = rs.getDouble("total_akhir");
-                String jumlah = "+Rp. " + (int) total;
+                String jumlah = "+" + FormatUang.format(total);
 
                 //menyimpan data ke dalam array baris
                 Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
@@ -750,17 +751,17 @@ public class PanelLaporan extends javax.swing.JPanel {
                 //menulis satu baris ke CSV dengan semua kolom
                 fw.write(tanggal + ";"
                         + idTrx + ";"
-                        + "Rp. " + (int) subtotal + ";"
+                        + FormatUang.format(subtotal) + ";"
                         + namaDiskon + ";"
-                        + "Rp. " + (int) totalAkhir + ";"
+                        + FormatUang.format(totalAkhir) + ";"
                         + metode + ";"
-                        + "Rp. " + (int) jumlahBayar + ";"
-                        + "Rp. " + (int) kembalian + ";"
+                        + FormatUang.format(jumlahBayar) + ";"
+                        + FormatUang.format(kembalian) + ";"
                         + namaProduk + ";"
                         + level + ";"
                         + qty + ";"
-                        + "Rp. " + (int) hargaSatuan + ";"
-                        + "Rp. " + (int) subtotalProduk + ";"
+                        + FormatUang.format(hargaSatuan) + ";"
+                        + FormatUang.format(subtotalProduk) + ";"
                         + daftarTopping + "\n");
             }
 

@@ -8,6 +8,7 @@ import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.MouseListener;
+import posseblakratu.config.FormatUang;
 
 /**
  *
@@ -84,7 +85,7 @@ public class cardMenu extends javax.swing.JPanel {
         lblMenu.setText(namaMenu);
 
         //menampilkan harga produk
-        lblHarga.setText("Rp. " + (int) hargaMenu);
+        lblHarga.setText(FormatUang.format(hargaMenu));
 
         //memeriksa apakah deskripsi kosong
         if (deskripsiMenu == null || deskripsiMenu.trim().isEmpty()) {

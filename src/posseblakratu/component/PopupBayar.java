@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -167,13 +168,13 @@ public final class PopupBayar extends javax.swing.JDialog {
         this.totalBayar = total;
 
         //menampilkan subtotal
-        lblSubtotal.setText("Rp. " + (int) subtotal);
+        lblSubtotal.setText(FormatUang.format(subtotal));
 
         //menampilkan diskon
-        lblDiskon.setText("-Rp. " + (int) diskon);
+        lblDiskon.setText("-" + FormatUang.format(diskon));
 
         //menampilkan total pembayaran
-        lblTotal.setText("Rp. " + (int) total);
+        lblTotal.setText(FormatUang.format(total));
 
     }
 
@@ -225,7 +226,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         kembalian = 0;
 
         //menampilkan kembalian
-        lblKembalian.setText("Rp. 0");
+        lblKembalian.setText(FormatUang.format(0));
 
     }
 
@@ -248,7 +249,7 @@ public final class PopupBayar extends javax.swing.JDialog {
         kembalian = 0;
 
         //menampilkan kembalian
-        lblKembalian.setText("Rp. 0");
+        lblKembalian.setText(FormatUang.format(0));
 
     }
 
@@ -265,7 +266,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             kembalian = nominalBayar - totalBayar;
 
             //menampilkan kembalian
-            lblKembalian.setText("Rp. " + (int) kembalian);
+            lblKembalian.setText(FormatUang.format(kembalian));
 
         } catch (NumberFormatException e) {
 
@@ -276,7 +277,7 @@ public final class PopupBayar extends javax.swing.JDialog {
             kembalian = 0;
 
             //menampilkan nilai nol
-            lblKembalian.setText("Rp. 0");
+            lblKembalian.setText(FormatUang.format(0));
 
         }
 

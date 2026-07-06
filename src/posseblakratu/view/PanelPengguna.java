@@ -35,6 +35,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         panelLengkung(jPanel20);
 
         load_tabel_pengguna();
+        reset();
     }
     
     void panelLengkung(JPanel p) {
@@ -65,7 +66,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         tUsername.setText("");
         tPasswordPengguna.setText("");
 
-        cRolePengguna.setSelectedIndex(0);
+        cRolePengguna.setSelectedItem(null);
 
         btnPenggunaAktif.setSelected(true);
 
@@ -172,7 +173,9 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lblTambahPengguna = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
         btnSimpanPengguna = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
         btnBatalPengguna = new javax.swing.JButton();
         btnHapusPengguna = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -237,10 +240,13 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
         jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        jPanel4.setLayout(new java.awt.CardLayout());
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setLayout(new java.awt.GridLayout(2, 0, 0, 12));
 
         btnSimpanPengguna.setBackground(new java.awt.Color(214, 4, 39));
         btnSimpanPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
@@ -249,41 +255,26 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnSimpanPengguna.setText("Simpan Pengguna");
         btnSimpanPengguna.setBorderPainted(false);
         btnSimpanPengguna.addActionListener(this::btnSimpanPenggunaActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel4.add(btnSimpanPengguna, gridBagConstraints);
+        jPanel15.add(btnSimpanPengguna);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 2, 12, 0));
 
         btnBatalPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalPengguna.setText("Batal");
         btnBatalPengguna.addActionListener(this::btnBatalPenggunaActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel4.add(btnBatalPengguna, gridBagConstraints);
+        jPanel9.add(btnBatalPengguna);
 
         btnHapusPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusPengguna.setText("Hapus");
         btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel4.add(btnHapusPengguna, gridBagConstraints);
+        jPanel9.add(btnHapusPengguna);
+
+        jPanel15.add(jPanel9);
+
+        jPanel4.add(jPanel15, "card2");
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
@@ -596,7 +587,8 @@ public class PanelPengguna extends javax.swing.JPanel {
             btnSimpanPengguna.setText("Simpan Perubahan");
 
             tUsername.setText(rs.getString("username"));
-            tPasswordPengguna.setText("");
+            tPasswordPengguna.setEchoChar((char) 0);
+            tPasswordPengguna.setText("Masukkan Password Baru");
 
             cRolePengguna.setSelectedItem(rs.getString("role"));
 
@@ -617,111 +609,30 @@ public class PanelPengguna extends javax.swing.JPanel {
       
     }//GEN-LAST:event_tblPenggunaMouseClicked
 
-    private void btnSimpanPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPenggunaActionPerformed
+    private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
         // TODO add your handling code here:
-           
-           String username = tUsername.getText();
-           String password = tPasswordPengguna.getText();
-           String role = cRolePengguna.getSelectedItem().toString();
-
-           String status;
-
-           if(btnPenggunaAktif.isSelected()){
-               status = "Aktif";
-           }else{
-               status = "Tidak Aktif";
-           }
-           
-            if(username.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Username harus diisi!");
-            tUsername.requestFocus();
-            return;
+        if (btnMata.isSelected()) {
+            //tampilkan teks password
+            tPasswordPengguna.setEchoChar((char) 0);
+        } else {
+            //sembunyikan teks password dengan karakter bullet
+            tPasswordPengguna.setEchoChar('•');
         }
-             if(password.isEmpty()){
-             JOptionPane.showMessageDialog(null, "Password harus diisi!");
-             tPasswordPengguna.requestFocus();
-             return;
-            }
-           
-
-           if(sedangEdit){
-
-               String sql =
-               "UPDATE pengguna SET username=?, password=MD5(?), role=?, status=? WHERE id_pengguna=?";
-               try{
-
-                   Connection conn=Koneksi.konek();
-
-                   PreparedStatement ps=conn.prepareStatement(sql);
-
-                  
-                   ps.setString(1,username);
-                   ps.setString(2,password);
-                   ps.setString(3,role);
-                   ps.setString(4,status);
-                   ps.setString(5,idPenggunaDipilih);
-
-                   ps.execute();
-
-                   JOptionPane.showMessageDialog(null,"Data berhasil diubah!");
-
-               }catch(SQLException e){
-
-                   JOptionPane.showMessageDialog(null,"Data gagal diubah!");
-
-               }
-
-           }else{
-
-               String idPengguna = generateIdPengguna();
-
-               String sql =
-               "INSERT INTO pengguna(id_pengguna, username, password, role, status) VALUES(?, ?, MD5(?), ?, ?)";
-
-               try{
-
-                   Connection conn=Koneksi.konek();
-
-                   PreparedStatement ps=conn.prepareStatement(sql);
-
-                   ps.setString(1, idPengguna);
-                   ps.setString(2, username);
-                   ps.setString(3, password);
-                   ps.setString(4, role);
-                   ps.setString(5, status);
-
-                   ps.execute();
-
-                   JOptionPane.showMessageDialog(null,"Data berhasil disimpan!");
-
-               }catch(SQLException e){
-
-                   JOptionPane.showMessageDialog(null,"Data gagal disimpan!");
-
-               }
-
-           }
-
-           load_tabel_pengguna();
-
-           reset();
-
-       
-    }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
+    }//GEN-LAST:event_btnMataActionPerformed
 
     private void btnHapusPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPenggunaActionPerformed
         // TODO add your handling code here:
-        
+
         if(!sedangEdit){
             JOptionPane.showMessageDialog(null,"Pilih data terlebih dahulu!");
             return;
         }
 
         int konfirmasi = JOptionPane.showConfirmDialog(
-                null,
-                "Yakin ingin menghapus pengguna?",
-                "Konfirmasi",
-                JOptionPane.YES_NO_OPTION);
+            null,
+            "Yakin ingin menghapus pengguna?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION);
 
         if(konfirmasi!=JOptionPane.YES_OPTION){
             return;
@@ -757,16 +668,94 @@ public class PanelPengguna extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_btnBatalPenggunaActionPerformed
 
-    private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
+    private void btnSimpanPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPenggunaActionPerformed
         // TODO add your handling code here:
-        if (btnMata.isSelected()) {
-            //tampilkan teks password
-            tPasswordPengguna.setEchoChar((char) 0);
-        } else {
-            //sembunyikan teks password dengan karakter bullet
-            tPasswordPengguna.setEchoChar('•');
+
+        String username = tUsername.getText();
+        String password = tPasswordPengguna.getText();
+        String role = cRolePengguna.getSelectedItem().toString();
+
+        String status;
+
+        if(btnPenggunaAktif.isSelected()){
+            status = "Aktif";
+        }else{
+            status = "Tidak Aktif";
         }
-    }//GEN-LAST:event_btnMataActionPerformed
+
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Username harus diisi!");
+            tUsername.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Password harus diisi!");
+            tPasswordPengguna.requestFocus();
+            return;
+        }
+
+        if(sedangEdit){
+
+            String sql =
+            "UPDATE pengguna SET username=?, password=MD5(?), role=?, status=? WHERE id_pengguna=?";
+            try{
+
+                Connection conn=Koneksi.konek();
+
+                PreparedStatement ps=conn.prepareStatement(sql);
+
+                ps.setString(1,username);
+                ps.setString(2,password);
+                ps.setString(3,role);
+                ps.setString(4,status);
+                ps.setString(5,idPenggunaDipilih);
+
+                ps.execute();
+
+                JOptionPane.showMessageDialog(null,"Data berhasil diubah!");
+
+            }catch(SQLException e){
+
+                JOptionPane.showMessageDialog(null,"Data gagal diubah!");
+
+            }
+
+        }else{
+
+            String idPengguna = generateIdPengguna();
+
+            String sql =
+            "INSERT INTO pengguna(id_pengguna, username, password, role, status) VALUES(?, ?, MD5(?), ?, ?)";
+
+            try{
+
+                Connection conn=Koneksi.konek();
+
+                PreparedStatement ps=conn.prepareStatement(sql);
+
+                ps.setString(1, idPengguna);
+                ps.setString(2, username);
+                ps.setString(3, password);
+                ps.setString(4, role);
+                ps.setString(5, status);
+
+                ps.execute();
+
+                JOptionPane.showMessageDialog(null,"Data berhasil disimpan!");
+
+            }catch(SQLException e){
+
+                JOptionPane.showMessageDialog(null,"Data gagal disimpan!");
+
+            }
+
+        }
+
+        load_tabel_pengguna();
+
+        reset();
+
+    }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -784,6 +773,7 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -795,6 +785,7 @@ public class PanelPengguna extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDaftarProduk;
     private javax.swing.JLabel lblNamaProduk;

@@ -4,21 +4,14 @@
  */
 package posseblakratu.view;
 import com.formdev.flatlaf.ui.FlatLineBorder;
-import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Insets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import posseblakratu.config.Koneksi;
 
@@ -28,212 +21,176 @@ import posseblakratu.config.Koneksi;
  * @author Al
  */
 public final class PanelDiskon extends javax.swing.JPanel {
-    
-    // Menyimpan id_diskon dari baris tabel yang sedang dipilih
+
+    //menyimpan id_diskon dari baris tabel yang sedang dipilih
     private String idDiskonDipilih = "";
-    
-    // true jika sedang mode edit, false jika mode tambah
+
+    //true jika pengguna sedang mode edit, false jika mode tambah
     private boolean sedangEdit = false;
 
     /**
-     * Creates new form PanelDiskon DesainUI.setGlobal
+     * Creates new form PanelDiskon
      */
     public PanelDiskon() {
         initComponents();
-        
-        // Membuat panel memiliki sudut membulat
+
+        //membuat panel memiliki sudut membulat
         panelLengkung(jPanel23);
         panelLengkung(jPanel18);
         panelLengkung(jPanel20);
-        panelLengkung(jPanel22);
-        panelLengkung(jPanel24);
-        
-        // Mengatur tampilan komponen tanggal
-        desainDate();
-        
-        // Menampilkan data diskon ke tabel
+
+        //memanggil method untuk menampilkan data diskon ke tabel
         load_tabel_diskon();
-    }
-    
-    void panelLengkung(JPanel p) {
         
+        reset();
+    }
+
+    void panelLengkung(JPanel p) {
+
         p.setBorder(new FlatLineBorder(
                 new Insets(3, 3, 3, 3),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
-        
+
         tambahDiskon.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
+
         jPanel3.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
     }
-    
-    
-    //desain jdate chooser
-    private void desainDate(){
-        JButton btnMulai = tglMulai.getCalendarButton();
-        btnMulai.setPreferredSize(new Dimension(35, btnMulai.getHeight())); 
-        btnMulai.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));    
 
-        JButton btnSelesai = tglSelesai.getCalendarButton();
-        btnSelesai.setPreferredSize(new Dimension(35, btnSelesai.getHeight()));
-        btnSelesai.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 
-        tglMulai.revalidate();
-        tglMulai.repaint();
+    void reset() {
 
-        JTextFieldDateEditor dateEditorMulai = (JTextFieldDateEditor) tglMulai.getDateEditor();
-        JTextFieldDateEditor dateEditorSelesai = (JTextFieldDateEditor) tglSelesai.getDateEditor();
+        //ubah judul panel kembali ke tambah diskon
+        lblTambahDiskon.setText("Tambah Diskon");
 
-        dateEditorMulai.setBorder(null);
-        dateEditorSelesai.setBorder(null);
+        //kembalikan text button simpan ke mode tambah
+        btnSimpanDiskon.setText("Simpan Diskon");
 
-        dateEditorMulai.setOpaque(false);
-        dateEditorSelesai.setOpaque(false);
+        //kosongkan field nama diskon
+        tNamaDiskon.setText(null);
+
+        //kembalikan combobox tipe ke pilihan pertama
+        cTipeDiskon.setSelectedItem(null);
+
+        //kosongkan field nilai diskon
+        tValueDiskon.setText(null);
+
+        //kembalikan toggle status ke posisi nonaktif
+        btnStatusProduk.setSelected(false);
+
+        //hapus seleksi pada tabel
+        tblDiskon.clearSelection();
+
+        //kembalikan ke mode tambah
+        sedangEdit = false;
+
+        //kosongkan id yang dipilih
+        idDiskonDipilih = "";
     }
-    //icon date
-    ImageIcon iconDate = new ImageIcon(getClass().getResource("/posseblakratu/icon/IconDate.png"));
-    
-    // Method untuk menampilkan data diskon ke JTable
+
+
+    //membuat method untuk generate id diskon otomatis
+    String generateIdDiskon() {
+
+        //variabel untuk menyimpan id terakhir dari database
+        String lastId = null;
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //query untuk mengambil id diskon terakhir
+            String sql = "SELECT id_diskon FROM diskon ORDER BY id_diskon DESC LIMIT 1";
+
+            //siapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //jalankan query
+            ResultSet rs = ps.executeQuery();
+
+            //jika ada data ambil id terakhirnya
+            if (rs.next()) {
+                lastId = rs.getString("id_diskon");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan error jika gagal
+            JOptionPane.showMessageDialog(null, "Gagal membuat id diskon!");
+        }
+
+        //jika belum ada diskon sama sekali mulai dari DS001
+        if (lastId == null) {
+            return "DS001";
+        }
+
+        //mengambil angka dari DS001 menjadi 001
+        int angka = Integer.parseInt(lastId.substring(2));
+
+        //increment angka
+        angka++;
+
+        //format ulang jadi DS002 dst
+        return String.format("DS%03d", angka);
+    }
+
+
+    //membuat method load tabel diskon
     void load_tabel_diskon() {
-        // Membuat model tabel baru
+
+        //membuat model tabel baru
         DefaultTableModel model = new DefaultTableModel();
-        
-        // Menambahkan nama kolom
+
+        //menambahkan kolom ke dalam model tabel
         model.addColumn("Nama Diskon");
         model.addColumn("Tipe");
         model.addColumn("Nilai");
         model.addColumn("Status");
-        
-        // Mengambil id pengguna yang sedang login
-        String idPengguna = FrameLogin.getIdPengguna();
-        
-        // Query mengambil data sesuai pengguna
-        String sql = "SELECT * FROM diskon WHERE id_pengguna=?";
-        
-        try {
-            // Membuka koneksi
-            Connection conn = Koneksi.konek();
-            
-            // Menyiapkan statement
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-            // Mengisi parameter id pengguna
-            ps.setString(1, idPengguna);
-            
-            // Menjalankan query
-            ResultSet rs = ps.executeQuery();
-            
-            // Membaca seluruh data
-            while (rs.next()) {
-                
-                // Menambahkan data ke tabel
-                model.addRow(new Object[]{
-                    
-                    rs.getString("nama_diskon"),
-                    rs.getString("tipe_diskon"),
-                    rs.getString("nilai_diskon"),
-                    rs.getString("status")
-                        
-                });
-            }
-        } catch (SQLException e) {
-            
-            JOptionPane.showMessageDialog(null, "Data gagal ditampilkan!");
-        }
-        
-        // Menampilkan model ke JTable
-        tblDiskon.setModel(model);
-          
-    }
-    
-    // Method untuk mengembalikan form ke kondisi awal
-    void reset() {
-        
-        // Mengosongkan nama diskon
-        tNamaDiskon.setText(null);
-        
-        // Mengembalikan ComboBox ke pilihan pertama
-        cTipeDiskon.setSelectedIndex(0);
-        
-        // Mengosongkan nilai diskon
-        tValueDiskon.setText(null);
-        
-        // Mengosongkan tanggal mulai
-        tglMulai.setDate(null);
-        
-        // Mengosongkan tanggal selesai
-        tglSelesai.setDate(null);
-        
-        // Mengembalikan status menjadi tidak aktif
-        btnStatusProduk.setSelected(false);
-        
-        // Menghapus pilihan pada tabel
-        tblDiskon.clearSelection();
-        
-        // Kembali ke mode tambah
-        sedangEdit = false;
-        
-        // Mengosongkan id yang dipilih
-        idDiskonDipilih = "";
-        
-    }
-    
-    // Method untuk membuat id diskon secara otomatis
-    String generateIdDiskon() {
-        
-        // Menyimpan id terakhir dari database
-        String lastId = null;
-        
-        try {
-            
-            // Membuka koneksi database
-            Connection conn = Koneksi.konek();
-            
-            // Mengambil id terakhir
-            String sql = "SELECT id_diskon FROM diskon ORDER BY id_diskon DESC LIMIT 1";
-            
-            // Menyiapkan statement
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-            // Menjalankan query
-            ResultSet rs = ps.executeQuery();
-            
-            // Jika ada data
-            if (rs.next()) {
-                
-                // Simpan id terakhir
-                lastId = rs.getString("id_diskon");
-            }
-        } catch (SQLException e) {
-            
-            JOptionPane.showMessageDialog(null, "Gagal membuat ID Diskon!");
-        }
-        
-        // Jika belum ada data
-        if (lastId == null) {
-            
-            return "DS001";
-        }
-        
-        // Mengambil angka dari DS001 menjadi 001
-        int angka = Integer.parseInt(lastId.substring(2));
-        
-        // Menambah angka satu
-        angka++;
-        
-        // Mengembalikan format DS001
-        return String.format("DS%03d", angka);
 
+        //query SQL untuk mengambil semua data diskon
+        String sql = "SELECT * FROM diskon";
+
+        try {
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //menyiapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //menjalankan query dan menyimpan hasilnya
+            ResultSet rs = ps.executeQuery();
+
+            //melakukan iterasi untuk setiap baris hasil query
+            while (rs.next()) {
+
+                //mengambil data dari setiap kolom
+                String namaDiskon = rs.getString("nama_diskon");
+                String tipeDiskon = rs.getString("tipe_diskon");
+                int nilaiDiskon = (int) rs.getDouble("nilai_diskon");
+                String statusDiskon = rs.getString("status");
+
+                //menyimpan data ke dalam array
+                Object[] baris = {namaDiskon, tipeDiskon, nilaiDiskon, statusDiskon};
+
+                //menambahkan baris ke model tabel
+                model.addRow(baris);
+            }
+
+        } catch (SQLException sQLException) {
+            //menampilkan pesan error jika gagal mengambil data
+            JOptionPane.showMessageDialog(null, "gagal mengambil data!");
+        }
+
+        //menampilkan model yang sudah diisi ke dalam tabel GUI
+        tblDiskon.setModel(model);
     }
     
     
@@ -250,14 +207,15 @@ public final class PanelDiskon extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jCheckBox1 = new javax.swing.JCheckBox();
         tambahDiskon = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblTambahDiskon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         btnSimpanDiskon = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btnBatalDiskon = new javax.swing.JButton();
         btnHapusDiskon = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -274,15 +232,6 @@ public final class PanelDiskon extends javax.swing.JPanel {
         lblNamaProduk2 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         tValueDiskon = new javax.swing.JTextField();
-        jPanel16 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        lblNamaProduk3 = new javax.swing.JLabel();
-        lblNamaProduk4 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jPanel22 = new javax.swing.JPanel();
-        tglMulai = new com.toedter.calendar.JDateChooser();
-        jPanel24 = new javax.swing.JPanel();
-        tglSelesai = new com.toedter.calendar.JDateChooser();
         jPanel19 = new javax.swing.JPanel();
         lblStatusProduk = new javax.swing.JLabel();
         btnStatusProduk = new javax.swing.JToggleButton();
@@ -331,53 +280,41 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tambahDiskon.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
         jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        jPanel4.setLayout(new java.awt.CardLayout());
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.GridLayout(2, 0, 0, 12));
 
         btnSimpanDiskon.setBackground(new java.awt.Color(214, 4, 39));
         btnSimpanDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnSimpanDiskon.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpanDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
-        btnSimpanDiskon.setText("Simpan Perubahan");
+        btnSimpanDiskon.setText("Simpan Diskon");
         btnSimpanDiskon.setBorderPainted(false);
         btnSimpanDiskon.addActionListener(this::btnSimpanDiskonActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel4.add(btnSimpanDiskon, gridBagConstraints);
+        jPanel9.add(btnSimpanDiskon);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(0, 2, 12, 0));
 
         btnBatalDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalDiskon.setText("Batal");
         btnBatalDiskon.addActionListener(this::btnBatalDiskonActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel4.add(btnBatalDiskon, gridBagConstraints);
+        jPanel1.add(btnBatalDiskon);
 
         btnHapusDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnHapusDiskon.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusDiskon.setText("Hapus");
         btnHapusDiskon.addActionListener(this::btnHapusDiskonActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel4.add(btnHapusDiskon, gridBagConstraints);
+        jPanel1.add(btnHapusDiskon);
+
+        jPanel9.add(jPanel1);
+
+        jPanel4.add(jPanel9, "card2");
 
         tambahDiskon.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
@@ -407,7 +344,6 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         tNamaDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tNamaDiskon.setForeground(new java.awt.Color(92, 62, 60));
-        tNamaDiskon.setText("Contoh: Jumat Berkah");
         tNamaDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 17, 0, 0));
         tNamaDiskon.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaDiskon.setOpaque(true);
@@ -478,81 +414,6 @@ public final class PanelDiskon extends javax.swing.JPanel {
         jPanel14.add(jPanel20, java.awt.BorderLayout.CENTER);
 
         jPanel11.add(jPanel14);
-
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setLayout(new java.awt.BorderLayout());
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setMinimumSize(new java.awt.Dimension(100, 50));
-        jPanel9.setPreferredSize(new java.awt.Dimension(309, 23));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
-
-        lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText(" Mulai");
-        lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel9.add(lblNamaProduk3);
-
-        lblNamaProduk4.setBackground(new java.awt.Color(255, 255, 255));
-        lblNamaProduk4.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk4.setText("Berakhir");
-        lblNamaProduk4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
-        jPanel9.add(lblNamaProduk4);
-
-        jPanel16.add(jPanel9, java.awt.BorderLayout.PAGE_START);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
-
-        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel22.setForeground(new java.awt.Color(92, 62, 60));
-
-        tglMulai.setBackground(new java.awt.Color(255, 255, 255));
-        tglMulai.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tglMulai.setIcon(iconDate);
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(tglMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tglMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-        );
-
-        jPanel15.add(jPanel22);
-
-        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
-        jPanel24.setForeground(new java.awt.Color(92, 62, 60));
-
-        tglSelesai.setBackground(new java.awt.Color(255, 255, 255));
-        tglSelesai.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
-        tglSelesai.setIcon(iconDate);
-
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tglSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-        );
-
-        jPanel15.add(jPanel24);
-
-        jPanel16.add(jPanel15, java.awt.BorderLayout.CENTER);
-
-        jPanel11.add(jPanel16);
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -668,18 +529,15 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         tblDiskon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Persen", "Persentase", "10%", "26/06-01/07", "Aktif"},
-                {"Uang", "Nominal", "Rp. 5000", "26/06-01/07", "Nonaktif"},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif", "Status"
+
             }
         ));
         tblDiskon.setCellPaddingLeft(25);
         tblDiskon.setCellPaddingRight(25);
-        tblDiskon.setCenterColumns("1,2,3,4");
+        tblDiskon.setCenterColumns("1,2,3");
         tblDiskon.setColumnWidths("150,110,100,150,90");
         tblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblDiskon.setHeaderPaddingLeft(25);
@@ -700,102 +558,272 @@ public final class PanelDiskon extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahDiskonActionPerformed
-        // TODO add your handling code here:
+
+        //tidak ada aksi tambahan pada tombol ini
+
     }//GEN-LAST:event_btnTambahDiskonActionPerformed
 
     private void tValueDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tValueDiskonMouseClicked
-        // TODO add your handling code here:
+
+        //tidak ada aksi tambahan saat field nilai diklik
+
     }//GEN-LAST:event_tValueDiskonMouseClicked
 
     private void tValueDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tValueDiskonActionPerformed
-        // TODO add your handling code here:
+
+        //tidak ada aksi tambahan pada field nilai diskon
+
     }//GEN-LAST:event_tValueDiskonActionPerformed
 
     private void tNamaDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaDiskonActionPerformed
-        // TODO add your handling code here:
+
+        //tidak ada aksi tambahan pada field nama diskon
+
     }//GEN-LAST:event_tNamaDiskonActionPerformed
 
     private void tNamaDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaDiskonMouseClicked
-        // TODO add your handling code here:
+
+        //tidak ada aksi tambahan saat field nama diklik
+
     }//GEN-LAST:event_tNamaDiskonMouseClicked
 
     private void btnBatalDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalDiskonActionPerformed
-        // TODO add your handling code here:
-        // Memanggil method reset
+
+        //memanggil method reset untuk mengosongkan form dan kembali ke mode tambah
         reset();
-        
+
     }//GEN-LAST:event_btnBatalDiskonActionPerformed
 
     private void btnSimpanDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanDiskonActionPerformed
-        // TODO add your handling code here:
-        // Mengecek apakah sedang mode edit atau tambah
-        if (sedangEdit) {
-            
-            // UPDATE data diskon
-            
-        } else {
-            
-            // INSERT data diskon baru
+
+        //mengambil input dari semua field form
+        String namaDiskon = tNamaDiskon.getText();
+        String tipeDiskon = cTipeDiskon.getSelectedItem() != null ? cTipeDiskon.getSelectedItem().toString() : "";
+        String nilaiDiskonStr = tValueDiskon.getText();
+
+        //mengambil status dari toggle button
+        String statusDiskon = btnStatusProduk.isSelected() ? "Aktif" : "Nonaktif";
+
+        //validasi: semua field wajib diisi
+        if (namaDiskon.isEmpty() || tipeDiskon.isEmpty() || nilaiDiskonStr.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+            return;
         }
-        
-        // Menampilkan ulang data ke tabel
+
+        //konversi nilai diskon ke tipe numerik
+        double nilaiDouble = Double.parseDouble(nilaiDiskonStr);
+
+        if (sedangEdit) {
+            //MODE EDIT: update data yang sudah ada berdasarkan id_diskon
+
+            //query SQL untuk mengubah data diskon
+            String sql = "UPDATE diskon SET nama_diskon=?, tipe_diskon=?, nilai_diskon=?, status=? WHERE id_diskon=?";
+
+            try {
+                //buka koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //siapkan statement dengan parameter
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //isi parameter nama diskon baru
+                ps.setString(1, namaDiskon);
+
+                //isi parameter tipe diskon baru
+                ps.setString(2, tipeDiskon);
+
+                //isi parameter nilai diskon baru
+                ps.setDouble(3, nilaiDouble);
+
+                //isi parameter status baru
+                ps.setString(4, statusDiskon);
+
+                //isi parameter kondisi WHERE dengan id_diskon yang dipilih
+                ps.setString(5, idDiskonDipilih);
+
+                //jalankan query update
+                ps.execute();
+
+                //tampilkan pesan berhasil
+                JOptionPane.showMessageDialog(null, "Data diskon berhasil diubah!");
+
+            } catch (SQLException sQLException) {
+                //tampilkan pesan jika gagal mengubah data
+                JOptionPane.showMessageDialog(null, sQLException.getMessage());
+            }
+
+        } else {
+            //MODE TAMBAH: insert data baru ke database
+
+            //generate id_diskon baru secara otomatis
+            String idDiskonBaru = generateIdDiskon();
+
+            //ambil id pengguna yang sedang login dari session
+            String idPenggunaLogin = FrameLogin.getIdPengguna();
+
+            //query SQL untuk menyisipkan data diskon baru
+            String sql = "INSERT INTO diskon (id_diskon, nama_diskon, tipe_diskon, nilai_diskon, status, id_pengguna) VALUES (?,?,?,?,?,?)";
+
+            try {
+                //buka koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //siapkan statement dengan parameter
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //isi parameter id_diskon yang sudah di-generate
+                ps.setString(1, idDiskonBaru);
+
+                //isi parameter nama diskon
+                ps.setString(2, namaDiskon);
+
+                //isi parameter tipe diskon
+                ps.setString(3, tipeDiskon);
+
+                //isi parameter nilai diskon
+                ps.setDouble(4, nilaiDouble);
+
+                //isi parameter status diskon
+                ps.setString(5, statusDiskon);
+
+                //isi parameter id pengguna dari session login
+                ps.setString(6, idPenggunaLogin);
+
+                //jalankan query insert
+                ps.execute();
+
+                //tampilkan pesan berhasil
+                JOptionPane.showMessageDialog(null, "Data diskon berhasil disimpan!");
+
+            } catch (SQLException sQLException) {
+                //tampilkan pesan jika gagal menyimpan data
+                JOptionPane.showMessageDialog(null, sQLException.getMessage());
+            }
+        }
+
+        //muat ulang tabel agar perubahan tampil
         load_tabel_diskon();
-        
-        // Mengosongkan form
+
+        //reset form kembali ke mode tambah
         reset();
 
     }//GEN-LAST:event_btnSimpanDiskonActionPerformed
 
     private void tblDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiskonMouseClicked
-        // TODO add your handling code here:
-        // Mengaktifkan mode edit
+
+        //ambil indeks baris yang diklik pada tabel diskon
+        int baris = tblDiskon.rowAtPoint(evt.getPoint());
+
+        //abaikan jika klik tidak mengenai baris manapun
+        if (baris == -1) {
+            return;
+        }
+
+        //ambil nilai dari kolom 0 (nama diskon)
+        String namaDiskon = tblDiskon.getValueAt(baris, 0).toString();
+
+        //ambil nilai dari kolom 1 (tipe diskon)
+        String tipeDiskon = tblDiskon.getValueAt(baris, 1).toString();
+
+        //ambil nilai dari kolom 2 (nilai diskon)
+        String nilaiDiskon = tblDiskon.getValueAt(baris, 2).toString();
+
+        //ambil nilai dari kolom 3 (status diskon)
+        String statusDiskon = tblDiskon.getValueAt(baris, 3).toString();
+
+        //query ke database untuk mengambil id_diskon berdasarkan nama diskon
+        String sql = "SELECT id_diskon FROM diskon WHERE nama_diskon = ?";
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //siapkan statement dengan parameter
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter nama diskon dari baris yang diklik
+            ps.setString(1, namaDiskon);
+
+            //jalankan query
+            ResultSet rs = ps.executeQuery();
+
+            //jika data ditemukan simpan id_diskon ke variabel
+            if (rs.next()) {
+                idDiskonDipilih = rs.getString("id_diskon");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil id diskon
+            JOptionPane.showMessageDialog(null, "Gagal mengambil id diskon!");
+            return;
+        }
+
+        //aktifkan mode edit
         sedangEdit = true;
-        
-        // Mengubah judul panel
+
+        //ubah judul panel menjadi Edit Diskon
         lblTambahDiskon.setText("Edit Diskon");
-        
-        // Mengisi seluruh komponen dari data tabel
+
+        //ubah text button simpan ke mode edit
+        btnSimpanDiskon.setText("Simpan Perubahan");
+
+        //tampilkan data dari baris yang dipilih ke form input
+        tNamaDiskon.setText(namaDiskon);
+        cTipeDiskon.setSelectedItem(tipeDiskon);
+        tValueDiskon.setText(nilaiDiskon);
+
+        //set toggle status sesuai nilai dari database
+        btnStatusProduk.setSelected(statusDiskon.equals("Aktif"));
+
     }//GEN-LAST:event_tblDiskonMouseClicked
 
     private void btnHapusDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDiskonActionPerformed
-        // TODO add your handling code here:
-        // Memastikan pengguna sudah memilih data
+
+        //cek apakah ada baris yang dipilih dari tabel
         if (!sedangEdit) {
-            JOptionPane.showMessageDialog(null, "Pilih data terlebih dahulu!");
-            
+            JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
             return;
         }
-        
-        // Query menghapus data berdasarkan id_diskon
+
+        //tampilkan dialog konfirmasi sebelum menghapus
+        int konfirmasi = JOptionPane.showConfirmDialog(null,
+                "Yakin ingin menghapus diskon ini?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION);
+
+        //jika pengguna memilih tidak batalkan hapus
+        if (konfirmasi != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        //query SQL untuk menghapus data diskon berdasarkan id_diskon
         String sql = "DELETE FROM diskon WHERE id_diskon=?";
-        
+
         try {
-            // Membuka koneksi database
+            //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            // Menyiapkan statement
+            //siapkan statement dengan parameter
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            // Mengisi parameter id diskon
+            //isi parameter id_diskon dari baris yang dipilih
             ps.setString(1, idDiskonDipilih);
 
-            // Menjalankan query
+            //jalankan query delete
             ps.execute();
 
-            // Menampilkan pesan berhasil
-            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
-            
-        } catch (SQLException e ) {
-            
-            // Menampilkan pesan gagal
-            JOptionPane.showMessageDialog(null, "Data gagal dihapus!");
+            //tampilkan pesan berhasil
+            JOptionPane.showMessageDialog(null, "Data diskon berhasil dihapus!");
 
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal menghapus data
+            JOptionPane.showMessageDialog(null, "Data diskon gagal dihapus!");
         }
-        
-        // Memperbarui isi tabel
+
+        //muat ulang tabel agar perubahan tampil
         load_tabel_diskon();
-        
-        // Mengembalikan form ke kondisi awal
+
+        //reset form kembali ke mode tambah
         reset();
 
     }//GEN-LAST:event_btnHapusDiskonActionPerformed
@@ -808,20 +836,17 @@ public final class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnStatusProduk;
     private javax.swing.JComboBox<String> cTipeDiskon;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -834,15 +859,11 @@ public final class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
     private javax.swing.JLabel lblNamaProduk2;
-    private javax.swing.JLabel lblNamaProduk3;
-    private javax.swing.JLabel lblNamaProduk4;
     private javax.swing.JLabel lblStatusProduk;
     private javax.swing.JLabel lblTambahDiskon;
     private javax.swing.JTextField tNamaDiskon;
     private javax.swing.JTextField tValueDiskon;
     private javax.swing.JPanel tambahDiskon;
     private jtablecustom.JTableCustom tblDiskon;
-    private com.toedter.calendar.JDateChooser tglMulai;
-    private com.toedter.calendar.JDateChooser tglSelesai;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import javax.swing.Box;
 
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -417,7 +418,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
 
         //menampilkan subtotal
-        lblSubtotal.setText("Rp. " + (int) subtotal);
+        lblSubtotal.setText(FormatUang.format(subtotal));
 
         //memperbarui diskon dgn method update diskon
         updateDiskon();
@@ -427,8 +428,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //method untuk menghitung diskon
     private void updateDiskon() {
 
-        //query untuk mengambil diskon yang sedang aktif berdasarkan tanggal dan status
-        String sql = "SELECT * FROM diskon WHERE status='Aktif' AND NOW() BETWEEN tgl_mulai AND tgl_selesai LIMIT 1";
+        //query untuk mengambil diskon yang sedang aktif berdasarkan  status
+        String sql = "SELECT * FROM diskon WHERE status='Aktif' LIMIT 1";
 
         try {
             //menghubungkan ke database
@@ -470,10 +471,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             total = subtotal - diskon;
 
             //menampilkan diskon
-            lblDiskon.setText("-Rp. " + (int) diskon);
+            lblDiskon.setText("-" + FormatUang.format(diskon));
 
             //menampilkan total
-            lblTotal.setText("Rp. " + (int) total);
+            lblTotal.setText(FormatUang.format(total));
 
         } catch (SQLException sQLException) {
             //tampilkan pesan jika gagal mengambil data diskon
@@ -516,13 +517,13 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         total = 0;
 
         //menampilkan subtotal menjadi nol
-        lblSubtotal.setText("Rp. 0");
+        lblSubtotal.setText(FormatUang.format(0));
 
         //menampilkan diskon menjadi nol
-        lblDiskon.setText("-Rp. 0");
+        lblDiskon.setText("-" + FormatUang.format(0));
 
         //menampilkan total menjadi nol
-        lblTotal.setText("Rp. 0");
+        lblTotal.setText(FormatUang.format(0));
 
     }
 

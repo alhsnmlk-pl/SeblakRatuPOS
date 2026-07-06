@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 
 import javax.swing.Box;
 
@@ -288,22 +289,22 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     private void tampilkanPembayaran() {
 
         //menampilkan subtotal transaksi
-        stkSub.setText("Rp." + (int) subtotal);
+        stkSub.setText(FormatUang.format(subtotal));
 
         //menampilkan total diskon
-        stkDiskon.setText("-Rp." + (int) diskon);
+        stkDiskon.setText("-" + FormatUang.format(diskon));
 
         //menampilkan total pembayaran
-        stkTotalA.setText("Rp." + (int) total);
+        stkTotalA.setText(FormatUang.format(total));
 
         //menampilkan metode pembayaran
         stkMetode.setText(metodePembayaran);
 
         //menampilkan nominal uang pelanggan
-        stkBayar.setText("Rp." + (int) tunai);
+        stkBayar.setText(FormatUang.format(tunai));
 
         //menampilkan total kembalian
-        stkKembali.setText("Rp." + (int) kembalian);
+        stkKembali.setText(FormatUang.format(kembalian));
 
     }
 

@@ -4,6 +4,7 @@
  */
 package posseblakratu.view;
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -15,7 +16,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import posseblakratu.view.FrameLogin;
 
 
 
@@ -49,6 +49,7 @@ private String idProdukTerpilih = null;
         filterToppingP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         filterMinumanP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         
+        reset();
     }
     
     
@@ -78,13 +79,13 @@ private String idProdukTerpilih = null;
         tNamaProduk.setEditable(true);//setelah di kosongan , field nama produk dapat di isi inputan kembali
         tDeskProduk.setText(null); //mengosongkan field deskripsi produk
         tDeskProduk.setEditable(true);//setelah di kosongan , field deskripsi produk dapat di isi inputan kembali
-        cKategoriProduk.setSelectedItem("Seblak");//mengembalikan pilihan kategori ke default yaitu Seblak
+        cKategoriProduk.setSelectedItem(null);//mengosongkan pilihan kategori
         tHargaProduk.setText(null); //mengosongkan field harga jual
         tHargaProduk.setEditable(true);//setelah di kosongan , field harga jual dapat di isi inputan kembali
         modeUbah = false; //penanda bahwa mode ubah tidak dinyalakan
         idProdukTerpilih=null;// mengosongkan id produk
-        lblTambahProduk.setText("Tambah Produk"); //mengatur teks Tambah Produk padaa lblTambahProduk
-        btnSimpanProduk.setText("Simpan Perubahan"); ////mengatur teks Simpan Perubahan pada lblTambahProduk
+        lblTambahProduk.setText("Tambah Produk"); //mengatur teks Tambah Produk pada lblTambahProduk
+        btnSimpanProduk.setText("Simpan Produk"); //mengatur teks Simpan Produk pada btnSimpanProduk
     }
     String IDProdukOtomatis(String kategori) { ///method untuk mengambil id produk otomatis berdasarkan kategori
         String prefix = "";//mendeklarasikan tipe data string dengan nama variabel prefix
@@ -154,7 +155,7 @@ private String idProdukTerpilih = null;
                 String namaProduk = rs.getString("nama_produk"); //mengambil data kolom nama_produk
                 String kategoriProduk = rs.getString("kategori"); //mengambil data kolom kategori
                 double hargaJual = rs.getDouble("harga_jual");//mengambil harga jual bertipe double
-                String hargaProduk = String.valueOf((long)hargaJual); //maengubah harga menjadi string tanpa angka desimal
+                String hargaProduk = FormatUang.format(hargaJual); //format harga dengan titik ribuan
                 String statusProduk = rs.getString("status"); //mengambil data kolom status
 
                 Object[] baris = {idproduk, namaProduk,kategoriProduk,hargaProduk,statusProduk};//membuat array berisi data satu baris
@@ -187,7 +188,9 @@ private String idProdukTerpilih = null;
         jPanel2 = new javax.swing.JPanel();
         lblTambahProduk = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
         btnSimpanProduk = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
         btnBatalProduk = new javax.swing.JButton();
         btnHapusProduk = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -265,53 +268,42 @@ private String idProdukTerpilih = null;
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
         jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        jPanel4.setLayout(new java.awt.CardLayout());
+
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setLayout(new java.awt.GridLayout(2, 0, 0, 12));
 
         btnSimpanProduk.setBackground(new java.awt.Color(214, 4, 39));
         btnSimpanProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnSimpanProduk.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpanProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
-        btnSimpanProduk.setText("Simpan Perubahan");
+        btnSimpanProduk.setText("Simpan Produk");
         btnSimpanProduk.setBorderPainted(false);
+        btnSimpanProduk.setPreferredSize(new java.awt.Dimension(200, 28));
         btnSimpanProduk.addActionListener(this::btnSimpanProdukActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel4.add(btnSimpanProduk, gridBagConstraints);
+        jPanel21.add(btnSimpanProduk);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new java.awt.GridLayout(0, 2, 12, 0));
 
         btnBatalProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalProduk.setText("Batal");
         btnBatalProduk.addActionListener(this::btnBatalProdukActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel4.add(btnBatalProduk, gridBagConstraints);
+        jPanel10.add(btnBatalProduk);
 
         btnHapusProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnHapusProduk.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusProduk.setText("Hapus");
         btnHapusProduk.addActionListener(this::btnHapusProdukActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel4.add(btnHapusProduk, gridBagConstraints);
+        jPanel10.add(btnHapusProduk);
+
+        jPanel21.add(jPanel10);
+
+        jPanel4.add(jPanel21, "card2");
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
@@ -895,7 +887,8 @@ private String idProdukTerpilih = null;
         
         tNamaProduk.setText(namaProduk);//tampilkan namaProduk di text field tNamaProduk
         cKategoriProduk.setSelectedItem(kategoriProduk);//tampilkan pilihan kategori produk di combo box cKategoriProduk
-        tHargaProduk.setText(hargaProduk);//tampilkan hargaProduk di text field tHargaProduk
+        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
+        tHargaProduk.setText(hargaProduk.replace("Rp. ", "").replace(".", ""));//tampilkan hargaProduk di text field tHargaProduk
         btnStatusProduk.setSelected(statusProduk.equals("Tersedia"));//tampilkan btnStatusProduk jika tersedia, maka bernilai true
 
         String sql = "SELECT deskripsi FROM produk WHERE id_produk=?";//Query SQL untuk menampilkan deskripsi dari tabel produk berdasarkan id_produk
@@ -917,9 +910,9 @@ private String idProdukTerpilih = null;
             JOptionPane.showMessageDialog(null, " Deskripsi gagal di ambil!");
         }
         modeUbah =true; //user sedang mengubah data
-        idProdukTerpilih = idProduk; //simpan idProduk sebagai idProdukTerpilih, saat melakukan menyimpan perubahan
-        lblTambahProduk.setText("Mengubah Produk"); //menganti text dari Tambah produk menjadi "Mengubah Produk" pada lblTambahProduk
-        btnSimpanProduk.setText("Mengubah Produk ");//menganti text dari Simpan Perubahan menjadi "Mengubah Produk" pada btnSimpanProduk
+        idProdukTerpilih = idProduk; //simpan idProduk sebagai idProdukTerpilih saat menyimpan perubahan
+        lblTambahProduk.setText("Edit Produk"); //mengubah teks lblTambahProduk menjadi Edit Produk
+        btnSimpanProduk.setText("Simpan Perubahan"); //mengubah teks btnSimpanProduk menjadi Simpan Perubahan
     }//GEN-LAST:event_tblProdukMouseClicked
 
     private void lblTambahProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTambahProdukMouseClicked
@@ -941,6 +934,7 @@ private String idProdukTerpilih = null;
     private javax.swing.JToggleButton filterToppingP;
     private javax.swing.JLabel jLabell;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -952,6 +946,7 @@ private String idProdukTerpilih = null;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

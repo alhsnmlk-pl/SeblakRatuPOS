@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import posseblakratu.config.Koneksi;
+import posseblakratu.config.FormatUang;
 
 /**
  *
@@ -41,6 +42,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         //memanggil method untuk menampilkan data stok ke tabel
         load_tabel_stok();
+        reset();
     }
     
     
@@ -69,8 +71,12 @@ public class PanelStok extends javax.swing.JPanel {
 
 
     void reset() {
+
         //ubah judul panel kembali ke tambah stok
         lblTambahProduk.setText("Tambah Stok");
+
+        //kembalikan text button simpan ke mode tambah
+        btnSimpanTambahStok.setText("Simpan Stok     ");
 
         //kosongkan semua field input
         tNamaStok.setText(null);
@@ -145,11 +151,9 @@ public class PanelStok extends javax.swing.JPanel {
         model.addColumn("Harga");
         model.addColumn("Satuan");
 
-        //ambil id pengguna yang sedang login dari session
-        String idPenggunaLogin = FrameLogin.getIdPengguna();
 
         //query SQL hanya mengambil data milik pengguna yang sedang login
-        String sql = "SELECT nama_stok, jumlah_stok, harga_satuan, satuan FROM stok_bahan WHERE id_pengguna = ?";
+        String sql = "SELECT * FROM stok_bahan";
 
         try {
             //membuka koneksi ke database
@@ -158,8 +162,6 @@ public class PanelStok extends javax.swing.JPanel {
             //siapkan statement dengan parameter
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            //isi parameter id_pengguna dari session login
-            ps.setString(1, idPenggunaLogin);
 
             //jalankan query dan ambil hasilnya
             ResultSet rs = ps.executeQuery();
@@ -170,7 +172,7 @@ public class PanelStok extends javax.swing.JPanel {
                 //mengambil data dari setiap kolom
                 String namaStok = rs.getString("nama_stok");
                 int jumlahStok = rs.getInt("jumlah_stok");
-                int hargaStok = (int) rs.getDouble("harga_satuan");
+                String hargaStok = FormatUang.format(rs.getDouble("harga_satuan"));
                 String satuanStok = rs.getString("satuan");
 
                 //menyimpan data ke dalam array
@@ -220,7 +222,9 @@ public class PanelStok extends javax.swing.JPanel {
         tHargaStok = new javax.swing.JTextField();
         lblRupiahProduk = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
         btnSimpanTambahStok = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
         btnBatalStok = new javax.swing.JButton();
         btnHapusPengguna = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -430,10 +434,13 @@ public class PanelStok extends javax.swing.JPanel {
         jPanel1.add(jPanel7, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(21, 21, 20, 21));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel4.setMinimumSize(new java.awt.Dimension(345, 130));
         jPanel4.setPreferredSize(new java.awt.Dimension(345, 130));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        jPanel4.setLayout(new java.awt.CardLayout());
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new java.awt.GridLayout(2, 0, 0, 12));
 
         btnSimpanTambahStok.setBackground(new java.awt.Color(214, 4, 39));
         btnSimpanTambahStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
@@ -442,28 +449,16 @@ public class PanelStok extends javax.swing.JPanel {
         btnSimpanTambahStok.setText("Simpan Perubahan");
         btnSimpanTambahStok.setBorderPainted(false);
         btnSimpanTambahStok.addActionListener(this::btnSimpanTambahStokActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 111;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(21, 21, 0, 21);
-        jPanel4.add(btnSimpanTambahStok, gridBagConstraints);
+        jPanel16.add(btnSimpanTambahStok);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new java.awt.GridLayout(0, 2, 12, 0));
 
         btnBatalStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalStok.setText("Batal");
         btnBatalStok.setFocusable(false);
         btnBatalStok.addActionListener(this::btnBatalStokActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 73;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 21, 20, 0);
-        jPanel4.add(btnBatalStok, gridBagConstraints);
+        jPanel10.add(btnBatalStok);
 
         btnHapusPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
@@ -471,14 +466,11 @@ public class PanelStok extends javax.swing.JPanel {
         btnHapusPengguna.setText("Hapus");
         btnHapusPengguna.setFocusable(false);
         btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 20, 0);
-        jPanel4.add(btnHapusPengguna, gridBagConstraints);
+        jPanel10.add(btnHapusPengguna);
+
+        jPanel16.add(jPanel10);
+
+        jPanel4.add(jPanel16, "card2");
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
@@ -614,11 +606,16 @@ public class PanelStok extends javax.swing.JPanel {
         //ubah judul panel menjadi Edit Stok
         lblTambahProduk.setText("Edit Stok");
 
+        //ubah text button simpan ke mode edit
+        btnSimpanTambahStok.setText("Simpan Perubahan");
+
         //tampilkan data dari baris yang dipilih ke form input
         tNamaStok.setText(namaStok);
         tJmlStok.setText(jumlahStok);
         tSatuanStok.setText(satuanStok);
-        tHargaStok.setText(hargaStok);
+
+        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
+        tHargaStok.setText(hargaStok.replace("Rp. ", "").replace(".", ""));
     }//GEN-LAST:event_tblStokMouseClicked
 
     private void btnBatalStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalStokActionPerformed
@@ -810,11 +807,13 @@ public class PanelStok extends javax.swing.JPanel {
     private javax.swing.JButton btnHapusPengguna;
     private javax.swing.JButton btnSimpanTambahStok;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;

@@ -4,10 +4,7 @@
  */
 package posseblakratu.component;
 
-/**
- *
- * @author Al
- */
+import posseblakratu.config.FormatUang;
 public class cardTopping extends javax.swing.JPanel {
 
     //deklarasi varible untuk menyimpan data topping
@@ -34,7 +31,7 @@ public class cardTopping extends javax.swing.JPanel {
         lblTopping.setText(namaTopping);
 
         //menampilkan harga produk
-        lblHargaTopping.setText("Rp. " + (int) hargaTopping);
+        lblHargaTopping.setText(FormatUang.format(hargaTopping));
 
     }
 
