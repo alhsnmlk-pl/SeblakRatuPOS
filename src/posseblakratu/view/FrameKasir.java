@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package posseblakratu.view;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
@@ -15,6 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Al
  */
 public final class FrameKasir extends javax.swing.JFrame {
+
     CardLayout page;
 
     /**
@@ -23,8 +25,6 @@ public final class FrameKasir extends javax.swing.JFrame {
     public FrameKasir() {
         initComponents();
 
-
-
         TanggalJam();
         
         inisiasiPanel();
@@ -32,24 +32,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnTransaksi.setSelected(true);
         stateSidebar(btnTransaksi);
     }
-    
-    
-    
-    
+
     //method untuk menginisiasi panel
-    void inisiasiPanel(){
-        page = (CardLayout)contentPanel.getLayout();
-        contentPanel.add(new PanelDiskon(), "diskon");
-        contentPanel.add(new PanelLaporan(), "laporan");
-        contentPanel.add(new PanelPengguna(), "pengguna");
-        contentPanel.add(new PanelProduk(), "produk");
-        contentPanel.add(new PanelStok(), "stok");
+    void inisiasiPanel() {
+        page = (CardLayout) contentPanel.getLayout();
         contentPanel.add(new PanelTransaksi(), "transaksi");
     }
 
-
-    
-    
     //method jam
     private void TanggalJam() {
         javax.swing.Timer timer = new javax.swing.Timer(1000, (java.awt.event.ActionEvent e) -> {
@@ -66,17 +55,9 @@ public final class FrameKasir extends javax.swing.JFrame {
 
         timer.start();
     }
-    
-    
-    
-    
 
-    
-    
-    
-    
-      //method utk state aktif dan nonaktif untuk sidebar
-      private void stateSidebar(javax.swing.JToggleButton tombol) {
+    //method utk state aktif dan nonaktif untuk sidebar
+    private void stateSidebar(javax.swing.JToggleButton tombol) {
         tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
 
         //margin kiri
@@ -375,7 +356,7 @@ public final class FrameKasir extends javax.swing.JFrame {
         // TODO add your handling code here:
         stateSidebar(btnTransaksi); //memanggil method state aktif dan nonaktif tombol du event state change
         page.show(contentPanel, "transaksi"); //memanggil method inisiasi panel
-        
+
     }//GEN-LAST:event_btnTransaksiItemStateChanged
 
     private void btnTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseEntered
@@ -424,10 +405,10 @@ public final class FrameKasir extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         int pilihan = JOptionPane.showConfirmDialog(
-            null,
-            "Apakah Anda yakin ingin keluar?",
-            "Konfirmasi",
-            JOptionPane.YES_NO_OPTION);
+                null,
+                "Apakah Anda yakin ingin keluar?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
 
         switch (pilihan) {
             case JOptionPane.YES_OPTION -> {
@@ -453,7 +434,7 @@ public final class FrameKasir extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-       
+
         try {
             UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
