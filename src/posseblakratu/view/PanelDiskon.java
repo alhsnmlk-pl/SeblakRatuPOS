@@ -8,10 +8,19 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import posseblakratu.config.Koneksi;
 
 
 /**
@@ -19,18 +28,31 @@ import javax.swing.JPanel;
  * @author Al
  */
 public final class PanelDiskon extends javax.swing.JPanel {
+    
+    // Menyimpan id_diskon dari baris tabel yang sedang dipilih
+    private String idDiskonDipilih = "";
+    
+    // true jika sedang mode edit, false jika mode tambah
+    private boolean sedangEdit = false;
 
     /**
      * Creates new form PanelDiskon DesainUI.setGlobal
      */
     public PanelDiskon() {
         initComponents();
+        
+        // Membuat panel memiliki sudut membulat
         panelLengkung(jPanel23);
         panelLengkung(jPanel18);
         panelLengkung(jPanel20);
         panelLengkung(jPanel22);
         panelLengkung(jPanel24);
+        
+        // Mengatur tampilan komponen tanggal
         desainDate();
+        
+        // Menampilkan data diskon ke tabel
+        load_tabel_diskon();
     }
     
     void panelLengkung(JPanel p) {
@@ -80,6 +102,141 @@ public final class PanelDiskon extends javax.swing.JPanel {
     }
     //icon date
     ImageIcon iconDate = new ImageIcon(getClass().getResource("/posseblakratu/icon/IconDate.png"));
+    
+    // Method untuk menampilkan data diskon ke JTable
+    void load_tabel_diskon() {
+        // Membuat model tabel baru
+        DefaultTableModel model = new DefaultTableModel();
+        
+        // Menambahkan nama kolom
+        model.addColumn("Nama Diskon");
+        model.addColumn("Tipe");
+        model.addColumn("Nilai");
+        model.addColumn("Status");
+        
+        // Mengambil id pengguna yang sedang login
+        String idPengguna = FrameLogin.getIdPengguna();
+        
+        // Query mengambil data sesuai pengguna
+        String sql = "SELECT * FROM diskon WHERE id_pengguna=?";
+        
+        try {
+            // Membuka koneksi
+            Connection conn = Koneksi.konek();
+            
+            // Menyiapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            // Mengisi parameter id pengguna
+            ps.setString(1, idPengguna);
+            
+            // Menjalankan query
+            ResultSet rs = ps.executeQuery();
+            
+            // Membaca seluruh data
+            while (rs.next()) {
+                
+                // Menambahkan data ke tabel
+                model.addRow(new Object[]{
+                    
+                    rs.getString("nama_diskon"),
+                    rs.getString("tipe_diskon"),
+                    rs.getString("nilai_diskon"),
+                    rs.getString("status")
+                        
+                });
+            }
+        } catch (SQLException e) {
+            
+            JOptionPane.showMessageDialog(null, "Data gagal ditampilkan!");
+        }
+        
+        // Menampilkan model ke JTable
+        tblDiskon.setModel(model);
+          
+    }
+    
+    // Method untuk mengembalikan form ke kondisi awal
+    void reset() {
+        
+        // Mengosongkan nama diskon
+        tNamaDiskon.setText(null);
+        
+        // Mengembalikan ComboBox ke pilihan pertama
+        cTipeDiskon.setSelectedIndex(0);
+        
+        // Mengosongkan nilai diskon
+        tValueDiskon.setText(null);
+        
+        // Mengosongkan tanggal mulai
+        tglMulai.setDate(null);
+        
+        // Mengosongkan tanggal selesai
+        tglSelesai.setDate(null);
+        
+        // Mengembalikan status menjadi tidak aktif
+        btnStatusProduk.setSelected(false);
+        
+        // Menghapus pilihan pada tabel
+        tblDiskon.clearSelection();
+        
+        // Kembali ke mode tambah
+        sedangEdit = false;
+        
+        // Mengosongkan id yang dipilih
+        idDiskonDipilih = "";
+        
+    }
+    
+    // Method untuk membuat id diskon secara otomatis
+    String generateIdDiskon() {
+        
+        // Menyimpan id terakhir dari database
+        String lastId = null;
+        
+        try {
+            
+            // Membuka koneksi database
+            Connection conn = Koneksi.konek();
+            
+            // Mengambil id terakhir
+            String sql = "SELECT id_diskon FROM diskon ORDER BY id_diskon DESC LIMIT 1";
+            
+            // Menyiapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            // Menjalankan query
+            ResultSet rs = ps.executeQuery();
+            
+            // Jika ada data
+            if (rs.next()) {
+                
+                // Simpan id terakhir
+                lastId = rs.getString("id_diskon");
+            }
+        } catch (SQLException e) {
+            
+            JOptionPane.showMessageDialog(null, "Gagal membuat ID Diskon!");
+        }
+        
+        // Jika belum ada data
+        if (lastId == null) {
+            
+            return "DS001";
+        }
+        
+        // Mengambil angka dari DS001 menjadi 001
+        int angka = Integer.parseInt(lastId.substring(2));
+        
+        // Menambah angka satu
+        angka++;
+        
+        // Mengembalikan format DS001
+        return String.format("DS%03d", angka);
+
+    }
+    
+    
     
     
     
@@ -134,10 +291,9 @@ public final class PanelDiskon extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         lblDaftarProduk = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        btnTambahDiskon = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCustom1 = new jtablecustom.JTableCustom();
+        tblDiskon = new jtablecustom.JTableCustom();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -186,6 +342,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         btnSimpanDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanDiskon.setText("Simpan Perubahan");
         btnSimpanDiskon.setBorderPainted(false);
+        btnSimpanDiskon.addActionListener(this::btnSimpanDiskonActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -198,6 +355,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         btnBatalDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalDiskon.setText("Batal");
+        btnBatalDiskon.addActionListener(this::btnBatalDiskonActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -211,6 +369,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         btnHapusDiskon.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusDiskon.setText("Hapus");
+        btnHapusDiskon.addActionListener(this::btnHapusDiskonActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -480,16 +639,6 @@ public final class PanelDiskon extends javax.swing.JPanel {
         jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
-        btnTambahDiskon.setBackground(new java.awt.Color(214, 4, 39));
-        btnTambahDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnTambahDiskon.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambahDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPlus.png"))); // NOI18N
-        btnTambahDiskon.setText("Tambah Baru");
-        btnTambahDiskon.setBorderPainted(false);
-        btnTambahDiskon.setPreferredSize(new java.awt.Dimension(150, 28));
-        btnTambahDiskon.addActionListener(this::btnTambahDiskonActionPerformed);
-        jPanel10.add(btnTambahDiskon, java.awt.BorderLayout.CENTER);
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -517,7 +666,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        jTableCustom1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDiskon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Persen", "Persentase", "10%", "26/06-01/07", "Aktif"},
                 {"Uang", "Nominal", "Rp. 5000", "26/06-01/07", "Nonaktif"},
@@ -528,15 +677,20 @@ public final class PanelDiskon extends javax.swing.JPanel {
                 "Nama Diskon", "Tipe", "Nilai", "Tanggal Aktif", "Status"
             }
         ));
-        jTableCustom1.setCellPaddingLeft(25);
-        jTableCustom1.setCellPaddingRight(25);
-        jTableCustom1.setCenterColumns("1,2,3,4");
-        jTableCustom1.setColumnWidths("150,110,100,150,90");
-        jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jTableCustom1.setHeaderPaddingLeft(25);
-        jTableCustom1.setHeaderPaddingRight(25);
-        jTableCustom1.setLeftColumns("0");
-        jScrollPane1.setViewportView(jTableCustom1);
+        tblDiskon.setCellPaddingLeft(25);
+        tblDiskon.setCellPaddingRight(25);
+        tblDiskon.setCenterColumns("1,2,3,4");
+        tblDiskon.setColumnWidths("150,110,100,150,90");
+        tblDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
+        tblDiskon.setHeaderPaddingLeft(25);
+        tblDiskon.setHeaderPaddingRight(25);
+        tblDiskon.setLeftColumns("0");
+        tblDiskon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDiskonMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDiskon);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -565,13 +719,93 @@ public final class PanelDiskon extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tNamaDiskonMouseClicked
 
+    private void btnBatalDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalDiskonActionPerformed
+        // TODO add your handling code here:
+        // Memanggil method reset
+        reset();
+        
+    }//GEN-LAST:event_btnBatalDiskonActionPerformed
+
+    private void btnSimpanDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanDiskonActionPerformed
+        // TODO add your handling code here:
+        // Mengecek apakah sedang mode edit atau tambah
+        if (sedangEdit) {
+            
+            // UPDATE data diskon
+            
+        } else {
+            
+            // INSERT data diskon baru
+        }
+        
+        // Menampilkan ulang data ke tabel
+        load_tabel_diskon();
+        
+        // Mengosongkan form
+        reset();
+
+    }//GEN-LAST:event_btnSimpanDiskonActionPerformed
+
+    private void tblDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiskonMouseClicked
+        // TODO add your handling code here:
+        // Mengaktifkan mode edit
+        sedangEdit = true;
+        
+        // Mengubah judul panel
+        lblTambahDiskon.setText("Edit Diskon");
+        
+        // Mengisi seluruh komponen dari data tabel
+    }//GEN-LAST:event_tblDiskonMouseClicked
+
+    private void btnHapusDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDiskonActionPerformed
+        // TODO add your handling code here:
+        // Memastikan pengguna sudah memilih data
+        if (!sedangEdit) {
+            JOptionPane.showMessageDialog(null, "Pilih data terlebih dahulu!");
+            
+            return;
+        }
+        
+        // Query menghapus data berdasarkan id_diskon
+        String sql = "DELETE FROM diskon WHERE id_diskon=?";
+        
+        try {
+            // Membuka koneksi database
+            Connection conn = Koneksi.konek();
+
+            // Menyiapkan statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            // Mengisi parameter id diskon
+            ps.setString(1, idDiskonDipilih);
+
+            // Menjalankan query
+            ps.execute();
+
+            // Menampilkan pesan berhasil
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+            
+        } catch (SQLException e ) {
+            
+            // Menampilkan pesan gagal
+            JOptionPane.showMessageDialog(null, "Data gagal dihapus!");
+
+        }
+        
+        // Memperbarui isi tabel
+        load_tabel_diskon();
+        
+        // Mengembalikan form ke kondisi awal
+        reset();
+
+    }//GEN-LAST:event_btnHapusDiskonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatalDiskon;
     private javax.swing.JButton btnHapusDiskon;
     private javax.swing.JButton btnSimpanDiskon;
     private javax.swing.JToggleButton btnStatusProduk;
-    private javax.swing.JButton btnTambahDiskon;
     private javax.swing.JComboBox<String> cTipeDiskon;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jPanel10;
@@ -596,7 +830,6 @@ public final class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private jtablecustom.JTableCustom jTableCustom1;
     private javax.swing.JLabel lblDaftarProduk;
     private javax.swing.JLabel lblNamaProduk;
     private javax.swing.JLabel lblNamaProduk1;
@@ -608,6 +841,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
     private javax.swing.JTextField tNamaDiskon;
     private javax.swing.JTextField tValueDiskon;
     private javax.swing.JPanel tambahDiskon;
+    private jtablecustom.JTableCustom tblDiskon;
     private com.toedter.calendar.JDateChooser tglMulai;
     private com.toedter.calendar.JDateChooser tglSelesai;
     // End of variables declaration//GEN-END:variables
