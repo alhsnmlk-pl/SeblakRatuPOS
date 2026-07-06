@@ -613,188 +613,160 @@ public class PanelLaporan extends javax.swing.JPanel {
             //membuat objek FileWriter untuk menulis ke file CSV
             FileWriter fw = new FileWriter(file);
 
+            //menulis deklarasi separator agar Excel otomatis mengenali delimiter titik koma
+            fw.write("sep=;\n");
+
             //--- BAGIAN 1: RINGKASAN LAPORAN ---
             fw.write("LAPORAN PEMASUKAN\n");
-            fw.write("Periode:," + periode + "\n");
+            fw.write("Periode:;" + periode + "\n");
             fw.write("\n");
 
             //menulis ringkasan keuangan
-            fw.write("Total Pemasukan:," + lblTotalPemasukan.getText() + "\n");
-            fw.write("Total Pengeluaran:," + lblTotalPengeluaran.getText() + "\n");
-            fw.write("Laba Bersih:," + lblLabaBersih.getText() + "\n");
-            fw.write("Margin Keuntungan:," + lblMargin.getText() + "\n");
+            fw.write("Total Pemasukan:;" + lblTotalPemasukan.getText() + "\n");
+            fw.write("Total Pengeluaran:;" + lblTotalPengeluaran.getText() + "\n");
+            fw.write("Laba Bersih:;" + lblLabaBersih.getText() + "\n");
+            fw.write("Margin Keuntungan:;" + lblMargin.getText() + "\n");
             fw.write("\n");
 
-            //--- BAGIAN 2: RINCIAN TRANSAKSI ---
+            //--- BAGIAN 2: RINCIAN TRANSAKSI FLAT ---
             fw.write("RINCIAN TRANSAKSI\n");
 
-            //menulis header kolom rincian transaksi
-            fw.write("Tanggal,No Transaksi,Subtotal,Diskon,Total Bayar,Metode Bayar,Nominal Bayar,Kembalian\n");
+            //menulis header kolom flat — setiap baris adalah satu item produk
+            fw.write("Tanggal;No Transaksi;Subtotal;Diskon;Total Bayar;Metode;Jumlah Bayar;Kembalian;"
+                    + "Produk;Level;Qty;Harga Satuan;Subtotal Produk;Topping\n");
 
-            //query untuk mengambil semua transaksi pada periode yang dipilih
-            //join ke tabel diskon untuk mendapatkan nama diskon jika ada
-            String sqlTrx = "SELECT t.id_transaksi, t.tanggal, t.subtotal, "
-                    + "t.metode, t.jumlah_bayar, t.kembalian, t.total_akhir, "
-                    + "COALESCE(d.nama_diskon, '-') AS nama_diskon "
+            //query flat dengan JOIN transaksi + detail_transaksi + produk
+            //setiap baris mewakili satu item produk dalam satu transaksi
+            String sqlFlat = "SELECT "
+                    + "t.tanggal, t.id_transaksi, t.subtotal, "
+                    + "COALESCE(d.nama_diskon, '-') AS nama_diskon, "
+                    + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
+                    + "p.nama_produk, dt.level, dt.kuantitas, dt.harga_satuan, dt.subtotal_produk, "
+                    + "dt.id_detail "
                     + "FROM transaksi t "
                     + "LEFT JOIN diskon d ON t.id_diskon = d.id_diskon "
+                    + "JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi "
+                    + "JOIN produk p ON dt.id_produk = p.id_produk "
                     + "WHERE DATE_FORMAT(t.tanggal, '%Y-%m') = ? "
-                    + "ORDER BY t.tanggal ASC";
+                    + "ORDER BY t.tanggal ASC, dt.id_detail ASC";
 
-            //menyiapkan statement query transaksi
-            PreparedStatement psTrx = conn.prepareStatement(sqlTrx);
+            //menyiapkan statement query flat
+            PreparedStatement psFlat = conn.prepareStatement(sqlFlat);
 
             //mengisi parameter periode
-            psTrx.setString(1, periode);
+            psFlat.setString(1, periode);
 
-            //menjalankan query transaksi
-            ResultSet rsTrx = psTrx.executeQuery();
+            //menjalankan query flat
+            ResultSet rsFlat = psFlat.executeQuery();
 
             //membuat formatter tanggal untuk tampilan
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-            //melakukan iterasi untuk setiap transaksi
-            while (rsTrx.next()) {
-
-                //mengambil id transaksi untuk query detail
-                String idTrx = rsTrx.getString("id_transaksi");
+            //melakukan iterasi untuk setiap baris hasil join
+            while (rsFlat.next()) {
 
                 //mengambil dan memformat tanggal transaksi
-                String tanggal = sdf.format(rsTrx.getTimestamp("tanggal"));
+                String tanggal = sdf.format(rsFlat.getTimestamp("tanggal"));
 
-                //mengambil subtotal sebelum diskon
-                double subtotal = rsTrx.getDouble("subtotal");
+                //mengambil id transaksi
+                String idTrx = rsFlat.getString("id_transaksi");
 
-                //mengambil nama diskon (sudah '-' jika tidak ada diskon dari COALESCE)
-                String namaDiskon = rsTrx.getString("nama_diskon");
+                //mengambil subtotal transaksi
+                double subtotal = rsFlat.getDouble("subtotal");
+
+                //mengambil nama diskon
+                String namaDiskon = rsFlat.getString("nama_diskon");
 
                 //mengambil total akhir setelah diskon
-                double totalBayar = rsTrx.getDouble("total_akhir");
+                double totalAkhir = rsFlat.getDouble("total_akhir");
 
                 //mengambil metode pembayaran
-                String metode = rsTrx.getString("metode");
+                String metode = rsFlat.getString("metode");
 
-                //mengambil nominal yang dibayarkan pelanggan
-                double nominalBayar = rsTrx.getDouble("jumlah_bayar");
+                //mengambil jumlah yang dibayarkan pelanggan
+                double jumlahBayar = rsFlat.getDouble("jumlah_bayar");
 
-                //mengambil kembalian (0 jika Qris)
-                double kembalian = rsTrx.getDouble("kembalian");
+                //mengambil kembalian
+                double kembalian = rsFlat.getDouble("kembalian");
 
-                //menulis baris transaksi ke CSV
-                fw.write(tanggal + ","
-                        + idTrx + ","
-                        + "Rp. " + (int) subtotal + ","
-                        + namaDiskon + ","
-                        + "Rp. " + (int) totalBayar + ","
-                        + metode + ","
-                        + "Rp. " + (int) nominalBayar + ","
-                        + "Rp. " + (int) kembalian + "\n");
+                //mengambil nama produk
+                String namaProduk = rsFlat.getString("nama_produk");
 
-                //--- BAGIAN 3: DETAIL ITEM PER TRANSAKSI ---
+                //mengambil level pedas (null jika tidak ada)
+                String level = rsFlat.getString("level") != null ? rsFlat.getString("level") : "-";
 
-                //menulis sub-header detail item transaksi ini
-                fw.write(",Produk,Level,Qty,Harga Satuan,Subtotal Produk,Topping\n");
+                //mengambil kuantitas item
+                int qty = rsFlat.getInt("kuantitas");
 
-                //query untuk mengambil detail item dari transaksi ini
-                String sqlDetail = "SELECT dt.id_detail, p.nama_produk, dt.level, "
-                        + "dt.kuantitas, dt.harga_satuan, dt.subtotal_produk "
-                        + "FROM detail_transaksi dt "
-                        + "JOIN produk p ON dt.id_produk = p.id_produk "
-                        + "WHERE dt.id_transaksi = ?";
+                //mengambil harga satuan item
+                double hargaSatuan = rsFlat.getDouble("harga_satuan");
 
-                //menyiapkan statement query detail
-                PreparedStatement psDetail = conn.prepareStatement(sqlDetail);
+                //mengambil subtotal produk
+                double subtotalProduk = rsFlat.getDouble("subtotal_produk");
 
-                //mengisi parameter id transaksi
-                psDetail.setString(1, idTrx);
+                //mengambil id detail untuk query topping
+                String idDetail = rsFlat.getString("id_detail");
 
-                //menjalankan query detail
-                ResultSet rsDetail = psDetail.executeQuery();
+                //query untuk mengambil topping dari item ini
+                String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
+                        + "FROM detail_topping tp "
+                        + "JOIN produk p ON tp.id_produk = p.id_produk "
+                        + "WHERE tp.id_detail = ?";
 
-                //melakukan iterasi untuk setiap item pesanan
-                while (rsDetail.next()) {
+                //menyiapkan statement query topping
+                PreparedStatement psTopping = conn.prepareStatement(sqlTopping);
 
-                    //mengambil id detail untuk query topping
-                    String idDetail = rsDetail.getString("id_detail");
+                //mengisi parameter id detail
+                psTopping.setString(1, idDetail);
 
-                    //mengambil nama produk
-                    String namaProduk = rsDetail.getString("nama_produk");
+                //menjalankan query topping
+                ResultSet rsTopping = psTopping.executeQuery();
 
-                    //mengambil level pedas (bisa null)
-                    String level = rsDetail.getString("level") != null ? rsDetail.getString("level") : "-";
+                //variabel untuk menggabungkan semua topping menjadi satu teks
+                String daftarTopping = "";
 
-                    //mengambil kuantitas item
-                    int qty = rsDetail.getInt("kuantitas");
+                //melakukan iterasi untuk setiap topping
+                while (rsTopping.next()) {
 
-                    //mengambil harga satuan item
-                    double hargaSatuan = rsDetail.getDouble("harga_satuan");
-
-                    //mengambil subtotal produk
-                    double subtotalProduk = rsDetail.getDouble("subtotal_produk");
-
-                    //--- BAGIAN 4: TOPPING PER ITEM ---
-
-                    //query untuk mengambil topping dari item ini
-                    String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
-                            + "FROM detail_topping tp "
-                            + "JOIN produk p ON tp.id_produk = p.id_produk "
-                            + "WHERE tp.id_detail = ?";
-
-                    //menyiapkan statement query topping
-                    PreparedStatement psTopping = conn.prepareStatement(sqlTopping);
-
-                    //mengisi parameter id detail
-                    psTopping.setString(1, idDetail);
-
-                    //menjalankan query topping
-                    ResultSet rsTopping = psTopping.executeQuery();
-
-                    //variabel untuk menggabungkan semua topping menjadi satu teks
-                    String daftarTopping = "";
-
-                    //melakukan iterasi untuk setiap topping
-                    while (rsTopping.next()) {
-
-                        //menambahkan koma jika bukan topping pertama
-                        if (!daftarTopping.isEmpty()) {
-                            daftarTopping += " | ";
-                        }
-
-                        //menambahkan nama topping dan qty ke teks gabungan
-                        daftarTopping += rsTopping.getString("nama_produk")
-                                + " x" + rsTopping.getInt("kuantitas");
+                    //menambahkan pemisah jika bukan topping pertama
+                    if (!daftarTopping.isEmpty()) {
+                        daftarTopping += " | ";
                     }
 
-                    //jika tidak ada topping, tampilkan tanda strip
-                    if (daftarTopping.isEmpty()) {
-                        daftarTopping = "-";
-                    }
-
-                    //menulis baris detail item ke CSV
-                    fw.write(","
-                            + namaProduk + ","
-                            + level + ","
-                            + qty + ","
-                            + "Rp. " + (int) hargaSatuan + ","
-                            + "Rp. " + (int) subtotalProduk + ","
-                            + "\"" + daftarTopping + "\"\n");
-
-                    //menutup result set dan statement topping
-                    rsTopping.close();
-                    psTopping.close();
+                    //menambahkan nama topping dan qty ke teks gabungan
+                    daftarTopping += rsTopping.getString("nama_produk")
+                            + " x" + rsTopping.getInt("kuantitas");
                 }
 
-                //menutup result set dan statement detail
-                rsDetail.close();
-                psDetail.close();
+                //jika tidak ada topping tampilkan tanda strip
+                if (daftarTopping.isEmpty()) {
+                    daftarTopping = "-";
+                }
 
-                //menulis baris pemisah antar transaksi
-                fw.write("\n");
+                //menutup result set dan statement topping
+                rsTopping.close();
+                psTopping.close();
+
+                //menulis satu baris flat ke CSV dengan semua kolom
+                fw.write(tanggal + ";"
+                        + idTrx + ";"
+                        + "Rp. " + (int) subtotal + ";"
+                        + namaDiskon + ";"
+                        + "Rp. " + (int) totalAkhir + ";"
+                        + metode + ";"
+                        + "Rp. " + (int) jumlahBayar + ";"
+                        + "Rp. " + (int) kembalian + ";"
+                        + namaProduk + ";"
+                        + level + ";"
+                        + qty + ";"
+                        + "Rp. " + (int) hargaSatuan + ";"
+                        + "Rp. " + (int) subtotalProduk + ";"
+                        + daftarTopping + "\n");
             }
 
-            //menutup result set dan statement transaksi
-            rsTrx.close();
-            psTrx.close();
+            //menutup result set dan statement flat
+            rsFlat.close();
+            psFlat.close();
 
             //menutup file writer
             fw.close();
