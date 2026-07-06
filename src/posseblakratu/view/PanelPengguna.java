@@ -99,14 +99,14 @@ public class PanelPengguna extends javax.swing.JPanel {
         }
 
         if(lastId==null){
-            return "PG001";
+            return "PG01";
         }
 
         int angka = Integer.parseInt(lastId.substring(2));
 
         angka++;
 
-        return String.format("PG%03d", angka);
+        return String.format("PG%02d", angka);
 
     }
         void load_tabel_pengguna(){
@@ -596,7 +596,7 @@ public class PanelPengguna extends javax.swing.JPanel {
             btnSimpanPengguna.setText("Simpan Perubahan");
 
             tUsername.setText(rs.getString("username"));
-            tPasswordPengguna.setText(rs.getString("password"));
+            tPasswordPengguna.setText("");
 
             cRolePengguna.setSelectedItem(rs.getString("role"));
 
