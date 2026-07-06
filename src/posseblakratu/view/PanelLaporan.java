@@ -353,11 +353,11 @@ public class PanelLaporan extends javax.swing.JPanel {
         jTableCustom1.setCellPaddingLeft(25);
         jTableCustom1.setCellPaddingRight(25);
         jTableCustom1.setCenterColumns("2,3,4");
-        jTableCustom1.setColumnWidths("50,50,50,50,150");
+        jTableCustom1.setColumnWidths("50,120,50,50,100");
         jTableCustom1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jTableCustom1.setHeaderPaddingLeft(25);
         jTableCustom1.setHeaderPaddingRight(25);
-        jTableCustom1.setLeftColumns("0");
+        jTableCustom1.setLeftColumns("0,1");
         jScrollPane1.setViewportView(jTableCustom1);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
