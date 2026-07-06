@@ -642,6 +642,9 @@ private String idProdukTerpilih = null;
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         tblProduk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"M001", "Es Jeruk", "Minuman", "5.000", "Tersedia"},
