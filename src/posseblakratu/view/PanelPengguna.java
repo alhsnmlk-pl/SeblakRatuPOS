@@ -105,9 +105,10 @@ public class PanelPengguna extends javax.swing.JPanel {
         //memberi tulisan tombol menjadi "Simpan Pengguna"
         btnSimpanPengguna.setText("Simpan Pengguna");
         //mengosongkan input username
-        tUsername.setText("");
-        //mengosongkan input password
-        tPasswordPengguna.setText("");
+        tUsername.setText("Contoh: kasir_depan");
+        // placeholder dibuat jadi terlihat dan menampilkan placeholder
+        tPasswordPengguna.setEchoChar((char) 0); 
+        tPasswordPengguna.setText("Masukkan Password Baru"); 
         //mengosongkan pilihan pada ComboBox role
         cRolePengguna.setSelectedItem(null);
         //menjadikan status akun "Aktif" sebagai pilihan default
@@ -374,10 +375,17 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         tUsername.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tUsername.setForeground(new java.awt.Color(92, 62, 60));
-        tUsername.setText("Contoh: kasir1");
         tUsername.setBorder(null);
         tUsername.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tUsername.setPreferredSize(new java.awt.Dimension(126, 19));
+        tUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tUsernameFocusLost(evt);
+            }
+        });
         tUsername.addActionListener(this::tUsernameActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -404,9 +412,18 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         tPasswordPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        tPasswordPengguna.setForeground(new java.awt.Color(92, 62, 60));
         tPasswordPengguna.setText("jPasswordField1");
         tPasswordPengguna.setBorder(null);
         tPasswordPengguna.setPreferredSize(new java.awt.Dimension(90, 50));
+        tPasswordPengguna.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tPasswordPenggunaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tPasswordPenggunaFocusLost(evt);
+            }
+        });
 
         btnMata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconMata.png"))); // NOI18N
         btnMata.setBorder(null);
@@ -935,6 +952,58 @@ public class PanelPengguna extends javax.swing.JPanel {
     
 
     }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
+
+    private void tUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusGained
+        // TODO add your handling code here:
+        //ambil teks yang saat ini ada di field username
+        String username = tUsername.getText();
+
+        //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+        if (username.equals("Contoh: kasir_depan")) {
+            tUsername.setText("");
+        }
+    }//GEN-LAST:event_tUsernameFocusGained
+
+    private void tUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusLost
+        // TODO add your handling code here:
+        String username = tUsername.getText();
+
+        //jika kosong kembalikan tulisan placeholder
+        if (username.equals("") || username.equals("Contoh: kasir_depan")) {
+            tUsername.setText("Contoh: kasir_depan");
+        }
+    }//GEN-LAST:event_tUsernameFocusLost
+
+    private void tPasswordPenggunaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks password dan ubah dari char[] menjadi String
+        String password = String.valueOf(tPasswordPengguna.getPassword());
+
+        //jika masih berisi placeholder kosongkan dan aktifkan karakter bullet
+        if (password.equals("Masukkan Password Baru")) {
+            tPasswordPengguna.setText("");
+            tPasswordPengguna.setEchoChar('•');
+        }
+            
+        }
+    }//GEN-LAST:event_tPasswordPenggunaFocusGained
+
+    private void tPasswordPenggunaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            String password = String.valueOf(tPasswordPengguna.getPassword());
+
+        //jika kosong kembalikan ke placeholder
+        if (password.isEmpty()) {
+            //nonaktifkan echo char agar teks placeholder bisa terbaca
+            tPasswordPengguna.setEchoChar((char) 0);
+            //tampilkan kembali teks placeholder
+            tPasswordPengguna.setText("Masukkan Password Baru");
+        }
+            
+        }
+    }//GEN-LAST:event_tPasswordPenggunaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

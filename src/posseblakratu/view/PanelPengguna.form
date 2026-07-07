@@ -340,7 +340,6 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="3c" green="3e" red="5c" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Contoh: kasir1"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
                             </Property>
@@ -352,6 +351,8 @@
                             </Property>
                           </Properties>
                           <Events>
+                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tUsernameFocusGained"/>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tUsernameFocusLost"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tUsernameActionPerformed"/>
                           </Events>
                           <Constraints>
@@ -443,6 +444,9 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Plus Jakarta Sans" size="16" style="0"/>
                             </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="3c" green="3e" red="5c" type="rgb"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
@@ -451,6 +455,10 @@
                               <Dimension value="[90, 50]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tPasswordPenggunaFocusGained"/>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tPasswordPenggunaFocusLost"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JToggleButton" name="btnMata">
                           <Properties>
