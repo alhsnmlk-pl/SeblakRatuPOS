@@ -42,6 +42,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         //memanggil method untuk menampilkan data diskon ke tabel
         load_tabel_diskon();
         
+        // mengembalikan form ke kondisi awal
         reset();
     }
 
@@ -66,7 +67,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
                 10));
     }
 
-
+    // membuat method untuk mengembalikan seluruh komponen form ke kondisi awal
     void reset() {
 
         //ubah judul panel kembali ke tambah diskon
@@ -605,7 +606,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         //mengambil status dari toggle button
         String statusDiskon = btnStatusProduk.isSelected() ? "Aktif" : "Nonaktif";
 
-        //validasi: semua field wajib diisi
+        //memastikan seluruh input telah diisi sebelum data disimpan
         if (namaDiskon.isEmpty() || tipeDiskon.isEmpty() || nilaiDiskonStr.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
             return;
