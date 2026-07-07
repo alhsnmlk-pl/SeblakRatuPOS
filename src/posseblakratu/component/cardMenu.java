@@ -84,7 +84,7 @@ public class cardMenu extends javax.swing.JPanel {
         //menampilkan nama produk
         lblMenu.setText(namaMenu);
 
-        //menampilkan harga produk
+        //menampilkan harga produk dengan class format uang
         lblHarga.setText(FormatUang.format(hargaMenu));
 
         //memeriksa apakah deskripsi kosong

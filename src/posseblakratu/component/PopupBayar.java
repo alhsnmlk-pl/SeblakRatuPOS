@@ -905,6 +905,20 @@ public final class PopupBayar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnQrisItemStateChanged
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
+
+        // Mengecek apakah nominal bayar masih kosong
+        if (txtNominal.getText().trim().isEmpty()) {
+            // Menampilkan peringatan jika nominal belum dimasukkan
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Harap masukkan nominal!",
+                    "Peringatan",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+
+            // Menghentikan proses
+            return;
+        }
+
+        
         //simpan header transaksi ke tabel transaksi
         boolean berhasil = simpanTransaksi();
 
@@ -953,9 +967,6 @@ public final class PopupBayar extends javax.swing.JDialog {
 
         //tampilkan pratinjau struk
         struk.setVisible(true);
-
-        //refresh tabel laporan karena ada pemasukan baru
-        posseblakratu.view.PanelLaporan.refresh();
 
         //reset keranjang di panel transaksi setelah transaksi selesai
         panelTransaksi.resetTransaksi();

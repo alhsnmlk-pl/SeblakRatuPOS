@@ -28,21 +28,6 @@ import posseblakratu.config.FormatUang;
  */
 public class PanelLaporan extends javax.swing.JPanel {
 
-    //menyimpan instance aktif PanelLaporan untuk di-refresh dari luar
-    private static PanelLaporan instance;
-
-    //mengembalikan instance aktif PanelLaporan
-    public static PanelLaporan getInstance() {
-        return instance;
-    }
-
-    //memanggil refresh laporan dari luar (PopupBayar, PanelStok, dll)
-    public static void refresh() {
-        if (instance != null) {
-            instance.loadLaporan();
-        }
-    }
-
     /**
      * Creates new form PanelLaporan
      */
@@ -53,8 +38,6 @@ public class PanelLaporan extends javax.swing.JPanel {
         panelLengkung(jPanel14);
         panelLengkung(main);
 
-        //simpan instance ini agar bisa di-refresh dari luar
-        instance = this;
 
         //memanggil method untuk menampilkan laporan sesuai bulan yang aktif saat ini
         loadLaporan();
@@ -92,19 +75,19 @@ public class PanelLaporan extends javax.swing.JPanel {
 
     //membuat method untuk load laporan berdasarkan bulan yang dipilih
     void loadLaporan() {
+        
+        //mengambil tahun saat ini
+        int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
         //mengambil bulan yang dipilih dari komponen PeriodeBulan (0 = Januari)
         int bulan = PeriodeBulan.getMonth() + 1;
-
-        //mengambil tahun saat ini
-        int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
         //memformat bulan dan tahun menjadi string dua digit
         String periodeIni = String.format("%04d-%02d", tahun, bulan);
 
         //menghitung bulan sebelumnya untuk perbandingan
-        int bulanLalu = bulan - 1;
         int tahunLalu = tahun;
+        int bulanLalu = bulan - 1;
 
         //jika bulan januari, bulan lalu adalah desember tahun sebelumnya
         if (bulanLalu == 0) {
@@ -215,8 +198,8 @@ public class PanelLaporan extends javax.swing.JPanel {
         DefaultTableModel model = new DefaultTableModel();
 
         //menambahkan kolom ke dalam model tabel
-        model.addColumn("No Referensi");
         model.addColumn("Tanggal");
+        model.addColumn("No Referensi");
         model.addColumn("Kategori");
         model.addColumn("Tipe");
         model.addColumn("Jumlah");
@@ -263,7 +246,7 @@ public class PanelLaporan extends javax.swing.JPanel {
                 String jumlah = "+" + FormatUang.format(total);
 
                 //menyimpan data ke dalam array baris
-                Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
+                Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
 
                 //menambahkan baris ke model tabel
                 model.addRow(baris);
@@ -294,7 +277,7 @@ public class PanelLaporan extends javax.swing.JPanel {
                 String jumlah = "-" + FormatUang.format(total);
 
                 //menyimpan data ke dalam array baris
-                Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
+                Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
 
                 //menambahkan baris ke model tabel
                 model.addRow(baris);
@@ -621,15 +604,15 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         tblLaporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"TRX0001", "03/07/2026", "Penjualan", "Pemasukan", "+Rp. 30.000"}
+
             },
             new String [] {
-                "No Refrensi", "Tanggal", "Kategori", "Tipe", "Jumlah"
+
             }
         ));
         tblLaporan.setCellPaddingLeft(25);
         tblLaporan.setCellPaddingRight(25);
-        tblLaporan.setCenterColumns("1,2,3,4");
+        tblLaporan.setCenterColumns("2,3,4");
         tblLaporan.setColumnWidths("50,50,50,50,150");
         tblLaporan.setEnabled(false);
         tblLaporan.setFocusable(false);

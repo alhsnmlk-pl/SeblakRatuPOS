@@ -148,7 +148,7 @@ public class PanelStok extends javax.swing.JPanel {
         //menambahkan kolom ke dalam model tabel (tidak ada kolom id_stok)
         model.addColumn("Nama Bahan");
         model.addColumn("Stok");
-        model.addColumn("Harga Satuan");
+        model.addColumn("Harga");
         model.addColumn("Satuan");
 
 
@@ -188,6 +188,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         //menampilkan model yang sudah diisi ke dalam tabel GUI
         tblStok.setModel(model);
+        tblStok.setColumnWidths("230,50,100,50");
     }
     
     /**
@@ -521,16 +522,16 @@ public class PanelStok extends javax.swing.JPanel {
 
         tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Bawang", "13", "Rp. 1.000", "kg"}
+
             },
             new String [] {
-                "Nama Bahan", "Stok", "Harga Satuan", "Satuan"
+
             }
         ));
         tblStok.setCellPaddingLeft(25);
         tblStok.setCellPaddingRight(25);
         tblStok.setCenterColumns("1,2,3");
-        tblStok.setColumnWidths("230,50,100,50");
+        tblStok.setColumnWidths("250,50,80");
         tblStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblStok.setHeaderPaddingLeft(25);
         tblStok.setHeaderPaddingRight(25);
@@ -848,9 +849,6 @@ public class PanelStok extends javax.swing.JPanel {
 
         //muat ulang tabel agar perubahan tampil
         load_tabel_stok();
-
-        //refresh tabel laporan karena ada transaksi pengeluaran baru
-        PanelLaporan.refresh();
 
         //reset form kembali ke mode tambah
         reset();

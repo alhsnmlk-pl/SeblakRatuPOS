@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package posseblakratu.view;
+
 import posseblakratu.config.Koneksi;
 import posseblakratu.config.FormatUang;
 import java.sql.PreparedStatement;
@@ -17,15 +18,15 @@ import java.sql.Statement;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-
-
 /**
  *
  * @author Al
  */
 public final class PanelProduk extends javax.swing.JPanel {
-private boolean modeUbah =false;
-private String idProdukTerpilih = null;
+
+    private boolean modeUbah = false;
+    private String idProdukTerpilih = null;
+
     /**
      * Creates new form PanelProduk
      */
@@ -33,113 +34,171 @@ private String idProdukTerpilih = null;
         initComponents(); //memanggil method init komponen
         reset(); //memanggil method reset untuk mengosongkan semua field inputan
         load_tabel_produk("Semua");//memanggil method untuk menampilkan tabel produk dari database dengan (semua kategori)
-        
+
         panelLengkung(jPanel17);
         panelLengkung(jPanel18);
         panelLengkung(jPanel20);
         panelLengkung(jPanel19);
 
-
-        
-
-        
         filterSemuaP.setSelected(true);
-        filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+        filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
         filterSeblakP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         filterToppingP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         filterMinumanP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
-        
+
         reset();
     }
-    
-    
+
     void panelLengkung(JPanel p) {
-        
+
         p.setBorder(new FlatLineBorder(
                 new Insets(3, 3, 3, 3),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
-        
+
         jPanel1.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
+
         jPanel3.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
     }
-    void reset(){ //method untuk mengosongkan semua inputan
-        tNamaProduk.setText(null); //mengosongkan field nama produk
-        tNamaProduk.setEditable(true);//setelah di kosongan , field nama produk dapat di isi inputan kembali
-        tDeskProduk.setText(null); //mengosongkan field deskripsi produk
-        tDeskProduk.setEditable(true);//setelah di kosongan , field deskripsi produk dapat di isi inputan kembali
-        cKategoriProduk.setSelectedItem(null);//mengosongkan pilihan kategori
-        tHargaProduk.setText(null); //mengosongkan field harga jual
-        tHargaProduk.setEditable(true);//setelah di kosongan , field harga jual dapat di isi inputan kembali
-        modeUbah = false; //penanda bahwa mode ubah tidak dinyalakan
-        idProdukTerpilih=null;// mengosongkan id produk
-        lblTambahProduk.setText("Tambah Produk"); //mengatur teks Tambah Produk pada lblTambahProduk
-        btnSimpanProduk.setText("Simpan Produk"); //mengatur teks Simpan Produk pada btnSimpanProduk
+    
+    //method untuk mengosongkan semua inputan
+    void reset() {
+        
+        //mengosongkan field nama produk
+        tNamaProduk.setText("Contoh: Es Jeruk"); 
+        
+        //mengosongkan field deskripsi produk
+        tDeskProduk.setText("Opsional"); 
+        
+        //mengosongkan pilihan kategori
+        cKategoriProduk.setSelectedItem(null);
+        
+        //mengosongkan field harga jual
+        tHargaProduk.setText(null);
+        
+        tblProduk.clearSelection();
+        
+        //penanda bahwa mode ubah tidak dinyalakan
+        modeUbah = false; 
+        
+        // mengosongkan id produk yg dipilih
+        idProdukTerpilih = null;
+        
+        //mengatur teks Tambah Produk pada lblTambahProduk
+        lblTambahProduk.setText("Tambah Produk"); 
+        
+        //mengatur teks Simpan Produk pada btnSimpanProduk
+        btnSimpanProduk.setText("Simpan Produk"); 
     }
-    String IDProdukOtomatis(String kategori) { ///method untuk mengambil id produk otomatis berdasarkan kategori
-        String prefix = "";//mendeklarasikan tipe data string dengan nama variabel prefix
-        switch (kategori){ //mengatur pilihan kategori
-            case "Seblak": //jika user memilih kategori seblak maka , prefix akan menampilkan huruf awalan S
+    
+    //method untuk mengambil id produk otomatis berdasarkan kategori
+    String IDProdukOtomatis(String kategori) {
+        
+        //mendeklarasikan tipe data string dengan nama variabel prefix
+        String prefix = "";
+        
+        //mengatur pilihan kategori
+        switch (kategori) { 
+            
+            //jika user memilih kategori seblak maka , prefix akan menampilkan huruf awalan S
+            case "Seblak": 
                 prefix = "S";
-                break; // mengehntikan perulangan
-            case "Topping"://jika user memilih kategori topping maka , prefix akan menampilkan huruf awalan T
+                break;
+            //jika user memilih kategori topping maka , prefix akan menampilkan huruf awalan T
+            case "Topping":
                 prefix = "T";
-                break;// mengehntikan perulangan
-            case "Minuman"://jika user memilih kategori minuman maka , prefix akan menampilkan huruf awalan M
+                break;
+            //jika user memilih kategori minuman maka , prefix akan menampilkan huruf awalan M
+            case "Minuman":
                 prefix = "M";
-                break;   // mengehntikan perulangan
+                break;
         }
-        String idBaru =prefix + "001"; //id awal / otomatis jika belum ada data produk
-        //query SQL untuk menampilkan id_produk, dari tabel produk, dimana id produk sesuai huruf yang di prexif lalu mengurutkan id produk secara descending limitnya 1
-        String sql = "SELECT id_produk FROM produk WHERE id_produk LIKE ? ORDER BY id_produk DESC LIMIT 1"; //Query SQL untuk mengambil id_produk terakhir berdasarkan prefix
-        try{
-            Connection conn = Koneksi.konek();//membuka koneksi ke database menggunakan method konek()
-
-            PreparedStatement ps = conn.prepareStatement(sql);//siapkan prepared statement
+        
+        //id awal / otomatis jika belum ada data produk
+        String idBaru = prefix + "001"; 
+        
+        //query SQL untuk menampilkan id_produk, dari tabel produk, dimana id produk sesuai huruf yang di
+        //prexif lalu mengurutkan id produk secara descending limitnya 1
+        String sql = "SELECT id_produk FROM produk WHERE id_produk LIKE ? ORDER BY id_produk DESC LIMIT 1"; 
+        
+        try {
             
-            ps.setString(1,prefix + "%");//isi parameter prefix untuk pencarian id
+            //membuka koneksi ke database menggunakan method konek()
+            Connection conn = Koneksi.konek();
             
-            ResultSet resultSet = ps.executeQuery();//jalankan query dan ambil hasilnya
-
-            if(resultSet.next()) { //jika data ditemukan 
-                String idTerakhir = resultSet.getString("id_produk");//ambil id_produk terakhir hasil query
-                int angkaTerakhir = Integer.parseInt(idTerakhir.substring(1));// melakukan parsing untuk membuang huruf prefix 
-                int angkaBaru =angkaTerakhir + 1 ;//menambahkan 1 dan angka terakhir, untuk dapatkan urutan berikutnya 
+            //siapkan prepared statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            //isi parameter prefix untuk pencarian id
+            ps.setString(1, prefix + "%");
+            
+            //jalankan query dan ambil hasilnya
+            ResultSet resultSet = ps.executeQuery();
+            
+            //jika data ditemukan 
+            if (resultSet.next()) { 
                 
-                idBaru = prefix + String.format("%03d", angkaBaru);//gabungkan kembali huruf prefix dengan angka baru
+                //ambil id_produk terakhir hasil query
+                String idTerakhir = resultSet.getString("id_produk");
+                
+                // melakukan parsing untuk membuang huruf prefix 
+                int angkaTerakhir = Integer.parseInt(idTerakhir.substring(1));
+                
+                //menambahkan 1 dan angka terakhir, untuk dapatkan urutan berikutnya 
+                int angkaBaru = angkaTerakhir + 1;
+                
+                //gabungkan kembali huruf prefix dengan angka baru
+                idBaru = prefix + String.format("%03d", angkaBaru);
             }
         } catch (SQLException sQLException) {
             //menampilkan pesan error saat berinteraksi dengan database
-           JOptionPane.showMessageDialog(null,"Gagal membuat ID produk");
-            
+            JOptionPane.showMessageDialog(null, "Gagal membuat ID produk");
+
         }
-        return idBaru; //mengembalikan id produk yang telah dibuat
+        
+        //mengembalikan id produk yang telah dibuat
+        return idBaru; 
     }
-    void load_tabel_produk(String kategori){
-        DefaultTableModel mdl = new DefaultTableModel(); //membuat object mdl tabel baru
-        mdl.addColumn("Nama Produk"); //Kolom pertama untuk nama produk
-        mdl.addColumn("Kategori"); //Kolom kedua untuk kategori
-        mdl.addColumn("Harga Jual"); //Kolom ketiga untuk harga jual
-        mdl.addColumn("Status"); //Kolom keempat untuk status
+    
+    void load_tabel_produk(String kategori) {
         
-        String sql; 
-        if(kategori.equals("Semua")){ ///jika yang dipilih adalah tombol semua
-            sql = "SELECT * FROM produk";// QUERY SQL untuk mengambil semua data dari tabel produk
-        }else{
-            sql = "SELECT * FROM produk WHERE kategori='"+kategori+"'"; //filter berdasarkan kategori yang dipilih
+        //membuat object mdl tabel baru
+        DefaultTableModel mdl = new DefaultTableModel(); 
+        
+        
+        //menambahkan kolom ke dalam mdl tabel
+        mdl.addColumn("Nama Produk");
+        mdl.addColumn("Kategori"); 
+        mdl.addColumn("Harga Jual");
+        mdl.addColumn("Status");
+
+        String sql;
+        
+        //jika yang dipilih adalah tombol semua
+        if (kategori.equals("Semua")) {
+            
+            // QUERY SQL untuk mengambil semua data dari tabel produk
+            sql = "SELECT * FROM produk "
+                        + "ORDER BY CASE "
+                        + "WHEN kategori='Seblak' THEN 1 "
+                        + "WHEN kategori='Minuman' THEN 2 "
+                        + "WHEN kategori='Topping' THEN 3 "
+                        + "END, id_produk";
+        } else {
+            
+            //filter berdasarkan kategori yang dipilih
+            sql = "SELECT * FROM produk WHERE kategori='" + kategori + "'"; 
         }
-        
+
         try {
             //membuka koneksi ke database
             Connection conn = Koneksi.konek();
@@ -155,17 +214,21 @@ private String idProdukTerpilih = null;
                 String hargaProduk = FormatUang.format(hargaJual); //format harga dengan titik ribuan
                 String statusProduk = rs.getString("status"); //mengambil data kolom status
 
-                Object[] baris = {namaProduk, kategoriProduk, hargaProduk, statusProduk};//membuat array berisi data satu baris
+                Object[] baris = { namaProduk, kategoriProduk, hargaProduk, statusProduk};//membuat array berisi data satu baris
 
                 mdl.addRow(baris);//menambahkan array baris ke dalam model tabel
             }
         } catch (SQLException sQLException) {
             // menampilkan pesan error jika gagal mengambil data dari database
-            JOptionPane.showMessageDialog(null,"Gagal mengambil data!");
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data!");
         }
         //menampilkan model data pada tabel daftar produk
         tblProduk.setModel(mdl);
+        tblProduk.setColumnWidths("100,50,50,50");
+
+        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -275,6 +338,7 @@ private String idProdukTerpilih = null;
         btnSimpanProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanProduk.setText("Simpan Produk");
         btnSimpanProduk.setBorderPainted(false);
+        btnSimpanProduk.setFocusable(false);
         btnSimpanProduk.setPreferredSize(new java.awt.Dimension(200, 28));
         btnSimpanProduk.addActionListener(this::btnSimpanProdukActionPerformed);
         jPanel21.add(btnSimpanProduk);
@@ -284,6 +348,7 @@ private String idProdukTerpilih = null;
 
         btnBatalProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalProduk.setText("Batal");
+        btnBatalProduk.setFocusable(false);
         btnBatalProduk.addActionListener(this::btnBatalProdukActionPerformed);
         jPanel10.add(btnBatalProduk);
 
@@ -291,6 +356,7 @@ private String idProdukTerpilih = null;
         btnHapusProduk.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusProduk.setText("Hapus");
+        btnHapusProduk.setFocusable(false);
         btnHapusProduk.addActionListener(this::btnHapusProdukActionPerformed);
         jPanel10.add(btnHapusProduk);
 
@@ -328,6 +394,14 @@ private String idProdukTerpilih = null;
         tNamaProduk.setBorder(null);
         tNamaProduk.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaProduk.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaProduk.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tNamaProdukFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNamaProdukFocusLost(evt);
+            }
+        });
         tNamaProduk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tNamaProdukMouseClicked(evt);
@@ -365,6 +439,14 @@ private String idProdukTerpilih = null;
         tDeskProduk.setBorder(null);
         tDeskProduk.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tDeskProduk.setPreferredSize(new java.awt.Dimension(126, 19));
+        tDeskProduk.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tDeskProdukFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tDeskProdukFocusLost(evt);
+            }
+        });
         tDeskProduk.addActionListener(this::tDeskProdukActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -393,6 +475,7 @@ private String idProdukTerpilih = null;
 
         cKategoriProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         cKategoriProduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seblak", "Topping", "Minuman" }));
+        cKategoriProduk.setToolTipText("Pilih Kategori Produk");
         cKategoriProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12));
         jPanel20.add(cKategoriProduk, java.awt.BorderLayout.CENTER);
 
@@ -665,7 +748,7 @@ private String idProdukTerpilih = null;
         //cek apakah tombol filter "Semua" sedang dipilih oleh user
         if (filterSemuaP.isSelected()) {
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
-            filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+            filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Semua"); //muat ulang tabel produk untuk menampilkan seluruh produk dari berbagai kategori
         } else {
             //hapus garis bawah jika tombol "Semua" sedang tidak dipilih
@@ -678,7 +761,7 @@ private String idProdukTerpilih = null;
         //cek apakah tombol filter "Seblak" sedang dipilih oleh user
         if (filterSeblakP.isSelected()) {
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
-            filterSeblakP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+            filterSeblakP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Seblak");//muat ulang tabel produk untuk menampilkan kategori seblak aja
         } else {
             //hapus garis bawah jika tombol "Seblak" sedang tidak dipilih
@@ -688,9 +771,10 @@ private String idProdukTerpilih = null;
 
     private void filterToppingPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterToppingPItemStateChanged
         // TODO add your handling code here:
-        if (filterToppingP.isSelected()) { ////cek apakah tombol filter "Topping" sedang dipilih oleh user
+        if (filterToppingP.isSelected()) {
+            ////cek apakah tombol filter "Topping" sedang dipilih oleh user
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
-            filterToppingP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+            filterToppingP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Topping");//muat ulang tabel produk untuk menampilkan kategori topping aja
         } else {
             //hapus garis bawah jika tombol "Topping" sedang tidak dipilih
@@ -702,7 +786,7 @@ private String idProdukTerpilih = null;
         // TODO add your handling code here:
         if (filterMinumanP.isSelected()) {//cek apakah tombol filter "Minuman" sedang dipilih oleh user
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
-            filterMinumanP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173,0,28)));
+            filterMinumanP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Minuman");//muat ulang tabel produk untuk menampilkan kategori minuman aja
         } else {
             //hapus garis bawah jika tombol "Minuman" sedang tidak dipilih
@@ -728,8 +812,9 @@ private String idProdukTerpilih = null;
 
     private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
-       //mengambil input nama produk dari text field tNamaProduk
-        String namaProduk= tNamaProduk.getText();
+        //mengambil input nama produk dari text field tNamaProduk
+        String namaProduk = tNamaProduk.getText();
+        String Kategori = cKategoriProduk.getSelectedItem().toString();
         //menampilkan dialog konfirmasi sebelum menghapus data
         int pilihan = JOptionPane.showConfirmDialog(null,
                 "Apakah anda yakin ingin manghapus produk \"" + namaProduk + "\" ?",
@@ -737,33 +822,33 @@ private String idProdukTerpilih = null;
         //jika user memilih tombol PILIHAN yes maka akan menghapus data produk dari tabel produk 
         switch (pilihan) {
             case JOptionPane.YES_OPTION:
-               //menyusun perintah / query SQL untuk mengahapus data produk berdasarkan nama_produk
-                String sql ="DELETE FROM produk WHERE nama_produk=?";
-                
-            try {
-            //membuka koneksi ke database menggunakan method konek()
-            Connection conn = Koneksi.konek();
-            //mempersiapkan query SQL dengan parameter (preparedStatement)
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
-            ps.setString(1,namaProduk);//mengisi parameter ke satu dengan namaProduk
-            
-            ps.execute();//menjalankan perintah DELETE untuk menghapus data di database
-            
-            JOptionPane.showMessageDialog(null, "Data Produk berhasil dihapus");//untuk menampilkan pesan bahwa data berhasil di hapus
-        } catch (SQLException sQLException) {
-            //menampilkan pesan jika terjadi kesalahan saat menghapus data
-            JOptionPane.showMessageDialog(null,"Data Produk gagal dihapus");
-        } 
-        load_tabel_produk("Semua");//memuat ulang data produk di tabel tampilan
-        
-        reset();//mereset semua input agar kosong kembali
-        break; 
+                //menyusun perintah / query SQL untuk mengahapus data produk berdasarkan nama_produk
+                String sql = "DELETE FROM produk WHERE nama_produk=?";
+
+                try {
+                    //membuka koneksi ke database menggunakan method konek()
+                    Connection conn = Koneksi.konek();
+                    //mempersiapkan query SQL dengan parameter (preparedStatement)
+                    PreparedStatement ps = conn.prepareStatement(sql);
+
+                    ps.setString(1, namaProduk);//mengisi parameter ke satu dengan namaProduk
+
+                    ps.execute();//menjalankan perintah DELETE untuk menghapus data di database
+
+                    JOptionPane.showMessageDialog(null, "Data Produk berhasil dihapus");//untuk menampilkan pesan bahwa data berhasil di hapus
+                } catch (SQLException sQLException) {
+                    //menampilkan pesan jika terjadi kesalahan saat menghapus data
+                    JOptionPane.showMessageDialog(null, "Data Produk gagal dihapus");
+                }
+                load_tabel_produk(Kategori);//memuat ulang data produk di tabel tampilan
+
+                reset();//mereset semua input agar kosong kembali
+                break;
             case JOptionPane.NO_OPTION: //jika user memilih pilihan no maka tidak terjadi aksi apapun
                 break;
             default: //jika dialog konfirmasi ditutup memilih yes / no, maka tidak ada aksi apapun yang terjadi
                 break;
-        } 
+        }
     }//GEN-LAST:event_btnHapusProdukActionPerformed
 
     private void btnBatalProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalProdukActionPerformed
@@ -774,133 +859,196 @@ private String idProdukTerpilih = null;
     private void btnSimpanProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanProdukActionPerformed
         // TODO add your handling code here:
         //cek apakah yang login adalah owner, jika bukan maka akses di tolak
-        if (!FrameLogin.getRole().equals("Owner")){
-            JOptionPane.showMessageDialog(null,"Hanya Owner yang dapat mengubah data produk");
-            return;  //hentikan proses 
-        }
+
         //ambil input dari text field tNamaProduk DAN simpan ke variabel namaProduk 
         String namaProduk = tNamaProduk.getText();
         //ambil input dari text field tDeskProduk DAN simpan ke variabel deskProduk 
         String deskProduk = tDeskProduk.getText();
         //ambil input dari combo box cKategori Produk DAN simpan ke variabel kategoriProduk 
-        String kategoriProduk =cKategoriProduk.getSelectedItem().toString();
+        String kategoriProduk = cKategoriProduk.getSelectedItem().toString();
         //ambil input dari text field tHargaProduk DAN simpan ke variabel hargaProduk 
         String hargaProduk = tHargaProduk.getText();
         //ambil input dari togglebutton, true jika tersedia, false jika tidak tersedia
-        String statusProduk = btnStatusProduk.isSelected()?"Tersedia":"Tidak Tersedia";
-        
+        String statusProduk = btnStatusProduk.isSelected() ? "Tersedia" : "Tidak Tersedia";
+
         //jika dalam mode mengubah data produk, mska penanda modeUbah adalah true
-        if (modeUbah){
+        if (modeUbah) {
             //Query  SQL untuk mengubah kolom nama_produk, harga_jual, kategori, deskripsi, status beerdasarkan id_produk
             String sql = "UPDATE produk SET nama_produk=?, harga_jual=?, kategori=?, deskripsi=?, status=? WHERE id_produk=?";
-            
+
             try {
-            //buat koneksi ke database menggunakan method konek() dari class koneksi
-            Connection conn = Koneksi.konek();
-            //siapkan query SQL untuk dieksekusi dengan paramater
-            PreparedStatement ps = conn.prepareStatement(sql); 
-            
-            ps.setString(1, namaProduk);//isi paramater pertama (?)  dengan nama produk 
-            ps.setString(2, hargaProduk);//isi paramater kedua (?)  dengan harga produk
-            ps.setString(3, kategoriProduk);//isi paramater ketiga (?)  dengan kategori produk
-            ps.setString(4, deskProduk);//isi paramater keempat (?)  dengan deskripsi produk
-            ps.setString(5, statusProduk);//isi paramater kelima (?)  dengan status produk
-            ps.setString(6, idProdukTerpilih);//isi paramater keenam (?)  dengan id_produk yang dipilih
-            
-            int hasil = ps.executeUpdate();//jalankan query untuk mengubah data di database
-            if(hasil>0){
-                JOptionPane.showMessageDialog(null, "Data berhasil diubah");//tampilkan pesan bahwa data berhasil diubah
-            }else{
-                JOptionPane.showMessageDialog(null, "Data gagal diubah");//tampilkan pesan bahwa data berhasil diubah
+                //buat koneksi ke database menggunakan method konek() dari class koneksi
+                Connection conn = Koneksi.konek();
+                //siapkan query SQL untuk dieksekusi dengan paramater
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                ps.setString(1, namaProduk);//isi paramater pertama (?)  dengan nama produk 
+                ps.setString(2, hargaProduk);//isi paramater kedua (?)  dengan harga produk
+                ps.setString(3, kategoriProduk);//isi paramater ketiga (?)  dengan kategori produk
+                ps.setString(4, deskProduk);//isi paramater keempat (?)  dengan deskripsi produk
+                ps.setString(5, statusProduk);//isi paramater kelima (?)  dengan status produk
+                ps.setString(6, idProdukTerpilih);//isi paramater keenam (?)  dengan id_produk yang dipilih
+
+                int hasil = ps.executeUpdate();//jalankan query untuk mengubah data di database
+                if (hasil > 0) {
+                    JOptionPane.showMessageDialog(null, "Data berhasil diubah");//tampilkan pesan bahwa data berhasil diubah
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data gagal diubah");//tampilkan pesan bahwa data berhasil diubah
+                }
+                load_tabel_produk(kategoriProduk);//memanggil method untuk memuat ulang semua data pada tabel produk       
+                modeUbah = false; //modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
+                idProdukTerpilih = null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
+                reset();//memanggil method untuk mereset atau mengosongkan inputan 
+            } catch (SQLException sQLException) {
+                //jika terjadi kesalahan saat mengubah data , tampilkan pesan gagal
+                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!");
             }
-            load_tabel_produk("Semua");//memanggil method untuk memuat ulang semua data pada tabel produk       
-            modeUbah = false; //modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
-            idProdukTerpilih=null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
-            reset();//memanggil method untuk mereset atau mengosongkan inputan 
-        } catch (SQLException sQLException) {
-            //jika terjadi kesalahan saat mengubah data , tampilkan pesan gagal
-            JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!");
-        }
-        }else {
+        } else {
             //jika modeUbah = false , maka user sedang di mode tambah produk
-        String idProduk = IDProdukOtomatis(kategoriProduk);  //membuat id produk otomatis berdasarkan kategori produk 
-        //Query SQL untuk INSERT kolom id_produk,nama_produk,status,harga_jual,kategori,deskripsi,id_pengguna di tabel produk
-        String sql = "INSERT INTO produk(id_produk,nama_produk,status,harga_jual,kategori,deskripsi,id_pengguna) VALUES(?,?,?,?,?,?,?)";
-        
-        try {
-            //buat koneksi ke database menggunakan method konek() dari class koneksi
-            Connection conn = Koneksi.konek();
-            //siapkan query SQL untuk dieksekusi dengan paramater
-            PreparedStatement ps = conn.prepareStatement(sql); 
-            
-            ps.setString(1, idProduk);//isi parameter kesatu (?) dengan  id_produk (otomatis)
-            ps.setString(2, namaProduk);//isi paramater kedua (?)  dengan nama produk
-            ps.setString(3, statusProduk);//isi paramater ketiga (?)  dengan status produk
-            ps.setString(4, hargaProduk);//isi paramater keempat (?)  dengan harga produk
-            ps.setString(5, kategoriProduk);//isi paramater kelima (?)  dengan kategori produk
-            ps.setString(6, deskProduk);//isi paramater keenam (?)  dengan deskripsi produk
-            ps.setString(7, FrameLogin.getIdPengguna());//isi paramater ketujuh (?)  dengan id_pengguna yang sedang login
-            
-            ps.execute();//jalankan query untuk menyimpan data di database
-            
-            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");//tampilkan pesan bahwa data berhasil disimpan
-            
-        } catch (SQLException sQLException) {
-            //jika terjadi kesalahan saat menyimpan data , tampilkan pesan gagal
-            JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!");
-        } 
-        load_tabel_produk("Semua");//memanggil method untuk memuat ulang semua data pada tabel produk       
-        modeUbah = false;//modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
-        idProdukTerpilih=null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
-        reset();//memanggil method untuk mereset atau mengosongkan inputan 
-        }                                      
+            String idProduk = IDProdukOtomatis(kategoriProduk);  //membuat id produk otomatis berdasarkan kategori produk 
+            //Query SQL untuk INSERT kolom id_produk,nama_produk,status,harga_jual,kategori,deskripsi,id_pengguna di tabel produk
+            String sql = "INSERT INTO produk(id_produk,nama_produk,status,harga_jual,kategori,deskripsi,id_pengguna) VALUES(?,?,?,?,?,?,?)";
+
+            try {
+                //buat koneksi ke database menggunakan method konek() dari class koneksi
+                Connection conn = Koneksi.konek();
+                //siapkan query SQL untuk dieksekusi dengan paramater
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                ps.setString(1, idProduk);//isi parameter kesatu (?) dengan  id_produk (otomatis)
+                ps.setString(2, namaProduk);//isi paramater kedua (?)  dengan nama produk
+                ps.setString(3, statusProduk);//isi paramater ketiga (?)  dengan status produk
+                ps.setString(4, hargaProduk);//isi paramater keempat (?)  dengan harga produk
+                ps.setString(5, kategoriProduk);//isi paramater kelima (?)  dengan kategori produk
+                ps.setString(6, deskProduk);//isi paramater keenam (?)  dengan deskripsi produk
+                ps.setString(7, FrameLogin.getIdPengguna());//isi paramater ketujuh (?)  dengan id_pengguna yang sedang login
+
+                ps.execute();//jalankan query untuk menyimpan data di database
+
+                JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");//tampilkan pesan bahwa data berhasil disimpan
+
+            } catch (SQLException sQLException) {
+                //jika terjadi kesalahan saat menyimpan data , tampilkan pesan gagal
+                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!");
+            }
+            load_tabel_produk(kategoriProduk);//memanggil method untuk memuat ulang semua data pada tabel produk       
+            modeUbah = false;//modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
+            idProdukTerpilih = null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
+            reset();//memanggil method untuk mereset atau mengosongkan inputan 
+        }
     }//GEN-LAST:event_btnSimpanProdukActionPerformed
 
     private void tblProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdukMouseClicked
         // TODO add your handling code here:
         //ambil indeks baris yang di klik oleh pengguna di tabel tblProduk
         int barisYangDipilih = tblProduk.rowAtPoint(evt.getPoint());
-        //jika tidak ada baris yang diklik, abaikan
-        if (barisYangDipilih < 0) {
+        //ambil nilai dari kolom pertama (indeks 0) pada baris yang dipilih, yaitu 'kode_jur
+        if (barisYangDipilih < 0) { //jika baris yang dipilih lebih kecil dari 0 , maka tidak melakukan aksi apa apa
             return;
         }
-
-        //ambil nilai dari setiap kolom (tanpa kolom ID)
-        String namaProduk     = tblProduk.getValueAt(barisYangDipilih, 0).toString();
+        //String idProduk = tblProduk.getValueAt(barisYangDipilih, 0).toString();
+        //ambil nilai dari kolom ke satu (indeks 0) pada baris yang dipilih, yaitu 'idProduk
+        String namaProduk = tblProduk.getValueAt(barisYangDipilih, 0).toString();
+        //ambil nilai dari kolom kedua (indeks 1) pada baris yang dipilih, yaitu 'namaProduk
         String kategoriProduk = tblProduk.getValueAt(barisYangDipilih, 1).toString();
-        String hargaProduk    = tblProduk.getValueAt(barisYangDipilih, 2).toString();
-        String statusProduk   = tblProduk.getValueAt(barisYangDipilih, 3).toString();
+        //ambil nilai dari kolom ketiga (indeks 2) pada baris yang dipilih, yaitu 'kategoriProduk
+        String hargaProduk = tblProduk.getValueAt(barisYangDipilih, 2).toString();
+        //ambil nilai dari kolom keempat (indeks 3) pada baris yang dipilih, yaitu 'hargaProduk
+        String statusProduk = tblProduk.getValueAt(barisYangDipilih, 3).toString();
+        //ambil nilai dari kolom kelima (indeks 4) pada baris yang dipilih, yaitu 'statusProduk
 
-        //ambil id_produk dari database berdasarkan nama produk
-        String sqlId = "SELECT id_produk, deskripsi FROM produk WHERE nama_produk = ?";
+        tNamaProduk.setText(namaProduk);//tampilkan namaProduk di text field tNamaProduk
+        cKategoriProduk.setSelectedItem(kategoriProduk);//tampilkan pilihan kategori produk di combo box cKategoriProduk
+        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
+        tHargaProduk.setText(hargaProduk.replace("Rp. ", "").replace(".", ""));//tampilkan hargaProduk di text field tHargaProduk
+        btnStatusProduk.setSelected(statusProduk.equals("Tersedia"));//tampilkan btnStatusProduk jika tersedia, maka bernilai true
+
+        String sql = "SELECT id_produk, deskripsi FROM produk WHERE nama_produk = ?";//Query SQL untuk menampilkan deskripsi dari tabel produk berdasarkan id_produk
+
         try {
+            //buat koneksi ke database menggunakan method konek() dari class koneksi
             Connection conn = Koneksi.konek();
-            PreparedStatement ps = conn.prepareStatement(sqlId);
+            //siapkan query SQL untuk dieksekusi dengan paramater
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //isi parameter nama stok dari baris yang diklik
             ps.setString(1, namaProduk);
-            ResultSet rs = ps.executeQuery();
+            
+            ResultSet rs = ps.executeQuery();//menjalankan perintah SELECT untuk menampilkan data deskripsi di database, dan ambil hasilnya
             if (rs.next()) {
-                idProdukTerpilih = rs.getString("id_produk"); //simpan id produk
-                tDeskProduk.setText(rs.getString("deskripsi")); //tampilkan deskripsi
+                
+                //jika data ditemukan , maka set id produk dipilih
+                idProdukTerpilih = rs.getString("id_produk");
+                tDeskProduk.setText(rs.getString("deskripsi")); //tampilkan deskripsi yang diambil dalam tDeskProduk
             }
         } catch (SQLException sQLException) {
-            JOptionPane.showMessageDialog(null, "Deskripsi gagal di ambil!");
+            //jika terjadi kesalahan saat mengambil data , tampilkan pesan gagal
+            JOptionPane.showMessageDialog(null, " Deskripsi gagal di ambil!" + sQLException.getMessage());
         }
-
-        tNamaProduk.setText(namaProduk); //tampilkan namaProduk di text field tNamaProduk
-        cKategoriProduk.setSelectedItem(kategoriProduk); //tampilkan pilihan kategori produk di combo box cKategoriProduk
-        //strip format "Rp. " dan titik pemisah sebelum ditampilkan ke field input angka
-        tHargaProduk.setText(hargaProduk.replace("Rp. ", "").replace(".", "")); //tampilkan hargaProduk di text field tHargaProduk
-        btnStatusProduk.setSelected(statusProduk.equals("Tersedia")); //tampilkan btnStatusProduk jika tersedia, maka bernilai true
-
         modeUbah = true; //user sedang mengubah data
+        //idProdukTerpilih = idProduk; //simpan idProduk sebagai idProdukTerpilih saat menyimpan perubahan
         lblTambahProduk.setText("Edit Produk"); //mengubah teks lblTambahProduk menjadi Edit Produk
         btnSimpanProduk.setText("Simpan Perubahan"); //mengubah teks btnSimpanProduk menjadi Simpan Perubahan
     }//GEN-LAST:event_tblProdukMouseClicked
 
     private void lblTambahProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTambahProdukMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblTambahProdukMouseClicked
+
+    private void tNamaProdukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaProdukFocusGained
+        // TODO add your handling code here:
+        
+        if (!modeUbah) {
+            //ambil teks yang saat ini ada di field username
+            String namaP = tNamaProduk.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Contoh: Es Jeruk")) {
+                tNamaProduk.setText("");
+            }
+        }
+    }//GEN-LAST:event_tNamaProdukFocusGained
+
+    private void tNamaProdukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaProdukFocusLost
+        // TODO add your handling code here:
+        if (!modeUbah) {
+            //ambil teks yang ada di field username
+            String namaP = tNamaProduk.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Contoh: Es Jeruk")) {
+                tNamaProduk.setText("Contoh: Es Jeruk");
+            }
+        }
+
+    }//GEN-LAST:event_tNamaProdukFocusLost
+
+    private void tDeskProdukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDeskProdukFocusGained
+        // TODO add your handling code here:
+        if (!modeUbah) {
+            //ambil teks yang saat ini ada di field username
+            String namaP = tDeskProduk.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Opsional")) {
+                tDeskProduk.setText("");
+            }
+        }
+    }//GEN-LAST:event_tDeskProdukFocusGained
+
+    private void tDeskProdukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDeskProdukFocusLost
+        // TODO add your handling code here:
+        if (!modeUbah) {
+            //ambil teks yang ada di field username
+            String namaP = tDeskProduk.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Opsional")) {
+                tDeskProduk.setText("Opsional");
+            }
+        }
+    }//GEN-LAST:event_tDeskProdukFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

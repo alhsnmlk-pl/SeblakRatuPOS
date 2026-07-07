@@ -31,6 +31,8 @@ public final class FrameKasir extends javax.swing.JFrame {
         
         btnTransaksi.setSelected(true);
         stateSidebar(btnTransaksi);
+        
+        setHeaderUser();
     }
 
     //method untuk menginisiasi panel
@@ -79,6 +81,35 @@ public final class FrameKasir extends javax.swing.JFrame {
             tombol.setBorder(javax.swing.BorderFactory.createCompoundBorder(garisPutih, marginKiri));
         }
     }
+    
+    // Method untuk mengatur teks sapaan pada header berdasarkan waktu dan username pengguna
+    private void setHeaderUser() {
+        // Mengambil username yang sedang login dari FrameLogin
+        String user = FrameLogin.getUsername();
+
+        // Mengambil jam saat ini
+        int jam = java.time.LocalTime.now().getHour();
+
+        // Variabel untuk menyimpan teks sapaan
+        String ucapan;
+
+        // Jika jam antara 05.00 sampai sebelum 12.00, tampilkan Selamat Pagi
+        if (jam >= 5 && jam < 12) {
+            ucapan = "Selamat Pagi";
+        } // Jika jam antara 12.00 sampai sebelum 15.00, tampilkan Selamat Siang
+        else if (jam >= 12 && jam < 15) {
+            ucapan = "Selamat Siang";
+        } // Jika jam antara 15.00 sampai sebelum 18.00, tampilkan Selamat Sore
+        else if (jam >= 15 && jam < 18) {
+            ucapan = "Selamat Sore";
+        } // Selain waktu di atas (18.00 - 04.59), tampilkan Selamat Malam
+        else {
+            ucapan = "Selamat Malam";
+        }
+
+        // Mengubah teks label header dengan sapaan dan nama pengguna
+        lblSelamatDatang.setText(ucapan + ", " + user + "!");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,6 +127,7 @@ public final class FrameKasir extends javax.swing.JFrame {
         lblToko = new javax.swing.JLabel();
         txtPosSystem = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        lblSelamatDatang = new javax.swing.JLabel();
         lblTanggalJam = new javax.swing.JLabel();
         sidebarPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -159,6 +191,9 @@ public final class FrameKasir extends javax.swing.JFrame {
         jPanel4.setMinimumSize(new java.awt.Dimension(1075, 80));
         jPanel4.setPreferredSize(new java.awt.Dimension(1075, 80));
 
+        lblSelamatDatang.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        lblSelamatDatang.setText("Selamat Datang, Owner!");
+
         lblTanggalJam.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         lblTanggalJam.setForeground(new java.awt.Color(72, 86, 106));
         lblTanggalJam.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -171,15 +206,19 @@ public final class FrameKasir extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(lblTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, 983, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(lblSelamatDatang, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(lblTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(lblTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSelamatDatang, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
 
@@ -464,6 +503,7 @@ public final class FrameKasir extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblSelamatDatang;
     private javax.swing.JLabel lblTanggalJam;
     private javax.swing.JLabel lblToko;
     private javax.swing.JPanel sidebarPanel;

@@ -199,6 +199,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
                 //query sql untuk mengambil seluruh menu selain topping
                 sql = "SELECT * FROM produk "
                         + "WHERE kategori IN ('Seblak','Minuman') "
+                        + "AND status = 'Tersedia' "
                         + "ORDER BY CASE "
                         + "WHEN kategori='Seblak' THEN 1 "
                         + "WHEN kategori='Minuman' THEN 2 "

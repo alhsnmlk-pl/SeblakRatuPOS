@@ -5,6 +5,11 @@
 package posseblakratu.component;
 
 import posseblakratu.config.FormatUang;
+
+/**
+ *
+ * @author Al
+ */
 public class cardTopping extends javax.swing.JPanel {
 
     //deklarasi varible untuk menyimpan data topping
