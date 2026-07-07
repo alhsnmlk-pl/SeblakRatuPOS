@@ -202,21 +202,36 @@ public final class PanelProduk extends javax.swing.JPanel {
         try {
             //membuka koneksi ke database
             Connection conn = Koneksi.konek();
-
-            Statement st = conn.createStatement();//membuat statement untuk menjalankan Query
-
-            ResultSet rs = st.executeQuery(sql);//menjalankan query dan menyimpan hasilnya dalam result set
-
-            while (rs.next()) { //mengambil setiap baris data hasil query
-                String namaProduk = rs.getString("nama_produk"); //mengambil data kolom nama_produk
-                String kategoriProduk = rs.getString("kategori"); //mengambil data kolom kategori
-                double hargaJual = rs.getDouble("harga_jual");//mengambil harga jual bertipe double
-                String hargaProduk = FormatUang.format(hargaJual); //format harga dengan titik ribuan
-                String statusProduk = rs.getString("status"); //mengambil data kolom status
-
-                Object[] baris = { namaProduk, kategoriProduk, hargaProduk, statusProduk};//membuat array berisi data satu baris
-
-                mdl.addRow(baris);//menambahkan array baris ke dalam model tabel
+            
+            //membuat statement untuk menjalankan Query
+            Statement st = conn.createStatement();
+            
+            //menjalankan query dan menyimpan hasilnya dalam result set
+            ResultSet rs = st.executeQuery(sql);
+            
+            //mengambil setiap baris data hasil query
+            while (rs.next()) { 
+                
+                //mengambil data kolom nama_produk
+                String namaProduk = rs.getString("nama_produk"); 
+                
+                //mengambil data kolom kategori
+                String kategoriProduk = rs.getString("kategori"); 
+                
+                //mengambil harga jual bertipe double
+                double hargaJual = rs.getDouble("harga_jual");
+                
+                //format harga dengan titik ribuan
+                String hargaProduk = FormatUang.format(hargaJual); 
+                
+                //mengambil data kolom status
+                String statusProduk = rs.getString("status"); 
+                
+                //membuat array berisi data satu baris
+                Object[] baris = { namaProduk, kategoriProduk, hargaProduk, statusProduk};
+                
+                //menambahkan array baris ke dalam model tabel
+                mdl.addRow(baris);
             }
         } catch (SQLException sQLException) {
             // menampilkan pesan error jika gagal mengambil data dari database
@@ -747,10 +762,12 @@ public final class PanelProduk extends javax.swing.JPanel {
         // TODO add your handling code here:
         //cek apakah tombol filter "Semua" sedang dipilih oleh user
         if (filterSemuaP.isSelected()) {
+            
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Semua"); //muat ulang tabel produk untuk menampilkan seluruh produk dari berbagai kategori
         } else {
+            
             //hapus garis bawah jika tombol "Semua" sedang tidak dipilih
             filterSemuaP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         }
@@ -758,8 +775,10 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void filterSeblakPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSeblakPItemStateChanged
         // TODO add your handling code here:
+        
         //cek apakah tombol filter "Seblak" sedang dipilih oleh user
         if (filterSeblakP.isSelected()) {
+            
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterSeblakP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
             load_tabel_produk("Seblak");//muat ulang tabel produk untuk menampilkan kategori seblak aja
@@ -812,31 +831,47 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
+        //validasi
+        if (!modeUbah) {
+            JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
+            return;
+        }
+        
         //mengambil input nama produk dari text field tNamaProduk
         String namaProduk = tNamaProduk.getText();
+        
+        //mengambil selected item di combo box
         String Kategori = cKategoriProduk.getSelectedItem().toString();
+        
         //menampilkan dialog konfirmasi sebelum menghapus data
         int pilihan = JOptionPane.showConfirmDialog(null,
                 "Apakah anda yakin ingin manghapus produk \"" + namaProduk + "\" ?",
                 "Pesan Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
         //jika user memilih tombol PILIHAN yes maka akan menghapus data produk dari tabel produk 
         switch (pilihan) {
             case JOptionPane.YES_OPTION:
+                
                 //menyusun perintah / query SQL untuk mengahapus data produk berdasarkan nama_produk
                 String sql = "DELETE FROM produk WHERE nama_produk=?";
 
                 try {
                     //membuka koneksi ke database menggunakan method konek()
                     Connection conn = Koneksi.konek();
+                    
                     //mempersiapkan query SQL dengan parameter (preparedStatement)
                     PreparedStatement ps = conn.prepareStatement(sql);
+                    
+                    //mengisi parameter ke satu dengan namaProduk
+                    ps.setString(1, namaProduk);
 
-                    ps.setString(1, namaProduk);//mengisi parameter ke satu dengan namaProduk
-
-                    ps.execute();//menjalankan perintah DELETE untuk menghapus data di database
-
-                    JOptionPane.showMessageDialog(null, "Data Produk berhasil dihapus");//untuk menampilkan pesan bahwa data berhasil di hapus
+                    //menjalankan perintah DELETE untuk menghapus data di database
+                    ps.execute();
+                    
+                    //untuk menampilkan pesan bahwa data berhasil di hapus
+                    JOptionPane.showMessageDialog(null, "Data Produk berhasil dihapus");
                 } catch (SQLException sQLException) {
+                    
                     //menampilkan pesan jika terjadi kesalahan saat menghapus data
                     JOptionPane.showMessageDialog(null, "Data Produk gagal dihapus");
                 }
@@ -858,18 +893,31 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void btnSimpanProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanProdukActionPerformed
         // TODO add your handling code here:
-        //cek apakah yang login adalah owner, jika bukan maka akses di tolak
 
         //ambil input dari text field tNamaProduk DAN simpan ke variabel namaProduk 
         String namaProduk = tNamaProduk.getText();
+        
         //ambil input dari text field tDeskProduk DAN simpan ke variabel deskProduk 
         String deskProduk = tDeskProduk.getText();
-        //ambil input dari combo box cKategori Produk DAN simpan ke variabel kategoriProduk 
-        String kategoriProduk = cKategoriProduk.getSelectedItem().toString();
+        
+        //ambil input dari combo box, jika tidak ada yang di select, ganti dengan string kosong
+        String kategoriProduk = cKategoriProduk.getSelectedItem() != null ? cKategoriProduk.getSelectedItem().toString() : "";
+        
         //ambil input dari text field tHargaProduk DAN simpan ke variabel hargaProduk 
         String hargaProduk = tHargaProduk.getText();
+        
         //ambil input dari togglebutton, true jika tersedia, false jika tidak tersedia
         String statusProduk = btnStatusProduk.isSelected() ? "Tersedia" : "Tidak Tersedia";
+        
+        //validasi: semua field wajib diisi
+        if (namaProduk.isEmpty()
+                || deskProduk.isEmpty()
+                || kategoriProduk.isEmpty()
+                || hargaProduk.isEmpty()
+                || !btnStatusProduk.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+            return;
+        }
 
         //jika dalam mode mengubah data produk, mska penanda modeUbah adalah true
         if (modeUbah) {

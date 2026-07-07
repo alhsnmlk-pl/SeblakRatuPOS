@@ -647,7 +647,7 @@
                         <Property name="cellPaddingLeft" type="int" value="25"/>
                         <Property name="cellPaddingRight" type="int" value="25"/>
                         <Property name="centerColumns" type="java.lang.String" value="1,2,3,4"/>
-                        <Property name="columnWidths" type="java.lang.String" value="50,50,50,50,150"/>
+                        <Property name="columnWidths" type="java.lang.String" value="100,50,50,50,150"/>
                         <Property name="enabled" type="boolean" value="false"/>
                         <Property name="focusable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

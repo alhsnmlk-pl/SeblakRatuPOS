@@ -76,7 +76,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         btnSimpanDiskon.setText("Simpan Diskon");
 
         //kosongkan field nama diskon
-        tNamaDiskon.setText(null);
+        tNamaDiskon.setText("Contoh: jumat berkah");
 
         //kembalikan combobox tipe ke pilihan pertama
         cTipeDiskon.setSelectedItem(null);
@@ -191,6 +191,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         //menampilkan model yang sudah diisi ke dalam tabel GUI
         tblDiskon.setModel(model);
+        tblDiskon.setColumnWidths("100,50,50,50");
     }
     
     
@@ -348,6 +349,14 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tNamaDiskon.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaDiskon.setOpaque(true);
         tNamaDiskon.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaDiskon.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tNamaDiskonFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNamaDiskonFocusLost(evt);
+            }
+        });
         tNamaDiskon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tNamaDiskonMouseClicked(evt);
@@ -375,6 +384,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         cTipeDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         cTipeDiskon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nominal", "Persentase" }));
+        cTipeDiskon.setToolTipText("Silahkan Pilih Tipe Diskon");
         cTipeDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12));
         cTipeDiskon.setOpaque(true);
         jPanel18.add(cTipeDiskon, java.awt.BorderLayout.CENTER);
@@ -828,6 +838,33 @@ public final class PanelDiskon extends javax.swing.JPanel {
         reset();
 
     }//GEN-LAST:event_btnHapusDiskonActionPerformed
+
+    private void tNamaDiskonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field username
+            String namaP = tNamaDiskon.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Contoh: jumat berkah")) {
+                tNamaDiskon.setText("");
+            }
+        }
+        
+    }//GEN-LAST:event_tNamaDiskonFocusGained
+
+    private void tNamaDiskonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field username
+            String namaP = tNamaDiskon.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Contoh: jumat berkah")) {
+                tNamaDiskon.setText("Contoh: jumat berkah");
+            }
+        }
+    }//GEN-LAST:event_tNamaDiskonFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -79,9 +79,9 @@ public class PanelStok extends javax.swing.JPanel {
         btnSimpanTambahStok.setText("Simpan Stok     ");
 
         //kosongkan semua field input
-        tNamaStok.setText(null);
+        tNamaStok.setText("Contoh: Bawang");
         tJmlStok.setText(null);
-        tSatuanStok.setText(null);
+        tSatuanStok.setText("Satuan");
         tHargaStok.setText(null);
 
         //hapus seleksi pada tabel
@@ -296,6 +296,14 @@ public class PanelStok extends javax.swing.JPanel {
         tNamaStok.setBorder(null);
         tNamaStok.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaStok.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaStok.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tNamaStokFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNamaStokFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -353,6 +361,14 @@ public class PanelStok extends javax.swing.JPanel {
 
         tSatuanStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tSatuanStok.setBorder(null);
+        tSatuanStok.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tSatuanStokFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tSatuanStokFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -522,16 +538,16 @@ public class PanelStok extends javax.swing.JPanel {
 
         tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Bawang", "13", "Rp. 1.000", "kg"}
             },
             new String [] {
-
+                "Nama Bahan", "Stok", "Harga Satuan", "Satuan"
             }
         ));
         tblStok.setCellPaddingLeft(25);
         tblStok.setCellPaddingRight(25);
         tblStok.setCenterColumns("1,2,3");
-        tblStok.setColumnWidths("250,50,80");
+        tblStok.setColumnWidths("230,50,100,50");
         tblStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblStok.setHeaderPaddingLeft(25);
         tblStok.setHeaderPaddingRight(25);
@@ -918,6 +934,60 @@ public class PanelStok extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_tHargaStokKeyTyped
+
+    private void tNamaStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field username
+            String namaP = tNamaStok.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Contoh: Bawang")) {
+                tNamaStok.setText("");
+            }
+        }
+    }//GEN-LAST:event_tNamaStokFocusGained
+
+    private void tNamaStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field username
+            String namaP = tNamaStok.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Contoh: Bawang")) {
+                tNamaStok.setText("Contoh: Bawang");
+            }
+        }
+    }//GEN-LAST:event_tNamaStokFocusLost
+
+    private void tSatuanStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusGained
+        // TODO add your handling code here:
+        
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field username
+            String namaP = tSatuanStok.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Satuan")) {
+                tSatuanStok.setText("");
+            }
+        }
+    }//GEN-LAST:event_tSatuanStokFocusGained
+
+    private void tSatuanStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field username
+            String namaP = tSatuanStok.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Satuan")) {
+                tSatuanStok.setText("Satuan");
+            }
+        }
+        
+    }//GEN-LAST:event_tSatuanStokFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

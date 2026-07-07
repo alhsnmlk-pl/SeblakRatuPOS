@@ -16,6 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public final class FrameOwner extends javax.swing.JFrame {
     CardLayout page;
+    
 
     /**
      * Creates new form FrameUtama

@@ -74,7 +74,7 @@ public class PanelLaporan extends javax.swing.JPanel {
 
 
     //membuat method untuk load laporan berdasarkan bulan yang dipilih
-    void loadLaporan() {
+    public void loadLaporan() {
         
         //mengambil tahun saat ini
         int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
@@ -290,6 +290,7 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         //menampilkan model yang sudah diisi ke dalam tabel GUI
         tblLaporan.setModel(model);
+        tblLaporan.setColumnWidths("100,50,50,50,150");
     }
 
 
@@ -604,16 +605,16 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         tblLaporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"TRX0001", "03/07/2026", "Penjualan", "Pemasukan", "+Rp. 30.000"}
             },
             new String [] {
-
+                "No Refrensi", "Tanggal", "Kategori", "Tipe", "Jumlah"
             }
         ));
         tblLaporan.setCellPaddingLeft(25);
         tblLaporan.setCellPaddingRight(25);
-        tblLaporan.setCenterColumns("2,3,4");
-        tblLaporan.setColumnWidths("50,50,50,50,150");
+        tblLaporan.setCenterColumns("1,2,3,4");
+        tblLaporan.setColumnWidths("100,50,50,50,150");
         tblLaporan.setEnabled(false);
         tblLaporan.setFocusable(false);
         tblLaporan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N

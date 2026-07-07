@@ -408,26 +408,22 @@ public final class FrameKasir extends javax.swing.JFrame {
 
     private void btnProdukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnProdukItemStateChanged
         // TODO add your handling code here:
-        stateSidebar(btnProduk);
-        page.show(contentPanel, "produk");
+
     }//GEN-LAST:event_btnProdukItemStateChanged
 
     private void btnStokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnStokItemStateChanged
         // TODO add your handling code here:
-        stateSidebar(btnStok);
-        page.show(contentPanel, "stok");
+
     }//GEN-LAST:event_btnStokItemStateChanged
 
     private void btnPenggunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnPenggunaItemStateChanged
         // TODO add your handling code here:
-        stateSidebar(btnPengguna);
-        page.show(contentPanel, "pengguna");
+
     }//GEN-LAST:event_btnPenggunaItemStateChanged
 
     private void btnDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnDiskonItemStateChanged
         // TODO add your handling code here:
-        stateSidebar(btnDiskon);
-        page.show(contentPanel, "diskon");
+
     }//GEN-LAST:event_btnDiskonItemStateChanged
 
     private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed
