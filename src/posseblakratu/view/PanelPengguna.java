@@ -119,6 +119,8 @@ public class PanelPengguna extends javax.swing.JPanel {
         sedangEdit = false;
         //mengosongkan ID pengguna yang sebelumnya dipilih
         idPenggunaDipilih = "";
+        
+        
     }
         //metthod untuk membuat ID pengguna secara otomatis
         String generateIdPengguna(){
@@ -222,6 +224,8 @@ public class PanelPengguna extends javax.swing.JPanel {
        
        //menampilkan model yang telah berisi data ke JTable
        tblPengguna.setModel(model);
+       tblPengguna.setColumnWidths("140,50,50");
+            
 
    } 
    
@@ -335,6 +339,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         btnBatalPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalPengguna.setText("Batal");
+        btnBatalPengguna.setFocusable(false);
         btnBatalPengguna.addActionListener(this::btnBatalPenggunaActionPerformed);
         jPanel9.add(btnBatalPengguna);
 
@@ -342,6 +347,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusPengguna.setText("Hapus");
+        btnHapusPengguna.setFocusable(false);
         btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
         jPanel9.add(btnHapusPengguna);
 
@@ -618,7 +624,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         tblPengguna.setCellPaddingLeft(25);
         tblPengguna.setCellPaddingRight(25);
         tblPengguna.setCenterColumns("1,2");
-        tblPengguna.setColumnWidths("140,90,110,110,110");
+        tblPengguna.setColumnWidths("140,50,50");
         tblPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblPengguna.setHeaderPaddingLeft(25);
         tblPengguna.setHeaderPaddingRight(25);
@@ -815,8 +821,8 @@ public class PanelPengguna extends javax.swing.JPanel {
         //mengambil data password dari field input
         String password = tPasswordPengguna.getText();
 
-        //mengambil role yang dipilih pada ComboBox
-        String role = cRolePengguna.getSelectedItem().toString();
+        //ambil input dari combo box, jika tidak ada yang di select, ganti dengan string kosong
+        String role = cRolePengguna.getSelectedItem() != null ? cRolePengguna.getSelectedItem().toString() : "";
 
         //mendeklarasikan variabel untuk menyimpan status pengguna
         String status;
@@ -837,7 +843,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         if (username.isEmpty()) {
 
             //menampilkan pesan bahwa username harus diisi
-            JOptionPane.showMessageDialog(null, "Username harus diisi!");
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
 
             //mengarahkan kursor ke field username
             tUsername.requestFocus();
@@ -850,10 +856,23 @@ public class PanelPengguna extends javax.swing.JPanel {
         if (password.isEmpty()) {
 
             //menampilkan pesan bahwa password harus diisi
-            JOptionPane.showMessageDialog(null, "Password harus diisi!");
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
 
             //mengarahkan kursor ke field password
             tPasswordPengguna.requestFocus();
+
+            //menghentikan proses penyimpanan
+            return;
+        }
+        
+        //memastikan role tidak kosong
+        if (role.isEmpty()) {
+
+            //menampilkan pesan bahwa password harus diisi
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+
+            //mengarahkan kursor ke field password
+            cRolePengguna.requestFocus();
 
             //menghentikan proses penyimpanan
             return;
@@ -976,8 +995,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
     private void tPasswordPenggunaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusGained
         // TODO add your handling code here:
-        if (!sedangEdit) {
-            //ambil teks password dan ubah dari char[] menjadi String
+             //ambil teks password dan ubah dari char[] menjadi String
         String password = String.valueOf(tPasswordPengguna.getPassword());
 
         //jika masih berisi placeholder kosongkan dan aktifkan karakter bullet
@@ -985,13 +1003,10 @@ public class PanelPengguna extends javax.swing.JPanel {
             tPasswordPengguna.setText("");
             tPasswordPengguna.setEchoChar('•');
         }
-            
-        }
     }//GEN-LAST:event_tPasswordPenggunaFocusGained
 
     private void tPasswordPenggunaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusLost
         // TODO add your handling code here:
-        if (!sedangEdit) {
             String password = String.valueOf(tPasswordPengguna.getPassword());
 
         //jika kosong kembalikan ke placeholder
@@ -1000,8 +1015,6 @@ public class PanelPengguna extends javax.swing.JPanel {
             tPasswordPengguna.setEchoChar((char) 0);
             //tampilkan kembali teks placeholder
             tPasswordPengguna.setText("Masukkan Password Baru");
-        }
-            
         }
     }//GEN-LAST:event_tPasswordPenggunaFocusLost
 
