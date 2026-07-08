@@ -43,7 +43,6 @@ public class PanelPengguna extends javax.swing.JPanel {
     /**
      * Creates new form PanelPengguna
      */
-
     public PanelPengguna() {
         //membuat dan menginisialisasi seluruh komponen yang didesain di NetBeans
         initComponents();
@@ -57,44 +56,32 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         //memuat seluruh data pengguna dari database ke dalam JTable
         load_tabel_pengguna();
-        //mengosongkan seluruh isian from dan mengembalikannya ke kondisi awal
+        //mengosongkan seluruh isian form dan mengembalikannya ke kondisi awal
         reset();
     }
 
     // Method untuk memberikan border melengkung pada panel
     void panelLengkung(JPanel p) {
 
-        //mengatur border pada panel yang dikirim sbg parameter (p)
+        //mengatur border melengkung pada panel parameter (padding 3px, warna pink, radius 10)
         p.setBorder(new FlatLineBorder(
-                //memberikan jarak (padding) border sebesar 3 piksel di setiap sisi
                 new Insets(3, 3, 3, 3),
-                //mengatur warna border menggunakan kode warna hexadecimal
                 Color.decode("#E7BDBB"),
-                //mengatur ketebalan border menjadi 1 piksel
                 1f,
-                //mengatur radius sudut border menjadi 10 piksel agar terlihat melengkung
                 10));
 
-        //mengatur border melengkung pada panel utama sebelah kanan (form input)
+        //mengatur border melengkung pada panel form input di sebelah kanan (padding 5px)
         jPanel1.setBorder(new FlatLineBorder(
-                //memberikan jarak (padding) sebesar 5 piksel di setiap sisi
                 new Insets(5, 5, 5, 5),
-                //menggunakan warna border yang sama
                 Color.decode("#E7BDBB"),
-                //ketebalan border 1 piksel
                 1f,
-                //radius sudut border 10 piksel
                 10));
 
-        //mengatur border melengkung pada panel daftar pengguna
+        //mengatur border melengkung pada panel daftar pengguna (padding 5px)
         jPanel3.setBorder(new FlatLineBorder(
-                //memberikan jarak (padding) sebesar 5 piksel di setiap sisi
                 new Insets(5, 5, 5, 5),
-                //menggunakan warna border yang sama
                 Color.decode("#E7BDBB"),
-                //ketebalan border 1 piksel
                 1f,
-                //radius sudut border 10 piksel
                 10));
     }
 
@@ -107,7 +94,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnSimpanPengguna.setText("Simpan Pengguna");
         //mengosongkan input username
         tUsername.setText("Contoh: kasir_depan");
-        // placeholder dibuat jadi terlihat dan menampilkan placeholder
+        //nonaktifkan echo char agar teks placeholder password bisa terbaca
         tPasswordPengguna.setEchoChar((char) 0);
         tPasswordPengguna.setText("Masukkan Password Baru");
         //mengosongkan pilihan pada ComboBox role
@@ -122,21 +109,21 @@ public class PanelPengguna extends javax.swing.JPanel {
         idPenggunaDipilih = "";
 
     }
-    //metthod untuk membuat ID pengguna secara otomatis
 
+    //method untuk membuat ID pengguna secara otomatis
     String generateIdPengguna() {
 
-        //variabel untuk menyimpan ID pengguna terakhir dari database  
+        //variabel untuk menyimpan ID pengguna terakhir dari database
         String lastId = null;
 
         try {
             //membuat koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //Query untuk mengambil ID pengguna terakhir
+            //query untuk mengambil ID pengguna terakhir
             String sql = "SELECT id_pengguna FROM pengguna ORDER BY id_pengguna DESC LIMIT 1";
 
-            //menyimpan query SQL
+            //menyiapkan statement SQL
             PreparedStatement ps = conn.prepareStatement(sql);
 
             //menjalankan query
@@ -153,23 +140,23 @@ public class PanelPengguna extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Gagal membuat ID!");
 
         }
-        //jika belum ada data pengguna di databasee
+        //jika belum ada data pengguna di database
         if (lastId == null) {
             //mengembalikan ID pertama
             return "PG01";
         }
-        //mengambil bagian angka dari ID 
+        //mengambil bagian angka dari ID
         int angka = Integer.parseInt(lastId.substring(2));
 
-        //menambahkan angfka ID sebanyak 1
+        //menambahkan angka ID sebanyak 1
         angka++;
 
         //mengembalikan ID baru dengan format PG01, PG02, dan seterusnya
         return String.format("PG%02d", angka);
 
     }
-    //method untuk menampilkan data pengguna dari database kedalam JTable
 
+    //method untuk menampilkan data pengguna dari database ke dalam JTable
     void load_tabel_pengguna() {
 
         //membuat model tabel baru
@@ -226,7 +213,6 @@ public class PanelPengguna extends javax.swing.JPanel {
         //menampilkan model yang telah berisi data ke JTable
         tblPengguna.setModel(model);
         tblPengguna.setColumnWidths("140,50,50");
-
     }
 
     /**
@@ -862,10 +848,10 @@ public class PanelPengguna extends javax.swing.JPanel {
         //memastikan role tidak kosong
         if (role.isEmpty()) {
 
-            //menampilkan pesan bahwa password harus diisi
+            //menampilkan pesan bahwa role harus dipilih
             JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
 
-            //mengarahkan kursor ke field password
+            //mengarahkan kursor ke field role
             cRolePengguna.requestFocus();
 
             //menghentikan proses penyimpanan
@@ -962,7 +948,6 @@ public class PanelPengguna extends javax.swing.JPanel {
         //mengembalikan form ke kondisi awal
         reset();
 
-
     }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
 
     private void tUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusGained
@@ -978,6 +963,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
     private void tUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusLost
         // TODO add your handling code here:
+        //ambil teks yang ada di field username
         String username = tUsername.getText();
 
         //jika kosong kembalikan tulisan placeholder
@@ -1000,6 +986,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
     private void tPasswordPenggunaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusLost
         // TODO add your handling code here:
+        //ambil teks password untuk dicek
         String password = String.valueOf(tPasswordPengguna.getPassword());
 
         //jika kosong kembalikan ke placeholder

@@ -177,7 +177,6 @@ public final class FrameOwner extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1280, 720));
 
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         headerPanel.setPreferredSize(new java.awt.Dimension(1280, 80));

@@ -55,13 +55,13 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     //menyimpan metode pembayaran
     private String metodePembayaran;
 
-    //id transaksi
+    //menyimpan id transaksi yang sedang ditampilkan
     private String idTransaksi;
 
-    //user login
+    //menyimpan username kasir yang melakukan transaksi
     private String pengguna;
 
-    //waktu transaksi
+    //menyimpan waktu transaksi dalam format string
     private String waktu;
 
     /**
@@ -79,13 +79,17 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             jComponent.setOpaque(false);
         }
 
-        panelLengkung(popupStruk); //memberikan border rounded pada panel utama
+        //memberikan border rounded pada panel utama
+        panelLengkung(popupStruk);
 
-        buttonDesain(); //mengatur styling tombol tutup dan cetak
+        //mengatur styling tombol tutup dan cetak
+        buttonDesain();
 
-        loadPengaturan(); //mengambil nama toko, alamat, dan footer dari database
+        //mengambil nama toko, alamat, dan footer dari database
+        loadPengaturan();
 
-        loadStrukFromDatabase(); //memanggil pertama kali saat idTransaksi masih null
+        //memanggil loadStrukFromDatabase pertama kali saat idTransaksi masih null
+        loadStrukFromDatabase();
 
         strukContent.setSize(printStruk.getPreferredSize());
 
@@ -233,8 +237,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             double total,
             double tunai,
             double kembalian,
-            String metodePembayaran
-    ) {
+            String metodePembayaran) {
 
         //menyimpan subtotal transaksi
         this.subtotal = subtotal;
@@ -260,7 +263,9 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     }
 
     //method untuk menerima data header struk dari PopupBayar
-    public void setHeaderData(String idTransaksi, String pengguna, String waktu) {
+    public void setHeaderData(String idTransaksi,
+            String pengguna,
+            String waktu) {
 
         //menyimpan id transaksi
         this.idTransaksi = idTransaksi;
@@ -931,12 +936,12 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
-        //menutup dialog pratinjau struk dengan tombol tutup
+        //menutup dialog pratinjau struk
         dispose();
     }//GEN-LAST:event_btnTutupActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        //memanggil method cetak struk
+        //memanggil method untuk mencetak struk
         cetakStruk();
     }//GEN-LAST:event_btnCetakActionPerformed
 

@@ -806,7 +806,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
             return;
         }
 
-        //query SQL untuk menghapus data diskon berdasarkan id_diskon
+        //query SQL untuk menandai diskon sebagai dihapus (soft delete)
         String sql = "UPDATE diskon SET status = 'Dihapus' WHERE id_diskon=?";
 
         try {
@@ -819,7 +819,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
             //isi parameter id_diskon dari baris yang dipilih
             ps.setString(1, idDiskonDipilih);
 
-            //jalankan query delete
+            //jalankan query update soft delete
             ps.execute();
 
             //tampilkan pesan berhasil
@@ -841,7 +841,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
     private void tNamaDiskonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusGained
         // TODO add your handling code here:
         if (!sedangEdit) {
-            //ambil teks yang saat ini ada di field username
+            //ambil teks yang saat ini ada di field nama diskon
             String namaP = tNamaDiskon.getText();
 
             //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
@@ -849,13 +849,13 @@ public final class PanelDiskon extends javax.swing.JPanel {
                 tNamaDiskon.setText("");
             }
         }
-        
+
     }//GEN-LAST:event_tNamaDiskonFocusGained
 
     private void tNamaDiskonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusLost
         // TODO add your handling code here:
         if (!sedangEdit) {
-            //ambil teks yang ada di field username
+            //ambil teks yang ada di field nama diskon
             String namaP = tNamaDiskon.getText();
 
             //jika kosong kembalikan tulisan placeholder

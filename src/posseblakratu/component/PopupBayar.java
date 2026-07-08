@@ -61,11 +61,9 @@ public final class PopupBayar extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    //SAAT POPUP BAYAR DI TAMPILKAN
     public PopupBayar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
         this.setBackground(new Color(0, 0, 0, 0));
         if (this.getContentPane() instanceof javax.swing.JComponent) {
             ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
@@ -156,7 +154,9 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     //MENERIMA DATA DARI PANEL TRANSAKSI
     //dipanggil dari btnBayarActionPerformed untuk mengisi label subtotal, diskon, dan total
-    public void setPembayaran(double subtotal, double diskon, double total) {
+    public void setPembayaran(double subtotal,
+            double diskon,
+            double total) {
 
         //menyimpan subtotal
         this.subtotal = subtotal;
@@ -283,7 +283,7 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     }
 
-    //method untuk menyimpan header transaksi ke database
+    //method untuk menyimpan transaksi ke database
     private boolean simpanTransaksi() {
 
         //query untuk menyimpan data transaksi
@@ -906,20 +906,20 @@ public final class PopupBayar extends javax.swing.JDialog {
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
 
-        // Mengecek apakah nominal bayar masih kosong
+        //cek apakah nominal bayar masih kosong
         if (txtNominal.getText().trim().isEmpty()) {
-            // Menampilkan peringatan jika nominal belum dimasukkan
+            //menampilkan peringatan jika nominal belum dimasukkan
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Harap masukkan nominal!",
                     "Peringatan",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
 
-            // Menghentikan proses
+            //menghentikan proses
             return;
         }
 
         
-        //simpan header transaksi ke tabel transaksi
+        //simpan transaksi ke tabel transaksi
         boolean berhasil = simpanTransaksi();
 
         //hentikan jika gagal menyimpan header

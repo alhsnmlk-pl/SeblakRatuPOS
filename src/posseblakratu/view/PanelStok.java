@@ -152,7 +152,7 @@ public class PanelStok extends javax.swing.JPanel {
         model.addColumn("Satuan");
 
 
-        //query SQL hanya mengambil data milik pengguna yang sedang login
+        //query SQL untuk mengambil seluruh data stok bahan yang masih tersedia
         String sql = "SELECT * FROM stok_bahan WHERE status IN ('Ada')";
 
         try {
@@ -940,7 +940,7 @@ public class PanelStok extends javax.swing.JPanel {
     private void tNamaStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusGained
         // TODO add your handling code here:
         if (!sedangEdit) {
-            //ambil teks yang saat ini ada di field username
+            //ambil teks yang saat ini ada di field nama stok
             String namaP = tNamaStok.getText();
 
             //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
@@ -953,7 +953,7 @@ public class PanelStok extends javax.swing.JPanel {
     private void tNamaStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusLost
         // TODO add your handling code here:
         if (!sedangEdit) {
-            //ambil teks yang ada di field username
+            //ambil teks yang ada di field nama stok
             String namaP = tNamaStok.getText();
 
             //jika kosong kembalikan tulisan placeholder
@@ -965,9 +965,8 @@ public class PanelStok extends javax.swing.JPanel {
 
     private void tSatuanStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusGained
         // TODO add your handling code here:
-        
         if (!sedangEdit) {
-            //ambil teks yang saat ini ada di field username
+            //ambil teks yang saat ini ada di field satuan stok
             String namaP = tSatuanStok.getText();
 
             //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
@@ -980,7 +979,7 @@ public class PanelStok extends javax.swing.JPanel {
     private void tSatuanStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusLost
         // TODO add your handling code here:
         if (!sedangEdit) {
-            //ambil teks yang ada di field username
+            //ambil teks yang ada di field satuan stok
             String namaP = tSatuanStok.getText();
 
             //jika kosong kembalikan tulisan placeholder
@@ -988,7 +987,6 @@ public class PanelStok extends javax.swing.JPanel {
                 tSatuanStok.setText("Satuan");
             }
         }
-        
     }//GEN-LAST:event_tSatuanStokFocusLost
 
 

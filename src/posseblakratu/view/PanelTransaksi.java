@@ -46,10 +46,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //membuat list penyimpan card keranjang
     List<cardKeranjang> daftarKeranjang = new ArrayList<>();
 
-    //mendeklarasikan CardLayout menjadi cardLayout agar bisa eipakai di banyak method
+    //mendeklarasikan CardLayout sebagai cardLayout agar bisa dipakai di banyak method
     private CardLayout cardLayout;
 
-    //deklarasikan variable untuk menyimpan data menu yg di pilih
+    //deklarasikan variabel untuk menyimpan data menu yang dipilih
     private cardMenu menuDipilih;
 
     //menyimpan level pedas yang dipilih (default -1 / belum memilih level)
@@ -83,24 +83,30 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //menampilkan panel kostumisasi kosong sebagai tampilan awal
         cardLayout.show(containerKostumisasi, "kostumKosong");
 
-        buttonDesain(); //memanggil method desain button next dan reset
+        //memanggil method desain button Next dan Reset
+        buttonDesain();
 
-        panelLengkung(containerDaftarMenu); //memanggil method desain panel dgn panel yg ingin di sesuaikan
+        //menerapkan border melengkung pada panel daftar menu
+        panelLengkung(containerDaftarMenu);
         panelLengkung(containerKostumisasi);
         panelLengkung(containerKeranjang1);
 
-        buttonLvl(btnLvl0); //memanggil method desain button (default)
+        //menerapkan styling default pada semua button level pedas
+        buttonLvl(btnLvl0);
         buttonLvl(btnLvl1);
         buttonLvl(btnLvl2);
         buttonLvl(btnLvl3);
         buttonLvl(btnLvl4);
         buttonLvl(btnLvl5);
 
-        filterSemuaM.setSelected(true); //membuat btnFilter semua bernilai true/selected 
-        btnFilter(filterSemuaM); //memanggil state button filter untuk btnFilter semua
+        //set tombol filter "Semua" sebagai aktif secara default
+        filterSemuaM.setSelected(true);
+        //terapkan styling pada tombol filter semua
+        btnFilter(filterSemuaM);
 
-        loadMenu("Semua"); //load menu untuk kategori semua
-        loadTopping(); //load toping
+        //load semua menu dan topping saat pertama kali panel dibuka
+        loadMenu("Semua");
+        loadTopping();
 
     }
 
@@ -176,7 +182,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             //maka tambahkan border warna merah di bagian bawah menggunakan matte border
             btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
         } else {
-            //jika tidak tambahkan border sebesar 3 px juga mengguakan empety border
+            //jika tidak tambahkan border sebesar 3 px menggunakan empty border
             btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         }
     }
@@ -189,7 +195,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //MENGISI DAFTAR MENU
     //method untuk menampilkan menu berdasarkan kategori
     void loadMenu(String kategori) {
-        //membersihkan panel conten menu
+        //membersihkan panel konten menu
         menuContent.removeAll();
 
         //membersihkan data card sebelumnya
@@ -362,8 +368,6 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         //memeriksa kategori menu yang dipilih
         if (selectedCard.getKategori().equals("Seblak")) {
-            
-            
 
             //menampilkan panel kostumisasi seblak
             cardLayout.show(containerKostumisasi, "kostumSeblak");
@@ -432,7 +436,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //menampilkan subtotal
         lblSubtotal.setText(FormatUang.format(subtotal));
 
-        //memperbarui diskon dgn method update diskon
+        //memperbarui diskon dengan method updateDiskon
         updateDiskon();
 
     }

@@ -15,31 +15,31 @@ import java.sql.SQLException;
  * @author Al
  */
 public class Koneksi {
-    
-    //mendeklarasikan variable koneksi sbg static agar bisa di akses dimana saja di dalam class
+
+    //mendeklarasikan variable koneksi sebagai static agar bisa diakses di seluruh class
     private static Connection mysqlconfig;
-    
-    //method static utk membuka koneksi ke database mysql
+
+    //method static untuk membuka koneksi ke database MySQL
     public static Connection konek() {
 
         try {
-            // url koneksi ke database
-            String url = "jdbc:mysql://localhost:3306/pos_ratu_seblak"; 
-            
-            //usrname database
-            String user = "root"; 
-            
-            //password databse
-            String pass = ""; 
-            
-            //membuka koneksi ke databse dan menyimpannya di variable mysqlconfig
+            //url koneksi ke database
+            String url = "jdbc:mysql://localhost:3306/pos_ratu_seblak";
+
+            //username database
+            String user = "root";
+
+            //password database
+            String pass = "";
+
+            //membuka koneksi ke database dan menyimpannya di variable mysqlconfig
             mysqlconfig = DriverManager.getConnection(url, user, pass);
 
         } catch (SQLException sQLException) {
             //menampilkan pesan error jika koneksi gagal
             System.err.println(sQLException.getMessage());
         }
-        
+
         //mengembalikan objek koneksi (bisa null jika gagal)
         return mysqlconfig;
     }
