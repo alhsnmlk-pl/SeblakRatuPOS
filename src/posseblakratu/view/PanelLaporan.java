@@ -21,12 +21,19 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import posseblakratu.config.Koneksi;
 import posseblakratu.config.FormatUang;
+import posseblakratu.component.PopupDetail;
 
 /**
  *
  * @author Al
  */
 public class PanelLaporan extends javax.swing.JPanel {
+
+    //menyimpan id transaksi yang dipilih dari tabel laporan
+    private String selectedIdTransaksi = null;
+
+    //menyimpan tipe baris yang dipilih dari tabel laporan
+    private String selectedTipe = null;
 
     /**
      * Creates new form PanelLaporan
@@ -204,77 +211,52 @@ public class PanelLaporan extends javax.swing.JPanel {
         model.addColumn("Tipe");
         model.addColumn("Jumlah");
 
-        //query untuk mengambil rincian transaksi (pemasukan) berdasarkan bulan
-        String sqlPemasukan = "SELECT tanggal, id_transaksi, total_akhir "
+        //query gabungan pemasukan dan pengeluaran diurutkan berdasarkan waktu
+        String sqlGabungan = "SELECT tanggal, id_transaksi AS no_ref, total_akhir AS jumlah, "
+                + "'Penjualan' AS kategori, 'Pemasukan' AS tipe "
                 + "FROM transaksi "
                 + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ? "
-                + "ORDER BY tanggal ASC";
-
-        //query untuk mengambil rincian pengeluaran berdasarkan bulan
-        String sqlPengeluaran = "SELECT p.tanggal, p.id_pengeluaran, p.total, s.nama_stok "
+                + "UNION ALL "
+                + "SELECT p.tanggal, p.id_pengeluaran AS no_ref, p.total AS jumlah, "
+                + "s.nama_stok AS kategori, 'Pengeluaran' AS tipe "
                 + "FROM pengeluaran p "
                 + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
                 + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
-                + "ORDER BY p.tanggal ASC";
+                + "ORDER BY tanggal ASC";
 
         try {
             //membuat formatter tanggal untuk tampilan
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-            //BAGIAN 1: Ambil data pemasukan
-            PreparedStatement psPemasukan = conn.prepareStatement(sqlPemasukan);
-            psPemasukan.setString(1, periode);
-            ResultSet rsPemasukan = psPemasukan.executeQuery();
+            //mengambil semua data pemasukan dan pengeluaran sekaligus, diurutkan berdasarkan waktu
+            PreparedStatement psGabungan = conn.prepareStatement(sqlGabungan);
+            psGabungan.setString(1, periode);
+            psGabungan.setString(2, periode);
+            ResultSet rsGabungan = psGabungan.executeQuery();
 
-            //melakukan iterasi untuk setiap baris hasil query pemasukan
-            while (rsPemasukan.next()) {
+            //melakukan iterasi untuk setiap baris hasil query gabungan
+            while (rsGabungan.next()) {
 
-                //mengambil tanggal transaksi dan memformatnya
-                String tanggal = sdf.format(rsPemasukan.getTimestamp("tanggal"));
+                //mengambil tanggal dan memformatnya
+                String tanggal = sdf.format(rsGabungan.getTimestamp("tanggal"));
 
-                //mengambil id transaksi sebagai nomor referensi
-                String noRef = rsPemasukan.getString("id_transaksi");
+                //mengambil nomor referensi (id_transaksi atau id_pengeluaran)
+                String noRef = rsGabungan.getString("no_ref");
 
-                //kategori transaksi selalu penjualan
-                String kategori = "Penjualan";
+                //mengambil kategori (Penjualan atau nama stok)
+                String kategori = rsGabungan.getString("kategori");
 
-                //tipe transaksi selalu pemasukan
-                String tipe = "Pemasukan";
+                //mengambil tipe (Pemasukan atau Pengeluaran)
+                String tipe = rsGabungan.getString("tipe");
 
-                //mengambil total akhir dan memformatnya dengan tanda positif
-                double total = rsPemasukan.getDouble("total_akhir");
-                String jumlah = "+" + FormatUang.format(total);
-
-                //menyimpan data ke dalam array baris
-                Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
-
-                //menambahkan baris ke model tabel
-                model.addRow(baris);
-            }
-
-            //BAGIAN 2: Ambil data pengeluaran
-            PreparedStatement psPengeluaran = conn.prepareStatement(sqlPengeluaran);
-            psPengeluaran.setString(1, periode);
-            ResultSet rsPengeluaran = psPengeluaran.executeQuery();
-
-            //melakukan iterasi untuk setiap baris hasil query pengeluaran
-            while (rsPengeluaran.next()) {
-
-                //mengambil tanggal pengeluaran dan memformatnya
-                String tanggal = sdf.format(rsPengeluaran.getTimestamp("tanggal"));
-
-                //mengambil id pengeluaran sebagai nomor referensi
-                String noRef = rsPengeluaran.getString("id_pengeluaran");
-
-                //kategori pengeluaran adalah nama stok
-                String kategori = rsPengeluaran.getString("nama_stok");
-
-                //tipe transaksi selalu pengeluaran
-                String tipe = "Pengeluaran";
-
-                //mengambil total pengeluaran dan memformatnya dengan tanda negatif
-                double total = rsPengeluaran.getDouble("total");
-                String jumlah = "-" + FormatUang.format(total);
+                //memformat jumlah dengan tanda positif/negatif sesuai tipe
+                double total = rsGabungan.getDouble("jumlah");
+                String jumlah;
+                if ("Pemasukan".equals(tipe)) {
+                    jumlah = "+" + FormatUang.format(total);
+                } else {
+                    jumlah = "-" + FormatUang.format(total);
+                }
 
                 //menyimpan data ke dalam array baris
                 Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
@@ -334,6 +316,8 @@ public class PanelLaporan extends javax.swing.JPanel {
         main = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblRincian = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btnLihatDetail = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLaporan = new jtablecustom.JTableCustom();
@@ -576,28 +560,28 @@ public class PanelLaporan extends javax.swing.JPanel {
         main.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(17, 25, 20, 25)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)), javax.swing.BorderFactory.createEmptyBorder(14, 25, 14, 25)));
         jPanel6.setPreferredSize(new java.awt.Dimension(1043, 65));
+        jPanel6.setLayout(new java.awt.BorderLayout());
 
         lblRincian.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
         lblRincian.setText("Rincian Transaksi");
+        jPanel6.add(lblRincian, java.awt.BorderLayout.LINE_START);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 993, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addComponent(lblRincian, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 728, Short.MAX_VALUE)))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblRincian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        btnLihatDetail.setBackground(new java.awt.Color(234, 88, 11));
+        btnLihatDetail.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnLihatDetail.setForeground(new java.awt.Color(255, 255, 255));
+        btnLihatDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Fa7SolidEye (1).png"))); // NOI18N
+        btnLihatDetail.setText("Lihat Detail Transaksi");
+        btnLihatDetail.setBorderPainted(false);
+        btnLihatDetail.setIconTextGap(8);
+        btnLihatDetail.addActionListener(this::btnLihatDetailActionPerformed);
+        jPanel4.add(btnLihatDetail, java.awt.BorderLayout.LINE_END);
+
+        jPanel6.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         main.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -615,13 +599,12 @@ public class PanelLaporan extends javax.swing.JPanel {
         tblLaporan.setCellPaddingRight(25);
         tblLaporan.setCenterColumns("1,2,3,4");
         tblLaporan.setColumnWidths("100,50,50,50,150");
-        tblLaporan.setEnabled(false);
         tblLaporan.setFocusable(false);
         tblLaporan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblLaporan.setHeaderPaddingLeft(25);
         tblLaporan.setHeaderPaddingRight(25);
         tblLaporan.setLeftColumns("0");
-        tblLaporan.setRowSelectionAllowed(false);
+        tblLaporan.setRowSelectionAllowed(true);
         tblLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblLaporanMouseClicked(evt);
@@ -901,7 +884,22 @@ public class PanelLaporan extends javax.swing.JPanel {
 
     private void tblLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLaporanMouseClicked
 
-        //tidak ada aksi saat baris tabel diklik
+        //mengambil indeks baris yang diklik
+        int baris = tblLaporan.rowAtPoint(evt.getPoint());
+
+        //jika baris valid simpan id dan tipe baris yang dipilih
+        if (baris >= 0) {
+
+            //memilih baris secara programatik agar ter-highlight
+            tblLaporan.setRowSelectionInterval(baris, baris);
+
+            //mengambil nilai kolom no referensi sebagai id transaksi
+            selectedIdTransaksi = tblLaporan.getValueAt(baris, 1).toString();
+
+            //mengambil nilai kolom tipe untuk membedakan pemasukan dan pengeluaran
+            selectedTipe = tblLaporan.getValueAt(baris, 3).toString();
+
+        }
 
     }//GEN-LAST:event_tblLaporanMouseClicked
 
@@ -920,11 +918,113 @@ public class PanelLaporan extends javax.swing.JPanel {
         loadLaporan();
     }//GEN-LAST:event_PeriodeBulanPropertyChange
 
+    private void btnLihatDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatDetailActionPerformed
+
+        //menampilkan pesan jika belum ada baris yang dipilih
+        if (selectedIdTransaksi == null || selectedTipe == null) {
+            JOptionPane.showMessageDialog(null, "Pilih baris transaksi terlebih dahulu.");
+            return;
+        }
+
+        //menampilkan pesan jika baris yang dipilih bukan pemasukan
+        if (!selectedTipe.equals("Pemasukan")) {
+            JOptionPane.showMessageDialog(null, "Detail hanya tersedia untuk transaksi pemasukan.");
+            return;
+        }
+
+        try {
+            //membuka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            //query untuk mengambil data transaksi berdasarkan id yang dipilih
+            String sql = "SELECT t.id_transaksi, t.tanggal, t.subtotal, "
+                    + "(t.subtotal - t.total_akhir) AS total_diskon, "
+                    + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
+                    + "u.username "
+                    + "FROM transaksi t "
+                    + "LEFT JOIN pengguna u ON t.id_pengguna = u.id_pengguna "
+                    + "WHERE t.id_transaksi = ?";
+
+            //menyiapkan statement dengan id transaksi yang dipilih
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, selectedIdTransaksi);
+            ResultSet rs = ps.executeQuery();
+
+            //jika data ditemukan tampilkan popup detail
+            if (rs.next()) {
+
+                //mengambil id transaksi dari hasil query
+                String idTrx = rs.getString("id_transaksi");
+
+                //mengambil dan memformat waktu transaksi
+                String waktu = new SimpleDateFormat("dd MMM yyyy  |  HH:mm")
+                        .format(rs.getTimestamp("tanggal"));
+
+                //mengambil subtotal transaksi
+                double subtotal = rs.getDouble("subtotal");
+
+                //mengambil total diskon dari selisih subtotal dan total akhir
+                double diskon = rs.getDouble("total_diskon");
+
+                //mengambil total akhir setelah diskon
+                double total = rs.getDouble("total_akhir");
+
+                //mengambil jumlah yang dibayarkan pelanggan
+                double jumlahBayar = rs.getDouble("jumlah_bayar");
+
+                //mengambil kembalian
+                double kembalian = rs.getDouble("kembalian");
+
+                //mengambil metode pembayaran
+                String metode = rs.getString("metode");
+
+                //mengambil username kasir, ganti null dengan strip
+                String pengguna = rs.getString("username") != null ? rs.getString("username") : "-";
+
+                //menutup result set dan statement setelah data diambil
+                rs.close();
+                ps.close();
+
+                //membuat objek popup detail dengan parent frame
+                PopupDetail popup = new PopupDetail(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this),
+                        true
+                );
+
+                //mengisi data pembayaran ke popup
+                popup.setPembayaran(subtotal, diskon, total, jumlahBayar, kembalian, metode);
+
+                //mengisi data header struk berupa id transaksi, kasir, dan waktu
+                popup.setHeaderData(idTrx, pengguna, waktu);
+
+                //menampilkan popup di tengah layar
+                popup.setLocationRelativeTo(null);
+                popup.setVisible(true);
+
+            } else {
+
+                //menutup result set dan statement jika data tidak ditemukan
+                rs.close();
+                ps.close();
+
+                //menampilkan pesan jika data transaksi tidak ditemukan
+                JOptionPane.showMessageDialog(null, "Data transaksi tidak ditemukan.");
+
+            }
+
+        } catch (SQLException sQLException) {
+            //menampilkan pesan jika gagal mengambil data dari database
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+
+    }//GEN-LAST:event_btnLihatDetailActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel111;
     private javax.swing.JLabel Jlabel;
     private com.toedter.calendar.JMonthChooser PeriodeBulan;
+    private javax.swing.JButton btnLihatDetail;
     private javax.swing.JButton btnUnduh;
     private javax.swing.JPanel headerBawah;
     private javax.swing.JPanel hrader;
@@ -939,6 +1039,7 @@ public class PanelLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;

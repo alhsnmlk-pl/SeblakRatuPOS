@@ -69,6 +69,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     //menyimpan id transaksi
     private String idTransaksi;
+    
 
     /**
      * Creates new form PanelTransaksi
@@ -180,6 +181,11 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         }
     }
 
+    void pilihFilterSemua() {
+        filterSemuaM.setSelected(true);
+        btnFilter(filterSemuaM);
+    }
+
     //MENGISI DAFTAR MENU
     //method untuk menampilkan menu berdasarkan kategori
     void loadMenu(String kategori) {
@@ -208,7 +214,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             } else {
 
                 //query sql untuk mengambil menu berdasarkan kategori
-                sql = "SELECT * FROM produk WHERE kategori=? ORDER BY id_produk";
+                sql = "SELECT * FROM produk WHERE kategori=? AND status = 'Tersedia' ORDER BY id_produk";
 
             }
 
@@ -287,6 +293,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //membersihkan daftar topping
         daftarTopping.clear();
 
+        //membersihkan panel topping agar tidak terjadi penumpukan card
+        toppingContent.removeAll();
+
         try {
 
             //query sql untuk mengambil data topping
@@ -353,6 +362,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         //memeriksa kategori menu yang dipilih
         if (selectedCard.getKategori().equals("Seblak")) {
+            
+            
 
             //menampilkan panel kostumisasi seblak
             cardLayout.show(containerKostumisasi, "kostumSeblak");

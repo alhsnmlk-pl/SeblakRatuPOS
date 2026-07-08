@@ -153,7 +153,7 @@ public class PanelStok extends javax.swing.JPanel {
 
 
         //query SQL hanya mengambil data milik pengguna yang sedang login
-        String sql = "SELECT * FROM stok_bahan";
+        String sql = "SELECT * FROM stok_bahan WHERE status IN ('Ada')";
 
         try {
             //membuka koneksi ke database
@@ -876,10 +876,12 @@ public class PanelStok extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
             return;
         }
+        
+        String namaStok = tNamaStok.getText();
 
         //tampilkan dialog konfirmasi sebelum menghapus
         int konfirmasi = JOptionPane.showConfirmDialog(null,
-                "Yakin ingin menghapus stok ini?",
+                "Yakin ingin menghapus stok " + namaStok+"?",
                 "Konfirmasi Hapus",
                 JOptionPane.YES_NO_OPTION);
 
@@ -889,7 +891,7 @@ public class PanelStok extends javax.swing.JPanel {
         }
 
         //query SQL untuk menghapus data stok berdasarkan id_stok
-        String sql = "DELETE FROM stok_bahan WHERE id_stok=?";
+        String sql = "UPDATE stok_bahan SET status = 'Dihapus' WHERE id_stok=?";
 
         try {
             //buka koneksi ke database

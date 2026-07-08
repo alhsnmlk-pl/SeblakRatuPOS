@@ -447,8 +447,17 @@ public final class FrameKasir extends javax.swing.JFrame {
 
         switch (pilihan) {
             case JOptionPane.YES_OPTION -> {
+                //simpan state window sebelum dispose
+                int windowState = getExtendedState();
+                java.awt.Rectangle bounds = getBounds();
                 dispose();
-                new FrameLogin().setVisible(true);
+                FrameLogin frameLogin = new FrameLogin();
+                if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                    frameLogin.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                } else {
+                    frameLogin.setBounds(bounds);
+                }
+                frameLogin.setVisible(true);
             }
             case JOptionPane.NO_OPTION -> {
             }
@@ -459,7 +468,16 @@ public final class FrameKasir extends javax.swing.JFrame {
 
     private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
         // TODO add your handling code here:
-        new FramePengaturan().setVisible(true);
+        //simpan state window sebelum dispose
+        int windowState = getExtendedState();
+        java.awt.Rectangle bounds = getBounds();
+        FramePengaturan framePengaturan = new FramePengaturan();
+        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+            framePengaturan.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        } else {
+            framePengaturan.setBounds(bounds);
+        }
+        framePengaturan.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSettingActionPerformed
 

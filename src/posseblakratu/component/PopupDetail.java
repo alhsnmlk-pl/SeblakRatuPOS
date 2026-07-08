@@ -35,7 +35,7 @@ import java.awt.print.PrinterJob;
  *
  * @author Al
  */
-public final class PratinjauStruk extends javax.swing.JDialog {
+public final class PopupDetail extends javax.swing.JDialog {
 
     //menyimpan subtotal transaksi
     private double subtotal;
@@ -70,7 +70,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public PratinjauStruk(java.awt.Frame parent, boolean modal) {
+    public PopupDetail(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -539,8 +539,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(345, 60));
 
         jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/pratinjau struk.png"))); // NOI18N
-        jLabel1.setText("Pratinjau Struk");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconParkSolidTransactionOrder 1.png"))); // NOI18N
+        jLabel1.setText("Detail Transaksi");
         jLabel1.setIconTextGap(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

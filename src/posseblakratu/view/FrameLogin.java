@@ -522,19 +522,35 @@ public final class FrameLogin extends javax.swing.JFrame {
                     //menyimpan role pengguna ke session
                     FrameLogin.role = rs.getString("role");
 
+                    //menyimpan state window sebelum dispose (maximized atau normal)
+                    int windowState = getExtendedState();
+                    java.awt.Rectangle bounds = getBounds();
+
                     //menutup form login
                     dispose();
 
                     //cek role untuk membuka frame yang sesuai
                     if (role.equals("Kasir")) {
 
-                        //buka frame kasir
-                        new FrameKasir().setVisible(true);
+                        //buka frame kasir dengan state dan ukuran yang sama
+                        FrameKasir frameKasir = new FrameKasir();
+                        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                            frameKasir.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                        } else {
+                            frameKasir.setBounds(bounds);
+                        }
+                        frameKasir.setVisible(true);
 
                     } else if (role.equals("Owner")) {
 
-                        //buka frame owner
-                        new FrameOwner().setVisible(true);
+                        //buka frame owner dengan state dan ukuran yang sama
+                        FrameOwner frameOwner = new FrameOwner();
+                        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                            frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                        } else {
+                            frameOwner.setBounds(bounds);
+                        }
+                        frameOwner.setVisible(true);
 
                     }
 

@@ -584,8 +584,18 @@ public final class FramePengaturan extends javax.swing.JFrame {
 
     private void lblPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseClicked
 
+        //menyimpan state window sebelum dispose
+        int windowState = getExtendedState();
+        java.awt.Rectangle bounds = getBounds();
+
         //menutup frame pengaturan dan kembali ke frame owner
-        new FrameOwner().setVisible(true);
+        FrameOwner frameOwner = new FrameOwner();
+        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+            frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        } else {
+            frameOwner.setBounds(bounds);
+        }
+        frameOwner.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_lblPengaturanMouseClicked

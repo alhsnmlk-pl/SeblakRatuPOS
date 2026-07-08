@@ -16,6 +16,7 @@ import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,11 +27,16 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private boolean modeUbah = false;
     private String idProdukTerpilih = null;
+    
+    private String filterDipilih = "Semua";
 
     /**
      * Creates new form PanelProduk
      */
     public PanelProduk() { //tempat konstruktor 
+        
+
+        
         initComponents(); //memanggil method init komponen
         reset(); //memanggil method reset untuk mengosongkan semua field inputan
         load_tabel_produk("Semua");//memanggil method untuk menampilkan tabel produk dari database dengan (semua kategori)
@@ -68,6 +74,11 @@ public final class PanelProduk extends javax.swing.JPanel {
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
+    }
+    
+    void pilihFilterSemua(){
+        filterSemuaP.setSelected(true);
+        filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
     }
     
     //method untuk mengosongkan semua inputan
@@ -188,6 +199,7 @@ public final class PanelProduk extends javax.swing.JPanel {
             
             // QUERY SQL untuk mengambil semua data dari tabel produk
             sql = "SELECT * FROM produk "
+                        + "WHERE status IN ('Tersedia', 'Tidak Tersedia') "
                         + "ORDER BY CASE "
                         + "WHEN kategori='Seblak' THEN 1 "
                         + "WHEN kategori='Minuman' THEN 2 "
@@ -196,7 +208,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         } else {
             
             //filter berdasarkan kategori yang dipilih
-            sql = "SELECT * FROM produk WHERE kategori='" + kategori + "'"; 
+            sql = "SELECT * FROM produk WHERE status IN ('Tersedia', 'Tidak Tersedia') AND kategori='" + kategori + "'"; 
         }
 
         try {
@@ -765,7 +777,8 @@ public final class PanelProduk extends javax.swing.JPanel {
             
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
-            load_tabel_produk("Semua"); //muat ulang tabel produk untuk menampilkan seluruh produk dari berbagai kategori
+            filterDipilih = "Semua";
+            load_tabel_produk(filterDipilih); //muat ulang tabel produk untuk menampilkan seluruh produk dari berbagai kategori
         } else {
             
             //hapus garis bawah jika tombol "Semua" sedang tidak dipilih
@@ -781,7 +794,8 @@ public final class PanelProduk extends javax.swing.JPanel {
             
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterSeblakP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
-            load_tabel_produk("Seblak");//muat ulang tabel produk untuk menampilkan kategori seblak aja
+            filterDipilih = "Seblak";
+            load_tabel_produk(filterDipilih);//muat ulang tabel produk untuk menampilkan kategori seblak aja
         } else {
             //hapus garis bawah jika tombol "Seblak" sedang tidak dipilih
             filterSeblakP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
@@ -794,7 +808,8 @@ public final class PanelProduk extends javax.swing.JPanel {
             ////cek apakah tombol filter "Topping" sedang dipilih oleh user
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterToppingP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
-            load_tabel_produk("Topping");//muat ulang tabel produk untuk menampilkan kategori topping aja
+            filterDipilih = "Topping";
+            load_tabel_produk(filterDipilih);//muat ulang tabel produk untuk menampilkan kategori topping aja
         } else {
             //hapus garis bawah jika tombol "Topping" sedang tidak dipilih
             filterToppingP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
@@ -806,7 +821,8 @@ public final class PanelProduk extends javax.swing.JPanel {
         if (filterMinumanP.isSelected()) {//cek apakah tombol filter "Minuman" sedang dipilih oleh user
             ///beri garis bawah merah sebagai tanda  tombol sedang di pilih
             filterMinumanP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
-            load_tabel_produk("Minuman");//muat ulang tabel produk untuk menampilkan kategori minuman aja
+            filterDipilih = "Minuman";
+            load_tabel_produk(filterDipilih);//muat ulang tabel produk untuk menampilkan kategori minuman aja
         } else {
             //hapus garis bawah jika tombol "Minuman" sedang tidak dipilih
             filterMinumanP.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
@@ -840,8 +856,6 @@ public final class PanelProduk extends javax.swing.JPanel {
         //mengambil input nama produk dari text field tNamaProduk
         String namaProduk = tNamaProduk.getText();
         
-        //mengambil selected item di combo box
-        String Kategori = cKategoriProduk.getSelectedItem().toString();
         
         //menampilkan dialog konfirmasi sebelum menghapus data
         int pilihan = JOptionPane.showConfirmDialog(null,
@@ -853,7 +867,7 @@ public final class PanelProduk extends javax.swing.JPanel {
             case JOptionPane.YES_OPTION:
                 
                 //menyusun perintah / query SQL untuk mengahapus data produk berdasarkan nama_produk
-                String sql = "DELETE FROM produk WHERE nama_produk=?";
+                String sql = "UPDATE produk SET status = 'Dihapus' WHERE id_produk=?";
 
                 try {
                     //membuka koneksi ke database menggunakan method konek()
@@ -863,7 +877,7 @@ public final class PanelProduk extends javax.swing.JPanel {
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
                     //mengisi parameter ke satu dengan namaProduk
-                    ps.setString(1, namaProduk);
+                    ps.setString(1, idProdukTerpilih);
 
                     //menjalankan perintah DELETE untuk menghapus data di database
                     ps.execute();
@@ -873,9 +887,13 @@ public final class PanelProduk extends javax.swing.JPanel {
                 } catch (SQLException sQLException) {
                     
                     //menampilkan pesan jika terjadi kesalahan saat menghapus data
-                    JOptionPane.showMessageDialog(null, "Data Produk gagal dihapus");
+                    JOptionPane.showMessageDialog(null, "Data Produk gagal dihapus" + sQLException.getMessage());
                 }
-                load_tabel_produk(Kategori);//memuat ulang data produk di tabel tampilan
+                load_tabel_produk(filterDipilih);//memuat ulang data produk di tabel tampilan
+                //mengembalikan posisi scroll ke paling atas
+                SwingUtilities.invokeLater(() -> {
+                    jScrollPane1.getVerticalScrollBar().setValue(0);
+                });
 
                 reset();//mereset semua input agar kosong kembali
                 break;
@@ -899,6 +917,10 @@ public final class PanelProduk extends javax.swing.JPanel {
         
         //ambil input dari text field tDeskProduk DAN simpan ke variabel deskProduk 
         String deskProduk = tDeskProduk.getText();
+        if ("Opsional".equals(deskProduk)) {
+            deskProduk = "";
+            
+        }
         
         //ambil input dari combo box, jika tidak ada yang di select, ganti dengan string kosong
         String kategoriProduk = cKategoriProduk.getSelectedItem() != null ? cKategoriProduk.getSelectedItem().toString() : "";
@@ -911,10 +933,9 @@ public final class PanelProduk extends javax.swing.JPanel {
         
         //validasi: semua field wajib diisi
         if (namaProduk.isEmpty()
-                || deskProduk.isEmpty()
                 || kategoriProduk.isEmpty()
                 || hargaProduk.isEmpty()
-                || !btnStatusProduk.isSelected()) {
+                ) {
             JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
             return;
         }
@@ -943,7 +964,11 @@ public final class PanelProduk extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Data gagal diubah");//tampilkan pesan bahwa data berhasil diubah
                 }
-                load_tabel_produk(kategoriProduk);//memanggil method untuk memuat ulang semua data pada tabel produk       
+                load_tabel_produk(filterDipilih);//memanggil method untuk memuat ulang semua data pada tabel produk     
+                //mengembalikan posisi scroll ke paling atas
+                SwingUtilities.invokeLater(() -> {
+                    jScrollPane1.getVerticalScrollBar().setValue(0);
+                });
                 modeUbah = false; //modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
                 idProdukTerpilih = null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
                 reset();//memanggil method untuk mereset atau mengosongkan inputan 
@@ -979,7 +1004,13 @@ public final class PanelProduk extends javax.swing.JPanel {
                 //jika terjadi kesalahan saat menyimpan data , tampilkan pesan gagal
                 JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!");
             }
-            load_tabel_produk(kategoriProduk);//memanggil method untuk memuat ulang semua data pada tabel produk       
+            
+            load_tabel_produk(filterDipilih);//memanggil method untuk memuat ulang semua data pada tabel produk     
+            //mengembalikan posisi scroll ke paling atas
+            SwingUtilities.invokeLater(() -> {
+                jScrollPane1.getVerticalScrollBar().setValue(0);
+            });
+
             modeUbah = false;//modeUbah menjadi false (kemabli ke mode tambah produk) setelah user selesai mengubah data produk
             idProdukTerpilih = null;//reset idProdukTerpilih jika tidak ada produk yang dipilih untuk diubah
             reset();//memanggil method untuk mereset atau mengosongkan inputan 
