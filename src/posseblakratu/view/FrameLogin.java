@@ -528,30 +528,14 @@ public final class FrameLogin extends javax.swing.JFrame {
                     //menutup form login
                     dispose();
 
-                    //cek role untuk membuka frame yang sesuai
-                    if (role.equals("Kasir")) {
-
-                        //buka frame kasir dengan state dan ukuran yang sama
-                        FrameKasir frameKasir = new FrameKasir();
-                        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
-                            frameKasir.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-                        } else {
-                            frameKasir.setBounds(bounds);
-                        }
-                        frameKasir.setVisible(true);
-
-                    } else if (role.equals("Owner")) {
-
-                        //buka frame owner dengan state dan ukuran yang sama
-                        FrameOwner frameOwner = new FrameOwner();
-                        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
-                            frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-                        } else {
-                            frameOwner.setBounds(bounds);
-                        }
-                        frameOwner.setVisible(true);
-
+                    //buka frame dengan state dan ukuran yang sama
+                    FrameMain frameOwner = new FrameMain();
+                    if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                        frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                    } else {
+                        frameOwner.setBounds(bounds);
                     }
+                    frameOwner.setVisible(true);
 
                 } else {
                     //jika data tidak ditemukan tampilkan pesan error

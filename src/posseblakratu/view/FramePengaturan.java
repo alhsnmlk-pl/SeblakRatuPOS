@@ -588,7 +588,7 @@ public final class FramePengaturan extends javax.swing.JFrame {
         java.awt.Rectangle bounds = getBounds();
 
         //menutup frame pengaturan dan kembali ke frame owner
-        FrameOwner frameOwner = new FrameOwner();
+        FrameMain frameOwner = new FrameMain();
 
         //jika window sebelumnya maximized, buka owner dalam kondisi maximized juga
         if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {

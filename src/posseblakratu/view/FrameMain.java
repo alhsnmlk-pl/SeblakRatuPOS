@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package posseblakratu.view;
-
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
@@ -15,49 +14,105 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Al
  */
-public final class FrameKasir extends javax.swing.JFrame {
+public final class FrameMain extends javax.swing.JFrame {
 
     CardLayout page;
+
+    //menyimpan referensi setiap panel agar bisa dipanggil saat pindah sidebar
+    private PanelTransaksi panelTransaksi;
+    private PanelProduk panelProduk;
+    private PanelStok panelStok;
+    private PanelPengguna panelPengguna;
+    private PanelDiskon panelDiskon;
+    private PanelLaporan panelLaporan;
+    
+    //menyimpan role
+    String role = FrameLogin.getRole();
+
 
     /**
      * Creates new form FrameUtama
      */
-    public FrameKasir() {
+    public FrameMain() {
         initComponents();
-
-        TanggalJam();
         
-        inisiasiPanel();
-        
-        btnTransaksi.setSelected(true);
-        stateSidebar(btnTransaksi);
+        TanggalJam(); //memanggil method waktu
+        inisiasiPanel(); //memanggil method inisiasi panel
+        btnTransaksi.setSelected(true); //membuat btnTransaksi bernilai true/selected 
+        stateSidebar(btnTransaksi); //memanggil state button sidebar untuk btnTransaksi
         
         setHeaderUser();
+        hakAkses();
+        
     }
-
+    
+    //membuat method hak akses
+    void hakAkses(){
+        //jika role kasir
+        if ("Kasir".equals(role)){
+            //matikan button
+            btnProduk.setEnabled(false);
+            btnStok.setEnabled(false);
+            btnPengguna.setEnabled(false);
+            btnDiskon.setEnabled(false);
+            btnLaporan.setEnabled(false);
+            btnSetting.setEnabled(false);
+        }
+    }
+    
+    
     //method untuk menginisiasi panel
-    void inisiasiPanel() {
-        page = (CardLayout) contentPanel.getLayout();
-        contentPanel.add(new PanelTransaksi(), "transaksi");
-    }
+    void inisiasiPanel(){
+        page = (CardLayout)contentPanel.getLayout();
 
-    //method jam
+        //membuat instance setiap panel dan menyimpan referensinya
+        panelDiskon = new PanelDiskon();
+        panelLaporan = new PanelLaporan();
+        panelPengguna = new PanelPengguna();
+        panelProduk = new PanelProduk();
+        panelStok = new PanelStok();
+        panelTransaksi = new PanelTransaksi();
+
+        //menambahkan setiap panel ke dalam content panel
+        contentPanel.add(panelDiskon, "diskon");
+        contentPanel.add(panelLaporan, "laporan");
+        contentPanel.add(panelPengguna, "pengguna");
+        contentPanel.add(panelProduk, "produk");
+        contentPanel.add(panelStok, "stok");
+        contentPanel.add(panelTransaksi, "transaksi");
+    }
+    
+    
+    
+
+    
+    
+    //method untuk menampilkan tanggal dan jam pada header
     private void TanggalJam() {
+
+        //membuat timer yang berjalan setiap 1 detik
         javax.swing.Timer timer = new javax.swing.Timer(1000, (java.awt.event.ActionEvent e) -> {
+
+            //mengatur locale ke bahasa Indonesia
             java.util.Locale localeIndonesia = new java.util.Locale("id", "ID");
 
+            //mengatur format tanggal dan jam
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
                     "EEEE, dd MMMM yyyy | HH.mm",
                     localeIndonesia
             );
 
+            //mengambil tanggal dan jam saat ini
             String waktu = sdf.format(new java.util.Date());
+
+            //menampilkan tanggal dan jam pada label
             lblTanggalJam.setText(waktu);
         });
 
+        //menjalankan timer
         timer.start();
     }
-
+    
     //method utk state aktif dan nonaktif untuk sidebar
     private void stateSidebar(javax.swing.JToggleButton tombol) {
         tombol.setUI(new javax.swing.plaf.basic.BasicToggleButtonUI());
@@ -81,7 +136,7 @@ public final class FrameKasir extends javax.swing.JFrame {
             tombol.setBorder(javax.swing.BorderFactory.createCompoundBorder(garisPutih, marginKiri));
         }
     }
-    
+
     // Method untuk mengatur teks sapaan pada header berdasarkan waktu dan username pengguna
     private void setHeaderUser() {
         // Mengambil username yang sedang login dari FrameLogin
@@ -110,6 +165,8 @@ public final class FrameKasir extends javax.swing.JFrame {
         // Mengubah teks label header dengan sapaan dan nama pengguna
         lblSelamatDatang.setText(ucapan + ", " + user + "!");
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,9 +184,12 @@ public final class FrameKasir extends javax.swing.JFrame {
         lblToko = new javax.swing.JLabel();
         txtPosSystem = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblSelamatDatang = new javax.swing.JLabel();
         lblTanggalJam = new javax.swing.JLabel();
+        lblSelamatDatang = new javax.swing.JLabel();
         sidebarPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        btnLogout = new javax.swing.JButton();
+        btnSetting = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnTransaksi = new javax.swing.JToggleButton();
@@ -138,9 +198,6 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnPengguna = new javax.swing.JToggleButton();
         btnDiskon = new javax.swing.JToggleButton();
         btnLaporan = new javax.swing.JToggleButton();
-        jPanel1 = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
-        btnSetting = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,15 +247,15 @@ public final class FrameKasir extends javax.swing.JFrame {
         jPanel4.setMinimumSize(new java.awt.Dimension(1075, 80));
         jPanel4.setPreferredSize(new java.awt.Dimension(1075, 80));
 
-        lblSelamatDatang.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        lblSelamatDatang.setText("Selamat Datang, Owner!");
-
         lblTanggalJam.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         lblTanggalJam.setForeground(new java.awt.Color(72, 86, 106));
         lblTanggalJam.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTanggalJam.setText("Sabtu, 25 April 2026 | 18.00");
         lblTanggalJam.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lblTanggalJam.setPreferredSize(new java.awt.Dimension(1001, 24));
+
+        lblSelamatDatang.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        lblSelamatDatang.setText("Selamat Datang, Owner!");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -231,6 +288,35 @@ public final class FrameKasir extends javax.swing.JFrame {
         sidebarPanel.setPreferredSize(new java.awt.Dimension(205, 640));
         sidebarPanel.setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(204, 204, 204)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(205, 121));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 1));
+
+        btnLogout.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(100, 116, 139));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconLogout.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
+        btnLogout.setContentAreaFilled(false);
+        btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogout.setIconTextGap(14);
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
+        jPanel1.add(btnLogout);
+
+        btnSetting.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnSetting.setForeground(new java.awt.Color(100, 116, 139));
+        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSetting.png"))); // NOI18N
+        btnSetting.setText("Pengaturan");
+        btnSetting.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
+        btnSetting.setContentAreaFilled(false);
+        btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSetting.setIconTextGap(14);
+        btnSetting.addActionListener(this::btnSettingActionPerformed);
+        jPanel1.add(btnSetting);
+
+        sidebarPanel.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(204, 355));
@@ -260,13 +346,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         });
         jPanel5.add(btnTransaksi);
 
+        grupButtonSidebar.add(btnProduk);
         btnProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnProduk.setForeground(new java.awt.Color(100, 116, 139));
         btnProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconProduk.png"))); // NOI18N
         btnProduk.setText("Produk");
         btnProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnProduk.setContentAreaFilled(false);
-        btnProduk.setEnabled(false);
         btnProduk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnProduk.setIconTextGap(14);
         btnProduk.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -275,13 +361,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnProduk.addItemListener(this::btnProdukItemStateChanged);
         jPanel5.add(btnProduk);
 
+        grupButtonSidebar.add(btnStok);
         btnStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnStok.setForeground(new java.awt.Color(100, 116, 139));
         btnStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconStok.png"))); // NOI18N
         btnStok.setText("Stok");
         btnStok.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnStok.setContentAreaFilled(false);
-        btnStok.setEnabled(false);
         btnStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnStok.setIconTextGap(14);
         btnStok.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -290,13 +376,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnStok.addItemListener(this::btnStokItemStateChanged);
         jPanel5.add(btnStok);
 
+        grupButtonSidebar.add(btnPengguna);
         btnPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnPengguna.setForeground(new java.awt.Color(100, 116, 139));
         btnPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconPengguna.png"))); // NOI18N
         btnPengguna.setText("Pengguna");
         btnPengguna.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnPengguna.setContentAreaFilled(false);
-        btnPengguna.setEnabled(false);
         btnPengguna.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPengguna.setIconTextGap(14);
         btnPengguna.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -305,13 +391,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnPengguna.addItemListener(this::btnPenggunaItemStateChanged);
         jPanel5.add(btnPengguna);
 
+        grupButtonSidebar.add(btnDiskon);
         btnDiskon.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnDiskon.setForeground(new java.awt.Color(100, 116, 139));
         btnDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconDiskon.png"))); // NOI18N
         btnDiskon.setText("Diskon");
         btnDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnDiskon.setContentAreaFilled(false);
-        btnDiskon.setEnabled(false);
         btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDiskon.setIconTextGap(14);
         btnDiskon.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -321,13 +407,13 @@ public final class FrameKasir extends javax.swing.JFrame {
         btnDiskon.addActionListener(this::btnDiskonActionPerformed);
         jPanel5.add(btnDiskon);
 
+        grupButtonSidebar.add(btnLaporan);
         btnLaporan.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnLaporan.setForeground(new java.awt.Color(100, 116, 139));
         btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconLaporan.png"))); // NOI18N
         btnLaporan.setText("Laporan");
         btnLaporan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnLaporan.setContentAreaFilled(false);
-        btnLaporan.setEnabled(false);
         btnLaporan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLaporan.setIconTextGap(14);
         btnLaporan.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -349,36 +435,6 @@ public final class FrameKasir extends javax.swing.JFrame {
 
         sidebarPanel.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(204, 204, 204)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(205, 121));
-        jPanel1.setLayout(new java.awt.GridLayout(2, 1));
-
-        btnLogout.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnLogout.setForeground(new java.awt.Color(100, 116, 139));
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconLogout.png"))); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
-        btnLogout.setContentAreaFilled(false);
-        btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnLogout.setIconTextGap(14);
-        btnLogout.addActionListener(this::btnLogoutActionPerformed);
-        jPanel1.add(btnLogout);
-
-        btnSetting.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnSetting.setForeground(new java.awt.Color(100, 116, 139));
-        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSetting.png"))); // NOI18N
-        btnSetting.setText("Pengaturan");
-        btnSetting.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
-        btnSetting.setContentAreaFilled(false);
-        btnSetting.setEnabled(false);
-        btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnSetting.setIconTextGap(14);
-        btnSetting.addActionListener(this::btnSettingActionPerformed);
-        jPanel1.add(btnSetting);
-
-        sidebarPanel.add(jPanel1, java.awt.BorderLayout.PAGE_END);
-
         getContentPane().add(sidebarPanel, java.awt.BorderLayout.LINE_START);
 
         contentPanel.setMinimumSize(new java.awt.Dimension(1075, 640));
@@ -391,53 +447,68 @@ public final class FrameKasir extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTransaksiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnTransaksiItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnTransaksi); //memanggil method state aktif dan nonaktif tombol du event state change
-        page.show(contentPanel, "transaksi"); //memanggil method inisiasi panel
-
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnTransaksi);
+        //menampilkan panel transaksi
+        page.show(contentPanel, "transaksi");
+        
+        //memuat ulang data transaksi saat masuk ke panel transaksi
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelTransaksi.pilihFilterSemua();
+            panelTransaksi.loadMenu("Semua");
+            panelTransaksi.loadTopping();
+        }
     }//GEN-LAST:event_btnTransaksiItemStateChanged
 
-    private void btnTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTransaksiMouseEntered
-
-    private void btnTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTransaksiMouseExited
+    private void btnLaporanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLaporanItemStateChanged
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnLaporan);
+        //menampilkan panel laporan
+        page.show(contentPanel, "laporan");
+        //memuat ulang data laporan saat masuk ke panel laporan
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelLaporan.loadLaporan();
+        }
+    }//GEN-LAST:event_btnLaporanItemStateChanged
 
     private void btnProdukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnProdukItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnProduk);
+        //menampilkan panel produk
+        page.show(contentPanel, "produk");
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelProduk.pilihFilterSemua();
+        }
+        
 
     }//GEN-LAST:event_btnProdukItemStateChanged
 
     private void btnStokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnStokItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnStok);
+        //menampilkan panel stok
+        page.show(contentPanel, "stok");
 
     }//GEN-LAST:event_btnStokItemStateChanged
 
     private void btnPenggunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnPenggunaItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnPengguna);
+        //menampilkan panel pengguna
+        page.show(contentPanel, "pengguna");
 
     }//GEN-LAST:event_btnPenggunaItemStateChanged
 
     private void btnDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnDiskonItemStateChanged
-        // TODO add your handling code here:
-
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnDiskon);
+        //menampilkan panel diskon
+        page.show(contentPanel, "diskon");
     }//GEN-LAST:event_btnDiskonItemStateChanged
-
-    private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDiskonActionPerformed
-
-    private void btnLaporanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLaporanItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnLaporan);
-        page.show(contentPanel, "laporan");
-    }//GEN-LAST:event_btnLaporanItemStateChanged
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-
+        
         int pilihan = JOptionPane.showConfirmDialog(
                 null,
                 "Apakah Anda yakin ingin keluar?",
@@ -480,13 +551,25 @@ public final class FrameKasir extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSettingActionPerformed
 
+    private void btnTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransaksiMouseEntered
+
+    private void btnTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransaksiMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransaksiMouseExited
+
+    private void btnDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiskonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDiskonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-
+       
         try {
             UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -495,7 +578,7 @@ public final class FrameKasir extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrameKasir().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrameMain().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
