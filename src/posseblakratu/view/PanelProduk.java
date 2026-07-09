@@ -76,7 +76,7 @@ public final class PanelProduk extends javax.swing.JPanel {
                 1f,
                 10));
     }
-    
+    //method untuk
     void pilihFilterSemua(){
         filterSemuaP.setSelected(true);
         filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
@@ -180,7 +180,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         //mengembalikan id produk yang telah dibuat
         return idBaru;
     }
-
+    //method untuk mengambil data produk dari database berdasarkan kategori yang dipilih, kemudian menampilkannya ke dalam tabel produk
     void load_tabel_produk(String kategori) {
 
         //membuat model tabel baru
@@ -771,7 +771,8 @@ public final class PanelProduk extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filterSemuaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSemuaPItemStateChanged
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        //METHOD UNTUK MENAMPILKAN SELURUH DATA PRODUK KETIKA TOMBOL "SEMUA" DIPILIH
         //cek apakah tombol filter "Semua" sedang dipilih
         if (filterSemuaP.isSelected()) {
             //beri garis bawah merah sebagai tanda tombol sedang dipilih
@@ -787,6 +788,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void filterSeblakPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterSeblakPItemStateChanged
         // TODO add your handling code here:
+        //METHOD UNTUK MENAMPILKAN PRODUK YANG TERMASUK KATEGORI SEBLAK KETIKA TOMBOL "SEBLAK" DI KLIK
         //cek apakah tombol filter "Seblak" sedang dipilih
         if (filterSeblakP.isSelected()) {
             //beri garis bawah merah sebagai tanda tombol sedang dipilih
@@ -803,6 +805,7 @@ public final class PanelProduk extends javax.swing.JPanel {
     private void filterToppingPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterToppingPItemStateChanged
         // TODO add your handling code here:
         //cek apakah tombol filter "Topping" sedang dipilih
+        //METHOD UNTUK MENAMPILKAN PRODUK YANG TERMASUK KATEGORI
         if (filterToppingP.isSelected()) {
             //beri garis bawah merah sebagai tanda tombol sedang dipilih
             filterToppingP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
@@ -817,6 +820,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void filterMinumanPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterMinumanPItemStateChanged
         // TODO add your handling code here:
+        //METHOD UNTUK MENAMPILKAN PRODUK YANG TERMASUK KATEGORI MINUMAN KETIKA TOMBOL "MINUMAN" DIPILIH
         //cek apakah tombol filter "Minuman" sedang dipilih
         if (filterMinumanP.isSelected()) {
             //beri garis bawah merah sebagai tanda tombol sedang dipilih
@@ -848,6 +852,8 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
+       
+        //method untuk menghapus data produk yang dipilih dari database setelah pengguna melakukan konfirmasi
         //validasi
         if (!modeUbah) {
             JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
@@ -911,13 +917,14 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void btnBatalProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalProdukActionPerformed
         // TODO add your handling code here:
+        //method untuk mengosongkan seluruh input form dan mengembalikannya ke kondisi awal
         //memanggil method reset agar semua inputan dikosongkan saat tombol Batal diklik
         reset();
     }//GEN-LAST:event_btnBatalProdukActionPerformed
 
     private void btnSimpanProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanProdukActionPerformed
         // TODO add your handling code here:
-
+        //method untuk menyimpan data produk baru juga memperbarui data produk ke dalam database
         //ambil input dari text field tNamaProduk DAN simpan ke variabel namaProduk 
         String namaProduk = tNamaProduk.getText();
         
