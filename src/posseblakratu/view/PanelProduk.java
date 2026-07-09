@@ -24,11 +24,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Al
  */
 public final class PanelProduk extends javax.swing.JPanel {
-
+    
+    //untuk menyimpan status apakah panel sedang berada pada mode ubah
     private boolean modeUbah = false;
-    
+    //untuk menyimpan ID produk yang sedang dipilih
     private String idProdukTerpilih = null;
-    
+    //untuk menyimpan kategori filter produk yang sedang dipilih , nilai awal "Semua"
     private String filterDipilih = "Semua";
 
     /**
