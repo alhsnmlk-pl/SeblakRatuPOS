@@ -72,7 +72,11 @@ public class cardMenu extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card menu
-    public void setData(String idProduk, String namaMenu, double hargaMenu, String kategoriMenu, String deskripsiMenu) {
+    public void setData(String idProduk,
+            String namaMenu,
+            double hargaMenu,
+            String kategoriMenu,
+            String deskripsiMenu) {
 
         //menyimpan data produk
         this.idProduk = idProduk;

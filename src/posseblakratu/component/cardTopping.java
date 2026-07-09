@@ -25,7 +25,9 @@ public class cardTopping extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card topping
-    public void setData(String idProduk, String namaTopping, double hargaTopping) {
+    public void setData(String idProduk,
+            String namaTopping,
+            double hargaTopping) {
 
         //menyimpan data topping
         this.idProduk = idProduk;

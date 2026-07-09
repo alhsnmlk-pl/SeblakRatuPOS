@@ -68,7 +68,11 @@ public class cardKeranjang extends javax.swing.JPanel {
         private final double subtotal;
 
         //menerima semua data topping
-        public ToppingItem(String idProduk, String nama, double harga, int qty) {
+        public ToppingItem(String idProduk,
+                String nama,
+                double harga,
+                int qty) {
+
             this.idProduk = idProduk;
             this.nama = nama;
             this.harga = harga;
@@ -103,7 +107,12 @@ public class cardKeranjang extends javax.swing.JPanel {
     }
 
     //method untuk mengisi data pada card keranjang
-    public void setData(String idProduk, String namaMenu, double hargaSatuan, int level, double hargaLevel, List<ToppingItem> daftarTopping) {
+    public void setData(String idProduk,
+            String namaMenu,
+            double hargaSatuan,
+            int level,
+            double hargaLevel,
+            List<ToppingItem> daftarTopping) {
 
         //menyimpan data menu
         this.idProduk = idProduk;
@@ -174,7 +183,8 @@ public class cardKeranjang extends javax.swing.JPanel {
 
         //menambahkan harga seluruh topping
         for (ToppingItem topping : daftarTopping) {
-
+            
+            //mengalikan 1 harga topping dengan qty
             totalPerPorsi += topping.getHarga() * topping.getQty();
 
         }
@@ -397,7 +407,6 @@ public class cardKeranjang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void qtyKeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtyKeranjangActionPerformed
-        // TODO add your handling code here:
         //memperbarui subtotal card
         updateHarga();
 

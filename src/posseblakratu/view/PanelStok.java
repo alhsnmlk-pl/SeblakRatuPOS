@@ -79,9 +79,9 @@ public class PanelStok extends javax.swing.JPanel {
         btnSimpanTambahStok.setText("Simpan Stok     ");
 
         //kosongkan semua field input
-        tNamaStok.setText(null);
+        tNamaStok.setText("Contoh: Bawang");
         tJmlStok.setText(null);
-        tSatuanStok.setText(null);
+        tSatuanStok.setText("Satuan");
         tHargaStok.setText(null);
 
         //hapus seleksi pada tabel
@@ -152,8 +152,8 @@ public class PanelStok extends javax.swing.JPanel {
         model.addColumn("Satuan");
 
 
-        //query SQL hanya mengambil data milik pengguna yang sedang login
-        String sql = "SELECT * FROM stok_bahan";
+        //query SQL untuk mengambil seluruh data stok bahan yang masih tersedia
+        String sql = "SELECT * FROM stok_bahan WHERE status IN ('Ada')";
 
         try {
             //membuka koneksi ke database
@@ -296,6 +296,14 @@ public class PanelStok extends javax.swing.JPanel {
         tNamaStok.setBorder(null);
         tNamaStok.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaStok.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaStok.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tNamaStokFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNamaStokFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -353,6 +361,14 @@ public class PanelStok extends javax.swing.JPanel {
 
         tSatuanStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tSatuanStok.setBorder(null);
+        tSatuanStok.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tSatuanStokFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tSatuanStokFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -522,16 +538,16 @@ public class PanelStok extends javax.swing.JPanel {
 
         tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Bawang", "13", "Rp. 1.000", "kg"}
             },
             new String [] {
-
+                "Nama Bahan", "Stok", "Harga Satuan", "Satuan"
             }
         ));
         tblStok.setCellPaddingLeft(25);
         tblStok.setCellPaddingRight(25);
         tblStok.setCenterColumns("1,2,3");
-        tblStok.setColumnWidths("250,50,80");
+        tblStok.setColumnWidths("230,50,100,50");
         tblStok.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblStok.setHeaderPaddingLeft(25);
         tblStok.setHeaderPaddingRight(25);
@@ -624,49 +640,47 @@ public class PanelStok extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_btnBatalStokActionPerformed
 
-    //membuat method untuk generate id pengeluaran otomatis
-    String generateIdPengeluaran() {
-
-        //variabel untuk menyimpan id terakhir dari database
-        String lastId = null;
+    //method untuk generate id pengeluaran otomatis
+    private String generateIdPengeluaran() {
+        //nomor urut transaksi, default dimulai dari 1
+        int nomor = 1;
 
         try {
-            //buka koneksi ke database
+            //koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //query untuk mengambil id pengeluaran terakhir
-            String sql = "SELECT id_pengeluaran FROM pengeluaran ORDER BY id_pengeluaran DESC LIMIT 1";
+            //query mengambil id transaksi terakhir pada bulan ini
+            String sql = "SELECT id_pengeluaran FROM pengeluaran "
+                    + "WHERE id_pengeluaran LIKE CONCAT('EXP-', DATE_FORMAT(CURDATE(), '%Y%m'), '%') "
+                    + "ORDER BY id_pengeluaran DESC LIMIT 1";
 
-            //siapkan statement
+            //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            //jalankan query
+            //eksekusi query
             ResultSet rs = ps.executeQuery();
 
-            //jika ada data
+            //jika ada data pada bulan ini
             if (rs.next()) {
-                //ambil id terakhirnya
-                lastId = rs.getString("id_pengeluaran");
+                //ambil id transaksi terakhir
+                String lastId = rs.getString("id_pengeluaran");
+
+                //ambil nomor urut lalu tambah 1
+                nomor = Integer.parseInt(lastId.substring(13)) + 1;
             }
 
         } catch (SQLException sQLException) {
-            //tampilkan error jika gagal
+            //tampilkan pesan jika gagal membuat id transaksi
             JOptionPane.showMessageDialog(null, "Gagal membuat id pengeluaran!");
+            return null;
         }
 
-        //jika belum ada pengeluaran sama sekali
-        if (lastId == null) {
-            return "PGR0001";
-        }
+        //mengambil tanggal hari ini dengan format yyyyMMdd
+        String tanggal = java.time.LocalDate.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        //mengambil angka dari PGR0001 → 0001
-        int angka = Integer.parseInt(lastId.substring(3));
-
-        //increment angka
-        angka++;
-
-        //format ulang jadi PGR0002 dst
-        return String.format("PGR%04d", angka);
+        //mengembalikan id pengeluaran dengan format EXP-yyyyMMdd-0001
+        return String.format("EXP-%s-%04d", tanggal, nomor);
     }
 
 
@@ -860,10 +874,12 @@ public class PanelStok extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
             return;
         }
+        
+        String namaStok = tNamaStok.getText();
 
         //tampilkan dialog konfirmasi sebelum menghapus
         int konfirmasi = JOptionPane.showConfirmDialog(null,
-                "Yakin ingin menghapus stok ini?",
+                "Yakin ingin menghapus stok " + namaStok+"?",
                 "Konfirmasi Hapus",
                 JOptionPane.YES_NO_OPTION);
 
@@ -873,7 +889,7 @@ public class PanelStok extends javax.swing.JPanel {
         }
 
         //query SQL untuk menghapus data stok berdasarkan id_stok
-        String sql = "DELETE FROM stok_bahan WHERE id_stok=?";
+        String sql = "UPDATE stok_bahan SET status = 'Dihapus' WHERE id_stok=?";
 
         try {
             //buka koneksi ke database
@@ -918,6 +934,58 @@ public class PanelStok extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_tHargaStokKeyTyped
+
+    private void tNamaStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field nama stok
+            String namaP = tNamaStok.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Contoh: Bawang")) {
+                tNamaStok.setText("");
+            }
+        }
+    }//GEN-LAST:event_tNamaStokFocusGained
+
+    private void tNamaStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaStokFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field nama stok
+            String namaP = tNamaStok.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Contoh: Bawang")) {
+                tNamaStok.setText("Contoh: Bawang");
+            }
+        }
+    }//GEN-LAST:event_tNamaStokFocusLost
+
+    private void tSatuanStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field satuan stok
+            String namaP = tSatuanStok.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Satuan")) {
+                tSatuanStok.setText("");
+            }
+        }
+    }//GEN-LAST:event_tSatuanStokFocusGained
+
+    private void tSatuanStokFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tSatuanStokFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field satuan stok
+            String namaP = tSatuanStok.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Satuan")) {
+                tSatuanStok.setText("Satuan");
+            }
+        }
+    }//GEN-LAST:event_tSatuanStokFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

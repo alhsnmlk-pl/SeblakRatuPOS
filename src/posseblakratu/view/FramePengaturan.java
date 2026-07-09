@@ -187,7 +187,6 @@ public final class FramePengaturan extends javax.swing.JFrame {
         tPathFoto.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(245, 241, 240));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(231, 189, 187)));
@@ -208,11 +207,11 @@ public final class FramePengaturan extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1362, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(lblPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1079, Short.MAX_VALUE)))
+                    .addGap(0, 1161, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,12 +541,12 @@ public final class FramePengaturan extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,8 +583,20 @@ public final class FramePengaturan extends javax.swing.JFrame {
 
     private void lblPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseClicked
 
+        //menyimpan state window sebelum menutup frame
+        int windowState = getExtendedState();
+        java.awt.Rectangle bounds = getBounds();
+
         //menutup frame pengaturan dan kembali ke frame owner
-        new FrameOwner().setVisible(true);
+        FrameMain frameOwner = new FrameMain();
+
+        //jika window sebelumnya maximized, buka owner dalam kondisi maximized juga
+        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+            frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        } else {
+            frameOwner.setBounds(bounds);
+        }
+        frameOwner.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_lblPengaturanMouseClicked
@@ -621,12 +632,12 @@ public final class FramePengaturan extends javax.swing.JFrame {
             PreparedStatement statement = conn.prepareStatement(sql);
 
             //mengisi nilai parameter satu per satu
-            statement.setString(1, namaToko);
-            statement.setString(2, alamat);
-            statement.setString(3, noTelp);
-            statement.setString(4, logoPath);
-            statement.setString(5, catatan);
-            statement.setString(6, idPengguna);
+            statement.setString(1, namaToko);    //nama UMKM
+            statement.setString(2, alamat);      //alamat toko
+            statement.setString(3, noTelp);      //nomor telepon
+            statement.setString(4, logoPath);    //path file logo
+            statement.setString(5, catatan);     //footer struk
+            statement.setString(6, idPengguna);  //id pengguna sebagai kondisi WHERE
 
             //menjalankan query pembaruan
             statement.execute();

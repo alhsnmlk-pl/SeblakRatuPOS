@@ -46,10 +46,10 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //membuat list penyimpan card keranjang
     List<cardKeranjang> daftarKeranjang = new ArrayList<>();
 
-    //mendeklarasikan CardLayout menjadi cardLayout agar bisa eipakai di banyak method
+    //mendeklarasikan CardLayout sebagai cardLayout agar bisa dipakai di banyak method
     private CardLayout cardLayout;
 
-    //deklarasikan variable untuk menyimpan data menu yg di pilih
+    //deklarasikan variabel untuk menyimpan data menu yang dipilih
     private cardMenu menuDipilih;
 
     //menyimpan level pedas yang dipilih (default -1 / belum memilih level)
@@ -69,6 +69,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     //menyimpan id transaksi
     private String idTransaksi;
+    
 
     /**
      * Creates new form PanelTransaksi
@@ -82,24 +83,30 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //menampilkan panel kostumisasi kosong sebagai tampilan awal
         cardLayout.show(containerKostumisasi, "kostumKosong");
 
-        buttonDesain(); //memanggil method desain button next dan reset
+        //memanggil method desain button Next dan Reset
+        buttonDesain();
 
-        panelLengkung(containerDaftarMenu); //memanggil method desain panel dgn panel yg ingin di sesuaikan
+        //menerapkan border melengkung pada panel daftar menu
+        panelLengkung(containerDaftarMenu);
         panelLengkung(containerKostumisasi);
         panelLengkung(containerKeranjang1);
 
-        buttonLvl(btnLvl0); //memanggil method desain button (default)
+        //menerapkan styling default pada semua button level pedas
+        buttonLvl(btnLvl0);
         buttonLvl(btnLvl1);
         buttonLvl(btnLvl2);
         buttonLvl(btnLvl3);
         buttonLvl(btnLvl4);
         buttonLvl(btnLvl5);
 
-        filterSemuaM.setSelected(true); //membuat btnFilter semua bernilai true/selected 
-        btnFilter(filterSemuaM); //memanggil state button filter untuk btnFilter semua
+        //set tombol filter "Semua" sebagai aktif secara default
+        filterSemuaM.setSelected(true);
+        //terapkan styling pada tombol filter semua
+        btnFilter(filterSemuaM);
 
-        loadMenu("Semua"); //load menu untuk kategori semua
-        loadTopping(); //load toping
+        //load semua menu dan topping saat pertama kali panel dibuka
+        loadMenu("Semua");
+        loadTopping();
 
     }
 
@@ -175,15 +182,20 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             //maka tambahkan border warna merah di bagian bawah menggunakan matte border
             btn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
         } else {
-            //jika tidak tambahkan border sebesar 3 px juga mengguakan empety border
+            //jika tidak tambahkan border sebesar 3 px menggunakan empty border
             btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 3, 0));
         }
+    }
+
+    void pilihFilterSemua() {
+        filterSemuaM.setSelected(true);
+        btnFilter(filterSemuaM);
     }
 
     //MENGISI DAFTAR MENU
     //method untuk menampilkan menu berdasarkan kategori
     void loadMenu(String kategori) {
-        //membersihkan panel conten menu
+        //membersihkan panel konten menu
         menuContent.removeAll();
 
         //membersihkan data card sebelumnya
@@ -208,7 +220,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             } else {
 
                 //query sql untuk mengambil menu berdasarkan kategori
-                sql = "SELECT * FROM produk WHERE kategori=? ORDER BY id_produk";
+                sql = "SELECT * FROM produk WHERE kategori=? AND status = 'Tersedia' ORDER BY id_produk";
 
             }
 
@@ -286,6 +298,9 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
         //membersihkan daftar topping
         daftarTopping.clear();
+
+        //membersihkan panel topping agar tidak terjadi penumpukan card
+        toppingContent.removeAll();
 
         try {
 
@@ -421,7 +436,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         //menampilkan subtotal
         lblSubtotal.setText(FormatUang.format(subtotal));
 
-        //memperbarui diskon dgn method update diskon
+        //memperbarui diskon dengan method updateDiskon
         updateDiskon();
 
     }
@@ -583,18 +598,19 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
-    //method untuk generate id transaksi otomatis
+//method untuk generate id transaksi otomatis
     private String generateIdTransaksi() {
-        //variabel untuk menyimpan id terakhir dari database
-        String lastId = null;
+        //nomor urut transaksi, default dimulai dari 1
+        int nomor = 1;
 
         try {
             //koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //query ambil id transaksi terakhir
-            String sql = "SELECT id_transaksi FROM transaksi ORDER BY "
-                    + "id_transaksi DESC LIMIT 1";
+            //query mengambil id transaksi terakhir pada bulan ini
+            String sql = "SELECT id_transaksi FROM transaksi "
+                    + "WHERE id_transaksi LIKE CONCAT('INV-', DATE_FORMAT(CURDATE(), '%Y%m'), '%') "
+                    + "ORDER BY id_transaksi DESC LIMIT 1";
 
             //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -602,30 +618,27 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             //eksekusi query
             ResultSet rs = ps.executeQuery();
 
-            //jika ada data
+            //jika ada data transaksi pada bulan ini
             if (rs.next()) {
-                //ambil id terakhir
-                lastId = rs.getString("id_transaksi");
+                //ambil id transaksi terakhir
+                String lastId = rs.getString("id_transaksi");
+
+                //ambil nomor urut transaksi lalu tambah 1
+                nomor = Integer.parseInt(lastId.substring(13)) + 1;
             }
 
         } catch (SQLException sQLException) {
-            //tampilkan pesan jika gagal mengambil id transaksi
+            //tampilkan pesan jika gagal membuat id transaksi
             JOptionPane.showMessageDialog(null, "Gagal membuat id transaksi!");
+            return null;
         }
 
-        //jika belum ada transaksi sama sekali
-        if (lastId == null) {
-            return "TRX0001";
-        }
+        //mengambil tanggal hari ini dengan format yyyyMMdd
+        String tanggal = java.time.LocalDate.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        //mengambil angka dari TRX0001 → 0001
-        int angka = Integer.parseInt(lastId.substring(3));
-
-        //increment angka
-        angka++;
-
-        //format ulang jadi TRX0002 dst
-        return String.format("TRX%04d", angka);
+        //mengembalikan id transaksi dengan format INV-yyyyMMdd-0001
+        return String.format("INV-%s-%04d", tanggal, nomor);
     }
 
     //method untuk mengambil id transaksi

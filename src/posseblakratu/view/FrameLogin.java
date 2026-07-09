@@ -61,8 +61,8 @@ public final class FrameLogin extends javax.swing.JFrame {
         panelLengkung(passContainer);
         panelLengkung(roleContainer);
 
-        tPassword.setEchoChar((char) 0); // placeholder dibuat jadi terlihat
-        tPassword.setText("Masukkan Password"); //placehokder bertuliskan masukkan password
+        tPassword.setEchoChar((char) 0); //nonaktifkan echo char agar teks placeholder dapat terbaca
+        tPassword.setText("Masukkan Password"); //isi placeholder password
 
         //memanggil method untuk menampilkan logo toko dari database
         loadLogin();
@@ -184,7 +184,6 @@ public final class FrameLogin extends javax.swing.JFrame {
         tDetail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1280, 720));
 
         mainPanel.setBackground(new java.awt.Color(252, 249, 255));
         mainPanel.setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -522,21 +521,21 @@ public final class FrameLogin extends javax.swing.JFrame {
                     //menyimpan role pengguna ke session
                     FrameLogin.role = rs.getString("role");
 
+                    //menyimpan state window sebelum dispose (maximized atau normal)
+                    int windowState = getExtendedState();
+                    java.awt.Rectangle bounds = getBounds();
+
                     //menutup form login
                     dispose();
 
-                    //cek role untuk membuka frame yang sesuai
-                    if (role.equals("Kasir")) {
-
-                        //buka frame kasir
-                        new FrameKasir().setVisible(true);
-
-                    } else if (role.equals("Owner")) {
-
-                        //buka frame owner
-                        new FrameOwner().setVisible(true);
-
+                    //buka frame dengan state dan ukuran yang sama
+                    FrameMain frameOwner = new FrameMain();
+                    if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                        frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                    } else {
+                        frameOwner.setBounds(bounds);
                     }
+                    frameOwner.setVisible(true);
 
                 } else {
                     //jika data tidak ditemukan tampilkan pesan error
@@ -607,9 +606,12 @@ public final class FrameLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252, 232, 230)); //memgatur warna selection backround di combo box
-            UIManager.put("ComboBox.selectionForeground", new java.awt.Color(0, 0, 0)); //mengatur warna teks / foreground di selection combo box
-            UIManager.put("Button.arc", 10); //membaut button melengkung
+            //mengatur warna background selection pada combobox
+            UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252, 232, 230));
+            //mengatur warna teks pada item yang dipilih di combobox
+            UIManager.put("ComboBox.selectionForeground", new java.awt.Color(0, 0, 0));
+            //membuat sudut button menjadi melengkung
+            UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }

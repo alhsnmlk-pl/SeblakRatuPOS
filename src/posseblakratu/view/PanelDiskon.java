@@ -77,7 +77,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         btnSimpanDiskon.setText("Simpan Diskon");
 
         //kosongkan field nama diskon
-        tNamaDiskon.setText(null);
+        tNamaDiskon.setText("Contoh: jumat berkah");
 
         //kembalikan combobox tipe ke pilihan pertama
         cTipeDiskon.setSelectedItem(null);
@@ -86,7 +86,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tValueDiskon.setText(null);
 
         //kembalikan toggle status ke posisi nonaktif
-        btnStatusProduk.setSelected(false);
+        btnStatusDiskon.setSelected(false);
 
         //hapus seleksi pada tabel
         tblDiskon.clearSelection();
@@ -157,7 +157,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         model.addColumn("Status");
 
         //query SQL untuk mengambil semua data diskon
-        String sql = "SELECT * FROM diskon";
+        String sql = "SELECT * FROM diskon WHERE status IN ('Aktif', 'Nonaktif')";
 
         try {
             //membuka koneksi ke database
@@ -190,8 +190,9 @@ public final class PanelDiskon extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "gagal mengambil data!");
         }
 
-        //menampilkan model yang sudah diisi ke dalam tabel GUI
+        //menampilkan model yang sudah diisi ke dalam tabel 
         tblDiskon.setModel(model);
+        tblDiskon.setColumnWidths("100,50,50,50");
     }
     
     
@@ -235,7 +236,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tValueDiskon = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
         lblStatusProduk = new javax.swing.JLabel();
-        btnStatusProduk = new javax.swing.JToggleButton();
+        btnStatusDiskon = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -349,6 +350,14 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tNamaDiskon.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tNamaDiskon.setOpaque(true);
         tNamaDiskon.setPreferredSize(new java.awt.Dimension(126, 19));
+        tNamaDiskon.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tNamaDiskonFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNamaDiskonFocusLost(evt);
+            }
+        });
         tNamaDiskon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tNamaDiskonMouseClicked(evt);
@@ -376,6 +385,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
         cTipeDiskon.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         cTipeDiskon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nominal", "Persentase" }));
+        cTipeDiskon.setToolTipText("Silahkan Pilih Tipe Diskon");
         cTipeDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 12, 1, 12));
         cTipeDiskon.setOpaque(true);
         jPanel18.add(cTipeDiskon, java.awt.BorderLayout.CENTER);
@@ -421,11 +431,11 @@ public final class PanelDiskon extends javax.swing.JPanel {
         lblStatusProduk.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         lblStatusProduk.setText(" Status Diskon");
 
-        btnStatusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
-        btnStatusProduk.setBorder(null);
-        btnStatusProduk.setContentAreaFilled(false);
-        btnStatusProduk.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
-        btnStatusProduk.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/icon on.png"))); // NOI18N
+        btnStatusDiskon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
+        btnStatusDiskon.setBorder(null);
+        btnStatusDiskon.setContentAreaFilled(false);
+        btnStatusDiskon.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Property 1=Variant2.png"))); // NOI18N
+        btnStatusDiskon.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/icon on.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -440,7 +450,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
             .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel19Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnStatusProduk)
+                    .addComponent(btnStatusDiskon)
                     .addGap(0, 0, 0)))
         );
         jPanel19Layout.setVerticalGroup(
@@ -454,7 +464,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
             .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel19Layout.createSequentialGroup()
                     .addGap(0, 19, Short.MAX_VALUE)
-                    .addComponent(btnStatusProduk)
+                    .addComponent(btnStatusDiskon)
                     .addGap(0, 19, Short.MAX_VALUE)))
         );
 
@@ -561,31 +571,30 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     private void btnTambahDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahDiskonActionPerformed
 
-        //tidak ada aksi tambahan pada tombol ini
+
 
     }//GEN-LAST:event_btnTambahDiskonActionPerformed
 
     private void tValueDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tValueDiskonMouseClicked
 
-        //tidak ada aksi tambahan saat field nilai diklik
 
     }//GEN-LAST:event_tValueDiskonMouseClicked
 
     private void tValueDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tValueDiskonActionPerformed
 
-        //tidak ada aksi tambahan pada field nilai diskon
+
 
     }//GEN-LAST:event_tValueDiskonActionPerformed
 
     private void tNamaDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaDiskonActionPerformed
 
-        //tidak ada aksi tambahan pada field nama diskon
+
 
     }//GEN-LAST:event_tNamaDiskonActionPerformed
 
     private void tNamaDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNamaDiskonMouseClicked
 
-        //tidak ada aksi tambahan saat field nama diklik
+
 
     }//GEN-LAST:event_tNamaDiskonMouseClicked
 
@@ -604,7 +613,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         String nilaiDiskonStr = tValueDiskon.getText();
 
         //mengambil status dari toggle button
-        String statusDiskon = btnStatusProduk.isSelected() ? "Aktif" : "Nonaktif";
+        String statusDiskon = btnStatusDiskon.isSelected() ? "Aktif" : "Nonaktif";
 
         //memastikan seluruh input telah diisi sebelum data disimpan
         if (namaDiskon.isEmpty() || tipeDiskon.isEmpty() || nilaiDiskonStr.isEmpty()) {
@@ -775,7 +784,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
         tValueDiskon.setText(nilaiDiskon);
 
         //set toggle status sesuai nilai dari database
-        btnStatusProduk.setSelected(statusDiskon.equals("Aktif"));
+        btnStatusDiskon.setSelected(statusDiskon.equals("Aktif"));
 
     }//GEN-LAST:event_tblDiskonMouseClicked
 
@@ -798,8 +807,8 @@ public final class PanelDiskon extends javax.swing.JPanel {
             return;
         }
 
-        //query SQL untuk menghapus data diskon berdasarkan id_diskon
-        String sql = "DELETE FROM diskon WHERE id_diskon=?";
+        //query SQL untuk menandai diskon sebagai dihapus (soft delete)
+        String sql = "UPDATE diskon SET status = 'Dihapus' WHERE id_diskon=?";
 
         try {
             //buka koneksi ke database
@@ -811,7 +820,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
             //isi parameter id_diskon dari baris yang dipilih
             ps.setString(1, idDiskonDipilih);
 
-            //jalankan query delete
+            //jalankan query update soft delete
             ps.execute();
 
             //tampilkan pesan berhasil
@@ -830,12 +839,39 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnHapusDiskonActionPerformed
 
+    private void tNamaDiskonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusGained
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang saat ini ada di field nama diskon
+            String namaP = tNamaDiskon.getText();
+
+            //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+            if (namaP.equals("Contoh: jumat berkah")) {
+                tNamaDiskon.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_tNamaDiskonFocusGained
+
+    private void tNamaDiskonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusLost
+        // TODO add your handling code here:
+        if (!sedangEdit) {
+            //ambil teks yang ada di field nama diskon
+            String namaP = tNamaDiskon.getText();
+
+            //jika kosong kembalikan tulisan placeholder
+            if (namaP.equals("") || namaP.equals("Contoh: jumat berkah")) {
+                tNamaDiskon.setText("Contoh: jumat berkah");
+            }
+        }
+    }//GEN-LAST:event_tNamaDiskonFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatalDiskon;
     private javax.swing.JButton btnHapusDiskon;
     private javax.swing.JButton btnSimpanDiskon;
-    private javax.swing.JToggleButton btnStatusProduk;
+    private javax.swing.JToggleButton btnStatusDiskon;
     private javax.swing.JComboBox<String> cTipeDiskon;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jPanel1;

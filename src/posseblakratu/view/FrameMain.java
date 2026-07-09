@@ -14,13 +14,26 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Al
  */
-public final class FrameOwner extends javax.swing.JFrame {
+public final class FrameMain extends javax.swing.JFrame {
+
     CardLayout page;
+
+    //menyimpan referensi setiap panel agar bisa dipanggil saat pindah sidebar
+    private PanelTransaksi panelTransaksi;
+    private PanelProduk panelProduk;
+    private PanelStok panelStok;
+    private PanelPengguna panelPengguna;
+    private PanelDiskon panelDiskon;
+    private PanelLaporan panelLaporan;
+    
+    //menyimpan role
+    String role = FrameLogin.getRole();
+
 
     /**
      * Creates new form FrameUtama
      */
-    public FrameOwner() {
+    public FrameMain() {
         initComponents();
         
         TanggalJam(); //memanggil method waktu
@@ -29,20 +42,48 @@ public final class FrameOwner extends javax.swing.JFrame {
         stateSidebar(btnTransaksi); //memanggil state button sidebar untuk btnTransaksi
         
         setHeaderUser();
+        hakAkses();
+        
+    }
+    
+    //membuat method hak akses
+    void hakAkses(){
+        //jika role kasir
+        if ("Kasir".equals(role)){
+            //matikan button
+            btnProduk.setEnabled(false);
+            btnStok.setEnabled(false);
+            btnPengguna.setEnabled(false);
+            btnDiskon.setEnabled(false);
+            btnLaporan.setEnabled(false);
+            btnSetting.setEnabled(false);
+        }
     }
     
     
     //method untuk menginisiasi panel
     void inisiasiPanel(){
         page = (CardLayout)contentPanel.getLayout();
-        contentPanel.add(new PanelDiskon(), "diskon");
-        contentPanel.add(new PanelLaporan(), "laporan");
-        contentPanel.add(new PanelPengguna(), "pengguna");
-        contentPanel.add(new PanelProduk(), "produk");
-        contentPanel.add(new PanelStok(), "stok");
-        contentPanel.add(new PanelTransaksi(), "transaksi");
-    }
 
+        //membuat instance setiap panel dan menyimpan referensinya
+        panelDiskon = new PanelDiskon();
+        panelLaporan = new PanelLaporan();
+        panelPengguna = new PanelPengguna();
+        panelProduk = new PanelProduk();
+        panelStok = new PanelStok();
+        panelTransaksi = new PanelTransaksi();
+
+        //menambahkan setiap panel ke dalam content panel
+        contentPanel.add(panelDiskon, "diskon");
+        contentPanel.add(panelLaporan, "laporan");
+        contentPanel.add(panelPengguna, "pengguna");
+        contentPanel.add(panelProduk, "produk");
+        contentPanel.add(panelStok, "stok");
+        contentPanel.add(panelTransaksi, "transaksi");
+    }
+    
+    
+    
 
     
     
@@ -124,6 +165,8 @@ public final class FrameOwner extends javax.swing.JFrame {
         // Mengubah teks label header dengan sapaan dan nama pengguna
         lblSelamatDatang.setText(ucapan + ", " + user + "!");
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,7 +201,6 @@ public final class FrameOwner extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1280, 720));
 
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         headerPanel.setPreferredSize(new java.awt.Dimension(1280, 80));
@@ -405,40 +447,62 @@ public final class FrameOwner extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTransaksiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnTransaksiItemStateChanged
-        // TODO add your handling code here:
-        stateSidebar(btnTransaksi); //memanggil method state aktif dan nonaktif tombol di event state change
-        page.show(contentPanel, "transaksi"); //memanggil method inisiasi panel
+        //mengatur state aktif atau nonaktif tombol sidebar
+        stateSidebar(btnTransaksi);
+        //menampilkan panel transaksi
+        page.show(contentPanel, "transaksi");
         
+        //memuat ulang data transaksi saat masuk ke panel transaksi
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelTransaksi.pilihFilterSemua();
+            panelTransaksi.loadMenu("Semua");
+            panelTransaksi.loadTopping();
+        }
     }//GEN-LAST:event_btnTransaksiItemStateChanged
 
     private void btnLaporanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnLaporanItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
         stateSidebar(btnLaporan);
+        //menampilkan panel laporan
         page.show(contentPanel, "laporan");
+        //memuat ulang data laporan saat masuk ke panel laporan
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelLaporan.loadLaporan();
+        }
     }//GEN-LAST:event_btnLaporanItemStateChanged
 
     private void btnProdukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnProdukItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
         stateSidebar(btnProduk);
+        //menampilkan panel produk
         page.show(contentPanel, "produk");
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelProduk.pilihFilterSemua();
+        }
+        
 
     }//GEN-LAST:event_btnProdukItemStateChanged
 
     private void btnStokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnStokItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
         stateSidebar(btnStok);
+        //menampilkan panel stok
         page.show(contentPanel, "stok");
+
     }//GEN-LAST:event_btnStokItemStateChanged
 
     private void btnPenggunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnPenggunaItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
         stateSidebar(btnPengguna);
+        //menampilkan panel pengguna
         page.show(contentPanel, "pengguna");
+
     }//GEN-LAST:event_btnPenggunaItemStateChanged
 
     private void btnDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnDiskonItemStateChanged
-        // TODO add your handling code here:
+        //mengatur state aktif atau nonaktif tombol sidebar
         stateSidebar(btnDiskon);
+        //menampilkan panel diskon
         page.show(contentPanel, "diskon");
     }//GEN-LAST:event_btnDiskonItemStateChanged
 
@@ -453,8 +517,17 @@ public final class FrameOwner extends javax.swing.JFrame {
 
         switch (pilihan) {
             case JOptionPane.YES_OPTION -> {
+                //simpan state window sebelum dispose
+                int windowState = getExtendedState();
+                java.awt.Rectangle bounds = getBounds();
                 dispose();
-                new FrameLogin().setVisible(true);
+                FrameLogin frameLogin = new FrameLogin();
+                if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+                    frameLogin.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                } else {
+                    frameLogin.setBounds(bounds);
+                }
+                frameLogin.setVisible(true);
             }
             case JOptionPane.NO_OPTION -> {
             }
@@ -465,7 +538,16 @@ public final class FrameOwner extends javax.swing.JFrame {
 
     private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
         // TODO add your handling code here:
-        new FramePengaturan().setVisible(true);
+        //simpan state window sebelum dispose
+        int windowState = getExtendedState();
+        java.awt.Rectangle bounds = getBounds();
+        FramePengaturan framePengaturan = new FramePengaturan();
+        if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
+            framePengaturan.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        } else {
+            framePengaturan.setBounds(bounds);
+        }
+        framePengaturan.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSettingActionPerformed
 
@@ -496,7 +578,7 @@ public final class FrameOwner extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrameOwner().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrameMain().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

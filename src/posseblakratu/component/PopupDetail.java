@@ -35,7 +35,7 @@ import java.awt.print.PrinterJob;
  *
  * @author Al
  */
-public final class PratinjauStruk extends javax.swing.JDialog {
+public final class PopupDetail extends javax.swing.JDialog {
 
     //menyimpan subtotal transaksi
     private double subtotal;
@@ -70,7 +70,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public PratinjauStruk(java.awt.Frame parent, boolean modal) {
+    public PopupDetail(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -237,7 +237,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             double total,
             double tunai,
             double kembalian,
-            String metodePembayaran) {
+            String metodePembayaran
+    ) {
 
         //menyimpan subtotal transaksi
         this.subtotal = subtotal;
@@ -263,9 +264,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     }
 
     //method untuk menerima data header struk dari PopupBayar
-    public void setHeaderData(String idTransaksi,
-            String pengguna,
-            String waktu) {
+    public void setHeaderData(String idTransaksi, String pengguna, String waktu) {
 
         //menyimpan id transaksi
         this.idTransaksi = idTransaksi;
@@ -472,7 +471,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             //tampilkan pesan jika gagal mencetak
             JOptionPane.showMessageDialog(null, "Gagal mencetak struk!");
         }
-
+    
     }
 
     /**
@@ -544,8 +543,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(345, 60));
 
         jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 20)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/pratinjau struk.png"))); // NOI18N
-        jLabel1.setText("Pratinjau Struk");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconParkSolidTransactionOrder 1.png"))); // NOI18N
+        jLabel1.setText("Detail Transaksi");
         jLabel1.setIconTextGap(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -936,7 +935,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
-        //menutup dialog pratinjau struk
+        //menutup dialog detail transaksi
         dispose();
     }//GEN-LAST:event_btnTutupActionPerformed
 

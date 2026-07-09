@@ -2,161 +2,218 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+//menentukan package tempat class PanelPengguna berada
 package posseblakratu.view;
 
+//mengimpor class FlatLineBorder untuk membuat border dengan sudut melengkung
 import com.formdev.flatlaf.ui.FlatLineBorder;
+//mengimpor class color untuk mengatur warna komponen
 import java.awt.Color;
+//mengimpor class Insets untuk mengatur jarak (padding) pada border
 import java.awt.Insets;
+//mengimpor class Connection untuk membuat koneksi ke database
 import java.sql.Connection;
+//mengimpor class PreparedStatement untuk menjalankan query SQL yang memiliki parameter
 import java.sql.PreparedStatement;
+//mengimpor class ResultSet untuk menampung hasil query SELECT
 import java.sql.ResultSet;
+//mengimpor class SQLException untuk menangani error yang terjadi pada database
 import java.sql.SQLException;
+//mengimpor JOptionPane untuk menampilkan dialog pesan kepada pengguna
 import javax.swing.JOptionPane;
+//mengimpor JPanel sebagai komponen panel pada tampilan
 import javax.swing.JPanel;
+//mengimpor DefaultTableModel untuk mengelola data yang ditampilkan pada JTable
 import javax.swing.table.DefaultTableModel;
+//mengimpor class Koneksi yang digunakan untuk menghubungkan aplikasi dengan database
 import posseblakratu.config.Koneksi;
 
 /**
  *
  * @author Al
  */
+//mendefinisikan class PanelPengguna yang merupakan turunan dari JPanel
 public class PanelPengguna extends javax.swing.JPanel {
+
+    //menyimpan ID pengguna yang sedang dipilih pada tabel
     private String idPenggunaDipilih = "";
-    
+    //menandai apakah form sedang berada di mode edit(true) atau mode tambah data(false)
     private boolean sedangEdit = false;
+
     /**
      * Creates new form PanelPengguna
      */
     public PanelPengguna() {
+        //membuat dan menginisialisasi seluruh komponen yang didesain di NetBeans
         initComponents();
 
+        //memberikan border melengkung pada panel input Username
         panelLengkung(jPanel17);
+        //memberikan border melengkung pada panel input Password
         panelLengkung(jPanel18);
+        //memberikan border melengkung pada panel ComboBox Role
         panelLengkung(jPanel20);
 
+        //memuat seluruh data pengguna dari database ke dalam JTable
         load_tabel_pengguna();
+        //mengosongkan seluruh isian form dan mengembalikannya ke kondisi awal
         reset();
     }
-    
+
+    // Method untuk memberikan border melengkung pada panel
     void panelLengkung(JPanel p) {
 
+        //mengatur border melengkung pada panel parameter (padding 3px, warna pink, radius 10)
         p.setBorder(new FlatLineBorder(
                 new Insets(3, 3, 3, 3),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
+
+        //mengatur border melengkung pada panel form input di sebelah kanan (padding 5px)
         jPanel1.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-        
+
+        //mengatur border melengkung pada panel daftar pengguna (padding 5px)
         jPanel3.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
-
     }
+
+    //method untuk mengembalikan form ke kondisi awal       
     void reset() {
+
+        //memberi judul form menjadi "Tambah Pengguna"
         lblTambahPengguna.setText("Tambah Pengguna");
+        //memberi tulisan tombol menjadi "Simpan Pengguna"
         btnSimpanPengguna.setText("Simpan Pengguna");
-
-        tUsername.setText("");
-        tPasswordPengguna.setText("");
-
+        //mengosongkan input username
+        tUsername.setText("Contoh: kasir_depan");
+        //nonaktifkan echo char agar teks placeholder password bisa terbaca
+        tPasswordPengguna.setEchoChar((char) 0);
+        tPasswordPengguna.setText("Masukkan Password Baru");
+        //mengosongkan pilihan pada ComboBox role
         cRolePengguna.setSelectedItem(null);
-
+        //menjadikan status akun "Aktif" sebagai pilihan default
         btnPenggunaAktif.setSelected(true);
-
+        //menghilangkan pilihan (selection) pada tabel
         tblPengguna.clearSelection();
-
+        //mengubah mode form menjadi mode tambah data
         sedangEdit = false;
+        //mengosongkan ID pengguna yang sebelumnya dipilih
         idPenggunaDipilih = "";
-    }
-        String generateIdPengguna(){
 
+    }
+
+    //method untuk membuat ID pengguna secara otomatis
+    String generateIdPengguna() {
+
+        //variabel untuk menyimpan ID pengguna terakhir dari database
         String lastId = null;
 
-        try{
-
+        try {
+            //membuat koneksi ke database
             Connection conn = Koneksi.konek();
 
+            //query untuk mengambil ID pengguna terakhir
             String sql = "SELECT id_pengguna FROM pengguna ORDER BY id_pengguna DESC LIMIT 1";
 
+            //menyiapkan statement SQL
             PreparedStatement ps = conn.prepareStatement(sql);
 
+            //menjalankan query
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()){
+            //jika data ditemukan
+            if (rs.next()) {
+                //mengambil nilai ID pengguna terakhir
                 lastId = rs.getString("id_pengguna");
             }
 
-        }catch(SQLException e){
-
-            JOptionPane.showMessageDialog(null,"Gagal membuat ID!");
+        } catch (SQLException e) {
+            //menampilkan pesan jika terjadi kesalahan saat mengambil ID
+            JOptionPane.showMessageDialog(null, "Gagal membuat ID!");
 
         }
-
-        if(lastId==null){
+        //jika belum ada data pengguna di database
+        if (lastId == null) {
+            //mengembalikan ID pertama
             return "PG01";
         }
-
+        //mengambil bagian angka dari ID
         int angka = Integer.parseInt(lastId.substring(2));
 
+        //menambahkan angka ID sebanyak 1
         angka++;
 
+        //mengembalikan ID baru dengan format PG01, PG02, dan seterusnya
         return String.format("PG%02d", angka);
 
     }
-        void load_tabel_pengguna(){
 
-       DefaultTableModel model = new DefaultTableModel();
+    //method untuk menampilkan data pengguna dari database ke dalam JTable
+    void load_tabel_pengguna() {
 
-       model.addColumn("Username");
-       model.addColumn("Role");
-       model.addColumn("Status");
+        //membuat model tabel baru
+        DefaultTableModel model = new DefaultTableModel();
 
-       String sql = "SELECT username,role,status FROM pengguna";
+        //menambahkan kolom Username pada tabel
+        model.addColumn("Username");
+        //menambahkan kolom Role pada tabel
+        model.addColumn("Role");
+        //menambahkan kolom Status pada tabel
+        model.addColumn("Status");
 
-       try{
+        //Query untuk mengambil data username, role, dan status dari tabel pengguna
+        String sql = "SELECT * FROM pengguna WHERE status IN ('Aktif', 'Nonaktif')";
 
-           Connection conn = Koneksi.konek();
+        try {
 
-           PreparedStatement ps = conn.prepareStatement(sql);
+            //membuat koneksi ke database
+            Connection conn = Koneksi.konek();
 
-           ResultSet rs = ps.executeQuery();
+            //menyiapkan query SQL
+            PreparedStatement ps = conn.prepareStatement(sql);
 
-           while(rs.next()){
+            //menjalankan query dan menyimpan hasilnya ke ResultSet
+            ResultSet rs = ps.executeQuery();
 
-               Object[] baris = {
+            //melakukan perulangan selama masih ada data pada ResultSet
+            while (rs.next()) {
 
-                   rs.getString("username"),
-                   rs.getString("role"),
-                   rs.getString("status")
+                //menyimpan data dari setiap baris hasil query ke dalam array Object
+                Object[] baris = {
+                    //mengambil nilai username
+                    rs.getString("username"),
+                    //mengambil nilai Role
+                    rs.getString("role"),
+                    //mengambil nilai status
+                    rs.getString("status")
 
-               };
+                };
 
-               model.addRow(baris);
+                //menambahkan data ke model tabel
+                model.addRow(baris);
 
-           }
+            }
 
-       }catch(SQLException e){
+            //menangkap error yang terjadi saat menjalankan operasi database
+        } catch (SQLException e) {
 
-           JOptionPane.showMessageDialog(null,"Gagal mengambil data pengguna!");
+            //menampilkan pesan jika terjadi kesalahan saat mengambil data
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data pengguna!");
 
-       }
+        }
 
-       tblPengguna.setModel(model);
-
-   } 
-   
-    
-    
-    
-    
-    
+        //menampilkan model yang telah berisi data ke JTable
+        tblPengguna.setModel(model);
+        tblPengguna.setColumnWidths("140,50,50");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,6 +319,7 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         btnBatalPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalPengguna.setText("Batal");
+        btnBatalPengguna.setFocusable(false);
         btnBatalPengguna.addActionListener(this::btnBatalPenggunaActionPerformed);
         jPanel9.add(btnBatalPengguna);
 
@@ -269,6 +327,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusPengguna.setText("Hapus");
+        btnHapusPengguna.setFocusable(false);
         btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
         jPanel9.add(btnHapusPengguna);
 
@@ -302,10 +361,17 @@ public class PanelPengguna extends javax.swing.JPanel {
 
         tUsername.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         tUsername.setForeground(new java.awt.Color(92, 62, 60));
-        tUsername.setText("Contoh: kasir1");
         tUsername.setBorder(null);
         tUsername.setMargin(new java.awt.Insets(10, 10, 10, 6));
         tUsername.setPreferredSize(new java.awt.Dimension(126, 19));
+        tUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tUsernameFocusLost(evt);
+            }
+        });
         tUsername.addActionListener(this::tUsernameActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -332,9 +398,18 @@ public class PanelPengguna extends javax.swing.JPanel {
         jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 189, 187)));
 
         tPasswordPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
+        tPasswordPengguna.setForeground(new java.awt.Color(92, 62, 60));
         tPasswordPengguna.setText("jPasswordField1");
         tPasswordPengguna.setBorder(null);
         tPasswordPengguna.setPreferredSize(new java.awt.Dimension(90, 50));
+        tPasswordPengguna.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tPasswordPenggunaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tPasswordPenggunaFocusLost(evt);
+            }
+        });
 
         btnMata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconMata.png"))); // NOI18N
         btnMata.setBorder(null);
@@ -529,7 +604,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         tblPengguna.setCellPaddingLeft(25);
         tblPengguna.setCellPaddingRight(25);
         tblPengguna.setCenterColumns("1,2");
-        tblPengguna.setColumnWidths("140,90,110,110,110");
+        tblPengguna.setColumnWidths("140,50,50");
         tblPengguna.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblPengguna.setHeaderPaddingLeft(25);
         tblPengguna.setHeaderPaddingRight(25);
@@ -552,207 +627,376 @@ public class PanelPengguna extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tUsernameActionPerformed
 
+    //method yang dijalankan ketika pengguna mengklik salah satu baris pada tabel
     private void tblPenggunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPenggunaMouseClicked
-            // TODO add your handling code here:
+        // TODO add your handling code here:
+        //Mendapatkan indeks baris yang diklik oleh pengguna
         int baris = tblPengguna.rowAtPoint(evt.getPoint());
 
-        if(baris==-1){
+        //jika tidak ada baris yang dipilih, maka keluar dari method
+        if (baris == -1) {
             return;
         }
 
-        String username = tblPengguna.getValueAt(baris,0).toString();
+        //mengambil username dari kolom pertama pada baris yang dipilih
+        String username = tblPengguna.getValueAt(baris, 0).toString();
 
+        //Query untuk mengambil seluruh data pengguna berdasarkan username
         String sql = "SELECT * FROM pengguna WHERE username=?";
 
-        try{
+        try {
 
+            //membuat koneksi ke database
             Connection conn = Koneksi.konek();
 
+            //menyiapkan query SQL
             PreparedStatement ps = conn.prepareStatement(sql);
 
+            //mengisi parameter username pada query
             ps.setString(1, username);
 
+            //menjalankan query
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()){
+            //jika data pengguna ditemukan
+            if (rs.next()) {
 
-            idPenggunaDipilih = rs.getString("id_pengguna");
+                //menyimpan ID pengguna yang dipilih
+                idPenggunaDipilih = rs.getString("id_pengguna");
 
-            sedangEdit = true;
+                //mengubah mode form menjadi mode edit
+                sedangEdit = true;
 
-            lblTambahPengguna.setText("Edit Pengguna");
-            btnSimpanPengguna.setText("Simpan Perubahan");
+                //mengubah judul form menjadi "Edit Pengguna"
+                lblTambahPengguna.setText("Edit Pengguna");
+                //mengubah teks tombol menjadi "Simpan Perubahan"
+                btnSimpanPengguna.setText("Simpan Perubahan");
 
-            tUsername.setText(rs.getString("username"));
-            tPasswordPengguna.setEchoChar((char) 0);
-            tPasswordPengguna.setText("Masukkan Password Baru");
+                //menampilkan username ke dalam field username
+                tUsername.setText(rs.getString("username"));
+                //menghilangkan karakter penyamaran password agar teks dapat terlihat
+                tPasswordPengguna.setEchoChar((char) 0);
+                //menampilkan placeholder agar pengguna memasukkan password baru
+                tPasswordPengguna.setText("Masukkan Password Baru");
 
-            cRolePengguna.setSelectedItem(rs.getString("role"));
+                //memilih role sesuai data yang ada di database
+                cRolePengguna.setSelectedItem(rs.getString("role"));
 
-            if(rs.getString("status").equals("Aktif")){
-                btnPenggunaAktif.setSelected(true);
-            }else{
-                btnPenggunaNonaktif.setSelected(true);
+                // Mengecek status akun pengguna
+                if (rs.getString("status").equals("Aktif")) {
+                    // Memilih tombol status Aktif
+                    btnPenggunaAktif.setSelected(true);
+
+                } else {
+                    //memilih tombol status Nonaktif
+                    btnPenggunaNonaktif.setSelected(true);
+                }
+
             }
 
+            //menangkap error yang terjadi saat menjalankan operasi database 
+        } catch (SQLException e) {
+            //menampilkan pesan kepada pengguna bahwa proses pengambilan data gagal
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data!");
+
         }
 
-        }catch(SQLException e){
 
-            JOptionPane.showMessageDialog(null,"Gagal mengambil data!");
-
-        }
-
-      
     }//GEN-LAST:event_tblPenggunaMouseClicked
 
+    //method yang dijalankan ketika tombol mata diklik
     private void btnMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMataActionPerformed
         // TODO add your handling code here:
+
+        //mengecek apakah tombol mata dalam keadaan dipilih
         if (btnMata.isSelected()) {
-            //tampilkan teks password
+
+            //tampilkan teks password dengan menghilangkan karakter penyamaran
             tPasswordPengguna.setEchoChar((char) 0);
+
         } else {
-            //sembunyikan teks password dengan karakter bullet
+            //sembunyikan teks password dengan karakter bullet (*)
             tPasswordPengguna.setEchoChar('•');
         }
     }//GEN-LAST:event_btnMataActionPerformed
 
+    //Method yang dijalankan ketika tombol Hapus Pengguna diklik
     private void btnHapusPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPenggunaActionPerformed
         // TODO add your handling code here:
 
-        if(!sedangEdit){
-            JOptionPane.showMessageDialog(null,"Pilih data terlebih dahulu!");
+        //mengecek apakah pengguna sedang memilih data untuk diedit
+        if (!sedangEdit) {
+
+            //menampilkan pesan bahwa pengguna harus memilih data terlebih dahulu
+            JOptionPane.showMessageDialog(null, "Pilih data terlebih dahulu!");
+
+            //menghentikan proses penghapusan
             return;
         }
 
+        //menampilkan dialog konfirmasi sebelum menghapus data
         int konfirmasi = JOptionPane.showConfirmDialog(
-            null,
-            "Yakin ingin menghapus pengguna?",
-            "Konfirmasi",
-            JOptionPane.YES_NO_OPTION);
+                null,
+                "Yakin ingin menghapus pengguna?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
 
-        if(konfirmasi!=JOptionPane.YES_OPTION){
+        //jika pengguna memilih selain tombol "Yes", proses dibatalkan
+        if (konfirmasi != JOptionPane.YES_OPTION) {
             return;
         }
 
-        String sql="DELETE FROM pengguna WHERE id_pengguna=?";
+        //query SQL untuk menghapus data pengguna berdasarkan ID
+        String sql = "UPDATE pengguna SET status = 'Dihapus' WHERE id_pengguna=?";
 
-        try{
+        try {
 
-            Connection conn=Koneksi.konek();
+            //membuat koneksi ke database
+            Connection conn = Koneksi.konek();
 
-            PreparedStatement ps=conn.prepareStatement(sql);
+            //menyiapkan query SQL
+            PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1,idPenggunaDipilih);
+            //mengisi parameter query dengan ID pengguna yang akan dihapus
+            ps.setString(1, idPenggunaDipilih);
 
+            //menjalankan perintah DELETE
             ps.execute();
 
-            JOptionPane.showMessageDialog(null,"Data berhasil dihapus!");
+            //menampilkan pesan bahwa data berhasil dihapus
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
 
-        }catch(SQLException e){
+            //menangkap error yang terjadi saat menjalankan operasi database
+        } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null,"Data gagal dihapus!");
+            //menampilkan pesan bahwa proses penghapusan data gagal
+            JOptionPane.showMessageDialog(null, "Data gagal dihapus!");
 
         }
 
+        //memuat kembali data pengguna ke dalam tabel
         load_tabel_pengguna();
 
+        //mengembalikan form ke kondisi awal
         reset();
+
+
     }//GEN-LAST:event_btnHapusPenggunaActionPerformed
 
+    //method yang dijalankan ketika tombol Batal diklik
     private void btnBatalPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalPenggunaActionPerformed
         // TODO add your handling code here:
+
+        //mengembalikan form ke kondisi awal
         reset();
     }//GEN-LAST:event_btnBatalPenggunaActionPerformed
 
+    //method yang dijalankan ketika tombol Simpan Pengguna diklik
     private void btnSimpanPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPenggunaActionPerformed
         // TODO add your handling code here:
 
+        //mengambil data username dari field input
         String username = tUsername.getText();
-        String password = tPasswordPengguna.getText();
-        String role = cRolePengguna.getSelectedItem().toString();
 
+        //mengambil data password dari field input
+        String password = tPasswordPengguna.getText();
+
+        //ambil input dari combo box, jika tidak ada yang di select, ganti dengan string kosong
+        String role = cRolePengguna.getSelectedItem() != null ? cRolePengguna.getSelectedItem().toString() : "";
+
+        //mendeklarasikan variabel untuk menyimpan status pengguna
         String status;
 
-        if(btnPenggunaAktif.isSelected()){
+        //mengecek status akun yang dipilih
+        if (btnPenggunaAktif.isSelected()) {
+
+            //jika tombol Aktif dipilih, status menjadi "Aktif"
             status = "Aktif";
-        }else{
+
+        } else {
+
+            //jika tidak, status menjadi "Tidak Aktif"
             status = "Tidak Aktif";
         }
 
-        if(username.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Username harus diisi!");
+        //memastikan username tidak kosong
+        if (username.isEmpty()) {
+
+            //menampilkan pesan bahwa username harus diisi
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+
+            //mengarahkan kursor ke field username
             tUsername.requestFocus();
+
+            //menghentikan proses penyimpanan
             return;
         }
-        if(password.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Password harus diisi!");
+
+        //memastikan password tidak kosong
+        if (password.isEmpty()) {
+
+            //menampilkan pesan bahwa password harus diisi
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
+
+            //mengarahkan kursor ke field password
             tPasswordPengguna.requestFocus();
+
+            //menghentikan proses penyimpanan
             return;
         }
 
-        if(sedangEdit){
+        //memastikan role tidak kosong
+        if (role.isEmpty()) {
 
-            String sql =
-            "UPDATE pengguna SET username=?, password=MD5(?), role=?, status=? WHERE id_pengguna=?";
-            try{
+            //menampilkan pesan bahwa role harus dipilih
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!");
 
-                Connection conn=Koneksi.konek();
+            //mengarahkan kursor ke field role
+            cRolePengguna.requestFocus();
 
-                PreparedStatement ps=conn.prepareStatement(sql);
+            //menghentikan proses penyimpanan
+            return;
+        }
 
-                ps.setString(1,username);
-                ps.setString(2,password);
-                ps.setString(3,role);
-                ps.setString(4,status);
-                ps.setString(5,idPenggunaDipilih);
+        //mengecek apakah form sedang dalam mode edit
+        if (sedangEdit) {
 
+            //Query SQL untuk mengubah data pengguna
+            String sql
+                    = "UPDATE pengguna SET username=?, password=MD5(?), role=?, status=? WHERE id_pengguna=?";
+
+            try {
+
+                //membuat koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //menyiapkan query SQL
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //mengisi parameter username
+                ps.setString(1, username);
+                //mengisi parameter password yang akan di-hash menggunakan MD5
+                ps.setString(2, password);
+                //mengisi parameter role
+                ps.setString(3, role);
+                //mengisi parameter status
+                ps.setString(4, status);
+                //mengisi parameter ID pengguna yang akan diubah
+                ps.setString(5, idPenggunaDipilih);
+
+                //menjalankan perintah UPDATE
                 ps.execute();
 
-                JOptionPane.showMessageDialog(null,"Data berhasil diubah!");
+                //menampilkan pesan bahwa data berhasil diubah
+                JOptionPane.showMessageDialog(null, "Data berhasil diubah!");
 
-            }catch(SQLException e){
+                //menangkap error yang terjadi saat menjalankan operasi database
+            } catch (SQLException e) {
 
-                JOptionPane.showMessageDialog(null,"Data gagal diubah!");
+                //menampilkan pesan bahwa proses perubahan data gagal
+                JOptionPane.showMessageDialog(null, "Data gagal diubah!");
 
             }
 
-        }else{
+        } else {
 
+            //membuat ID pengguna baru secara otomatis
             String idPengguna = generateIdPengguna();
 
-            String sql =
-            "INSERT INTO pengguna(id_pengguna, username, password, role, status) VALUES(?, ?, MD5(?), ?, ?)";
+            //Query SQL untuk menambahkan data pengguna baru
+            String sql
+                    = "INSERT INTO pengguna(id_pengguna, username, password, role, status) VALUES(?, ?, MD5(?), ?, ?)";
 
-            try{
+            try {
 
-                Connection conn=Koneksi.konek();
+                //membuat koneksi ke database
+                Connection conn = Koneksi.konek();
 
-                PreparedStatement ps=conn.prepareStatement(sql);
+                //menyiapkan query SQL
+                PreparedStatement ps = conn.prepareStatement(sql);
 
+                //mengisi parameter ID pengguna
                 ps.setString(1, idPengguna);
+                //mengisi parameter username
                 ps.setString(2, username);
+                //mengisi parameter password yang akan di-hash menggunakan MD5
                 ps.setString(3, password);
+                //mengisi parameter role
                 ps.setString(4, role);
+                //mengisi parameter status
                 ps.setString(5, status);
 
+                //menjalankan perintah INSERT
                 ps.execute();
 
-                JOptionPane.showMessageDialog(null,"Data berhasil disimpan!");
+                //menampilkan pesan bahwa data berhasil disimpan
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
 
-            }catch(SQLException e){
+                //menangkap error yang terjadi saat menjalankan operasi database
+            } catch (SQLException e) {
 
-                JOptionPane.showMessageDialog(null,"Data gagal disimpan!");
+                //menampilkan pesan bahwa proses penyimpanan data gagal
+                JOptionPane.showMessageDialog(null, "Data gagal disimpan!");
 
             }
 
         }
 
+        //memuat kembali data pengguna ke dalam tabel
         load_tabel_pengguna();
 
+        //mengembalikan form ke kondisi awal
         reset();
 
     }//GEN-LAST:event_btnSimpanPenggunaActionPerformed
+
+    private void tUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusGained
+        // TODO add your handling code here:
+        //ambil teks yang saat ini ada di field username
+        String username = tUsername.getText();
+
+        //jika masih berisi placeholder, kosongkan agar pengguna bisa langsung mengetik
+        if (username.equals("Contoh: kasir_depan")) {
+            tUsername.setText("");
+        }
+    }//GEN-LAST:event_tUsernameFocusGained
+
+    private void tUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tUsernameFocusLost
+        // TODO add your handling code here:
+        //ambil teks yang ada di field username
+        String username = tUsername.getText();
+
+        //jika kosong kembalikan tulisan placeholder
+        if (username.equals("") || username.equals("Contoh: kasir_depan")) {
+            tUsername.setText("Contoh: kasir_depan");
+        }
+    }//GEN-LAST:event_tUsernameFocusLost
+
+    private void tPasswordPenggunaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusGained
+        // TODO add your handling code here:
+        //ambil teks password dan ubah dari char[] menjadi String
+        String password = String.valueOf(tPasswordPengguna.getPassword());
+
+        //jika masih berisi placeholder kosongkan dan aktifkan karakter bullet
+        if (password.equals("Masukkan Password Baru")) {
+            tPasswordPengguna.setText("");
+            tPasswordPengguna.setEchoChar('•');
+        }
+    }//GEN-LAST:event_tPasswordPenggunaFocusGained
+
+    private void tPasswordPenggunaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPasswordPenggunaFocusLost
+        // TODO add your handling code here:
+        //ambil teks password untuk dicek
+        String password = String.valueOf(tPasswordPengguna.getPassword());
+
+        //jika kosong kembalikan ke placeholder
+        if (password.isEmpty()) {
+            //nonaktifkan echo char agar teks placeholder bisa terbaca
+            tPasswordPengguna.setEchoChar((char) 0);
+            //tampilkan kembali teks placeholder
+            tPasswordPengguna.setText("Masukkan Password Baru");
+        }
+    }//GEN-LAST:event_tPasswordPenggunaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
