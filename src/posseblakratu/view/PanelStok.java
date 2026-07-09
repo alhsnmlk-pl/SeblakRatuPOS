@@ -640,49 +640,47 @@ public class PanelStok extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_btnBatalStokActionPerformed
 
-    //membuat method untuk generate id pengeluaran otomatis
-    String generateIdPengeluaran() {
-
-        //variabel untuk menyimpan id terakhir dari database
-        String lastId = null;
+    //method untuk generate id pengeluaran otomatis
+    private String generateIdPengeluaran() {
+        //nomor urut transaksi, default dimulai dari 1
+        int nomor = 1;
 
         try {
-            //buka koneksi ke database
+            //koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //query untuk mengambil id pengeluaran terakhir
-            String sql = "SELECT id_pengeluaran FROM pengeluaran ORDER BY id_pengeluaran DESC LIMIT 1";
+            //query mengambil id transaksi terakhir pada bulan ini
+            String sql = "SELECT id_pengeluaran FROM pengeluaran "
+                    + "WHERE id_pengeluaran LIKE CONCAT('EXP-', DATE_FORMAT(CURDATE(), '%Y%m'), '%') "
+                    + "ORDER BY id_pengeluaran DESC LIMIT 1";
 
-            //siapkan statement
+            //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            //jalankan query
+            //eksekusi query
             ResultSet rs = ps.executeQuery();
 
-            //jika ada data
+            //jika ada data pada bulan ini
             if (rs.next()) {
-                //ambil id terakhirnya
-                lastId = rs.getString("id_pengeluaran");
+                //ambil id transaksi terakhir
+                String lastId = rs.getString("id_pengeluaran");
+
+                //ambil nomor urut lalu tambah 1
+                nomor = Integer.parseInt(lastId.substring(13)) + 1;
             }
 
         } catch (SQLException sQLException) {
-            //tampilkan error jika gagal
+            //tampilkan pesan jika gagal membuat id transaksi
             JOptionPane.showMessageDialog(null, "Gagal membuat id pengeluaran!");
+            return null;
         }
 
-        //jika belum ada pengeluaran sama sekali
-        if (lastId == null) {
-            return "PGR0001";
-        }
+        //mengambil tanggal hari ini dengan format yyyyMMdd
+        String tanggal = java.time.LocalDate.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        //mengambil angka dari PGR0001 → 0001
-        int angka = Integer.parseInt(lastId.substring(3));
-
-        //increment angka
-        angka++;
-
-        //format ulang jadi PGR0002 dst
-        return String.format("PGR%04d", angka);
+        //mengembalikan id pengeluaran dengan format EXP-yyyyMMdd-0001
+        return String.format("EXP-%s-%04d", tanggal, nomor);
     }
 
 

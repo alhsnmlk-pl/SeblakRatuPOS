@@ -598,18 +598,19 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
-    //method untuk generate id transaksi otomatis
+//method untuk generate id transaksi otomatis
     private String generateIdTransaksi() {
-        //variabel untuk menyimpan id terakhir dari database
-        String lastId = null;
+        //nomor urut transaksi, default dimulai dari 1
+        int nomor = 1;
 
         try {
             //koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //query ambil id transaksi terakhir
-            String sql = "SELECT id_transaksi FROM transaksi ORDER BY "
-                    + "id_transaksi DESC LIMIT 1";
+            //query mengambil id transaksi terakhir pada bulan ini
+            String sql = "SELECT id_transaksi FROM transaksi "
+                    + "WHERE id_transaksi LIKE CONCAT('INV-', DATE_FORMAT(CURDATE(), '%Y%m'), '%') "
+                    + "ORDER BY id_transaksi DESC LIMIT 1";
 
             //prepare statement
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -617,30 +618,27 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             //eksekusi query
             ResultSet rs = ps.executeQuery();
 
-            //jika ada data
+            //jika ada data transaksi pada bulan ini
             if (rs.next()) {
-                //ambil id terakhir
-                lastId = rs.getString("id_transaksi");
+                //ambil id transaksi terakhir
+                String lastId = rs.getString("id_transaksi");
+
+                //ambil nomor urut transaksi lalu tambah 1
+                nomor = Integer.parseInt(lastId.substring(13)) + 1;
             }
 
         } catch (SQLException sQLException) {
-            //tampilkan pesan jika gagal mengambil id transaksi
+            //tampilkan pesan jika gagal membuat id transaksi
             JOptionPane.showMessageDialog(null, "Gagal membuat id transaksi!");
+            return null;
         }
 
-        //jika belum ada transaksi sama sekali
-        if (lastId == null) {
-            return "TRX0001";
-        }
+        //mengambil tanggal hari ini dengan format yyyyMMdd
+        String tanggal = java.time.LocalDate.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        //mengambil angka dari TRX0001 → 0001
-        int angka = Integer.parseInt(lastId.substring(3));
-
-        //increment angka
-        angka++;
-
-        //format ulang jadi TRX0002 dst
-        return String.format("TRX%04d", angka);
+        //mengembalikan id transaksi dengan format INV-yyyyMMdd-0001
+        return String.format("INV-%s-%04d", tanggal, nomor);
     }
 
     //method untuk mengambil id transaksi

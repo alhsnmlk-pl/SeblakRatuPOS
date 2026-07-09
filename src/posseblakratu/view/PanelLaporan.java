@@ -205,19 +205,20 @@ public class PanelLaporan extends javax.swing.JPanel {
         DefaultTableModel model = new DefaultTableModel();
 
         //menambahkan kolom ke dalam model tabel
-        model.addColumn("Tanggal");
         model.addColumn("No Referensi");
+        model.addColumn("Tanggal");
         model.addColumn("Kategori");
         model.addColumn("Tipe");
         model.addColumn("Jumlah");
 
         //query gabungan pemasukan dan pengeluaran diurutkan berdasarkan waktu
-        String sqlGabungan = "SELECT tanggal, id_transaksi AS no_ref, total_akhir AS jumlah, "
+        String sqlGabungan
+                = "SELECT id_transaksi AS no_ref, tanggal, total_akhir AS jumlah, "
                 + "'Penjualan' AS kategori, 'Pemasukan' AS tipe "
                 + "FROM transaksi "
                 + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ? "
                 + "UNION ALL "
-                + "SELECT p.tanggal, p.id_pengeluaran AS no_ref, p.total AS jumlah, "
+                + "SELECT p.id_pengeluaran AS no_ref, p.tanggal, p.total AS jumlah, "
                 + "s.nama_stok AS kategori, 'Pengeluaran' AS tipe "
                 + "FROM pengeluaran p "
                 + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
@@ -226,7 +227,7 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         try {
             //membuat formatter tanggal untuk tampilan
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
             //mengambil semua data pemasukan dan pengeluaran sekaligus, diurutkan berdasarkan waktu
             PreparedStatement psGabungan = conn.prepareStatement(sqlGabungan);
@@ -259,7 +260,7 @@ public class PanelLaporan extends javax.swing.JPanel {
                 }
 
                 //menyimpan data ke dalam array baris
-                Object[] baris = {tanggal, noRef, kategori, tipe, jumlah};
+                Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
 
                 //menambahkan baris ke model tabel
                 model.addRow(baris);
@@ -267,12 +268,12 @@ public class PanelLaporan extends javax.swing.JPanel {
 
         } catch (SQLException sQLException) {
             //menampilkan pesan error jika gagal mengambil data tabel
-            JOptionPane.showMessageDialog(null, "gagal mengambil data!");
+            JOptionPane.showMessageDialog(null, "gagal mengambil data laporan!\n" + sQLException.getMessage());
         }
 
         //menampilkan model yang sudah diisi ke dalam tabel GUI
         tblLaporan.setModel(model);
-        tblLaporan.setColumnWidths("100,50,50,50,150");
+        tblLaporan.setColumnWidths("70,100,50,50,50");
     }
 
 
@@ -598,13 +599,13 @@ public class PanelLaporan extends javax.swing.JPanel {
         tblLaporan.setCellPaddingLeft(25);
         tblLaporan.setCellPaddingRight(25);
         tblLaporan.setCenterColumns("1,2,3,4");
-        tblLaporan.setColumnWidths("100,50,50,50,150");
+        tblLaporan.setColumnWidths("70,100,50,50,50");
         tblLaporan.setFocusable(false);
         tblLaporan.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         tblLaporan.setHeaderPaddingLeft(25);
         tblLaporan.setHeaderPaddingRight(25);
         tblLaporan.setLeftColumns("0");
-        tblLaporan.setRowSelectionAllowed(true);
+        tblLaporan.setRowSelectionAllowed(false);
         tblLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblLaporanMouseClicked(evt);
