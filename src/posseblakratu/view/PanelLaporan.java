@@ -894,10 +894,10 @@ public class PanelLaporan extends javax.swing.JPanel {
             //memilih baris secara programatik agar ter-highlight
             tblLaporan.setRowSelectionInterval(baris, baris);
 
-            //mengambil nilai kolom no referensi sebagai id transaksi
-            selectedIdTransaksi = tblLaporan.getValueAt(baris, 1).toString();
+            //mengambil nilai kolom no referensi sebagai id transaksi (kolom 0)
+            selectedIdTransaksi = tblLaporan.getValueAt(baris, 0).toString();
 
-            //mengambil nilai kolom tipe untuk membedakan pemasukan dan pengeluaran
+            //mengambil nilai kolom tipe untuk membedakan pemasukan dan pengeluaran (kolom 3)
             selectedTipe = tblLaporan.getValueAt(baris, 3).toString();
 
         }
