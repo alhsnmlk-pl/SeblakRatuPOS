@@ -2,17 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+//menentukan package tempat class PanelDiskon berada
 package posseblakratu.view;
+
+//mengimpor class FlatLineBorder untuk membuat border dengan sudut melengkung
 import com.formdev.flatlaf.ui.FlatLineBorder;
+//mengimpor class color untuk mengatur warna komponen
 import java.awt.Color;
+//mengimpor class Insets untuk mengatur jarak (padding) pada border
 import java.awt.Insets;
+//mengimpor class Connection untuk membuat koneksi ke database
 import java.sql.Connection;
+//mengimpor class PreparedStatement untuk menjalankan query SQL yang memiliki parameter
 import java.sql.PreparedStatement;
+//mengimpor class ResultSet untuk menampung hasil query SELECT
 import java.sql.ResultSet;
+//mengimpor class SQLException untuk menangani error yang terjadi pada database
 import java.sql.SQLException;
+//mengimpor JOptionPane untuk menampilkan dialog pesan kepada pengguna
 import javax.swing.JOptionPane;
+//mengimpor DefaultTableModel untuk mengelola data yang ditampilkan pada JTable
 import javax.swing.table.DefaultTableModel;
+//mengimpor JPanel sebagai komponen panel pada tampilan
 import javax.swing.JPanel;
+//mengimpor class Koneksi yang digunakan untuk menghubungkan aplikasi dengan database
 import posseblakratu.config.Koneksi;
 
 
@@ -20,6 +33,7 @@ import posseblakratu.config.Koneksi;
  *
  * @author Al
  */
+//mendeklarasikan class panelDiskon yang merupakan turunan dari JPanel
 public final class PanelDiskon extends javax.swing.JPanel {
 
     //menyimpan id_diskon dari baris tabel yang sedang dipilih
@@ -32,6 +46,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
      * Creates new form PanelDiskon
      */
     public PanelDiskon() {
+        //membuat dan menginisialisasi seluruh komponen yang didesain di NetBeans
         initComponents();
 
         //membuat panel memiliki sudut membulat
@@ -45,21 +60,25 @@ public final class PanelDiskon extends javax.swing.JPanel {
         // mengembalikan form ke kondisi awal
         reset();
     }
-
+    
+    //Method untuk memberikan border melengkung pada panel
     void panelLengkung(JPanel p) {
-
+        
+        //mengatur border melengkung pada panel parameter
         p.setBorder(new FlatLineBorder(
                 new Insets(3, 3, 3, 3),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
 
+        //memberikan border melengkung pada panel Tambah Diskon
         tambahDiskon.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
                 1f,
                 10));
 
+        //memberikan border melengkung pada jPanel3
         jPanel3.setBorder(new FlatLineBorder(
                 new Insets(5, 5, 5, 5),
                 Color.decode("#E7BDBB"),
@@ -598,6 +617,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tNamaDiskonMouseClicked
 
+    //method yang dijalankan ketika tombol Batal diklik
     private void btnBatalDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalDiskonActionPerformed
 
         //memanggil method reset untuk mengosongkan form dan kembali ke mode tambah
@@ -605,6 +625,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnBatalDiskonActionPerformed
 
+    //method yang dijalankan ketika tombol Simpan Pengguna diklik
     private void btnSimpanDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanDiskonActionPerformed
 
         //mengambil input dari semua field form
@@ -719,7 +740,8 @@ public final class PanelDiskon extends javax.swing.JPanel {
         reset();
 
     }//GEN-LAST:event_btnSimpanDiskonActionPerformed
-
+    
+    //method yang dijalankan ketika pengguna mengklik salah satu baris pada tabel
     private void tblDiskonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiskonMouseClicked
 
         //ambil indeks baris yang diklik pada tabel diskon
@@ -788,6 +810,7 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tblDiskonMouseClicked
 
+    //Method yang dijalankan ketika tombol Hapus Pengguna diklik
     private void btnHapusDiskonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDiskonActionPerformed
 
         //cek apakah ada baris yang dipilih dari tabel
@@ -839,8 +862,10 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnHapusDiskonActionPerformed
 
+    // Event dijalankan saat TextField Nama Diskon mendapatkan fokus
     private void tNamaDiskonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusGained
         // TODO add your handling code here:
+        //mengecek apakah aplikasi tidak sedang dalam mode edit data
         if (!sedangEdit) {
             //ambil teks yang saat ini ada di field nama diskon
             String namaP = tNamaDiskon.getText();
@@ -853,8 +878,10 @@ public final class PanelDiskon extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tNamaDiskonFocusGained
 
+    // Event dijalankan saat TextField Nama Diskon kehilangan fokus
     private void tNamaDiskonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaDiskonFocusLost
         // TODO add your handling code here:
+        //mengecek apakah aplikasi tidak sedang dalam mode edit data
         if (!sedangEdit) {
             //ambil teks yang ada di field nama diskon
             String namaP = tNamaDiskon.getText();
