@@ -27,12 +27,12 @@ import posseblakratu.component.PopupDetail;
  *
  * @author Al
  */
-public class PanelLaporan extends javax.swing.JPanel {
+public final class PanelLaporan extends javax.swing.JPanel {
 
-    //menyimpan id transaksi yang dipilih dari tabel laporan
+    //id transaksi dari baris tabel yang sedang dipilih
     private String selectedIdTransaksi = null;
 
-    //menyimpan tipe baris yang dipilih dari tabel laporan
+    //tipe baris yang sedang dipilih (Pemasukan / Pengeluaran)
     private String selectedTipe = null;
 
     /**
@@ -45,8 +45,7 @@ public class PanelLaporan extends javax.swing.JPanel {
         panelLengkung(jPanel14);
         panelLengkung(main);
 
-
-        //memanggil method untuk menampilkan laporan sesuai bulan yang aktif saat ini
+        //load laporan sesuai bulan yang aktif saat ini
         loadLaporan();
     }
 
@@ -60,151 +59,120 @@ public class PanelLaporan extends javax.swing.JPanel {
 
     }
 
+    //method untuk mendapatkan periode aktif dalam format yyyy-MM
+    private String getPeriode() {
 
-    //membuat method untuk memformat persentase perubahan vs bulan lalu
-    private String formatPersen(double bulanIni, double bulanLalu) {
-
-        //jika bulan lalu tidak ada data, persentase dianggap 0
-        if (bulanLalu == 0) {
-            return "+0% vs bln lalu";
-        }
-
-        //menghitung selisih persentase perubahan
-        double persen = ((bulanIni - bulanLalu) / bulanLalu) * 100;
-
-        //menentukan tanda positif atau negatif
-        String tanda = persen >= 0 ? "+" : "";
-
-        //mengembalikan string persentase
-        return tanda + String.format("%.0f", persen) + "% vs bln lalu";
-    }
-
-
-    //membuat method untuk load laporan berdasarkan bulan yang dipilih
-    public void loadLaporan() {
-        
-        //mengambil tahun saat ini
+        //ambil tahun saat ini
         int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
-        //mengambil bulan yang dipilih dari komponen PeriodeBulan (0 = Januari)
+        //ambil bulan dari komponen PeriodeBulan (0 = Januari)
         int bulan = PeriodeBulan.getMonth() + 1;
 
-        //memformat bulan dan tahun menjadi string dua digit
-        String periodeIni = String.format("%04d-%02d", tahun, bulan);
-
-        //menghitung bulan sebelumnya untuk perbandingan
-        int tahunLalu = tahun;
-        int bulanLalu = bulan - 1;
-
-        //jika bulan januari, bulan lalu adalah desember tahun sebelumnya
-        if (bulanLalu == 0) {
-            bulanLalu = 12;
-            tahunLalu = tahun - 1;
-        }
-
-        //memformat periode bulan lalu
-        String periodeLalu = String.format("%04d-%02d", tahunLalu, bulanLalu);
-
-        try {
-            //membuka koneksi ke database
-            Connection conn = Koneksi.konek();
-
-            //query untuk mengambil total pemasukan bulan ini
-            String sqlPemasukanIni = "SELECT COALESCE(SUM(total_akhir), 0) AS total FROM transaksi "
-                    + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ?";
-
-            //menyiapkan statement pemasukan bulan ini
-            PreparedStatement psPemasukanIni = conn.prepareStatement(sqlPemasukanIni);
-            psPemasukanIni.setString(1, periodeIni);
-            ResultSet rsPemasukanIni = psPemasukanIni.executeQuery();
-
-            //mengambil total pemasukan bulan ini
-            double totalPemasukanIni = 0;
-            if (rsPemasukanIni.next()) {
-                totalPemasukanIni = rsPemasukanIni.getDouble("total");
-            }
-
-            //query untuk mengambil total pemasukan bulan lalu
-            PreparedStatement psPemasukanLalu = conn.prepareStatement(sqlPemasukanIni);
-            psPemasukanLalu.setString(1, periodeLalu);
-            ResultSet rsPemasukanLalu = psPemasukanLalu.executeQuery();
-
-            //mengambil total pemasukan bulan lalu
-            double totalPemasukanLalu = 0;
-            if (rsPemasukanLalu.next()) {
-                totalPemasukanLalu = rsPemasukanLalu.getDouble("total");
-            }
-
-            //pengeluaran diambil dari tabel pengeluaran
-            String sqlPengeluaranIni = "SELECT COALESCE(SUM(total), 0) AS total FROM pengeluaran "
-                    + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ?";
-
-            //menyiapkan statement pengeluaran bulan ini
-            PreparedStatement psPengeluaranIni = conn.prepareStatement(sqlPengeluaranIni);
-            psPengeluaranIni.setString(1, periodeIni);
-            ResultSet rsPengeluaranIni = psPengeluaranIni.executeQuery();
-
-            //mengambil total pengeluaran bulan ini
-            double totalPengeluaranIni = 0;
-            if (rsPengeluaranIni.next()) {
-                totalPengeluaranIni = rsPengeluaranIni.getDouble("total");
-            }
-
-            //query untuk mengambil total pengeluaran bulan lalu
-            PreparedStatement psPengeluaranLalu = conn.prepareStatement(sqlPengeluaranIni);
-            psPengeluaranLalu.setString(1, periodeLalu);
-            ResultSet rsPengeluaranLalu = psPengeluaranLalu.executeQuery();
-
-            //mengambil total pengeluaran bulan lalu
-            double totalPengeluaranLalu = 0;
-            if (rsPengeluaranLalu.next()) {
-                totalPengeluaranLalu = rsPengeluaranLalu.getDouble("total");
-            }
-
-            //menghitung laba bersih bulan ini
-            double labaBersih = totalPemasukanIni - totalPengeluaranIni;
-
-            //menghitung margin keuntungan
-            double margin = totalPemasukanIni > 0 ? (labaBersih / totalPemasukanIni) * 100 : 0;
-
-            //menampilkan label nama kartu pemasukan
-            lblpemasukkan.setText("Pemasukan");
-
-            //menampilkan total pemasukan ke label
-            lblTotalPemasukan.setText(FormatUang.format(totalPemasukanIni));
-
-            //menampilkan persentase perubahan pemasukan vs bulan lalu
-            lblPersentasePemasukan.setText(formatPersen(totalPemasukanIni, totalPemasukanLalu));
-
-            //menampilkan total pengeluaran ke label
-            lblTotalPengeluaran.setText(FormatUang.format(totalPengeluaranIni));
-
-            //menampilkan persentase perubahan pengeluaran vs bulan lalu
-            lblPeresentasePengeluaran.setText(formatPersen(totalPengeluaranIni, totalPengeluaranLalu));
-
-            //menampilkan laba bersih ke label
-            lblLabaBersih.setText(FormatUang.format(labaBersih));
-
-            //menampilkan margin keuntungan ke label
-            lblMargin.setText(String.format("%.0f%%", margin));
-
-            //memanggil method untuk memuat tabel rincian transaksi
-            loadTabelLaporan(conn, periodeIni);
-
-        } catch (SQLException sQLException) {
-            //menampilkan pesan error jika gagal mengambil data
-            JOptionPane.showMessageDialog(null, sQLException.getMessage());
-        }
+        //kembalikan periode dalam format yyyy-MM
+        return String.format("%04d-%02d", tahun, bulan);
     }
 
+    //method untuk mengambil total pemasukan dari database berdasarkan periode
+    private double getTotalPemasukan(String periode) {
 
-    //membuat method untuk memuat tabel rincian transaksi berdasarkan periode
-    void loadTabelLaporan(Connection conn, String periode) {
+        double total = 0;
 
-        //membuat model tabel baru
+        //query total pemasukan
+        String sql = "SELECT COALESCE(SUM(total_akhir), 0) AS total FROM transaksi "
+                + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ?";
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, periode);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getDouble("total");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil total pemasukan
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+
+        return total;
+    }
+
+    //method untuk mengambil total pengeluaran dari database berdasarkan periode
+    private double getTotalPengeluaran(String periode) {
+
+        double total = 0;
+
+        //query total pengeluaran
+        String sql = "SELECT COALESCE(SUM(total), 0) AS total FROM pengeluaran "
+                + "WHERE DATE_FORMAT(tanggal, '%Y-%m') = ?";
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, periode);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getDouble("total");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil total pengeluaran
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+
+        return total;
+    }
+
+    //method untuk menampilkan ringkasan keuangan ke label-label di UI
+    private void tampilkanRingkasan(double totalPemasukan, double totalPengeluaran) {
+
+        //hitung laba bersih
+        double labaBersih = totalPemasukan - totalPengeluaran;
+
+        //tampilkan label nama kartu pemasukan
+        lblpemasukkan.setText("Pemasukan");
+
+        //tampilkan total pemasukan ke label
+        lblTotalPemasukan.setText(FormatUang.format(totalPemasukan));
+
+        //tampilkan total pengeluaran ke label
+        lblTotalPengeluaran.setText(FormatUang.format(totalPengeluaran));
+
+        //tampilkan laba bersih ke label
+        lblLabaBersih.setText(FormatUang.format(labaBersih));
+    }
+
+    //method untuk load laporan berdasarkan bulan yang dipilih
+    public void loadLaporan() {
+
+        //ambil periode aktif
+        String periode = getPeriode();
+
+        //ambil total pemasukan dan pengeluaran bulan ini
+        double totalPemasukan = getTotalPemasukan(periode);
+        double totalPengeluaran = getTotalPengeluaran(periode);
+
+        //tampilkan ringkasan keuangan ke label-label UI
+        tampilkanRingkasan(totalPemasukan, totalPengeluaran);
+
+        //load tabel rincian transaksi
+        loadTabelLaporan(periode);
+    }
+
+    //method untuk memuat tabel rincian transaksi berdasarkan periode
+    void loadTabelLaporan(String periode) {
+
+        //buat model tabel baru
         DefaultTableModel model = new DefaultTableModel();
 
-        //menambahkan kolom ke dalam model tabel
+        //tambahkan kolom ke dalam model tabel
         model.addColumn("No Referensi");
         model.addColumn("Tanggal");
         model.addColumn("Kategori");
@@ -225,32 +193,34 @@ public class PanelLaporan extends javax.swing.JPanel {
                 + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
                 + "ORDER BY tanggal ASC";
 
-        try {
-            //membuat formatter tanggal untuk tampilan
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        //buat formatter tanggal untuk tampilan
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-            //mengambil semua data pemasukan dan pengeluaran sekaligus, diurutkan berdasarkan waktu
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
             PreparedStatement psGabungan = conn.prepareStatement(sqlGabungan);
             psGabungan.setString(1, periode);
             psGabungan.setString(2, periode);
             ResultSet rsGabungan = psGabungan.executeQuery();
 
-            //melakukan iterasi untuk setiap baris hasil query gabungan
+            //iterasi untuk setiap baris hasil query gabungan
             while (rsGabungan.next()) {
 
-                //mengambil tanggal dan memformatnya
+                //ambil tanggal dan format
                 String tanggal = sdf.format(rsGabungan.getTimestamp("tanggal"));
 
-                //mengambil nomor referensi (id_transaksi atau id_pengeluaran)
+                //ambil nomor referensi (id_transaksi atau id_pengeluaran)
                 String noRef = rsGabungan.getString("no_ref");
 
-                //mengambil kategori (Penjualan atau nama stok)
+                //ambil kategori (Penjualan atau nama stok)
                 String kategori = rsGabungan.getString("kategori");
 
-                //mengambil tipe (Pemasukan atau Pengeluaran)
+                //ambil tipe (Pemasukan atau Pengeluaran)
                 String tipe = rsGabungan.getString("tipe");
 
-                //memformat jumlah dengan tanda positif/negatif sesuai tipe
+                //format jumlah dengan tanda positif/negatif sesuai tipe
                 double total = rsGabungan.getDouble("jumlah");
                 String jumlah;
                 if ("Pemasukan".equals(tipe)) {
@@ -259,25 +229,22 @@ public class PanelLaporan extends javax.swing.JPanel {
                     jumlah = "-" + FormatUang.format(total);
                 }
 
-                //menyimpan data ke dalam array baris
+                //simpan data ke dalam array baris
                 Object[] baris = {noRef, tanggal, kategori, tipe, jumlah};
 
-                //menambahkan baris ke model tabel
+                //tambahkan baris ke model tabel
                 model.addRow(baris);
             }
 
         } catch (SQLException sQLException) {
-            //menampilkan pesan error jika gagal mengambil data tabel
-            JOptionPane.showMessageDialog(null, "gagal mengambil data laporan!\n" + sQLException.getMessage());
+            //tampilkan pesan error jika gagal mengambil data tabel
+            JOptionPane.showMessageDialog(null, "gagal mengambil data laporan!");
         }
 
-        //menampilkan model yang sudah diisi ke dalam tabel GUI
+        //tampilkan model yang sudah diisi ke dalam tabel GUI
         tblLaporan.setModel(model);
         tblLaporan.setColumnWidths("70,100,50,50,50");
     }
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -300,20 +267,16 @@ public class PanelLaporan extends javax.swing.JPanel {
         lblpemasukkan = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblTotalPemasukan = new javax.swing.JLabel();
-        lblPersentasePemasukan = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         Jlabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblTotalPengeluaran = new javax.swing.JLabel();
-        lblPeresentasePengeluaran = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         lblLaba = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblLabaBersih = new javax.swing.JLabel();
-        JLabel111 = new javax.swing.JLabel();
-        lblMargin = new javax.swing.JLabel();
         main = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblRincian = new javax.swing.JLabel();
@@ -405,17 +368,12 @@ public class PanelLaporan extends javax.swing.JPanel {
         jPanel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
 
         lblpemasukkan.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 16)); // NOI18N
-        lblpemasukkan.setText("JLabel");
+        lblpemasukkan.setText("Pemasukan");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Background.png"))); // NOI18N
 
         lblTotalPemasukan.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
         lblTotalPemasukan.setText("Rp 0");
-
-        lblPersentasePemasukan.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblPersentasePemasukan.setForeground(new java.awt.Color(19, 115, 51));
-        lblPersentasePemasukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPemasukan2.png"))); // NOI18N
-        lblPersentasePemasukan.setText("+0% vs bln lalu");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -423,10 +381,9 @@ public class PanelLaporan extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addComponent(lblpemasukkan, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(jLabel3))
-            .addComponent(lblPersentasePemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblTotalPemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTotalPemasukan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,10 +391,8 @@ public class PanelLaporan extends javax.swing.JPanel {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(lblpemasukkan))
-                .addGap(0, 0, 0)
-                .addComponent(lblTotalPemasukan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPersentasePemasukan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(lblTotalPemasukan))
         );
 
         jPanel9.add(jPanel12, java.awt.BorderLayout.CENTER);
@@ -459,21 +414,15 @@ public class PanelLaporan extends javax.swing.JPanel {
         lblTotalPengeluaran.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 24)); // NOI18N
         lblTotalPengeluaran.setText("Rp 0");
 
-        lblPeresentasePengeluaran.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblPeresentasePengeluaran.setForeground(new java.awt.Color(214, 4, 39));
-        lblPeresentasePengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconPengeluaran.png"))); // NOI18N
-        lblPeresentasePengeluaran.setText("+0% vs bln lalu");
-
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addComponent(Jlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(jLabel4))
-            .addComponent(lblPeresentasePengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblTotalPengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTotalPengeluaran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,10 +430,8 @@ public class PanelLaporan extends javax.swing.JPanel {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(Jlabel))
-                .addGap(0, 0, 0)
-                .addComponent(lblTotalPengeluaran)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPeresentasePengeluaran))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(lblTotalPengeluaran))
         );
 
         jPanel10.add(jPanel13, java.awt.BorderLayout.CENTER);
@@ -507,14 +454,6 @@ public class PanelLaporan extends javax.swing.JPanel {
         lblLabaBersih.setForeground(new java.awt.Color(255, 255, 255));
         lblLabaBersih.setText("Rp 0");
 
-        JLabel111.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        JLabel111.setForeground(new java.awt.Color(255, 255, 255));
-        JLabel111.setText("Margin Keuntungan :");
-
-        lblMargin.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblMargin.setForeground(new java.awt.Color(255, 255, 255));
-        lblMargin.setText("0%");
-
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -525,13 +464,8 @@ public class PanelLaporan extends javax.swing.JPanel {
                     .addComponent(lblLabaBersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(lblLaba, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel15Layout.createSequentialGroup()
-                        .addComponent(JLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(lblMargin, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(jLabel11)))
                 .addGap(0, 0, 0))
         );
         jPanel15Layout.setVerticalGroup(
@@ -541,12 +475,8 @@ public class PanelLaporan extends javax.swing.JPanel {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLaba)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLabaBersih)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabel111)
-                    .addComponent(lblMargin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(lblLabaBersih, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -622,178 +552,154 @@ public class PanelLaporan extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUnduhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnduhActionPerformed
+    //method untuk menulis bagian ringkasan laporan ke file CSV
+    private void tulisRingkasanCSV(FileWriter fw, String periode) throws IOException {
 
-        //mengambil bulan dan tahun yang sedang aktif di komponen PeriodeBulan
-        int bulan = PeriodeBulan.getMonth() + 1;
-        int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+        //tulis deklarasi separator agar Excel otomatis mengenali delimiter titik koma
+        fw.write("sep=;\n");
 
-        //memformat periode menjadi string yyyy-MM
-        String periode = String.format("%04d-%02d", tahun, bulan);
+        //--- BAGIAN 1: RINGKASAN LAPORAN ---
+        fw.write("LAPORAN PEMASUKAN\n");
+        fw.write("Periode:;" + periode + "\n");
+        fw.write("\n");
 
-        //membuat objek JFileChooser untuk memilih lokasi penyimpanan file
-        JFileChooser chooser = new JFileChooser();
+        //tulis ringkasan keuangan
+        fw.write("Total Pemasukan:;" + lblTotalPemasukan.getText() + "\n");
+        fw.write("Total Pengeluaran:;" + lblTotalPengeluaran.getText() + "\n");
+        fw.write("Laba Bersih:;" + lblLabaBersih.getText() + "\n");
+        fw.write("\n");
+    }
 
-        //mengatur nama file default berdasarkan periode yang aktif
-        chooser.setSelectedFile(new File("Laporan_" + periode + ".csv"));
+    //method untuk mengambil teks daftar topping dari satu item detail
+    private String getDaftarTopping(Connection conn, String idDetail) {
 
-        //menampilkan dialog simpan file
-        int result = chooser.showSaveDialog(null);
+        //variabel untuk menggabungkan semua topping menjadi satu teks
+        String daftarTopping = "";
 
-        //mengecek apakah pengguna menekan tombol "Save"
-        if (result != JFileChooser.APPROVE_OPTION) {
-            return;
-        }
-
-        //mengambil file tujuan yang dipilih pengguna
-        File file = chooser.getSelectedFile();
+        //query topping dari item ini
+        String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
+                + "FROM detail_topping tp "
+                + "JOIN produk p ON tp.id_produk = p.id_produk "
+                + "WHERE tp.id_detail = ?";
 
         try {
-            //membuka koneksi ke database
+            PreparedStatement psTopping = conn.prepareStatement(sqlTopping);
+            psTopping.setString(1, idDetail);
+            ResultSet rsTopping = psTopping.executeQuery();
+
+            //iterasi untuk setiap topping
+            while (rsTopping.next()) {
+
+                //tambahkan pemisah jika bukan topping pertama
+                if (!daftarTopping.isEmpty()) {
+                    daftarTopping += " | ";
+                }
+
+                //tambahkan nama topping dan qty ke teks gabungan
+                daftarTopping += rsTopping.getString("nama_produk")
+                        + " x" + rsTopping.getInt("kuantitas");
+            }
+
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data topping
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+
+        //jika tidak ada topping kembalikan tanda strip
+        return daftarTopping.isEmpty() ? "-" : daftarTopping;
+    }
+
+    //method untuk menulis bagian rincian transaksi ke file CSV
+    private void tulisRincianTransaksiCSV(FileWriter fw, String periode) throws IOException {
+
+        //--- BAGIAN 2: RINCIAN TRANSAKSI ---
+        fw.write("RINCIAN TRANSAKSI\n");
+
+        //tulis header kolom — setiap baris adalah satu item produk
+        fw.write("Tanggal;No Transaksi;Subtotal;Nama Diskon;Total Diskon;Total Bayar;Metode;Jumlah Bayar;Kembalian;"
+                + "Produk;Level;Qty;Harga Satuan;Subtotal Produk;Topping\n");
+
+        //query dengan JOIN transaksi + detail_transaksi + produk
+        //setiap baris mewakili satu item produk dalam satu transaksi
+        String sqlJoin = "SELECT "
+                + "t.tanggal, t.id_transaksi, t.subtotal, "
+                + "COALESCE(d.nama_diskon, '-') AS nama_diskon, " //menggunakan COALESCE mengganti nilai null menjadi "-"
+                + "(t.subtotal - t.total_akhir) AS total_diskon, " //selisih subtotal dan total akhir sebagai nilai diskon
+                + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
+                + "p.nama_produk, dt.level, dt.kuantitas, dt.harga_satuan, dt.subtotal_produk, "
+                + "dt.id_detail "
+                + "FROM transaksi t "
+                + "LEFT JOIN diskon d ON t.id_diskon = d.id_diskon "
+                + "JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi "
+                + "JOIN produk p ON dt.id_produk = p.id_produk "
+                + "WHERE DATE_FORMAT(t.tanggal, '%Y-%m') = ? "
+                + "ORDER BY t.tanggal ASC, dt.id_detail ASC";
+
+        //buat formatter tanggal untuk tampilan
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        try {
+            //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //membuat objek FileWriter untuk menulis ke file CSV
-            FileWriter fw = new FileWriter(file);
-
-            //menulis deklarasi separator agar Excel otomatis mengenali delimiter titik koma
-            fw.write("sep=;\n");
-
-            //--- BAGIAN 1: RINGKASAN LAPORAN ---
-            fw.write("LAPORAN PEMASUKAN\n");
-            fw.write("Periode:;" + periode + "\n");
-            fw.write("\n");
-
-            //menulis ringkasan keuangan
-            fw.write("Total Pemasukan:;" + lblTotalPemasukan.getText() + "\n");
-            fw.write("Total Pengeluaran:;" + lblTotalPengeluaran.getText() + "\n");
-            fw.write("Laba Bersih:;" + lblLabaBersih.getText() + "\n");
-            fw.write("Margin Keuntungan:;" + lblMargin.getText() + "\n");
-            fw.write("\n");
-
-            //--- BAGIAN 2: RINCIAN TRANSAKSI ---
-            fw.write("RINCIAN TRANSAKSI\n");
-
-            //menulis header kolom — setiap baris adalah satu item produk
-            fw.write("Tanggal;No Transaksi;Subtotal;Diskon;Total Bayar;Metode;Jumlah Bayar;Kembalian;"
-                    + "Produk;Level;Qty;Harga Satuan;Subtotal Produk;Topping\n");
-
-            //query dengan JOIN transaksi + detail_transaksi + produk
-            //setiap baris mewakili satu item produk dalam satu transaksi
-            String sqlJoin = "SELECT "
-                    + "t.tanggal, t.id_transaksi, t.subtotal, "
-                    + "COALESCE(d.nama_diskon, '-') AS nama_diskon, " //menggunakan COALESCE mengganti nilai null menjadi "-"
-                    + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
-                    + "p.nama_produk, dt.level, dt.kuantitas, dt.harga_satuan, dt.subtotal_produk, "
-                    + "dt.id_detail "
-                    + "FROM transaksi t "
-                    + "LEFT JOIN diskon d ON t.id_diskon = d.id_diskon "
-                    + "JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi "
-                    + "JOIN produk p ON dt.id_produk = p.id_produk "
-                    + "WHERE DATE_FORMAT(t.tanggal, '%Y-%m') = ? "
-                    + "ORDER BY t.tanggal ASC, dt.id_detail ASC";
-
-            //menyiapkan statement query join
             PreparedStatement psJoin = conn.prepareStatement(sqlJoin);
-
-            //mengisi parameter periode
             psJoin.setString(1, periode);
-
-            //menjalankan query join
             ResultSet rsJoin = psJoin.executeQuery();
 
-            //membuat formatter tanggal untuk tampilan
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-            //melakukan iterasi untuk setiap baris hasil join
+            //iterasi untuk setiap baris hasil join
             while (rsJoin.next()) {
 
-                //mengambil dan memformat tanggal transaksi
+                //ambil dan format tanggal transaksi
                 String tanggal = sdf.format(rsJoin.getTimestamp("tanggal"));
 
-                //mengambil id transaksi
+                //ambil id transaksi
                 String idTrx = rsJoin.getString("id_transaksi");
 
-                //mengambil subtotal transaksi
+                //ambil subtotal transaksi
                 double subtotal = rsJoin.getDouble("subtotal");
 
-                //mengambil nama diskon
+                //ambil nama diskon
                 String namaDiskon = rsJoin.getString("nama_diskon");
 
-                //mengambil total akhir setelah diskon
+                //ambil total nilai diskon yang dipotong
+                double totalDiskon = rsJoin.getDouble("total_diskon");
+
+                //ambil total akhir setelah diskon
                 double totalAkhir = rsJoin.getDouble("total_akhir");
 
-                //mengambil metode pembayaran
+                //ambil metode pembayaran
                 String metode = rsJoin.getString("metode");
 
-                //mengambil jumlah yang dibayarkan pelanggan
+                //ambil jumlah yang dibayarkan pelanggan
                 double jumlahBayar = rsJoin.getDouble("jumlah_bayar");
 
-                //mengambil kembalian
+                //ambil kembalian
                 double kembalian = rsJoin.getDouble("kembalian");
 
-                //mengambil nama produk
+                //ambil nama produk
                 String namaProduk = rsJoin.getString("nama_produk");
 
-                //mengambil level pedas (null jika tidak ada)
+                //ambil level pedas (null jika tidak ada)
                 String level = rsJoin.getString("level") != null ? rsJoin.getString("level") : "-";
 
-                //mengambil kuantitas item
+                //ambil kuantitas item
                 int qty = rsJoin.getInt("kuantitas");
 
-                //mengambil harga satuan item
+                //ambil harga satuan item
                 double hargaSatuan = rsJoin.getDouble("harga_satuan");
 
-                //mengambil subtotal produk
+                //ambil subtotal produk
                 double subtotalProduk = rsJoin.getDouble("subtotal_produk");
 
-                //mengambil id detail untuk query topping
-                String idDetail = rsJoin.getString("id_detail");
+                //ambil daftar topping dari item ini menggunakan method terpisah
+                String daftarTopping = getDaftarTopping(conn, rsJoin.getString("id_detail"));
 
-                //query untuk mengambil topping dari item ini
-                String sqlTopping = "SELECT p.nama_produk, tp.kuantitas "
-                        + "FROM detail_topping tp "
-                        + "JOIN produk p ON tp.id_produk = p.id_produk "
-                        + "WHERE tp.id_detail = ?";
-
-                //menyiapkan statement query topping
-                PreparedStatement psTopping = conn.prepareStatement(sqlTopping);
-
-                //mengisi parameter id detail
-                psTopping.setString(1, idDetail);
-
-                //menjalankan query topping
-                ResultSet rsTopping = psTopping.executeQuery();
-
-                //variabel untuk menggabungkan semua topping menjadi satu teks
-                String daftarTopping = "";
-
-                //melakukan iterasi untuk setiap topping
-                while (rsTopping.next()) {
-
-                    //menambahkan pemisah jika bukan topping pertama
-                    if (!daftarTopping.isEmpty()) {
-                        daftarTopping += " | ";
-                    }
-
-                    //menambahkan nama topping dan qty ke teks gabungan
-                    daftarTopping += rsTopping.getString("nama_produk")
-                            + " x" + rsTopping.getInt("kuantitas");
-                }
-
-                //jika tidak ada topping tampilkan tanda strip
-                if (daftarTopping.isEmpty()) {
-                    daftarTopping = "-";
-                }
-
-                //menutup result set dan statement topping
-                rsTopping.close();
-                psTopping.close();
-
-                //menulis satu baris ke CSV dengan semua kolom
+                //tulis satu baris ke CSV dengan semua kolom
                 fw.write(tanggal + ";"
                         + idTrx + ";"
                         + FormatUang.format(subtotal) + ";"
                         + namaDiskon + ";"
+                        + FormatUang.format(totalDiskon) + ";"
                         + FormatUang.format(totalAkhir) + ";"
                         + metode + ";"
                         + FormatUang.format(jumlahBayar) + ";"
@@ -806,53 +712,64 @@ public class PanelLaporan extends javax.swing.JPanel {
                         + daftarTopping + "\n");
             }
 
-            //menutup result set dan statement join
-            rsJoin.close();
-            psJoin.close();
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data transaksi
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+    }
 
-            //--- BAGIAN 3: RINCIAN PENGELUARAN ---
-            fw.write("\n");
-            fw.write("RINCIAN PENGELUARAN\n");
-            fw.write("Tanggal;No Pengeluaran;Nama Stok;Jumlah;Satuan;Harga Satuan;Total\n");
+    //method untuk menulis bagian rincian pengeluaran ke file CSV
+    private void tulisRincianPengeluaranCSV(FileWriter fw, String periode) throws IOException {
 
-            //query untuk mengambil rincian pengeluaran
-            String sqlPengeluaran = "SELECT p.tanggal, p.id_pengeluaran, s.nama_stok, "
-                    + "p.jumlah, s.satuan, p.harga_satuan, p.total "
-                    + "FROM pengeluaran p "
-                    + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
-                    + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
-                    + "ORDER BY p.tanggal ASC";
+        //--- BAGIAN 3: RINCIAN PENGELUARAN ---
+        fw.write("\n");
+        fw.write("RINCIAN PENGELUARAN\n");
+        fw.write("Tanggal;No Pengeluaran;Nama Stok;Jumlah;Satuan;Harga Satuan;Total\n");
 
-            //menyiapkan statement query pengeluaran
+        //query rincian pengeluaran
+        String sqlPengeluaran = "SELECT p.tanggal, p.id_pengeluaran, s.nama_stok, "
+                + "p.jumlah, s.satuan, p.harga_satuan, p.total "
+                + "FROM pengeluaran p "
+                + "JOIN stok_bahan s ON p.id_stok = s.id_stok "
+                + "WHERE DATE_FORMAT(p.tanggal, '%Y-%m') = ? "
+                + "ORDER BY p.tanggal ASC";
+
+        //buat formatter tanggal untuk tampilan
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        try {
+            //buka koneksi ke database
+            Connection conn = Koneksi.konek();
+
             PreparedStatement psPengeluaran = conn.prepareStatement(sqlPengeluaran);
             psPengeluaran.setString(1, periode);
             ResultSet rsPengeluaran = psPengeluaran.executeQuery();
 
-            //melakukan iterasi untuk setiap baris pengeluaran
+            //iterasi untuk setiap baris pengeluaran
             while (rsPengeluaran.next()) {
 
-                //mengambil dan memformat tanggal pengeluaran
+                //ambil dan format tanggal pengeluaran
                 String tanggal = sdf.format(rsPengeluaran.getTimestamp("tanggal"));
 
-                //mengambil id pengeluaran
+                //ambil id pengeluaran
                 String idPengeluaran = rsPengeluaran.getString("id_pengeluaran");
 
-                //mengambil nama stok
+                //ambil nama stok
                 String namaStok = rsPengeluaran.getString("nama_stok");
 
-                //mengambil jumlah
+                //ambil jumlah
                 double jumlah = rsPengeluaran.getDouble("jumlah");
 
-                //mengambil satuan
+                //ambil satuan
                 String satuan = rsPengeluaran.getString("satuan");
 
-                //mengambil harga satuan
+                //ambil harga satuan
                 double hargaSatuan = rsPengeluaran.getDouble("harga_satuan");
 
-                //mengambil total pengeluaran
+                //ambil total pengeluaran
                 double total = rsPengeluaran.getDouble("total");
 
-                //menulis satu baris pengeluaran ke CSV
+                //tulis satu baris pengeluaran ke CSV
                 fw.write(tanggal + ";"
                         + idPengeluaran + ";"
                         + namaStok + ";"
@@ -862,22 +779,60 @@ public class PanelLaporan extends javax.swing.JPanel {
                         + FormatUang.format(total) + "\n");
             }
 
-            //menutup result set dan statement pengeluaran
-            rsPengeluaran.close();
-            psPengeluaran.close();
+        } catch (SQLException sQLException) {
+            //tampilkan pesan jika gagal mengambil data pengeluaran
+            JOptionPane.showMessageDialog(null, sQLException.getMessage());
+        }
+    }
 
-            //menutup file writer
+
+    private void btnUnduhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnduhActionPerformed
+
+        //ambil bulan dan tahun yang sedang aktif di komponen PeriodeBulan
+        int bulan = PeriodeBulan.getMonth() + 1;
+        int tahun = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+
+        //format periode menjadi string yyyy-MM
+        String periode = String.format("%04d-%02d", tahun, bulan);
+
+        //buat objek JFileChooser untuk memilih lokasi penyimpanan file
+        JFileChooser chooser = new JFileChooser();
+
+        //atur nama file default berdasarkan periode yang aktif
+        chooser.setSelectedFile(new File("Laporan_" + periode + ".csv"));
+
+        //tampilkan dialog simpan file
+        int result = chooser.showSaveDialog(null);
+
+        //cek apakah pengguna menekan tombol "Save"
+        if (result != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+
+        //ambil file tujuan yang dipilih pengguna
+        File file = chooser.getSelectedFile();
+
+        try {
+            //buat objek FileWriter untuk menulis ke file CSV
+            FileWriter fw = new FileWriter(file);
+
+            //tulis bagian ringkasan laporan ke CSV
+            tulisRingkasanCSV(fw, periode);
+
+            //tulis bagian rincian transaksi ke CSV
+            tulisRincianTransaksiCSV(fw, periode);
+
+            //tulis bagian rincian pengeluaran ke CSV
+            tulisRincianPengeluaranCSV(fw, periode);
+
+            //tutup file writer
             fw.close();
 
-            //menampilkan pesan bahwa file berhasil disimpan
+            //tampilkan pesan bahwa file berhasil disimpan
             JOptionPane.showMessageDialog(null, "Laporan berhasil diunduh!");
 
         } catch (IOException e) {
-            //menampilkan pesan jika gagal menulis file
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        } catch (SQLException e) {
-            //menampilkan pesan jika gagal mengambil data dari database
+            //tampilkan pesan jika gagal menulis file
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
@@ -885,19 +840,19 @@ public class PanelLaporan extends javax.swing.JPanel {
 
     private void tblLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLaporanMouseClicked
 
-        //mengambil indeks baris yang diklik
+        //ambil indeks baris yang diklik
         int baris = tblLaporan.rowAtPoint(evt.getPoint());
 
         //jika baris valid simpan id dan tipe baris yang dipilih
         if (baris >= 0) {
 
-            //memilih baris secara programatik agar ter-highlight
+            //menandai baris agar ikut terpilih
             tblLaporan.setRowSelectionInterval(baris, baris);
 
-            //mengambil nilai kolom no referensi sebagai id transaksi (kolom 0)
+            //ambil nilai kolom no referensi sebagai id transaksi (kolom 0)
             selectedIdTransaksi = tblLaporan.getValueAt(baris, 0).toString();
 
-            //mengambil nilai kolom tipe untuk membedakan pemasukan dan pengeluaran (kolom 3)
+            //ambil nilai kolom tipe untuk membedakan pemasukan dan pengeluaran (kolom 3)
             selectedTipe = tblLaporan.getValueAt(baris, 3).toString();
 
         }
@@ -906,12 +861,11 @@ public class PanelLaporan extends javax.swing.JPanel {
 
     private void PeriodeBulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PeriodeBulanMouseClicked
 
-        
 
     }//GEN-LAST:event_PeriodeBulanMouseClicked
 
     private void PeriodeBulanHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_PeriodeBulanHierarchyChanged
-        
+
     }//GEN-LAST:event_PeriodeBulanHierarchyChanged
 
     private void PeriodeBulanPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PeriodeBulanPropertyChange
@@ -919,34 +873,35 @@ public class PanelLaporan extends javax.swing.JPanel {
         loadLaporan();
     }//GEN-LAST:event_PeriodeBulanPropertyChange
 
+
     private void btnLihatDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatDetailActionPerformed
 
-        //menampilkan pesan jika belum ada baris yang dipilih
+        //tampilkan pesan jika belum ada baris yang dipilih
         if (selectedIdTransaksi == null || selectedTipe == null) {
             JOptionPane.showMessageDialog(null, "Pilih baris transaksi terlebih dahulu.");
             return;
         }
 
-        //menampilkan pesan jika baris yang dipilih bukan pemasukan
+        //tampilkan pesan jika baris yang dipilih bukan pemasukan
         if (!selectedTipe.equals("Pemasukan")) {
             JOptionPane.showMessageDialog(null, "Detail hanya tersedia untuk transaksi pemasukan.");
             return;
         }
 
+        //ambil data dan tampilkan popup detail transaksi
+        //query data transaksi berdasarkan id yang dipilih
+        String sql = "SELECT t.id_transaksi, t.tanggal, t.subtotal, "
+                + "(t.subtotal - t.total_akhir) AS total_diskon, "
+                + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
+                + "u.username "
+                + "FROM transaksi t "
+                + "LEFT JOIN pengguna u ON t.id_pengguna = u.id_pengguna "
+                + "WHERE t.id_transaksi = ?";
+
         try {
-            //membuka koneksi ke database
+            //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //query untuk mengambil data transaksi berdasarkan id yang dipilih
-            String sql = "SELECT t.id_transaksi, t.tanggal, t.subtotal, "
-                    + "(t.subtotal - t.total_akhir) AS total_diskon, "
-                    + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
-                    + "u.username "
-                    + "FROM transaksi t "
-                    + "LEFT JOIN pengguna u ON t.id_pengguna = u.id_pengguna "
-                    + "WHERE t.id_transaksi = ?";
-
-            //menyiapkan statement dengan id transaksi yang dipilih
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, selectedIdTransaksi);
             ResultSet rs = ps.executeQuery();
@@ -954,67 +909,57 @@ public class PanelLaporan extends javax.swing.JPanel {
             //jika data ditemukan tampilkan popup detail
             if (rs.next()) {
 
-                //mengambil id transaksi dari hasil query
+                //ambil id transaksi dari hasil query
                 String idTrx = rs.getString("id_transaksi");
 
-                //mengambil dan memformat waktu transaksi
+                //ambil dan format waktu transaksi
                 String waktu = new SimpleDateFormat("dd MMM yyyy  |  HH:mm")
                         .format(rs.getTimestamp("tanggal"));
 
-                //mengambil subtotal transaksi
+                //ambil subtotal transaksi
                 double subtotal = rs.getDouble("subtotal");
 
-                //mengambil total diskon dari selisih subtotal dan total akhir
+                //ambil total diskon dari selisih subtotal dan total akhir
                 double diskon = rs.getDouble("total_diskon");
 
-                //mengambil total akhir setelah diskon
+                //ambil total akhir setelah diskon
                 double total = rs.getDouble("total_akhir");
 
-                //mengambil jumlah yang dibayarkan pelanggan
+                //ambil jumlah yang dibayarkan pelanggan
                 double jumlahBayar = rs.getDouble("jumlah_bayar");
 
-                //mengambil kembalian
+                //ambil kembalian
                 double kembalian = rs.getDouble("kembalian");
 
-                //mengambil metode pembayaran
+                //ambil metode pembayaran
                 String metode = rs.getString("metode");
 
-                //mengambil username kasir, ganti null dengan strip
+                //ambil username kasir, ganti null dengan strip
                 String pengguna = rs.getString("username") != null ? rs.getString("username") : "-";
 
-                //menutup result set dan statement setelah data diambil
-                rs.close();
-                ps.close();
-
-                //membuat objek popup detail dengan parent frame
+                //buat objek popup detail dengan parent frame
                 PopupDetail popup = new PopupDetail(
                         (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this),
                         true
                 );
 
-                //mengisi data pembayaran ke popup
+                //isi data pembayaran ke popup
                 popup.setPembayaran(subtotal, diskon, total, jumlahBayar, kembalian, metode);
 
-                //mengisi data header struk berupa id transaksi, kasir, dan waktu
+                //isi data header struk berupa id transaksi, kasir, dan waktu
                 popup.setHeaderData(idTrx, pengguna, waktu);
 
-                //menampilkan popup di tengah layar
+                //tampilkan popup di tengah layar
                 popup.setLocationRelativeTo(null);
                 popup.setVisible(true);
 
             } else {
-
-                //menutup result set dan statement jika data tidak ditemukan
-                rs.close();
-                ps.close();
-
-                //menampilkan pesan jika data transaksi tidak ditemukan
+                //tampilkan pesan jika data transaksi tidak ditemukan
                 JOptionPane.showMessageDialog(null, "Data transaksi tidak ditemukan.");
-
             }
 
         } catch (SQLException sQLException) {
-            //menampilkan pesan jika gagal mengambil data dari database
+            //tampilkan pesan jika gagal mengambil data dari database
             JOptionPane.showMessageDialog(null, sQLException.getMessage());
         }
 
@@ -1022,7 +967,6 @@ public class PanelLaporan extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLabel111;
     private javax.swing.JLabel Jlabel;
     private com.toedter.calendar.JMonthChooser PeriodeBulan;
     private javax.swing.JButton btnLihatDetail;
@@ -1047,9 +991,6 @@ public class PanelLaporan extends javax.swing.JPanel {
     private javax.swing.JLabel lblLaba;
     private javax.swing.JLabel lblLabaBersih;
     private javax.swing.JLabel lblLaporan;
-    private javax.swing.JLabel lblMargin;
-    private javax.swing.JLabel lblPeresentasePengeluaran;
-    private javax.swing.JLabel lblPersentasePemasukan;
     private javax.swing.JLabel lblRincian;
     private javax.swing.JLabel lblTotalPemasukan;
     private javax.swing.JLabel lblTotalPengeluaran;

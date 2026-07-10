@@ -598,7 +598,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
 
     }
 
-//method untuk generate id transaksi otomatis
+    //method untuk generate id transaksi otomatis
     private String generateIdTransaksi() {
         //nomor urut transaksi, default dimulai dari 1
         int nomor = 1;
@@ -1209,7 +1209,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         jPanel18.setPreferredSize(new java.awt.Dimension(80, 23));
         jPanel18.setLayout(new java.awt.BorderLayout());
 
-        lblNoTransaksi.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
+        lblNoTransaksi.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 10)); // NOI18N
         lblNoTransaksi.setForeground(new java.awt.Color(255, 255, 255));
         lblNoTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNoTransaksi.setText(" ");
@@ -1222,8 +1222,8 @@ public final class PanelTransaksi extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
         jPanel10Layout.setVerticalGroup(
