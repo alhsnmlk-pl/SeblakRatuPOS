@@ -612,13 +612,13 @@ public final class FrameLogin extends javax.swing.JFrame {
                     dispose();
 
                     //buka frame dengan state dan ukuran yang sama
-                    FrameMain frameOwner = new FrameMain();
+                    FrameMain frameMain = new FrameMain();
                     if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
-                        frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                        frameMain.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
                     } else {
-                        frameOwner.setBounds(bounds);
+                        frameMain.setBounds(bounds);
                     }
-                    frameOwner.setVisible(true);
+                    frameMain.setVisible(true);
 
                 } else {
                     //jika data tidak ditemukan tampilkan pesan error
