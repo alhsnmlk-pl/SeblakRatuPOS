@@ -75,7 +75,7 @@ public final class FrameLogin extends javax.swing.JFrame {
     //method untuk memuat sesi tersimpan ke dalam field login
     //method untuk memuat dan memverifikasi sesi tersimpan
     //mengembalikan true jika sesi valid dan session sudah diisi
-    static boolean muatSesi() {
+    public static boolean muatSesi() {
         Preferences pref = Preferences.userNodeForPackage(FrameLogin.class);
 
         //ambil data sesi yang tersimpan, kembalikan string kosong jika tidak ada
@@ -703,8 +703,8 @@ public final class FrameLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
 
-            //cek sesi tersimpan sebelum menampilkan form login
-            if (muatSesi()) {
+            //cek sesi tersimpan sebelum menampilkan apapun
+            if (FrameLogin.muatSesi()) {
                 //jika sesi valid, langsung buka FrameMain tanpa menampilkan form login
                 new FrameMain().setVisible(true);
             } else {
