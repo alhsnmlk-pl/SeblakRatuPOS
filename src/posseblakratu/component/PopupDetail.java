@@ -37,24 +37,6 @@ import java.awt.print.PrinterJob;
  */
 public final class PopupDetail extends javax.swing.JDialog {
 
-    //menyimpan subtotal transaksi
-    private double subtotal;
-
-    //menyimpan total diskon
-    private double diskon;
-
-    //menyimpan total pembayaran
-    private double total;
-
-    //menyimpan nominal uang pelanggan
-    private double tunai;
-
-    //menyimpan total kembalian
-    private double kembalian;
-
-    //menyimpan metode pembayaran
-    private String metodePembayaran;
-
     //menyimpan id transaksi yang sedang ditampilkan
     private String idTransaksi;
 
@@ -87,9 +69,6 @@ public final class PopupDetail extends javax.swing.JDialog {
 
         //mengambil nama toko, alamat, dan footer dari database
         loadPengaturan();
-
-        //memanggil loadStrukFromDatabase pertama kali saat idTransaksi masih null
-        loadStrukFromDatabase();
 
         strukContent.setSize(printStruk.getPreferredSize());
 
@@ -133,13 +112,9 @@ public final class PopupDetail extends javax.swing.JDialog {
             //buka koneksi ke database
             Connection conn = Koneksi.konek();
 
-            //siapkan statement
             PreparedStatement ps = conn.prepareStatement(sql);
-
-            //jalankan query
             ResultSet rs = ps.executeQuery();
 
-            //jika data ditemukan
             if (rs.next()) {
 
                 //tampilkan nama toko di label
@@ -191,23 +166,23 @@ public final class PopupDetail extends javax.swing.JDialog {
 
                 }
 
-                //mengambil path logo toko dari database
+                //ambil path logo toko dari database
                 String logo = rs.getString("logo_toko");
 
                 //jika path logo tidak kosong, tampilkan gambar ke label logo struk
                 if (logo != null && !logo.isEmpty()) {
 
-                    //membuat ImageIcon dari path logo
+                    //buat ImageIcon dari path logo
                     ImageIcon icon = new ImageIcon(logo);
 
-                    //mengubah ukuran gambar agar sesuai dengan label logo struk
+                    //ubah ukuran gambar agar sesuai dengan label logo struk
                     Image image = icon.getImage().getScaledInstance(
                             97,
                             97,
                             Image.SCALE_SMOOTH
                     );
 
-                    //menampilkan gambar logo ke dalam label struk
+                    //tampilkan gambar logo ke dalam label struk
                     jLabel3.setIcon(new ImageIcon(image));
 
                 } else {
@@ -219,10 +194,6 @@ public final class PopupDetail extends javax.swing.JDialog {
 
             }
 
-            //tutup result set dan statement
-            rs.close();
-            ps.close();
-
         } catch (SQLException sQLException) {
             //tampilkan pesan jika gagal mengambil data pengaturan
             JOptionPane.showMessageDialog(null, "Gagal mengambil data pengaturan!");
@@ -230,7 +201,7 @@ public final class PopupDetail extends javax.swing.JDialog {
 
     }
 
-    //method untuk menerima data pembayaran dari PopupBayar
+    //method untuk menerima data pembayaran dari PanelLaporan
     public void setPembayaran(
             double subtotal,
             double diskon,
@@ -240,26 +211,23 @@ public final class PopupDetail extends javax.swing.JDialog {
             String metodePembayaran
     ) {
 
-        //menyimpan subtotal transaksi
-        this.subtotal = subtotal;
+        //tampilkan subtotal transaksi
+        stkSub.setText(FormatUang.format(subtotal));
 
-        //menyimpan total diskon
-        this.diskon = diskon;
+        //tampilkan total diskon
+        stkDiskon.setText("-" + FormatUang.format(diskon));
 
-        //menyimpan total pembayaran
-        this.total = total;
+        //tampilkan total pembayaran
+        stkTotalA.setText(FormatUang.format(total));
 
-        //menyimpan nominal uang pelanggan
-        this.tunai = tunai;
+        //tampilkan metode pembayaran
+        stkMetode.setText(metodePembayaran);
 
-        //menyimpan total kembalian
-        this.kembalian = kembalian;
+        //tampilkan nominal uang pelanggan
+        stkBayar.setText(FormatUang.format(tunai));
 
-        //menyimpan metode pembayaran
-        this.metodePembayaran = metodePembayaran;
-
-        //menampilkan data pembayaran ke label struk
-        tampilkanPembayaran();
+        //tampilkan total kembalian
+        stkKembali.setText(FormatUang.format(kembalian));
 
     }
 
@@ -289,31 +257,7 @@ public final class PopupDetail extends javax.swing.JDialog {
 
     }
 
-    //method untuk menampilkan semua nilai pembayaran ke label struk
-    private void tampilkanPembayaran() {
-
-        //menampilkan subtotal transaksi
-        stkSub.setText(FormatUang.format(subtotal));
-
-        //menampilkan total diskon
-        stkDiskon.setText("-" + FormatUang.format(diskon));
-
-        //menampilkan total pembayaran
-        stkTotalA.setText(FormatUang.format(total));
-
-        //menampilkan metode pembayaran
-        stkMetode.setText(metodePembayaran);
-
-        //menampilkan nominal uang pelanggan
-        stkBayar.setText(FormatUang.format(tunai));
-
-        //menampilkan total kembalian
-        stkKembali.setText(FormatUang.format(kembalian));
-
-    }
-
     //method untuk mengambil dan menampilkan item pesanan dari database ke struk
-    //dipanggil dua kali: pertama saat konstruktor (idTransaksi null), kedua saat setHeaderData()
     private void loadStrukFromDatabase() {
 
         //query untuk mengambil detail item pesanan berdasarkan id transaksi
@@ -329,19 +273,14 @@ public final class PopupDetail extends javax.swing.JDialog {
             //bersihkan tampilan struk sebelum diisi ulang
             strukContent.removeAll();
 
-            //siapkan statement dengan parameter id transaksi
             PreparedStatement ps = conn.prepareStatement(sql);
-
-            //isi parameter id transaksi
             ps.setString(1, idTransaksi);
-
-            //jalankan query dan ambil hasilnya
             ResultSet rs = ps.executeQuery();
 
-            //melakukan iterasi untuk setiap item pesanan
+            //iterasi untuk setiap item pesanan
             while (rs.next()) {
 
-                //ambil id detail untuk dipakai query topping
+                //ambil id detail untuk query topping
                 String idDetail = rs.getString("id_detail");
 
                 //ambil nama produk
@@ -358,19 +297,14 @@ public final class PopupDetail extends javax.swing.JDialog {
                         + "JOIN produk p ON tp.id_produk = p.id_produk "
                         + "WHERE tp.id_detail = ?";
 
-                //siapkan statement topping
                 PreparedStatement pst = conn.prepareStatement(sqlTopping);
-
-                //isi parameter id detail
                 pst.setString(1, idDetail);
-
-                //jalankan query topping
                 ResultSet rsT = pst.executeQuery();
 
                 //variabel untuk menyimpan teks topping
                 String detailTopping = "";
 
-                //melakukan iterasi untuk setiap topping
+                //iterasi untuk setiap topping
                 while (rsT.next()) {
 
                     //tambahkan koma jika bukan topping pertama
@@ -383,10 +317,8 @@ public final class PopupDetail extends javax.swing.JDialog {
 
                 }
 
-                //membuat card struk baru untuk item ini
+                //buat card struk untuk item ini dan isi datanya
                 cardStruk item = new cardStruk();
-
-                //isi data card struk
                 item.setData(
                         namaMenu,
                         detailTopping,
@@ -395,15 +327,9 @@ public final class PopupDetail extends javax.swing.JDialog {
                         rs.getDouble("subtotal_produk")
                 );
 
-                //tambahkan jarak sebelum card
+                //tambahkan jarak dan card ke panel struk
                 strukContent.add(Box.createVerticalStrut(7));
-
-                //tambahkan card ke panel struk
                 strukContent.add(item);
-
-                //tutup result set dan statement topping
-                rsT.close();
-                pst.close();
 
             }
 

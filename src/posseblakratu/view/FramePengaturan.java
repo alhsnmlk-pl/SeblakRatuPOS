@@ -588,15 +588,15 @@ public final class FramePengaturan extends javax.swing.JFrame {
         java.awt.Rectangle bounds = getBounds();
 
         //menutup frame pengaturan dan kembali ke frame owner
-        FrameMain frameOwner = new FrameMain();
+        FrameMain frameMain = new FrameMain();
 
         //jika window sebelumnya maximized, buka owner dalam kondisi maximized juga
         if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
-            frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+            frameMain.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         } else {
-            frameOwner.setBounds(bounds);
+            frameMain.setBounds(bounds);
         }
-        frameOwner.setVisible(true);
+        frameMain.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_lblPengaturanMouseClicked

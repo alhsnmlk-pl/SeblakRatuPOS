@@ -457,6 +457,8 @@ public final class FrameMain extends javax.swing.JFrame {
             panelTransaksi.pilihFilterSemua();
             panelTransaksi.loadMenu("Semua");
             panelTransaksi.loadTopping();
+            panelTransaksi.updateDiskon();
+            panelTransaksi.updateSubtotal();
         }
     }//GEN-LAST:event_btnTransaksiItemStateChanged
 
@@ -517,6 +519,9 @@ public final class FrameMain extends javax.swing.JFrame {
 
         switch (pilihan) {
             case JOptionPane.YES_OPTION -> {
+                //hapus sesi tersimpan saat pengguna logout
+                FrameLogin.hapusSesi();
+
                 //simpan state window sebelum dispose
                 int windowState = getExtendedState();
                 java.awt.Rectangle bounds = getBounds();

@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.util.prefs.Preferences;
 
 /**
  *
@@ -48,6 +49,72 @@ public final class FrameLogin extends javax.swing.JFrame {
     //mengambil role pengguna yang sedang login
     public static String getRole() {
         return role;
+    }
+
+    //kunci preferences untuk menyimpan sesi login
+    private static final String PREF_USERNAME = "sesi_username";
+    private static final String PREF_PASSWORD = "sesi_password";
+    private static final String PREF_ROLE = "sesi_role";
+
+    //method untuk menyimpan data login ke preferences sistem
+    static void simpanSesi(String username, String password, String role) {
+        Preferences pref = Preferences.userNodeForPackage(FrameLogin.class);
+        pref.put(PREF_USERNAME, username);
+        pref.put(PREF_PASSWORD, password);
+        pref.put(PREF_ROLE, role);
+    }
+
+    //method untuk menghapus data sesi dari preferences sistem
+    public static void hapusSesi() {
+        Preferences pref = Preferences.userNodeForPackage(FrameLogin.class);
+        pref.remove(PREF_USERNAME);
+        pref.remove(PREF_PASSWORD);
+        pref.remove(PREF_ROLE);
+    }
+
+    //method untuk memuat sesi tersimpan ke dalam field login
+    //method untuk memuat dan memverifikasi sesi tersimpan
+    //mengembalikan true jika sesi valid dan session sudah diisi
+    public static boolean muatSesi() {
+        Preferences pref = Preferences.userNodeForPackage(FrameLogin.class);
+
+        //ambil data sesi yang tersimpan, kembalikan string kosong jika tidak ada
+        String savedUsername = pref.get(PREF_USERNAME, "");
+        String savedPassword = pref.get(PREF_PASSWORD, "");
+        String savedRole = pref.get(PREF_ROLE, "");
+
+        //jika tidak ada sesi tersimpan, kembalikan false
+        if (savedUsername.isEmpty()) {
+            return false;
+        }
+
+        try {
+            //query untuk memverifikasi sesi yang tersimpan masih valid
+            String sql = "SELECT * FROM pengguna WHERE username=? AND password=MD5(?) AND role=? AND status='Aktif'";
+
+            Connection conn = Koneksi.konek();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, savedUsername);
+            ps.setString(2, savedPassword);
+            ps.setString(3, savedRole);
+            ResultSet rs = ps.executeQuery();
+
+            //jika data masih valid, simpan ke session dan kembalikan true
+            if (rs.next()) {
+                FrameLogin.idPengguna = rs.getString("id_pengguna");
+                FrameLogin.username = rs.getString("username");
+                FrameLogin.role = rs.getString("role");
+                return true;
+            }
+
+            //jika sesi sudah tidak valid, hapus sesi dan kembalikan false
+            hapusSesi();
+            return false;
+
+        } catch (SQLException sQLException) {
+            //jika gagal verifikasi, anggap sesi tidak valid
+            return false;
+        }
     }
 
     /**
@@ -521,6 +588,22 @@ public final class FrameLogin extends javax.swing.JFrame {
                     //menyimpan role pengguna ke session
                     FrameLogin.role = rs.getString("role");
 
+                    //tanya pengguna apakah ingin menyimpan data login
+                    int simpan = JOptionPane.showConfirmDialog(
+                            null,
+                            "Simpan data login di perangkat ini?",
+                            "Simpan Sesi",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
+                    //jika pengguna memilih ya, simpan sesi ke preferences
+                    if (simpan == JOptionPane.YES_OPTION) {
+                        simpanSesi(username, password, role);
+                    } else {
+                        //jika tidak, hapus sesi lama yang mungkin tersimpan
+                        hapusSesi();
+                    }
+
                     //menyimpan state window sebelum dispose (maximized atau normal)
                     int windowState = getExtendedState();
                     java.awt.Rectangle bounds = getBounds();
@@ -529,13 +612,13 @@ public final class FrameLogin extends javax.swing.JFrame {
                     dispose();
 
                     //buka frame dengan state dan ukuran yang sama
-                    FrameMain frameOwner = new FrameMain();
+                    FrameMain frameMain = new FrameMain();
                     if (windowState == javax.swing.JFrame.MAXIMIZED_BOTH) {
-                        frameOwner.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+                        frameMain.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
                     } else {
-                        frameOwner.setBounds(bounds);
+                        frameMain.setBounds(bounds);
                     }
-                    frameOwner.setVisible(true);
+                    frameMain.setVisible(true);
 
                 } else {
                     //jika data tidak ditemukan tampilkan pesan error
@@ -618,7 +701,17 @@ public final class FrameLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrameLogin().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+
+            //cek sesi tersimpan sebelum menampilkan apapun
+            if (FrameLogin.muatSesi()) {
+                //jika sesi valid, langsung buka FrameMain tanpa menampilkan form login
+                new FrameMain().setVisible(true);
+            } else {
+                //jika tidak ada sesi, tampilkan form login seperti biasa
+                new FrameLogin().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
