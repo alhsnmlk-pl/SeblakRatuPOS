@@ -56,7 +56,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
         reset();
     }
-
+    //Method untuk membuat sudut JPanel menjadi melengkung (rounded) dan mengatur warna garis tepinya agar sama
     void panelLengkung(JPanel p) {
 
         p.setBorder(new FlatLineBorder(
@@ -77,7 +77,7 @@ public final class PanelProduk extends javax.swing.JPanel {
                 1f,
                 10));
     }
-    //method untuk
+    //method untuk mengaktifkan filter "Semua' sebagai filter awal pada panel produk
     void pilihFilterSemua(){
         filterSemuaP.setSelected(true);
         filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(173, 0, 28)));
@@ -853,8 +853,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void btnHapusProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusProdukActionPerformed
         // TODO add your handling code here:
-       
-        //method untuk menghapus data produk yang dipilih dari database setelah pengguna melakukan konfirmasi
+        //method untuk mengubah status produk yang dipilih menjadi 'Dihapus' di database setelah pengguna melakukan konfirmasi
         //validasi
         if (!modeUbah) {
             JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
@@ -1060,6 +1059,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void tblProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdukMouseClicked
         // TODO add your handling code here:
+        //method untuk mengambil data dari tabel dan menampilkannya kembali kedalam file inputan
         //ambil indeks baris yang diklik oleh pengguna
         int barisYangDipilih = tblProduk.rowAtPoint(evt.getPoint());
         //jika baris yang diklik tidak valid (di luar area baris), hentikan proses
@@ -1124,6 +1124,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void tNamaProdukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaProdukFocusGained
         // TODO add your handling code here:
+        //method ini untuk menghapus teks placeholder "contoh : Es Jeruk" saat field nama produk diklik oleh pengguna
         if (!modeUbah) {
             //ambil teks yang saat ini ada di field nama produk
             String namaP = tNamaProduk.getText();
@@ -1137,6 +1138,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void tNamaProdukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNamaProdukFocusLost
         // TODO add your handling code here:
+        //method ini untuk memunculkan kembali teks placeholder "contoh : Es Jeruk" saat field nama produk ditinggalkan dalam keadaan kosong
         if (!modeUbah) {
             //ambil teks yang ada di field nama produk
             String namaP = tNamaProduk.getText();
@@ -1151,6 +1153,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void tDeskProdukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDeskProdukFocusGained
         // TODO add your handling code here:
+        // method ini untuk menghapus teks placeholder "Opsional" saat field deksripsi porduk diklik oleh pengguna
         if (!modeUbah) {
             //ambil teks yang saat ini ada di field deskripsi produk
             String namaP = tDeskProduk.getText();
@@ -1164,6 +1167,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
     private void tDeskProdukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDeskProdukFocusLost
         // TODO add your handling code here:
+        //method untuk memunculkan kembali teks placeholder "Opsional" saat field deskripsi produk ditinggalkan dalam keadaan kosong
         if (!modeUbah) {
             //ambil teks yang ada di field deskripsi produk
             String namaP = tDeskProduk.getText();
