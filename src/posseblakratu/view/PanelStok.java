@@ -227,7 +227,7 @@ public class PanelStok extends javax.swing.JPanel {
         btnSimpanTambahStok = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         btnBatalStok = new javax.swing.JButton();
-        btnHapusPengguna = new javax.swing.JButton();
+        btnHapusStok = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -477,13 +477,13 @@ public class PanelStok extends javax.swing.JPanel {
         btnBatalStok.addActionListener(this::btnBatalStokActionPerformed);
         jPanel10.add(btnBatalStok);
 
-        btnHapusPengguna.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnHapusPengguna.setForeground(new java.awt.Color(214, 4, 39));
-        btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
-        btnHapusPengguna.setText("Hapus");
-        btnHapusPengguna.setFocusable(false);
-        btnHapusPengguna.addActionListener(this::btnHapusPenggunaActionPerformed);
-        jPanel10.add(btnHapusPengguna);
+        btnHapusStok.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnHapusStok.setForeground(new java.awt.Color(214, 4, 39));
+        btnHapusStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
+        btnHapusStok.setText("Hapus");
+        btnHapusStok.setFocusable(false);
+        btnHapusStok.addActionListener(this::btnHapusStokActionPerformed);
+        jPanel10.add(btnHapusStok);
 
         jPanel16.add(jPanel10);
 
@@ -868,7 +868,7 @@ public class PanelStok extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_btnSimpanTambahStokActionPerformed
 
-    private void btnHapusPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPenggunaActionPerformed
+    private void btnHapusStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusStokActionPerformed
         //cek apakah ada baris yang dipilih dari tabel
         if (!sedangEdit) {
             JOptionPane.showMessageDialog(null, "Pilih data dari tabel terlebih dahulu!");
@@ -888,7 +888,7 @@ public class PanelStok extends javax.swing.JPanel {
             return;
         }
 
-        //query SQL untuk menghapus data stok berdasarkan id_stok
+        //query SQL untuk menghapus data stok(Menggunakan metode soft delete) berdasarkan id_stok
         String sql = "UPDATE stok_bahan SET status = 'Dihapus' WHERE id_stok=?";
 
         try {
@@ -917,7 +917,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         //reset form kembali ke mode tambah
         reset();
-    }//GEN-LAST:event_btnHapusPenggunaActionPerformed
+    }//GEN-LAST:event_btnHapusStokActionPerformed
 
     private void tJmlStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tJmlStokKeyTyped
         // TODO add your handling code here:
@@ -991,7 +991,7 @@ public class PanelStok extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabell;
     private javax.swing.JButton btnBatalStok;
-    private javax.swing.JButton btnHapusPengguna;
+    private javax.swing.JButton btnHapusStok;
     private javax.swing.JButton btnSimpanTambahStok;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

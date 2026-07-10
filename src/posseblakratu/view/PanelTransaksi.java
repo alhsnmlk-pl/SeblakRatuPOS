@@ -305,7 +305,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         try {
 
             //query sql untuk mengambil data topping
-            String sql = "SELECT * FROM produk WHERE kategori='Topping' ORDER BY id_produk";
+            String sql = "SELECT * FROM produk WHERE kategori='Topping' AND status = 'Tersedia' ORDER BY id_produk";
 
             //membuat koneksi ke database
             Connection conn = Koneksi.konek();
@@ -420,7 +420,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     //UPDATE SUBTOTAL DAN DISKON
     //dipanggil setiap kali isi keranjang berubah (tambah item, hapus item)
     //method untuk menghitung subtotal seluruh pesanan
-    private void updateSubtotal() {
+    public void updateSubtotal() {
 
         //mengosongkan subtotal sebelum dihitung ulang
         subtotal = 0;
@@ -442,7 +442,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
     }
 
     //method untuk menghitung diskon
-    private void updateDiskon() {
+    public void updateDiskon() {
 
         //query untuk mengambil diskon yang sedang aktif berdasarkan  status
         String sql = "SELECT * FROM diskon WHERE status='Aktif' LIMIT 1";
