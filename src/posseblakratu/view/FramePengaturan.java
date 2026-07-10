@@ -631,13 +631,13 @@ public final class FramePengaturan extends javax.swing.JFrame {
             //menyiapkan statement SQL dengan parameter
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            //mengisi nilai parameter satu per satu
-            statement.setString(1, namaToko);    //nama UMKM
-            statement.setString(2, alamat);      //alamat toko
-            statement.setString(3, noTelp);      //nomor telepon
-            statement.setString(4, logoPath);    //path file logo
-            statement.setString(5, catatan);     //footer struk
-            statement.setString(6, idPengguna);  //id pengguna sebagai kondisi WHERE
+            //mengisi nilai parameter
+            statement.setString(1, namaToko); 
+            statement.setString(2, alamat);     
+            statement.setString(3, noTelp);   
+            statement.setString(4, logoPath);   
+            statement.setString(5, catatan);    
+            statement.setString(6, idPengguna);  
 
             //menjalankan query pembaruan
             statement.execute();
