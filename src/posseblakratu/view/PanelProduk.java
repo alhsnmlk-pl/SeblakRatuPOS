@@ -931,7 +931,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         //ambil input dari text field tDeskProduk DAN simpan ke variabel deskProduk 
         String deskProduk = tDeskProduk.getText();
         if ("Opsional".equals(deskProduk)) {
-            deskProduk = "";
+            deskProduk = null;
             
         }
         
@@ -970,8 +970,12 @@ public final class PanelProduk extends javax.swing.JPanel {
                 ps.setString(2, hargaProduk);
                 //mengisi parameter ketiga dengan kategori produk
                 ps.setString(3, kategoriProduk);
-                //mengisi parameter keempat dengan deskripsi produk
+                //mengisi parameter keempat dengan deskripsi produk (null jika kosong)
+                if(deskProduk == null){
+                    ps.setNull(4, java.sql.Types.VARCHAR);
+                }else{
                 ps.setString(4, deskProduk);
+                }
                 //mengisi parameter kelima dengan status produk
                 ps.setString(5, statusProduk);
                 //mengisi parameter keenam dengan id produk yang dipilih
@@ -1025,8 +1029,12 @@ public final class PanelProduk extends javax.swing.JPanel {
                 ps.setString(4, hargaProduk);
                 //mengisi parameter kelima dengan kategori produk
                 ps.setString(5, kategoriProduk);
-                //mengisi parameter keenam dengan deskripsi produk
+                //mengisi parameter keenam dengan deskripsi produk(null jika kosong)
+                if(deskProduk == null){
+                    ps.setNull(6, java.sql.Types.VARCHAR);
+                }else{
                 ps.setString(6, deskProduk);
+                }
                 //mengisi parameter ketujuh dengan id pengguna yang sedang login
                 ps.setString(7, FrameLogin.getIdPengguna());
 
