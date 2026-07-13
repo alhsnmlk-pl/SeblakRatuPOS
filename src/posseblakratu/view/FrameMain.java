@@ -299,6 +299,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnLogout.setText("Logout");
         btnLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
         btnLogout.setContentAreaFilled(false);
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLogout.setIconTextGap(14);
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
@@ -310,6 +311,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnSetting.setText("Pengaturan");
         btnSetting.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 23, 1, 1));
         btnSetting.setContentAreaFilled(false);
+        btnSetting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSetting.setIconTextGap(14);
         btnSetting.addActionListener(this::btnSettingActionPerformed);
@@ -331,6 +333,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/DisIconTrx.png"))); // NOI18N
         btnTransaksi.setText("Transaksi");
         btnTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 4));
+        btnTransaksi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTransaksi.setIconTextGap(14);
         btnTransaksi.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -353,6 +356,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnProduk.setText("Produk");
         btnProduk.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnProduk.setContentAreaFilled(false);
+        btnProduk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProduk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnProduk.setIconTextGap(14);
         btnProduk.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -368,6 +372,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnStok.setText("Stok");
         btnStok.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnStok.setContentAreaFilled(false);
+        btnStok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnStok.setIconTextGap(14);
         btnStok.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -383,6 +388,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnPengguna.setText("Pengguna");
         btnPengguna.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnPengguna.setContentAreaFilled(false);
+        btnPengguna.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPengguna.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPengguna.setIconTextGap(14);
         btnPengguna.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -398,6 +404,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnDiskon.setText("Diskon");
         btnDiskon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnDiskon.setContentAreaFilled(false);
+        btnDiskon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDiskon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDiskon.setIconTextGap(14);
         btnDiskon.setMargin(new java.awt.Insets(2, 90, 3, 14));
@@ -414,6 +421,7 @@ public final class FrameMain extends javax.swing.JFrame {
         btnLaporan.setText("Laporan");
         btnLaporan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 23, 0, 3));
         btnLaporan.setContentAreaFilled(false);
+        btnLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLaporan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLaporan.setIconTextGap(14);
         btnLaporan.setMargin(new java.awt.Insets(2, 90, 3, 14));

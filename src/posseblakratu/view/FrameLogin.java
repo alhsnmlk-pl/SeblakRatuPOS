@@ -279,6 +279,7 @@ public final class FrameLogin extends javax.swing.JFrame {
                 tUsernameFocusLost(evt);
             }
         });
+        tUsername.addActionListener(this::tUsernameActionPerformed);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new FlatSVGIcon("posseblakratu/icon/IconUsr.svg")
@@ -331,6 +332,7 @@ public final class FrameLogin extends javax.swing.JFrame {
                 tPasswordFocusLost(evt);
             }
         });
+        tPassword.addActionListener(this::tPasswordActionPerformed);
 
         btnMata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconMata.png"))); // NOI18N
         btnMata.setBorder(null);
@@ -396,6 +398,11 @@ public final class FrameLogin extends javax.swing.JFrame {
         cRole.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 16)); // NOI18N
         cRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kasir", "Owner" }));
         cRole.setBorder(null);
+        cRole.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cRoleKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roleContainerLayout = new javax.swing.GroupLayout(roleContainer);
         roleContainer.setLayout(roleContainerLayout);
@@ -444,6 +451,7 @@ public final class FrameLogin extends javax.swing.JFrame {
         );
         btnLogin.setText("Login");
         btnLogin.setBorderPainted(false);
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.setFocusPainted(false);
         btnLogin.setFocusable(false);
         btnLogin.addActionListener(this::btnLoginActionPerformed);
@@ -678,6 +686,22 @@ public final class FrameLogin extends javax.swing.JFrame {
             tPassword.setText("Masukkan Password");
         }
     }//GEN-LAST:event_tPasswordFocusLost
+
+    private void tUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tUsernameActionPerformed
+        // TODO add your handling code here:
+        tPassword.requestFocus();
+        
+    }//GEN-LAST:event_tUsernameActionPerformed
+
+    private void tPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPasswordActionPerformed
+        // TODO add your handling code here:
+        cRole.requestFocus();
+    }//GEN-LAST:event_tPasswordActionPerformed
+
+    private void cRoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cRoleKeyPressed
+        // TODO add your handling code here:
+        btnLogin.doClick();
+    }//GEN-LAST:event_cRoleKeyPressed
 
     /**
      * @param args the command line arguments

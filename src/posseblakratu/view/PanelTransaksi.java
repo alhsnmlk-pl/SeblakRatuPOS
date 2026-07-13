@@ -770,6 +770,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         filterSemuaM.setAlignmentY(0.0F);
         filterSemuaM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterSemuaM.setContentAreaFilled(false);
+        filterSemuaM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterSemuaM.setFocusable(false);
         filterSemuaM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         filterSemuaM.setIconTextGap(0);
@@ -783,6 +784,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         filterSeblakM.setAlignmentY(0.0F);
         filterSeblakM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterSeblakM.setContentAreaFilled(false);
+        filterSeblakM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterSeblakM.setFocusable(false);
         filterSeblakM.setIconTextGap(0);
         filterSeblakM.setMargin(new java.awt.Insets(1, 1, 20, 1));
@@ -795,6 +797,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         filterMinumanM.setAlignmentY(0.0F);
         filterMinumanM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterMinumanM.setContentAreaFilled(false);
+        filterMinumanM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterMinumanM.setFocusable(false);
         filterMinumanM.setIconTextGap(0);
         filterMinumanM.setMargin(new java.awt.Insets(1, 1, 20, 1));
@@ -894,6 +897,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnReset.setBackground(new java.awt.Color(251, 248, 255));
         btnReset.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnReset.setText("Reset");
+        btnReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReset.setFocusPainted(false);
         btnReset.addActionListener(this::btnResetActionPerformed);
         jPanel17.add(btnReset);
@@ -902,6 +906,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnNext.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnNext.setForeground(new java.awt.Color(187, 26, 26));
         btnNext.setText("Next");
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNext.setFocusPainted(false);
         btnNext.addActionListener(this::btnNextActionPerformed);
         jPanel17.add(btnNext);
@@ -930,6 +935,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl0.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl0.setText("0 - Ratu Takut");
         btnLvl0.setContentAreaFilled(false);
+        btnLvl0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl0.addItemListener(this::btnLvl0ItemStateChanged);
         jPanel16.add(btnLvl0);
 
@@ -937,6 +943,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl1.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl1.setText("1 - Ratu Baik");
         btnLvl1.setContentAreaFilled(false);
+        btnLvl1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl1.addItemListener(this::btnLvl1ItemStateChanged);
         jPanel16.add(btnLvl1);
 
@@ -944,6 +951,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl2.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl2.setText("2 - Ratu Santuy");
         btnLvl2.setContentAreaFilled(false);
+        btnLvl2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl2.addItemListener(this::btnLvl2ItemStateChanged);
         jPanel16.add(btnLvl2);
 
@@ -951,6 +959,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl3.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl3.setText("3 - Ratu Judes");
         btnLvl3.setContentAreaFilled(false);
+        btnLvl3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl3.addItemListener(this::btnLvl3ItemStateChanged);
         jPanel16.add(btnLvl3);
 
@@ -958,6 +967,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl4.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl4.setText("4 - Ratu Marah  +1k");
         btnLvl4.setContentAreaFilled(false);
+        btnLvl4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl4.addItemListener(this::btnLvl4ItemStateChanged);
         jPanel16.add(btnLvl4);
 
@@ -965,6 +975,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnLvl5.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 13)); // NOI18N
         btnLvl5.setText("5 - Ratu Ngamuk +2k");
         btnLvl5.setContentAreaFilled(false);
+        btnLvl5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLvl5.addItemListener(this::btnLvl5ItemStateChanged);
         jPanel16.add(btnLvl5);
 
@@ -1278,6 +1289,7 @@ public final class PanelTransaksi extends javax.swing.JPanel {
         btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Icon Bayar.png"))); // NOI18N
         btnBayar.setText("Bayar");
         btnBayar.setBorderPainted(false);
+        btnBayar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBayar.setIconTextGap(8);
         btnBayar.addActionListener(this::btnBayarActionPerformed);
 

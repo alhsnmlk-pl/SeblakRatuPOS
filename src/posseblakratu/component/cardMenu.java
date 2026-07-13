@@ -142,6 +142,7 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setFocusable(false);
@@ -150,12 +151,14 @@ public class cardMenu extends javax.swing.JPanel {
         lblMenu.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
         lblMenu.setForeground(new java.awt.Color(24, 26, 46));
         lblMenu.setText("Seblak Original");
+        lblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblHarga.setBackground(new java.awt.Color(153, 255, 153));
         lblHarga.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         lblHarga.setForeground(new java.awt.Color(214, 4, 39));
         lblHarga.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHarga.setText("Rp. 9000");
+        lblHarga.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblDesk.setEditable(false);
         lblDesk.setBackground(new java.awt.Color(255, 255, 255));
@@ -166,6 +169,7 @@ public class cardMenu extends javax.swing.JPanel {
         lblDesk.setTabSize(0);
         lblDesk.setText("Sayur, mie, makaroni");
         lblDesk.setBorder(null);
+        lblDesk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDesk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         lblDesk.setEnabled(false);
         lblDesk.setFocusable(false);

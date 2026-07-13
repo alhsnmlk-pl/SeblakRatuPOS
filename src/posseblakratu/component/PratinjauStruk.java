@@ -26,7 +26,9 @@ import javax.swing.Box;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.print.PageFormat;
+import java.awt.print.Paper;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
@@ -71,6 +73,12 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         loadPengaturan();
 
         strukContent.setSize(printStruk.getPreferredSize());
+
+        printStruk.doLayout();
+        printStruk.validate();
+
+        pack();
+        setLocationRelativeTo(null);
 
     }
 
@@ -353,53 +361,90 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         try {
 
-            //ambil objek printer job
+            //ambil printer
             PrinterJob job = PrinterJob.getPrinterJob();
 
-            //atur konten yang akan dicetak
+            //buat ukuran kertas
+            PageFormat pageFormat = job.defaultPage();
+            Paper paper = new Paper();
+
+            //80 mm = 226.77
+            double paperWidth = 226.77;
+
+            //tinggi mengikuti isi panel
+            double panelHeight = printStruk.getPreferredSize().height;
+
+            //konversi pixel ke point (72 dpi)
+            double paperHeight = panelHeight * 72.0 / 96.0;
+
+            paper.setSize(paperWidth, paperHeight);
+
+            //gunakan seluruh area kertas
+            paper.setImageableArea(0, 0, paperWidth, paperHeight);
+
+            pageFormat.setPaper(paper);
+
             job.setPrintable(new Printable() {
 
                 @Override
                 public int print(Graphics g, PageFormat pf, int pageIndex)
                         throws PrinterException {
 
-                    //hanya cetak satu halaman
                     if (pageIndex > 0) {
                         return NO_SUCH_PAGE;
                     }
 
-                    //cast graphics ke graphics2d untuk rendering
                     Graphics2D g2d = (Graphics2D) g;
+                    
+                    g2d.setRenderingHint(
+                            RenderingHints.KEY_TEXT_ANTIALIASING,
+                            RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+                    
+                    g2d.setRenderingHint(
+                            RenderingHints.KEY_ANTIALIASING,
+                            RenderingHints.VALUE_ANTIALIAS_OFF);
 
-                    //geser posisi sesuai margin halaman
-                    g2d.translate(pf.getImageableX(), pf.getImageableY());
+                    g2d.translate(
+                            pf.getImageableX(),
+                            pf.getImageableY()
+                    );
 
-                    //render panel struk ke printer
+                    //pastikan layout sudah dihitung
+                    printStruk.doLayout();
+                    printStruk.validate();
+
+                    //hitung skala agar pas dengan lebar kertas
+                    double scaleX = pf.getImageableWidth()
+                            / printStruk.getPreferredSize().width;
+
+                    g2d.scale(scaleX, scaleX);
+
+                    //cetak panel
                     printStruk.printAll(g2d);
 
                     return PAGE_EXISTS;
-
                 }
 
-            });
+            }, pageFormat);
 
-            //tampilkan dialog pilih printer
-            boolean doPrint = job.printDialog();
+            //dialog pilih printer
+            if (job.printDialog()) {
 
-            //jika pengguna mengkonfirmasi cetak
-            if (doPrint) {
-
-                //jalankan proses cetak
                 job.print();
 
-                //tutup dialog pratinjau setelah cetak
                 dispose();
 
             }
 
         } catch (PrinterException e) {
-            //tampilkan pesan jika gagal mencetak
-            JOptionPane.showMessageDialog(null, "Gagal mencetak struk!");
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Gagal mencetak struk!\n" + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+
         }
 
     }

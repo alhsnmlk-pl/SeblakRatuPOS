@@ -366,6 +366,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         btnSimpanProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/IconSimpan.png"))); // NOI18N
         btnSimpanProduk.setText("Simpan Produk");
         btnSimpanProduk.setBorderPainted(false);
+        btnSimpanProduk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSimpanProduk.setFocusable(false);
         btnSimpanProduk.setPreferredSize(new java.awt.Dimension(200, 28));
         btnSimpanProduk.addActionListener(this::btnSimpanProdukActionPerformed);
@@ -376,6 +377,7 @@ public final class PanelProduk extends javax.swing.JPanel {
 
         btnBatalProduk.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
         btnBatalProduk.setText("Batal");
+        btnBatalProduk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBatalProduk.setFocusable(false);
         btnBatalProduk.addActionListener(this::btnBatalProdukActionPerformed);
         jPanel10.add(btnBatalProduk);
@@ -384,6 +386,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         btnHapusProduk.setForeground(new java.awt.Color(214, 4, 39));
         btnHapusProduk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Vector.png"))); // NOI18N
         btnHapusProduk.setText("Hapus");
+        btnHapusProduk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHapusProduk.setFocusable(false);
         btnHapusProduk.addActionListener(this::btnHapusProdukActionPerformed);
         jPanel10.add(btnHapusProduk);
@@ -657,6 +660,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         filterSemuaP.setAlignmentY(0.0F);
         filterSemuaP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterSemuaP.setContentAreaFilled(false);
+        filterSemuaP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterSemuaP.setFocusable(false);
         filterSemuaP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         filterSemuaP.setIconTextGap(0);
@@ -670,6 +674,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         filterSeblakP.setAlignmentY(0.0F);
         filterSeblakP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterSeblakP.setContentAreaFilled(false);
+        filterSeblakP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterSeblakP.setFocusable(false);
         filterSeblakP.setIconTextGap(0);
         filterSeblakP.setMargin(new java.awt.Insets(1, 1, 20, 1));
@@ -682,6 +687,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         filterToppingP.setAlignmentY(0.0F);
         filterToppingP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterToppingP.setContentAreaFilled(false);
+        filterToppingP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterToppingP.setFocusable(false);
         filterToppingP.setIconTextGap(0);
         filterToppingP.setMargin(new java.awt.Insets(1, 1, 20, 1));
@@ -697,6 +703,7 @@ public final class PanelProduk extends javax.swing.JPanel {
         filterMinumanP.setAlignmentY(0.0F);
         filterMinumanP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
         filterMinumanP.setContentAreaFilled(false);
+        filterMinumanP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterMinumanP.setFocusable(false);
         filterMinumanP.setIconTextGap(0);
         filterMinumanP.setMargin(new java.awt.Insets(1, 1, 20, 1));
