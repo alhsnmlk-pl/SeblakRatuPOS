@@ -31,7 +31,7 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="popupStruk">
       <Properties>
@@ -41,8 +41,8 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Center"/>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card2"/>
         </Constraint>
       </Constraints>
 
@@ -384,17 +384,17 @@
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel4" pref="302" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
                                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="lblNoTrx" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="lblJam" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                                  <Component id="lblJam" max="32767" attributes="0"/>
                                               </Group>
-                                              <EmptySpace pref="78" max="32767" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="lblUser" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jLabel9" pref="0" max="32767" attributes="0"/>
@@ -429,7 +429,7 @@
                                           <Font name="Plus Jakarta Sans Medium" size="12" style="0"/>
                                         </Property>
                                         <Property name="horizontalAlignment" type="int" value="0"/>
-                                        <Property name="text" type="java.lang.String" value="-------------------------------------------------"/>
+                                        <Property name="text" type="java.lang.String" value="--------------------------------------------------"/>
                                       </Properties>
                                     </Component>
                                     <Component class="javax.swing.JLabel" name="lblJam">
@@ -450,7 +450,7 @@
                                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                           <Font name="Plus Jakarta Sans" size="14" style="0"/>
                                         </Property>
-                                        <Property name="text" type="java.lang.String" value="No.TRX : "/>
+                                        <Property name="text" type="java.lang.String" value="No :"/>
                                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                             <EmptyBorder bottom="0" left="2" right="0" top="0"/>
@@ -487,8 +487,33 @@
                                           <Font name="Plus Jakarta Sans Medium" size="12" style="0"/>
                                         </Property>
                                         <Property name="horizontalAlignment" type="int" value="0"/>
-                                        <Property name="text" type="java.lang.String" value="-------------------------------------------------"/>
+                                        <Property name="text" type="java.lang.String" value="--------------------------------------------------"/>
                                       </Properties>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                                <Container class="javax.swing.JPanel" name="strukContent">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                        <EmptyBorder bottom="8" left="0" right="0" top="10"/>
+                                      </Border>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                                      <BorderConstraints direction="Center"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+                                    <Property name="axis" type="int" value="1"/>
+                                  </Layout>
+                                  <SubComponents>
+                                    <Component class="posseblakratu.component.cardStruk" name="cardStruk1">
                                     </Component>
                                   </SubComponents>
                                 </Container>
@@ -514,18 +539,18 @@
                                               <Component id="jLabel10" min="-2" pref="82" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jPanel14" pref="314" max="32767" attributes="0"/>
+                                          <Component id="jPanel14" pref="302" max="32767" attributes="0"/>
                                           <Component id="lblFooter" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="stkTotalA" min="-2" pref="154" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   <Component id="jPanel13" min="-2" pref="297" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -573,12 +598,12 @@
                                                       <Component id="jLabel12" pref="78" max="32767" attributes="0"/>
                                                       <Component id="jLabel13" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="stkSub" pref="155" max="32767" attributes="0"/>
                                                       <Component id="stkDiskon" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
                                           </Group>
@@ -612,7 +637,7 @@
                                               <Font name="Plus Jakarta Sans Medium" size="12" style="0"/>
                                             </Property>
                                             <Property name="horizontalAlignment" type="int" value="0"/>
-                                            <Property name="text" type="java.lang.String" value="-------------------------------------------------"/>
+                                            <Property name="text" type="java.lang.String" value="--------------------------------------------------"/>
                                           </Properties>
                                         </Component>
                                         <Component class="javax.swing.JLabel" name="jLabel12">
@@ -722,12 +747,12 @@
                                                       <Component id="stkMetode" min="-2" pref="123" max="-2" attributes="0"/>
                                                       <Component id="jLabel20" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace pref="77" max="32767" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="stkBayar" pref="102" max="32767" attributes="0"/>
                                                       <Component id="stkKembali" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                         </DimensionLayout>
@@ -760,7 +785,7 @@
                                               <Font name="Plus Jakarta Sans Medium" size="12" style="0"/>
                                             </Property>
                                             <Property name="horizontalAlignment" type="int" value="0"/>
-                                            <Property name="text" type="java.lang.String" value="-------------------------------------------------"/>
+                                            <Property name="text" type="java.lang.String" value="--------------------------------------------------"/>
                                           </Properties>
                                         </Component>
                                         <Component class="javax.swing.JLabel" name="stkMetode">
@@ -810,7 +835,7 @@
                                               <Font name="Plus Jakarta Sans Medium" size="12" style="0"/>
                                             </Property>
                                             <Property name="horizontalAlignment" type="int" value="0"/>
-                                            <Property name="text" type="java.lang.String" value="-------------------------------------------------"/>
+                                            <Property name="text" type="java.lang.String" value="--------------------------------------------------"/>
                                           </Properties>
                                         </Component>
                                         <Component class="javax.swing.JLabel" name="stkKembali">
@@ -838,31 +863,6 @@
                                         <Property name="text" type="java.lang.String" value="Terima Kasih Atas Kunjungan Anda!"/>
                                         <Property name="verticalAlignment" type="int" value="1"/>
                                       </Properties>
-                                    </Component>
-                                  </SubComponents>
-                                </Container>
-                                <Container class="javax.swing.JPanel" name="strukContent">
-                                  <Properties>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                                        <EmptyBorder bottom="8" left="0" right="0" top="10"/>
-                                      </Border>
-                                    </Property>
-                                  </Properties>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                                      <BorderConstraints direction="Center"/>
-                                    </Constraint>
-                                  </Constraints>
-
-                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-                                    <Property name="axis" type="int" value="1"/>
-                                  </Layout>
-                                  <SubComponents>
-                                    <Component class="posseblakratu.component.cardStruk" name="cardStruk1">
                                     </Component>
                                   </SubComponents>
                                 </Container>

@@ -300,7 +300,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
                 //jika menu memiliki level pedas, tambahkan ke nama
                 if (rs.getString("level") != null) {
-                    namaMenu += " Lvl " + rs.getString("level");
+                    namaMenu += " Lvl " + rs.getString("level").split("-")[0];
                 }
 
                 //query untuk mengambil topping dari item ini
@@ -483,6 +483,8 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         lblNoTrx = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        strukContent = new javax.swing.JPanel();
+        cardStruk1 = new posseblakratu.component.cardStruk();
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -501,13 +503,12 @@ public final class PratinjauStruk extends javax.swing.JDialog {
         jLabel23 = new javax.swing.JLabel();
         stkKembali = new javax.swing.JLabel();
         lblFooter = new javax.swing.JLabel();
-        strukContent = new javax.swing.JPanel();
-        cardStruk1 = new posseblakratu.component.cardStruk();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(345, 675));
         setUndecorated(true);
         setResizable(false);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         popupStruk.setBackground(new java.awt.Color(255, 255, 255));
         popupStruk.setOpaque(false);
@@ -641,14 +642,14 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("-------------------------------------------------");
+        jLabel4.setText("--------------------------------------------------");
 
         lblJam.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         lblJam.setText("19 Mei 2026  |  19:32");
         lblJam.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 2, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
-        jLabel6.setText("No.TRX : ");
+        jLabel6.setText("No :");
         jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 2, 0, 0));
 
         lblNoTrx.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
@@ -662,21 +663,21 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 12)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("-------------------------------------------------");
+        jLabel9.setText("--------------------------------------------------");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(0, 0, 0)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNoTrx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblJam, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                    .addComponent(lblJam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(lblUser))
             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -700,6 +701,13 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jPanel7.add(jPanel10, java.awt.BorderLayout.PAGE_START);
 
+        strukContent.setBackground(new java.awt.Color(255, 255, 255));
+        strukContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 8, 0));
+        strukContent.setLayout(new javax.swing.BoxLayout(strukContent, javax.swing.BoxLayout.Y_AXIS));
+        strukContent.add(cardStruk1);
+
+        jPanel7.add(strukContent, java.awt.BorderLayout.CENTER);
+
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setPreferredSize(new java.awt.Dimension(297, 270));
 
@@ -708,7 +716,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jLabel11.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("-------------------------------------------------");
+        jLabel11.setText("--------------------------------------------------");
 
         jLabel12.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         jLabel12.setText("Subtotal");
@@ -744,11 +752,11 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(stkSub, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addComponent(stkDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
+                .addGap(0, 0, 0))
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
@@ -781,7 +789,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jLabel18.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 12)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("-------------------------------------------------");
+        jLabel18.setText("--------------------------------------------------");
 
         stkMetode.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 14)); // NOI18N
         stkMetode.setText("Tunai");
@@ -799,7 +807,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Plus Jakarta Sans Medium", 0, 12)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("-------------------------------------------------");
+        jLabel23.setText("--------------------------------------------------");
 
         stkKembali.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 1, 14)); // NOI18N
         stkKembali.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -816,11 +824,11 @@ public final class PratinjauStruk extends javax.swing.JDialog {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stkMetode, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(stkBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(stkKembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(16, 16, 16))
+                .addGap(0, 0, 0))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -852,17 +860,17 @@ public final class PratinjauStruk extends javax.swing.JDialog {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
             .addComponent(lblFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(stkTotalA, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(0, 0, 0))
             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel11Layout.createSequentialGroup()
-                    .addGap(0, 1, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 16, Short.MAX_VALUE)))
+                    .addGap(0, 5, Short.MAX_VALUE)))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -884,13 +892,6 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         jPanel7.add(jPanel11, java.awt.BorderLayout.PAGE_END);
 
-        strukContent.setBackground(new java.awt.Color(255, 255, 255));
-        strukContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 8, 0));
-        strukContent.setLayout(new javax.swing.BoxLayout(strukContent, javax.swing.BoxLayout.Y_AXIS));
-        strukContent.add(cardStruk1);
-
-        jPanel7.add(strukContent, java.awt.BorderLayout.CENTER);
-
         printStruk.add(jPanel7, java.awt.BorderLayout.CENTER);
 
         jScrollPane2.setViewportView(printStruk);
@@ -903,7 +904,7 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
         popupStruk.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(popupStruk, java.awt.BorderLayout.CENTER);
+        getContentPane().add(popupStruk, "card2");
 
         setSize(new java.awt.Dimension(360, 680));
         setLocationRelativeTo(null);
