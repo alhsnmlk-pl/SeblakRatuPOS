@@ -145,10 +145,10 @@ public class PanelStok extends javax.swing.JPanel {
         //membuat model tabel baru
         DefaultTableModel model = new DefaultTableModel();
 
-        //menambahkan kolom ke dalam model tabel (tidak ada kolom id_stok)
+        //menambahkan kolom ke dalam model tabel
         model.addColumn("Nama Bahan");
         model.addColumn("Stok");
-        model.addColumn("Harga");
+        model.addColumn("Harga Satuan");
         model.addColumn("Satuan");
 
 
@@ -398,7 +398,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         lblNamaProduk3.setBackground(new java.awt.Color(255, 255, 255));
         lblNamaProduk3.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 14)); // NOI18N
-        lblNamaProduk3.setText("Harga Stok");
+        lblNamaProduk3.setText("Harga Satuan Stok");
         lblNamaProduk3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         jPanel15.add(lblNamaProduk3, java.awt.BorderLayout.PAGE_START);
 
@@ -538,7 +538,7 @@ public class PanelStok extends javax.swing.JPanel {
 
         tblStok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Bawang", "13", "Rp. 1.000", "kg"}
+
             },
             new String [] {
                 "Nama Bahan", "Stok", "Harga Satuan", "Satuan"
@@ -888,8 +888,8 @@ public class PanelStok extends javax.swing.JPanel {
             return;
         }
 
-        //query SQL untuk menghapus data stok(Menggunakan metode soft delete) berdasarkan id_stok
-        String sql = "UPDATE stok_bahan SET status = 'Dihapus' WHERE id_stok=?";
+        //query SQL untuk menghapus data stok berdasarkan id_stok
+        String sql = "DELETE FROM stok_bahan WHERE id_stok=?";
 
         try {
             //buka koneksi ke database

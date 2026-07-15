@@ -6,6 +6,9 @@ package posseblakratu.view;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -498,7 +501,9 @@ public final class FrameMain extends javax.swing.JFrame {
         stateSidebar(btnStok);
         //menampilkan panel stok
         page.show(contentPanel, "stok");
-
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            panelStok.load_tabel_stok();
+        }
     }//GEN-LAST:event_btnStokItemStateChanged
 
     private void btnPenggunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnPenggunaItemStateChanged
@@ -584,6 +589,17 @@ public final class FrameMain extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
        
         try {
+            UIManager.put("TableHeader.font", new Font("Plus Jakarta Sans", Font.BOLD, 14));
+            UIManager.put("TableHeader.height", 48);
+            UIManager.put("TableHeader.background", new Color(248, 248, 248));
+            UIManager.put("TableHeader.foreground", new Color(24, 25, 43));
+            UIManager.put("TableHeader.hoverBackground", new Color(248, 248, 248));
+            UIManager.put("TableHeader.pressedBackground", new Color(248, 248, 248));
+            UIManager.put("TableHeader.separatorColor", new Color(248, 248, 248));
+            UIManager.put("TableHeader.bottomSeparatorColor", new Color(231,189,187));
+            UIManager.put("TableHeader.showTrailingVerticalLine", false);
+            UIManager.put("ScrollPane.border", BorderFactory.createEmptyBorder());
+            
             UIManager.put("Button.arc", 10);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {

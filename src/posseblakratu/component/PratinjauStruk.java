@@ -356,99 +356,94 @@ public final class PratinjauStruk extends javax.swing.JDialog {
 
     }
 
-    //method untuk mencetak struk menggunakan printer
-    private void cetakStruk() {
+// Method untuk mencetak struk
+private void cetakStruk() {
 
-        try {
+    try {
 
-            //ambil printer
-            PrinterJob job = PrinterJob.getPrinterJob();
+        // Mengambil printer yang tersedia
+        PrinterJob job = PrinterJob.getPrinterJob();
 
-            //buat ukuran kertas
-            PageFormat pageFormat = job.defaultPage();
-            Paper paper = new Paper();
+        // Mengambil pengaturan halaman bawaan
+        PageFormat format = job.defaultPage();
 
-            //80 mm = 226.77
-            double paperWidth = 226.77;
+        // Membuat objek kertas
+        Paper paper = new Paper();
 
-            //tinggi mengikuti isi panel
-            double panelHeight = printStruk.getPreferredSize().height;
+        // Lebar kertas 80 mm (dalam satuan point)
+        double width = 164.41;
 
-            //konversi pixel ke point (72 dpi)
-            double paperHeight = panelHeight * 72.0 / 96.0;
+        // Tinggi kertas mengikuti tinggi panel struk
+        double height = printStruk.getPreferredSize().height * 72.0 / 96.0;
 
-            paper.setSize(paperWidth, paperHeight);
+        // Mengatur ukuran kertas
+        paper.setSize(width, height);
 
-            //gunakan seluruh area kertas
-            paper.setImageableArea(0, 0, paperWidth, paperHeight);
+        // Seluruh area kertas dapat digunakan untuk mencetak
+        paper.setImageableArea(0, 0, width, height);
 
-            pageFormat.setPaper(paper);
+        // Menggunakan ukuran kertas yang telah dibuat
+        format.setPaper(paper);
 
-            job.setPrintable(new Printable() {
+        // Menentukan isi yang akan dicetak
+        job.setPrintable((graphics, pageFormat, pageIndex) -> {
 
-                @Override
-                public int print(Graphics g, PageFormat pf, int pageIndex)
-                        throws PrinterException {
-
-                    if (pageIndex > 0) {
-                        return NO_SUCH_PAGE;
-                    }
-
-                    Graphics2D g2d = (Graphics2D) g;
-                    
-                    g2d.setRenderingHint(
-                            RenderingHints.KEY_TEXT_ANTIALIASING,
-                            RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-                    
-                    g2d.setRenderingHint(
-                            RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_OFF);
-
-                    g2d.translate(
-                            pf.getImageableX(),
-                            pf.getImageableY()
-                    );
-
-                    //pastikan layout sudah dihitung
-                    printStruk.doLayout();
-                    printStruk.validate();
-
-                    //hitung skala agar pas dengan lebar kertas
-                    double scaleX = pf.getImageableWidth()
-                            / printStruk.getPreferredSize().width;
-
-                    g2d.scale(scaleX, scaleX);
-
-                    //cetak panel
-                    printStruk.printAll(g2d);
-
-                    return PAGE_EXISTS;
-                }
-
-            }, pageFormat);
-
-            //dialog pilih printer
-            if (job.printDialog()) {
-
-                job.print();
-
-                dispose();
-
+            // Printer hanya mencetak satu halaman
+            if (pageIndex > 0) {
+                return Printable.NO_SUCH_PAGE;
             }
 
-        } catch (PrinterException e) {
+            // Mengubah Graphics menjadi Graphics2D
+            Graphics2D g2 = (Graphics2D) graphics;
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Gagal mencetak struk!\n" + e.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
+            // Memindahkan titik awal cetak ke area yang dapat dicetak
+            g2.translate(
+                    pageFormat.getImageableX(),
+                    pageFormat.getImageableY()
             );
+
+            // Memastikan layout panel sudah diperbarui
+            printStruk.doLayout();
+
+            // Menghitung skala agar lebar panel sesuai dengan lebar kertas
+            double scale = pageFormat.getImageableWidth()
+                    / printStruk.getPreferredSize().width;
+
+            // Menerapkan skala
+            g2.scale(scale, scale);
+
+            // Mencetak isi panel struk
+            printStruk.printAll(g2);
+
+            // Mengembalikan status bahwa halaman tersedia
+            return Printable.PAGE_EXISTS;
+
+        }, format);
+
+        // Menampilkan dialog pemilihan printer
+        if (job.printDialog()) {
+
+            // Mulai proses mencetak
+            job.print();
+
+            // Menutup form setelah selesai mencetak
+            dispose();
 
         }
 
+    } catch (PrinterException e) {
+
+        // Menampilkan pesan jika terjadi kesalahan saat mencetak
+        JOptionPane.showMessageDialog(
+                this,
+                "Gagal mencetak struk!\n" + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+
     }
 
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

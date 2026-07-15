@@ -8,6 +8,7 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -22,6 +23,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.util.prefs.Preferences;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -713,6 +715,18 @@ public final class FrameLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            UIManager.put("TableHeader.font", new Font("Plus Jakarta Sans", Font.BOLD, 14));
+            UIManager.put("TableHeader.height", 48);
+            UIManager.put("TableHeader.background", new Color(248, 248, 248));
+            UIManager.put("TableHeader.foreground", new Color(24, 25, 43));
+            UIManager.put("TableHeader.hoverBackground", new Color(248, 248, 248));
+            UIManager.put("TableHeader.pressedBackground", new Color(248, 248, 248));
+            UIManager.put("TableHeader.separatorColor", new Color(248, 248, 248));
+            UIManager.put("TableHeader.bottomSeparatorColor", new Color(231,189,187));
+            UIManager.put("TableHeader.showTrailingVerticalLine", false);
+            UIManager.put("ScrollPane.border", BorderFactory.createEmptyBorder());
+            
+            
             //mengatur warna background selection pada combobox
             UIManager.put("ComboBox.selectionBackground", new java.awt.Color(252, 232, 230));
             //mengatur warna teks pada item yang dipilih di combobox

@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import posseblakratu.config.Koneksi;
 import posseblakratu.config.FormatUang;
-import posseblakratu.component.PopupDetail;
 
 /**
  *
@@ -34,7 +33,7 @@ public final class PanelLaporan extends javax.swing.JPanel {
 
     //tipe baris yang sedang dipilih (Pemasukan / Pengeluaran)
     private String selectedTipe = null;
-
+    
     /**
      * Creates new form PanelLaporan
      */
@@ -46,7 +45,7 @@ public final class PanelLaporan extends javax.swing.JPanel {
         panelLengkung(main);
 
         //load laporan sesuai bulan yang aktif saat ini
-        loadLaporan();
+        loadLaporan();   
     }
 
     void panelLengkung(JPanel p) {
@@ -167,7 +166,7 @@ public final class PanelLaporan extends javax.swing.JPanel {
     }
 
     //method untuk memuat tabel rincian transaksi berdasarkan periode
-    void loadTabelLaporan(String periode) {
+    public void loadTabelLaporan(String periode) {
 
         //buat model tabel baru
         DefaultTableModel model = new DefaultTableModel();
@@ -281,7 +280,7 @@ public final class PanelLaporan extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         lblRincian = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btnLihatDetail = new javax.swing.JButton();
+        btnhpsDetail = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLaporan = new jtablecustom.JTableCustom();
@@ -502,15 +501,15 @@ public final class PanelLaporan extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        btnLihatDetail.setBackground(new java.awt.Color(234, 88, 11));
-        btnLihatDetail.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
-        btnLihatDetail.setForeground(new java.awt.Color(255, 255, 255));
-        btnLihatDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/Fa7SolidEye (1).png"))); // NOI18N
-        btnLihatDetail.setText("Lihat Detail Transaksi");
-        btnLihatDetail.setBorderPainted(false);
-        btnLihatDetail.setIconTextGap(8);
-        btnLihatDetail.addActionListener(this::btnLihatDetailActionPerformed);
-        jPanel4.add(btnLihatDetail, java.awt.BorderLayout.LINE_END);
+        btnhpsDetail.setFont(new java.awt.Font("Plus Jakarta Sans SemiBold", 0, 16)); // NOI18N
+        btnhpsDetail.setForeground(new java.awt.Color(214, 4, 39));
+        btnhpsDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posseblakratu/icon/icon hapus.png"))); // NOI18N
+        btnhpsDetail.setText("Hapus Transaksi");
+        btnhpsDetail.setBorderPainted(false);
+        btnhpsDetail.setFocusable(false);
+        btnhpsDetail.setIconTextGap(8);
+        btnhpsDetail.addActionListener(this::btnhpsDetailActionPerformed);
+        jPanel4.add(btnhpsDetail, java.awt.BorderLayout.LINE_END);
 
         jPanel6.add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -838,6 +837,112 @@ public final class PanelLaporan extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnUnduhActionPerformed
 
+    private void PeriodeBulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PeriodeBulanMouseClicked
+
+
+    }//GEN-LAST:event_PeriodeBulanMouseClicked
+
+    private void PeriodeBulanHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_PeriodeBulanHierarchyChanged
+
+    }//GEN-LAST:event_PeriodeBulanHierarchyChanged
+
+    private void PeriodeBulanPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PeriodeBulanPropertyChange
+        // TODO add your handling code here:
+        loadLaporan();
+    }//GEN-LAST:event_PeriodeBulanPropertyChange
+
+
+    private void btnhpsDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhpsDetailActionPerformed
+
+        if ("Pemasukan".equals(selectedTipe)) {
+            //menampilkan dialog konfirmasi sebelum menghapus data
+            int konfirmasi = JOptionPane.showConfirmDialog(
+                    null,
+                    "Yakin ingin menghapus transaksi pemasukan ini?",
+                    "Konfirmasi",
+                    JOptionPane.YES_NO_OPTION);
+
+            //jika pengguna memilih selain tombol "Yes", proses dibatalkan
+            if (konfirmasi != JOptionPane.YES_OPTION) {
+                return;
+            }
+
+            //query SQL untuk menghapus data pengguna berdasarkan ID
+            String sql = "DELETE FROM transaksi  WHERE id_transaksi=?";
+
+            try {
+
+                //membuat koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //menyiapkan query SQL
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //mengisi parameter query dengan ID pengguna yang akan dihapus
+                ps.setString(1, selectedIdTransaksi);
+
+                //menjalankan perintah DELETE
+                ps.execute();
+
+                //menampilkan pesan bahwa data berhasil dihapus
+                JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+
+                //menangkap error yang terjadi saat menjalankan operasi database
+            } catch (SQLException e) {
+
+                //menampilkan pesan bahwa proses penghapusan data gagal
+                JOptionPane.showMessageDialog(null, "Data gagal dihapus!" + e.getMessage());
+
+            }
+
+            loadLaporan();
+
+        } else {
+            //menampilkan dialog konfirmasi sebelum menghapus data
+            int konfirmasi = JOptionPane.showConfirmDialog(
+                    null,
+                    "Yakin ingin menghapus transaksi pengeluaran ini?",
+                    "Konfirmasi",
+                    JOptionPane.YES_NO_OPTION);
+
+            //jika pengguna memilih selain tombol "Yes", proses dibatalkan
+            if (konfirmasi != JOptionPane.YES_OPTION) {
+                return;
+            }
+
+            //query SQL untuk menghapus data pengguna berdasarkan ID
+            String sql = "DELETE FROM pengeluaran WHERE id_pengeluaran=?";
+
+            try {
+
+                //membuat koneksi ke database
+                Connection conn = Koneksi.konek();
+
+                //menyiapkan query SQL
+                PreparedStatement ps = conn.prepareStatement(sql);
+
+                //mengisi parameter query dengan ID yang akan dihapus
+                ps.setString(1, selectedIdTransaksi);
+
+                //menjalankan perintah DELETE
+                ps.execute();
+
+                //menampilkan pesan bahwa data berhasil dihapus
+                JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+
+                //menangkap error yang terjadi saat menjalankan operasi database
+            } catch (SQLException e) {
+
+                //menampilkan pesan bahwa proses penghapusan data gagal
+                JOptionPane.showMessageDialog(null, "Data gagal dihapus!" + e.getMessage());
+
+            }
+
+            loadLaporan();
+        }
+
+    }//GEN-LAST:event_btnhpsDetailActionPerformed
+
     private void tblLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLaporanMouseClicked
 
         //ambil indeks baris yang diklik
@@ -856,121 +961,14 @@ public final class PanelLaporan extends javax.swing.JPanel {
             selectedTipe = tblLaporan.getValueAt(baris, 3).toString();
 
         }
-
     }//GEN-LAST:event_tblLaporanMouseClicked
-
-    private void PeriodeBulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PeriodeBulanMouseClicked
-
-
-    }//GEN-LAST:event_PeriodeBulanMouseClicked
-
-    private void PeriodeBulanHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_PeriodeBulanHierarchyChanged
-
-    }//GEN-LAST:event_PeriodeBulanHierarchyChanged
-
-    private void PeriodeBulanPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PeriodeBulanPropertyChange
-        // TODO add your handling code here:
-        loadLaporan();
-    }//GEN-LAST:event_PeriodeBulanPropertyChange
-
-
-    private void btnLihatDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatDetailActionPerformed
-
-        //tampilkan pesan jika belum ada baris yang dipilih
-        if (selectedIdTransaksi == null || selectedTipe == null) {
-            JOptionPane.showMessageDialog(null, "Pilih baris transaksi terlebih dahulu.");
-            return;
-        }
-
-        //tampilkan pesan jika baris yang dipilih bukan pemasukan
-        if (!selectedTipe.equals("Pemasukan")) {
-            JOptionPane.showMessageDialog(null, "Detail hanya tersedia untuk transaksi pemasukan.");
-            return;
-        }
-
-        //ambil data dan tampilkan popup detail transaksi
-        //query data transaksi berdasarkan id yang dipilih
-        String sql = "SELECT t.id_transaksi, t.tanggal, t.subtotal, "
-                + "(t.subtotal - t.total_akhir) AS total_diskon, "
-                + "t.total_akhir, t.metode, t.jumlah_bayar, t.kembalian, "
-                + "u.username "
-                + "FROM transaksi t "
-                + "LEFT JOIN pengguna u ON t.id_pengguna = u.id_pengguna "
-                + "WHERE t.id_transaksi = ?";
-
-        try {
-            //buka koneksi ke database
-            Connection conn = Koneksi.konek();
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, selectedIdTransaksi);
-            ResultSet rs = ps.executeQuery();
-
-            //jika data ditemukan tampilkan popup detail
-            if (rs.next()) {
-
-                //ambil id transaksi dari hasil query
-                String idTrx = rs.getString("id_transaksi");
-
-                //ambil dan format waktu transaksi
-                String waktu = new SimpleDateFormat("dd MMM yyyy  |  HH:mm")
-                        .format(rs.getTimestamp("tanggal"));
-
-                //ambil subtotal transaksi
-                double subtotal = rs.getDouble("subtotal");
-
-                //ambil total diskon dari selisih subtotal dan total akhir
-                double diskon = rs.getDouble("total_diskon");
-
-                //ambil total akhir setelah diskon
-                double total = rs.getDouble("total_akhir");
-
-                //ambil jumlah yang dibayarkan pelanggan
-                double jumlahBayar = rs.getDouble("jumlah_bayar");
-
-                //ambil kembalian
-                double kembalian = rs.getDouble("kembalian");
-
-                //ambil metode pembayaran
-                String metode = rs.getString("metode");
-
-                //ambil username kasir, ganti null dengan strip
-                String pengguna = rs.getString("username") != null ? rs.getString("username") : "-";
-
-                //buat objek popup detail dengan parent frame
-                PopupDetail popup = new PopupDetail(
-                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this),
-                        true
-                );
-
-                //isi data pembayaran ke popup
-                popup.setPembayaran(subtotal, diskon, total, jumlahBayar, kembalian, metode);
-
-                //isi data header struk berupa id transaksi, kasir, dan waktu
-                popup.setHeaderData(idTrx, pengguna, waktu);
-
-                //tampilkan popup di tengah layar
-                popup.setLocationRelativeTo(null);
-                popup.setVisible(true);
-
-            } else {
-                //tampilkan pesan jika data transaksi tidak ditemukan
-                JOptionPane.showMessageDialog(null, "Data transaksi tidak ditemukan.");
-            }
-
-        } catch (SQLException sQLException) {
-            //tampilkan pesan jika gagal mengambil data dari database
-            JOptionPane.showMessageDialog(null, sQLException.getMessage());
-        }
-
-    }//GEN-LAST:event_btnLihatDetailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Jlabel;
     private com.toedter.calendar.JMonthChooser PeriodeBulan;
-    private javax.swing.JButton btnLihatDetail;
     private javax.swing.JButton btnUnduh;
+    private javax.swing.JButton btnhpsDetail;
     private javax.swing.JPanel headerBawah;
     private javax.swing.JPanel hrader;
     private javax.swing.JLabel jLabel11;
